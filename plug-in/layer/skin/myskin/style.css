@@ -1,0 +1,117 @@
+.layer-ext-myskin.layui-layer {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-top: 4px solid #55B813;
+}
+.layer-ext-myskin.layui-layer.no-padding{padding: 0;}
+.layer-ext-myskin.layui-layer.no-padding .layui-layer-content{padding: 0;}
+.layer-ext-myskin .layui-layer-content{
+    padding-top: 30px;
+}
+.layer-ext-myskin.layui-layer-iframe .layui-layer-content{
+    padding-top: 10px;
+}
+.layer-ext-myskin .layui-layer-btn{
+    margin-top: -10px;
+}
+.layer-ext-myskin .layui-layer-btn a {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 25px;
+    border-color: #D2CFCF;
+    background: #D2CFCF;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    transition: all ease .2s;
+}
+
+.layer-ext-myskin .layui-layer-btn a:hover {
+    border-color: #c1bebe;
+    background: #c1bebe;
+}
+
+.layer-ext-myskin .layui-layer-btn .layui-layer-btn0 {
+    float: right;
+    border-color: #55B813;
+    background: #55B813;
+}
+
+.layer-ext-myskin .layui-layer-btn .layui-layer-btn0:hover {
+    border-color: #479c0f;
+    background: #479c0f;
+}
+.layer-ext-myskin .confirm-content{
+    padding: 20px 20% 0 20%;
+    line-height: 24px;
+    color: #888;
+    font-size: 16px;
+}
+.layer-ext-myskin .confirm-que{
+    text-align: center;
+    color: #444;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.layer-ext-myskin .layui-layer-setwin{
+    top: 10px;
+    right: 15px;
+    width: 22px;
+    height: 22px;
+}
+.layer-ext-myskin .layui-layer-setwin .layui-layer-close2{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    background: url(icon/close.png);
+}
+.layer-ext-myskin .layui-layer-setwin a.layui-layer-ico{
+    background: url(icon/close.png);
+    background-position: center;
+    width: 22px;
+    height: 22px;
+}
+.layer-ext-myskin .myskin-ico{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    top: 10px;
+}
+.layer-ext-myskin .myskin-ico.ico01{
+    background: url(icon/warn.png);
+}
+
+
+
+
+/**大屏深色调***/
+.layer-ext-review{
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1e2e4a;
+    border: 1px solid #46548E;
+}
+.layer-ext-review .layui-layer-title{
+    height: 50px;
+    line-height: 50px;
+    background-color: #0a83bc;
+    font-size: 16px;
+    color: #fff;
+    border-bottom: 0;
+}
+.layer-ext-review .layui-layer-btn .layui-layer-btn0{
+    height: 32px;
+    line-height: 32px;
+    width: 100px;
+    background-color: #01A7EC;
+    border-radius: 4px;
+}
+.layer-ext-review .layui-layer-setwin a.layui-layer-ico{
+    background: url(icon/close2.png);
+    background-position: center;
+}

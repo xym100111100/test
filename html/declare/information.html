@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单位信息查看</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../plug-in/layui/layui.all.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../resource/css/info_pxy.css">
+</head>
+<style>
+    .input_copy2 .layui-input{
+        width: 160px;
+    }
+</style>
+<body>
+ <div class="count" style="position: relative">
+     <form class="layui-form" action="">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+         <ul class="layui-tab-title" >
+             <li class="layui-this">单位信息</li>
+             <li>基本信息</li>
+             <li>仓房信息</li>
+             <li>油罐情况</li>
+         </ul>
+         <p style="position: absolute;right: 10px;top:15px;">备案编号：2323333</p>
+         <div class="layui-tab-content" style="height: auto;">
+             <div class="layui-tab-item layui-show">                  <!--单位信息-->
+                 <div class="count_box">
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>单位名称：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入单位名称" class="layui-input">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>法人代表：</div>
+                         <div class="flex_right" style="width: auto">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block input_copy">
+                                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入法人代表" class="layui-input">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="flex_left flex_left_copy" style="margin-left: 20px;"><em class="em">*</em>企业性质：</div>
+                         <div class="flex_right" style="width: 450px;">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block input_copy2" >
+                                     <select name="city" lay-verify="required">
+                                         <option value=""></option>
+                                         <option value="0">北京</option>
+                                         <option value="1">上海</option>
+                                         <option value="2">广州</option>
+                                         <option value="3">深圳</option>
+                                         <option value="4">杭州</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>地址：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入地址" class="layui-input">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>联系方式：</div>
+                         <div class="flex_right" style="width: auto">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block input_copy">
+                                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入联系方式" class="layui-input">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="flex_left flex_left_copy" style="margin-left: 20px;">上级主管部门：</div>
+                         <div class="flex_right" style="width: auto">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block input_copy2" >
+                                     <select name="city" lay-verify="required">
+                                         <option value=""></option>
+                                         <option value="0">北京</option>
+                                         <option value="1">上海</option>
+                                         <option value="2">广州</option>
+                                         <option value="3">深圳</option>
+                                         <option value="4">杭州</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>备案有效期：</div>
+                         <div class="flex_right" style="width: auto">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block input_copy1">
+                                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入备案有效期" class="layui-input">
+                                 </div>
+                             </div>
+                         </div>
+                        <em class="em">（填写营业执照有效期）</em>
+                     </div>
+                     <div class="flex">
+                         <div class="flex_left"><em class="em">*</em>单位简介：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <textarea style="margin-top: 15%;" placeholder="请输入单位简介" class="layui-textarea"></textarea>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex" style='margin-top: 100px;'>
+                         <div class="flex_left"><em class="em">*</em>上传营业执照：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <img class="image" src="../../resource/images/application02.png" alt="">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex" style='margin-top: 80px;'>
+                         <div class="flex_left"><em class="em">*</em>粮油仓储物流设施产权证或租赁合同：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <img class="image" src="../../resource/images/application02.png" alt="">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="flex" style='margin-top: 80px;'>
+                         <div class="flex_left"><em class="em">*</em>粮油仓储物流设施布局图：</div>
+                         <div class="flex_right">
+                             <div class="layui-form-item">
+                                 <div class="layui-input-block">
+                                     <img class="image" src="../../resource/images/application02.png" alt="">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="layui-tab-item">
+                 <table class="company-info">
+                     <tr>
+                         <td class="td_color" rowspan="4" width="140">土地性质</td>
+                         <td class="td_color" width="120">性质</td>
+                         <td class="td_color" width="430" colspan="3">数量（平方米）</td>
+                         <td class="td_color" width="100">实际仓容</td>
+                         <td width="140">吨</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td>划拨</td>
+                         <td width="400" colspan="3">1</td>
+                         <td class="td_color">仓房个数</td>
+                         <td>个</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td>出（转）让</td>
+                         <td width="400" colspan="3"></td>
+                         <td class="td_color">实际罐容</td>
+                         <td>吨</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td>其他</td>
+                         <td width="400" colspan="3"></td>
+                         <td class="td_color">油罐个数</td>
+                         <td>个</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="2">占地面积</td>
+                         <td rowspan="2">平方米</td>
+                         <td  width="400" colspan="3" rowspan="2"></td>
+                         <td class="td_color">地坪</td>
+                         <td>平方米</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color" rowspan="2">烘干机</td>
+                         <td>台（套）</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="2">库区数</td>
+                         <td rowspan="2">1</td>
+                         <td width="400" colspan="3" rowspan="2"></td>
+                         <td >吨 / 日</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color" rowspan="5">附属设施</td>
+                         <td  class="td_color">设备名称</td>
+                         <td  class="td_color" width="430" colspan="3">建筑面积（平方米）</td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">铁路专用线</td>
+                         <td>米</td>
+                         <td width="400" colspan="3"></td>
+                         <td>检化验室</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">其中：有效长度</td>
+                         <td>米</td>
+                         <td  width="400" colspan="3"></td>
+                         <td>器械库</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color" rowspan="10">粮食中转设施</td>
+                         <td>接收能力</td>
+                         <td  width="400" colspan="3"></td>
+                         <td>清理维修车间</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td rowspan="2">其中：铁路</td>
+                         <td rowspan="2" width="400" colspan="1">吨 / 小时</td>
+                         <td rowspan="2" width="400" colspan="2"></td>
+                         <td>其他</td>
+                         <td width="430" colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td rowspan="2" class="td_color">汽车街</td>
+                         <td  width="400" colspan="1">吨</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td rowspan="2">公路</td>
+                         <td  width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                         <td  width="400" colspan="2" rowspan="2"></td>
+                         <td>吨</td>
+                         <td width="430" colspan="3"></td>
+                     <tr>
+                         <td  class="td_color" rowspan="6">信息化建设</td>
+                         <td  width="400" colspan="1">业务管理系统</td>
+                         <td colspan="3" class="td_color"  >有 / 无</td>
+                     </tr>
+                     <tr>
+                         <td>发放能力</td>
+                         <td colspan="1">吨 / 小时</td>
+                         <td colspan="2"></td>
+                         <td>仓储保管系统</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td rowspan="2">其中：铁路</td>
+                         <td  width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                         <td  width="400" colspan="2" rowspan="2"></td>
+                         <td colspan="1">一卡通系统</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td>远程监管系统</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td rowspan="2">公路</td>
+                         <td  width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                         <td  width="400" colspan="2" rowspan="2"></td>
+                         <td >视频监控系统</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td  width="400" colspan="1">其他管理系统</td>
+                         <td colspan="3"></td>
+                     </tr>
+                 </table>
+             </div>       <!--基本信息-->
+             <div class="layui-tab-item ">
+                 <table class="company-info">
+                     <tr>
+                         <td class="td_color" rowspan="3">仓房类型</td>
+                         <td class="td_color" ></td>
+                         <td class="td_color" >平房仓</td>
+                         <td class="td_color">浅圆仓</td>
+                         <td class="td_color">立筒仓</td>
+                         <td class="td_color">楼房仓</td>
+                         <td class="td_color">地下仓</td>
+                         <td class="td_color" width="150">保温钢板平房仓</td>
+                         <td class="td_color">简易仓</td>
+                         <td class="td_color">储粮罩棚</td>
+                         <td class="td_color">仓间罩棚</td>
+                         <td class="td_color">铁路罩棚</td>
+                         <td class="td_color">其他</td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓数（个）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="3">仓房状态</td>
+                         <td class="td_color" ></td>
+                         <td class="td_color" >完好无损</td>
+                         <td class="td_color">需大修</td>
+                         <td class="td_color">待报废</td>
+                         <td class="td_color">其他</td>
+                         <td class="td_color"></td>
+                         <td class="td_color" width="150"></td>
+                         <td class="td_color" rowspan="3">储粮方式</td>
+                         <td class="td_color"></td>
+                         <td class="td_color">散装</td>
+                         <td class="td_color">包装</td>
+                         <td class="td_color"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓数（个）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="3">仓房结构</td>
+                         <td class="td_color" ></td>
+                         <td class="td_color" colspan="3">地面</td>
+                         <td class="td_color" colspan="4">墙体</td>
+                         <td class="td_color" colspan="4">屋面</td>
+                     </tr>
+                     <tr>
+                         <td class="td_color"></td>
+                         <td class="td_color">钢筋砼</td>
+                         <td class="td_color">砼</td>
+                         <td class="td_color">其它</td>
+                         <td class="td_color">钢筋砼</td>
+                         <td class="td_color">钢板</td>
+                         <td class="td_color">砖混</td>
+                         <td class="td_color">其它</td>
+                         <td class="td_color">钢筋砼</td>
+                         <td class="td_color">钢板</td>
+                         <td class="td_color">砖混</td>
+                         <td class="td_color">其他</td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="2" style="white-space: normal">保粮技术应用情况</td>
+                         <td class="td_color" ></td>
+                         <td class="td_color">计算机测温</td>
+                         <td class="td_color">机械通风</td>
+                         <td class="td_color">环流熏蒸</td>
+                         <td class="td_color">低温储粮</td>
+                         <td class="td_color">气调储粮</td>
+                         <td class="td_color">其它</td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                     </tr>
+                 </table>
+             </div>      <!--仓房信息-->
+             <div class="layui-tab-item ">
+                 <table class="company-info">
+                     <tr>
+                         <td class="td_color" rowspan="3">油罐规格</td>
+                         <td class="td_color"  ></td>
+                         <td class="td_color"  >小于500吨</td>
+                         <td class="td_color">500-1000吨</td>
+                         <td class="td_color">1000-5000吨</td>
+                         <td class="td_color"  >5000-10000吨</td>
+                         <td class="td_color" >10000吨以上</td>
+                         <td class="td_color" rowspan="2">装备情况</td>
+                         <td class="td_color">加热设备</td>
+                         <td class="td_color">测温设备</td>
+                         <td class="td_color">液位设备</td>
+                         <td class="td_color">其他</td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">罐数（个）</td>
+                         <td > </td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">罐容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+
+                     <tr>
+                         <td class="td_color" rowspan="3">油罐状态</td>
+                         <td class="td_color" ></td>
+                         <td class="td_color" >完好可用户</td>
+                         <td class="td_color">需大修</td>
+                         <td class="td_color">待报废</td>
+                         <td class="td_color">待拆除</td>
+                         <td class="td_color">死角罐</td>
+                         <td class="td_color" >其他</td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+                         <td class="td_color"></td>
+
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓数（个）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+
+                     </tr>
+                     <tr>
+                         <td class="td_txtCor">仓容（吨）</td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                         <td ></td>
+                     </tr>
+                 </table>
+             </div>      <!--油罐情况-->
+         </div>
+     </div>
+     </form>
+     <div class="layui-form">
+         <table class="layui-table">
+             <colgroup>
+                 <col width="150">
+                 <col width="150">
+                 <col width="200">
+                 <col>
+             </colgroup>
+             <thead>
+             <tr>
+                 <th>变更时间</th>
+                 <th>操作</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>2020-12-20</td>
+                 <td class="tex">查看</td>
+             </tr>
+             <tr>
+                 <td>2020-12-20</td>
+                 <td class="tex">查看</td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+ </div>
+
+
+    <script>
+        layui.use(['form', 'laydate', 'table', 'layer', 'element', 'upload'], function () {
+            var form = layui.form;
+            var layer = layui.layer;
+            var table = layui.table;
+            var element = layui.element;
+            var upload = layui.upload;
+            form.render();
+
+        })
+
+</script>
+</body>
+</html>

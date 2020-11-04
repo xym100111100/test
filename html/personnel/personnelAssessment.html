@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人事管理-人员考核</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            layDate();
+        });
+        
+        /**
+         * [addTr description]
+         */
+        function addTr(obj){
+            var html = ['<tr>',
+'                                    <td>1</td>',
+'                                    <td><input type="text" class="input01"></td>',
+'                                    <td><input type="text" class="input01"></td>',
+'                                    <td><input type="text" class="input01 layui-input w240"></td>',
+'                                    <td><input type="text" class="input01"></td>',
+'                                    <td></span><span class="plus" onclick="addTr(this);"></span><span class="reduce ml10" onclick="delTr(this);"></td>',
+'                                </tr>'].join("");
+            $(obj).closest("tr").after(html);
+            sort();
+            layDate();
+        }
+        function delTr(obj){
+            $(obj).closest("tr").remove();
+            sort();
+        }
+        /**
+         * [sort description]
+         * @return {[type]} [description]
+         */
+        function sort(){
+            for(var i = 0; i < $("#list tr").length; i++){
+                $("#list tr").eq(i).find("td:first-child").html(i+1);
+            }
+        }
+        /**
+         * [layDate description]
+         * @return {[type]} [description]
+         */
+        function layDate(){
+            lay('.layui-input').each(function(){
+              laydate.render({
+                elem: this
+                ,trigger: 'click',
+                range: true
+              });
+            }); 
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">人事管理-人员考核</p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">考核填报</span></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="15%">姓名：</th>
+                    <td width="35%">XXXX</td>
+                    <th width="15%">性别：</th>
+                    <td width="35%">XXXX</td>
+                </tr>
+                <tr>
+                    <th>出生年月：</th>
+                    <td>XXXX</td>
+                    <th>政治面貌：</th>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <th>现任职时间：</th>
+                    <td>XXXX</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>单位及职务：</th>
+                    <td colspan="3"><textarea class="textarea01"></textarea></td>
+                </tr>
+                <tr>
+                    <th>从事或分管工作：</th>
+                    <td colspan="3"><textarea class="textarea01"></textarea></td>
+                </tr>
+                <tr>
+                    <th>个人总结：</th>
+                    <td colspan="3"><textarea class="textarea01"></textarea></td>
+                </tr>
+                <tr>
+                    <th>参加脱产培训情况：</th>
+                    <td colspan="3" style="padding: 15px;">
+                        <table class="table01">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>培训名称</th>
+                                    <th>主办单位或培训机构</th>
+                                    <th>培训起止时间</th>
+                                    <th>获得学时</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text" class="input01"></td>
+                                    <td><input type="text" class="input01"></td>
+                                    <td><input type="text" class="input01 layui-input w240"></td>
+                                    <td><input type="text" class="input01"></td>
+                                    <td></span><span class="plus" onclick="addTr(this);"></span><span class="reduce ml10" onclick="delTr(this);"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>培训考核结果（1天按8学时计算）：</th>
+                    <td colspan="3">参加培训总计<input type="text" style="border-bottom: 1px solid #dcdcdc;width: 50px;text-align: center;padding: 0 10px;">学时，其中网络培训<input type="text" style="border-bottom: 1px solid #dcdcdc;width: 50px;text-align: center;padding: 0 10px;">学时</td>
+                </tr>
+                <tr>
+                    <th>是否完成全员培训：</th>
+                    <td colspan="3"><label><input type="radio" name="radio01" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio01" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th>考勤情况：</th>
+                    <td colspan="3"><textarea class="textarea01"></textarea></td>
+                </tr>
+            </table>
+        </div>  
+    </div>
+    <!-- 按钮 -->
+    <div class="tc pd20">
+        <button type="button" class="btn btn-browser w110">提交</button>
+    </div> 
+</body>
+</html>

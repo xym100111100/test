@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频监控</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">视频监控<a href="videoMonitor.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>江南区</em><em>广西壮族自治区南宁粮食储备库</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="clearfix mt15" style="position: relative;">
+        <div class="table_outer bgFFF" style="margin-right: 420px;height: 450px;">
+            <div style="height: 100%;">
+
+              <video id="video1" style="width: 100%;height: 100%;object-fit: fill" autoplay loop controls>
+                <source src="../../resource/video/model2.Ogg" type="video/Ogg"/>
+                <source src="../../resource/video/model2.mp4" type="video/mp4"/>
+                <source src="../../resource/video/model2.webm" type="video/webm"/>
+                <source src="../../resource/video/model2.mpg" type="video/mpg"/>
+                Your browser does not support HTML5 video.
+              </video>
+
+            </div>
+        </div>
+        <div class="table_outer bgFFF" style="width: 400px;position: absolute;right: 0;top: 0;height: 100%;">
+            <div class="table_search">
+                <span class="title">视频信息</span>
+            </div>
+            <div class="pd20">
+                <table class="company-info">
+                    <tr>
+                        <th width="120">设备名称：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>监控类别：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>设备编号：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>设备厂商：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>设备型号：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>设备类型名称：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <th>设备类型编码：</th>
+                        <td>XXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

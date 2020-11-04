@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮情监管<a href="conditionManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th>型号规格：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>规格1</li>
+                            <li>规格2</li>
+                        </ul>
+                    </div>
+                </td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">储粮机械通风作业记录表</span>
+        </div>
+        <div class="pd20">
+            <table class="table01" id="formList">
+                <thead>
+                    <tr>
+                        <th>规则编号</th>
+                        <th>描述</th>
+                        <th>服务调用次数</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state">未开始</span></td>
+                        <td><a class="btn common" href="conditionDetail071.html">通风作业表</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state going">进行中</span></td>
+                        <td><a class="btn common" href="conditionDetail071.html">通风作业表</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state success">成功</span></td>
+                        <td><a class="btn common" href="conditionDetail071.html">通风作业表</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state fail">失败</span></td>
+                        <td><a class="btn common" href="conditionDetail071.html">通风作业表</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state warn">警告</span></td>
+                        <td><a class="btn common" href="conditionDetail071.html">通风作业表</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix mt10">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目建设和维修进展归集</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/font/dtreefont.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+    <style>
+        .layui-form-label{
+            width: 120px!important;
+            text-align: right;
+        }
+        .layui-input-block{
+            width: 300px!important;
+        }
+        .info-table th{text-align: right}
+        .layer-ext-myskin .layui-layer-btn .layui-layer-btn0{float: none!important;}
+    </style>
+</head>
+<body>
+<div class="clearfix table_outer bgFFF">
+    <form class="layui-form label-auto-width" action="" lay-filter="example" style="margin: 0 10px;">
+        <div class="layui-form-item ">
+            <label class="layui-form-label">任务名称：</label>
+            <div class="layui-input-block">
+                <span class="c3">广西军粮供应项目建设</span>
+            </div>
+
+            <label class="layui-form-label">任务编码：</label>
+            <div class="layui-input-block">
+                <span class="c3">2019-1554-155</span>
+            </div>
+
+            <label class="layui-form-label">业务名称：</label>
+            <div class="layui-input-block">
+                <span class="c3">广西军粮供应项目建设</span>
+            </div>
+
+            <label class="layui-form-label">业务编码：</label>
+            <div class="layui-input-block">
+                <span class="c3">2019-1554-155</span>
+            </div>
+        </div>
+        <div class="layui-form-item  ">
+            <label class="layui-form-label">填报单位：</label>
+            <div class="layui-input-block">
+                <span class="c3">广西军粮供应项目建设</span>
+            </div>
+
+            <label class="layui-form-label">填报时间：</label>
+            <div class="layui-input-block">
+                <span class="c3">2019年11月20日</span>
+            </div>
+        </div>
+
+
+    </form>
+
+    <form class="layui-form">
+        <div class="pd20">
+            <table class="info-table">
+                <col width="150">
+                <col>
+                <col width="150">
+                <col>
+                <col width="150">
+                <col>
+                <col width="150">
+                <col>
+                <tr>
+                    <th>项目名称：</th>
+                    <td>项目建设和维修</td>
+                    <th>项目建设和维修：</th>
+                    <td>4546515185</td>
+                    <th>计划建设规模：</th>
+                    <td>100平方</td>
+                    <th>当年建设仓容：</th>
+                    <td>1266平方</td>
+                </tr>
+                <tr>
+                    <th>建设性质：</th>
+                    <td>项目建设和维修进度归集</td>
+                    <th>项目类型：</th>
+                    <td>粮食仓储设施</td>
+                    <th></th>
+                    <td></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>建设内容：</th>
+                    <td colspan="7">2019年11月20日</td>
+                </tr>
+                <tr>
+                    <th>计划投资合计：</th>
+                    <td>2265232万元</td>
+                    <th>中央财政：</th>
+                    <td>44632万元</td>
+                    <th>自治区财政：</th>
+                    <td>52656万元</td>
+                    <th>市县：</th>
+                    <td>4662万元</td>
+                </tr>
+                <tr>
+                    <th>企业：</th>
+                    <td>广西粮食局</td>
+                    <th>累计支出数：</th>
+                    <td>44632万元</td>
+                    <th>年度完成投资：</th>
+                    <td>52656万元</td>
+                    <th>项目形象进度：</th>
+                    <td>4662万元</td>
+                </tr>
+                <tr>
+                    <th>项目进度：</th>
+                    <td colspan="7">完成</td>
+
+                </tr>
+                <tr>
+                    <th>备注：</th>
+                    <td colspan="7">XXXXX</td>
+
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</div>
+
+<div class="bgFFF mt15">
+    <div class="pd20">
+        <div class="layui-card ">
+            <div class="layui-card-body">
+                <div class="toolbar">
+                    <span class="card-title02">本项目进度</span>
+                </div>
+                <table id="table" lay-filter="demo" class="layui-hide">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/html" id="barDemo">
+    <a class="op-word" lay-event="pic">查看</a>
+</script>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/layui.all.js"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.extend({
+        dtree: '../../plug-in/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    }).use(['form', 'layedit', 'laydate','table','element','upload','dtree'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,dtree = layui.dtree
+            ,laydate = layui.laydate;
+
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": i + 1,
+                "name2": "XXXXXX",
+                "name3": "XXXXXX",
+                "name4": "XXXXXX",
+                "name5": "XXXXXX",
+                "name6": "XXXXXX",
+                "name7": "2019-07-09"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/projectConstruction/collectionMaintenance.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1', title: '填报单位'}
+                ,{field: 'name2', title: '项目名称'}
+                ,{field: 'name3', title: '项目编码'}
+                ,{field: 'name4', title: '计划建设规模'}
+                ,{field: 'name5', title: '当年建设仓容'}
+                ,{field: 'name6', title: '计划投资合计'}
+                ,{field: 'name7', title: '累计支出数'}
+                ,{field: 'name8', title: '项目形象进度呀'}
+                ,{field: 'name9', title: '填报时间'}
+                ,{field: 'op', title: '操作', toolbar: '#barDemo'}
+            ]]
+        });
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var param = {
+                title: '',
+                area:["1200px","700px"],
+                btn: ['提交','关闭'],
+                yes: function(index, layero){
+                    // TODO render表格
+                    layer.close(index);
+                },
+                end: function(){
+
+                }
+            };
+            var upgradeLayer = null;
+            if(obj.event === 'pic'){
+                param.title = '查看';
+                param.content = 'progressLayer.html';
+                upgradeLayer = $.layerFrame02(param);
+            }
+        });
+    });
+    function hideSelect() {
+        $("#treePop").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+</script>
+</html>

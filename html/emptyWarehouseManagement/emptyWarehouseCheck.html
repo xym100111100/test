@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空仓管理查看</title>
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/font/dtreefont.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body>
+<div class="bgFFF">
+    <div class="pd20">
+        <div class="layui-card ">
+            <div class="layui-card-body">
+                <table id="table" lay-filter="demo" class="layui-hide">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/layui.all.js"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.extend({
+        dtree: '../../plug-in/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    }).use(['form', 'layedit', 'laydate','table','element','upload','dtree'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,dtree = layui.dtree
+            ,laydate = layui.laydate;
+
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                name1: '自治区人民政府',
+                name2: i+1,
+                name3: '稻谷',
+                name4: '自治区人民政府',
+                name5: '自治区储备粮',
+                name6: '3030吨',
+                name7: '仓馁散储',
+                name8: '2016.11',
+                name9: '2016',
+                name10: 'XX',
+                name11: '三等',
+                name12: '57.2'
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/warehouse/emptyWarehouseCheck.json'
+            ,cols: [[ //标题栏
+                {field: 'name1',rowspan: '2', title: '库点'}
+                ,{field: 'name2',rowspan: '2', title: '仓房'}
+                ,{field: 'name3',rowspan: '2', title: '是否取得代储资格'}
+                ,{field: 'name4',rowspan: '2', title: '仓容'}
+                ,{field: 'name5',rowspan: '2', title: '建设时间'}
+                ,{field: 'name6',rowspan: '2', title: '能否防潮'}
+                ,{field: 'name7',rowspan: '2', title: '能否隔热'}
+                ,{colspan: '3', title: '仓房主要结构'}
+                ,{colspan: '3', title: '仓储设施'}
+
+            ],
+                [
+                    {field: 'name8',title: '仓顶'}
+                    ,{field: 'name9',title: '仓墙'}
+                    ,{field: 'name10', title: '仓底'}
+                    ,{field: 'name11', title: '测温方式'}
+                    ,{field: 'name12', title: '通风方式'}
+                ]]
+        });
+    });
+
+</script>
+
+</html>

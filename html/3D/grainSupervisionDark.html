@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>粮食监管（深色）</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- 广西省所有区县对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/gxDistrictMap.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!--swiper-->
+    <script type="text/javascript" src="../../plug-in/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/swiper/css/swiper.min.css">
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!--滚动条-->
+    <script src="../../plug-in/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .table_search {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 12px;
+            position: relative;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 15px;
+            background: url(../../resource/images/search.png);
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .col-xs-12,
+        .col-sm-2,
+        .col-sm-4,
+        .col-sm-6 {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .slide-outer {
+            position: relative;
+            padding: 2px 12px;
+        }
+
+        #slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-outer .swiper-button-prev,
+        .slide-outer .swiper-button-next {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            margin-top: -7px;
+            font-size: 0;
+            line-height: 0;
+            border-width: 7px;
+            border-color: #888;
+            border-style: dashed;
+            border-style: dashed;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            background: none;
+            outline: 0 !important;
+        }
+
+        .slide-outer .swiper-button-prev {
+            border-right-style: solid;
+            border-left-width: 0;
+            left: 0;
+        }
+
+        .slide-outer .swiper-button-next {
+            border-left-style: solid;
+            border-right-width: 0;
+            right: 0;
+        }
+
+        /*#slide>ul{width: 100%;height: 100%;white-space:nowrap;overflow:hidden;word-break: keep-all;}*/
+        #slide>ul li {
+            display: inline-block;
+            height: 100%;
+            padding: 0 2px;
+            width: auto;
+        }
+
+        #slide>ul li a {
+            display: block;
+            padding: 0 5px;
+            height: 26px;
+            line-height: 26px;
+            background-color: #fff;
+            border: 1px solid #DCDCDC;
+            border-radius: 3px;
+        }
+
+        #slide>ul li a.active {
+            background-color: #69A5E1;
+            color: #fff;
+        }
+
+        .filter-div {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        #tab {
+            padding: 0;
+        }
+
+        #tab span {
+            display: inline-block;
+            width: 50%;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            color: #999;
+            cursor: pointer;
+        }
+
+        #tab span.active {
+            border-bottom: 2px solid #55B813;
+            color: #55B813;
+        }
+
+        .company-info th,
+        .company-info td {
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 35px;
+        }
+
+        #maps,
+        #grains {
+            transition: all ease .3s;
+        }
+
+        .full-screen {
+            position: fixed !important;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 10px;
+            background-color: #fff;
+            z-index: 99;
+            padding-top: 40px;
+        }
+
+        .full-screen .table_search {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .full-screen #top2,
+        .full-screen #top21 {
+            height: 100% !important;
+        }
+
+        .full-screen #main {
+            height: 95% !important
+        }
+
+        #backBtn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 32px;
+            height: 32px;
+            background: #69A5E1 url(../../resource/images/back.png) no-repeat center;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .grain-label {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background-color: #55b813;
+        }
+
+        /*下拉*/
+        .slide-outer .inp_down a {
+            display: block;
+        }
+
+        .slide-outer .inp_down input {
+            background: #fff;
+            padding-right: 30px;
+        }
+
+        .slide-outer .inp_down::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            ;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            border-top: 6px solid #888;
+            transition: all ease .3s;
+        }
+
+        .slide-outer .inp_down.open::after {
+            transform: rotate(-180deg);
+        }
+
+        /*深色*/
+        .dark {
+            background: url(../../resource/images/body_bg.v4.jpg) no-repeat center;
+            background-size: 100% 100%;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .dark .ztree li a {
+            color: #fff;
+        }
+
+        .dark .ztree li a.curSelectedNode {
+            background-color: inherit;
+        }
+
+        .dark .table_outer {
+            border-color: rgba(59, 140, 216, 0.7);
+            background-color: rgba(7, 15, 73, 0.3);
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .dark .table_search {
+            background: rgba(1, 180, 255, .59);
+            background: linear-gradient(92deg, rgba(53, 185, 253, .59), rgba(1, 180, 255, .59));
+            border: 0;
+        }
+
+        .dark #tab span {
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+        }
+
+        .dark #tab span.active {
+            border-bottom: 0;
+            color: #fff;
+            background-color: #3393F7;
+        }
+
+        .dark #top2 {
+            background: url(../../resource/images/map_bg.png) no-repeat center bottom;
+            background-size: 100% 20%;
+        }
+
+        .dark .company-info {
+            color: #fff;
+        }
+
+        .dark .company-info th {
+            background-color: rgba(247, 247, 247, .05);
+        }
+
+        .dark .company-info,
+        .dark .company-info tr+tr,
+        .dark .company-info th+td,
+        .dark .company-info td+th {
+            border-color: rgba(101, 124, 168, .7);
+        }
+
+        .dark .tree-s {
+            background: rgba(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .dark .input01 {
+            background-color: rgba(32, 133, 238, .3);
+            border-color: #2085EE;
+            color: #fff;
+        }
+
+        .dark .tree-s .input01::-webkit-input-placeholder {
+            color: #fff;
+        }
+
+        .dark .input01::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: #fff;
+        }
+
+        .dark .input01:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: #fff;
+        }
+
+        .dark .input01:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #fff;
+        }
+
+        /*下拉*/
+        .dark .inp_down input {
+            background: url(../../resource/images/dark/dropdown_icon.png) no-repeat right center;
+        }
+
+        .dark .inp_down.open input {
+            background: url(../../resource/images/dark/dropdown_up_icon.png) no-repeat right center;
+        }
+
+        .dark .inp_down input {
+            border-color: #2085EE;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .dark .inp_down ul {
+            background-color: rgba(3, 45, 138, 0.8);
+            border-color: #2085EE;
+        }
+
+        .dark .inp_down li:hover {
+            background-color: #1d6be2;
+        }
+
+        .dark .slide-outer .inp_down input {
+            background: rgba(32, 133, 238, .3);
+        }
+
+        .dark .slide-outer .inp_down::after {
+            border-top: 6px solid #bdecf6;
+        }
+
+        .dark .full-screen {
+            background: url(../../resource/images/body_bg.v4.jpg) no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        .dark .search-icon {
+            background: url(../../resource/images/dark/search.png);
+        }
+
+        .dark input[type=radio].radio01,
+        .dark input[type=radio].radio01:hover,
+        .dark input[type=radio].radio01:checked {
+            background-image: url(../../resource/images/dark/radio_sprite.png);
+        }
+
+        /*::-webkit-scrollbar-track{border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);}*/
+        /*::-webkit-scrollbar-thumb{background-color: #1a57c3;border-radius: 10px;-webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);min-height: 20px;background-clip: content-box;}*/
+        /*::-webkit-scrollbar{width: 16px;height: 16px;}*/
+        /*::-webkit-scrollbar-track,::-webkit-scrollbar-thumb{border: 5px solid transparent;}*/
+        /*::-webkit-scrollbar-corner{background: transparent;}*/
+
+        /*树*/
+        .ztree li span.button.ico_open,
+        .ztree li span.button.ico_close {
+            background: url(../../resource/images/dark/tree_doc.png) no-repeat center;
+        }
+
+        .ztree li span.button.ico_docu {
+            background: url(../../resource/images/dark/tree_leaf.png) no-repeat center;
+        }
+    </style>
+    <style>
+        .grt-container__top {
+            height: 70%;
+        }
+
+        .grt-container__bottom {
+            height: 30%;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .grt-box {
+            position: relative;
+            height: 100%;
+        }
+
+        .grt-box__header {
+            height: 40px;
+        }
+
+        .grt-box__main {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 40px;
+            bottom: 0;
+            overflow: auto;
+        }
+
+        .grt-h100p {
+            height: 100%;
+        }
+
+        /* 排行榜 */
+        .grt-ranking {
+            padding: 0 10px 10px;
+        }
+
+        .grt-ranking__word {
+            color: #FF5722;
+            font-weight: bold;
+        }
+
+        .grt-ranking__item {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .grt-ranking__item-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: right;
+        }
+
+        .grt-ranking__item-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            text-align: right;
+        }
+
+        .grt-ranking__item-label {
+            width: 100%;
+            padding-left: 30px;
+            padding-right: 50px;
+            box-sizing: border-box;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            word-break: break-all;
+        }
+
+        .grt-badge {
+            width: 20px;
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            /* background-color: #FF5722; */
+            background: rgb(255, 68, 71);
+
+            color: #fff;
+            border-radius: 2px;
+        }
+
+        .grt-bg-red {
+            background: rgb(255, 68, 71);
+        }
+
+        .grt-bg-orange {
+            background: rgb(253, 126, 55);
+        }
+
+        .grt-bg-yellow {
+            background: rgb(254, 185, 63);
+        }
+
+        .grt-bg-gray {
+            background: rgb(132, 156, 200);
+        }
+
+        .grt-ove {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            word-break: break-all;
+        }
+
+        .grt-card__outer {
+            position: relative;
+            height: 100%;
+        }
+
+        .grt-card__inner {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .grt-card {
+            background: rgba(255, 255, 255, 0.02);
+            /* border: 1px solid rgba(59, 140, 216, 0.7); */
+            position: relative;
+            height: 120px;
+             background: url(../../resource/images/wenduBg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .grt-card__left {
+            width: 120px;
+            height: 120px;
+            box-sizing: border-box;
+            padding: 20px;
+           
+        }
+
+        .grt-card__right {
+            position: absolute;
+            top: 15px;
+            left: 120px;
+            right: 0;
+            bottom: 5px;
+        }
+        .grt-card__img {
+            width: 100%;
+            height: 100%;
+        }
+        .grt-card__label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body class="dark">
+    <div class="grt-h100p row">
+        <div class="grt-h100p col-xs-12 col-sm-2">
+            <div class="grt-h100p table_outer">
+                <div class="table_search tree-s">
+                    <input type="text" class="input01 w-full" placeholder="请输入关键字回车搜索" onkeypress="inpPress();"
+                        id="nodeKeyword" style="padding-right: 30px;">
+                    <div class="search-icon"></div>
+                </div>
+                <div style="height: 500px;overflow: auto;" id="top1">
+                    <p class="ml10 mt10">已介入<span class="cR">84</span>个粮库单位</p>
+                    <ul class="ztree" id="areaTree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="grt-h100p col-xs-12 col-sm-7">
+            <div class="grt-container__top">
+                <div class="grt-box table_outer" id="maps">
+                    <div class="grt-box__header table_search">
+                        <span class="title">本月各库点粮温热力图</span>
+                        <div class="fr">
+                            <img src="../../resource/images/dark/home1.png" alt="" style="cursor: pointer;">
+                            <img src="../../resource/images/dark/back1.png" class="ml5" alt="" style="cursor: pointer;">
+                            <img src="../../resource/images/dark/fullScreen.png" alt="" class="ml5 full-screen-icon"
+                                style="cursor: pointer;">
+                        </div>
+                    </div>
+                    <div class="grt-box__main" id="top2">
+                        <div id="main" style="height: 100%;"></div>
+                        <div class="filter-div">
+                            <label><input type="radio" class="radio01" name="r1" checked><em>总仓容</em></label>
+                            <label class="ml15"><input type="radio" class="radio01" name="r1"><em>完好仓容</em></label>
+                            <label class="ml15"><input type="radio" class="radio01" name="r1"><em>简易仓容</em></label>
+                            <label class="ml15"><input type="radio" class="radio01" name="r1"><em>需维修仓容</em></label>
+                            <label class="ml15"><input type="radio" class="radio01" name="r1"><em>需重建仓容</em></label>
+
+                            <!--下拉-->
+                            <div class="inp_down ml15">
+                                <input type="text" class="input01" readonly value="全部">
+                                <ul>
+                                    <li>全部</li>
+                                    <li>XXXXX</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--<i id="backBtn"></i>-->
+                    </div>
+                </div>
+                <div class="grt-box table_outer" id="grains" style="display: none;">
+                    <div class="grt-box__header table_search">
+                        <span class="title" id="title">XX粮库仓储设施情况</span>
+                        <img src="../../resource/images/fullScreen.png" alt="" class="fr full-screen-icon"
+                            style="margin-top: 8px;cursor: pointer;">
+                    </div>
+                    <div class="grt-box__main" id="top21">
+                        <iframe src="" frameborder="0" width="100%" height="100%" id="frame11"></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <div class="grt-container__bottom">
+                <div class="grt-box grt-h100p row table_outer bgFFF " style="margin-left: 0;margin-right: 0;">
+                    <div class="grt-box__header table_search">
+                        <span class="title">自治区直属库粮情简报&nbsp;|&nbsp;广西壮族自治区黎塘粮食储备库有限公司&nbsp;|&nbsp;1号仓</span>
+
+                    </div>
+                    <div class="grt-box__main row" style="padding: 0 10px;">
+                        <div class="grt-h100p col-xs-12 col-sm-4">
+                            <div class="grt-card__outer">
+                                <div class="grt-card grt-card__inner">
+                                    <div class="grt-card__left">
+                                        <img class="grt-card__img" src="../../resource/images/wenduji.png" alt="">
+                                    </div>
+                                    <div class="grt-card__right">
+                                        <div class="grt-card__label grt-ove">平均粮温：24℃</div>
+                                        <div class="grt-card__label grt-ove">最高粮温：25℃</div>
+                                        <div class="grt-card__label grt-ove">最低粮温：23℃</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grt-h100p col-xs-12 col-sm-4">
+                            <div class="grt-card__outer">
+
+                                <div class="grt-card grt-card__inner">
+                                    <div class="grt-card__left">
+                                        <img class="grt-card__img" src="../../resource/images/shineiwendu.png" alt="">
+                                    </div>
+                                    <div class="grt-card__right">
+                                        <div class="grt-card__label grt-ove">时间：2020年2月20日</div>
+                                        <div class="grt-card__label grt-ove">舱内温度：25℃</div>
+                                        <div class="grt-card__label grt-ove">舱内湿度：23℃</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grt-h100p col-xs-12 col-sm-4">
+                            <div class="grt-card__outer">
+                                <div class="grt-card grt-card__inner">
+                                    <div class="grt-card__left">
+                                        <img class="grt-card__img" src="../../resource/images/shiwaiwendu.png" alt="">
+                                    </div>
+                                    <div class="grt-card__right">
+                                        <div class="grt-card__label grt-ove">天气：晴朗</div>
+                                        <div class="grt-card__label grt-ove">舱外温度：25℃</div>
+                                        <div class="grt-card__label grt-ove">舱外湿度：23℃</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grt-h100p col-xs-12 col-sm-3">
+            <div class="grt-box grt-h100p row table_outer bgFFF " style="margin-left: 0;margin-right: 0;">
+                <div class="grt-box__header table_search">
+                    <span class="title">本月各库点粮情检测数量</span>
+                    <div class="fr grt-ranking__word">
+                        TOP 15
+                    </div>
+                </div>
+                <div class="grt-box__main">
+                    <ul id="rangkingWrapper" class="grt-ranking">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 排行榜模板 -->
+    <script  type="text/template" id="tmplRangking">
+        <li class="grt-ranking__item">
+            <div class="grt-ranking__item-number grt-badge {{indexClass}}">{{index}}</div>
+            <div class="grt-ranking__item-label" title="{{label}}">{{label}}</div>
+            <div class="grt-ranking__item-right">{{value}}次</div>
+        </li>
+    </script>
+
+    <script type="text/javascript" src="js/grainSupervisionDark.js"></script>
+    <!--<script type="text/javascript" src="js/app.js"></script>-->
+
+ 
+</body>
+
+</html>

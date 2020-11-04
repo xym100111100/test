@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础管理-党员数据库</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+    	.file-drop-zone{border: 1px solid #ddd;border-radius: 0;min-height: 220px;}
+		.file-drop-zone-title{background: none;padding-left: 20px;}
+		.krajee-default.file-preview-frame .kv-file-content{width: 140px;margin: 0;}
+		.krajee-default.file-preview-frame,.krajee-default.file-preview-frame:hover{margin: 0;box-shadow: none;border: 0;}
+		.krajee-default.file-preview-frame .file-thumbnail-footer{width: 140px;height: 30px;}
+		.krajee-default.file-preview-frame:not(.file-preview-error):hover{box-shadow: none;border: 0;}
+		.krajee-default .file-footer-caption{display: none;}
+		.fileinput-remove.fileinput-remove-button{display: none !important;}
+		.kv-file-zoom{display: none;}
+    </style>
+    
+
+    <script>
+        $(function(){
+            file();
+
+        });
+       
+        /**
+         * 文件上传初始化
+         * @return {[type]} [description]
+         */
+        function file(){
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['png','jpg'],//接收的文件后缀
+                theme: 'explorer',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                maxFileCount:1, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">基础管理-党员数据库<a href="DataBase.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt20">
+               <div class="table_search"><span class="title">人员基本情况</span></div>
+                <div class="pd20">
+                        <div class="tab-content" id="tab1">
+                             <p>
+                                <span><em class="c8">姓名：</em>XXX</span>
+                                <span class="ml30"><em class="c8">党组织：</em>市直隶机关党支部</span>
+                            </p>
+                            <div style="position:relative;padding-right: 200px;">
+                            	<div style="position:absolute;right: 0;top: -12px;width: 180px;">
+                                	<form enctype="multipart/form-data">
+                                        <div class="file-loading">
+                                            <!-- <label>Preview File Icon</label> -->
+                                            <input id="file" type="file" multiple>
+                                        </div>
+                                	</form>
+                                    <div class="mt5 cR">相片规格：（32X42毫米）</div>
+                                </div>
+                                <table class="company-info mt15">
+                                <tr>
+                                    <th width="15%"><span class="cR">*</span> 姓名：</th>
+                                    <td width="35%"><input type="text" class="input01 w_180"></td>
+                                    <th width="15%">曾用名：</th>
+                                    <td width="35%"><input type="text" class="input01 w_180"></td>
+                                </tr>
+                                <tr>
+                                    <th><span class="cR">*</span> 性别：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div>
+                                   </td>
+                                    <th><span class="cR">*</span> 民族：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                    <th><span class="cR">*</span> 籍贯：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                    <th>出生地：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                    <th>健康状况：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                    <th>户口所在地：</th>
+                                    <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>家庭出身：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th><span class="cR">*</span> 出生日期：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                </tr>
+                                <tr>
+                                  <th>身份证号：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>婚姻状况：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>个人身份：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>民族党派：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>学历（全日制）：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>学位（全日制）：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>毕业院校（全日制）：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>专业（全日制）：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                </tr>
+                                <tr>
+                                  <th>学历（在职）：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>学位（在职）：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>毕业院校（在职）：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>专业（在职）：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                </tr>
+                                <tr>
+                                  <th>工作单位：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>单位隶属：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>工作时间：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>所属行业：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>行政职务：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>行政级别：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>技术职称：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>一线情况：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                </tr>
+                                <tr>
+                                  <th>新阶层：</th>
+                                  <td><div class="inp_down">
+                                            <input type="text" class="input01 w_180">
+                                            <ul>
+                                                <li>XXXXX</li>
+                                                <li>XXXXX</li>
+                                            </ul>
+                                        </div></td>
+                                  <th>退休时间：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                </tr>
+                                <tr>
+                                  <th>离岗时间：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                  <th>离岗原因：</th>
+                                  <td><input type="text" class="input01 w_180"></td>
+                                </tr>
+                              </table>
+                          
+                          </div>
+                          
+                            <!-- 按钮 -->
+                            <div class="tc pd10 mt20">
+                            <span class="btn btn-browser w110 ml10">保存</span><span class="btn border-btn w110 ml10">取消</span>
+                          </div> 
+                        </div>   
+           
+                </div>
+          </div>
+    
+</body>
+</html>

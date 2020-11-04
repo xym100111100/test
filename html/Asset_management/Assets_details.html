@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产详情</title>
+    <link rel="stylesheet" type="text/css" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/styles1.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/pages.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+</head>
+<style>
+    .Toptitle{
+        color: #0d4c99;
+        font-size: 18px;
+        /*width: 150px;*/
+        height: 40px;
+        line-height: 40px;
+        margin: 20px 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .search-table td,.search-table th{
+        width: 200px;
+    }
+</style>
+<body>
+<p class="page_title"><img src="../../resource/images/page_title02.png" />资产详情<a href="personal.html" class="fr border-btn w60">返回</a></p>
+<div class="search-table clearfix mt15 ">
+    <div class="Toptitle">
+        资产详情
+    </div>
+    <table >
+        <tr style="line-height: 30px">
+            <th width="150">资产卡片编号：</th>
+            <td>1125665</td>
+            <th width="150">使用处室：</th>
+            <td>粮食局</td>
+            <th width="150">折旧状态：</th>
+            <td>一般</td>
+        </tr>
+
+        <tr style="line-height: 30px">
+            <th width="150">资产名称：</th>
+            <td>动植物</td>
+            <th width="150">使用人：</th>
+            <td>张三李四</td>
+            <th width="150">存放地点：</th>
+            <td>粮食局</td>
+        </tr>
+        <tr style="line-height: 30px">
+            <th width="150">资产价值：</th>
+            <td>10266</td>
+            <th width="150">资产数量：</th>
+            <td>100</td>
+            <th width="150">资产品牌：</th>
+            <td>/</td>
+        </tr>
+        <tr style="line-height: 30px">
+            <th width="150">取得日期：</th>
+            <td>2018-11-11</td>
+
+        </tr>
+    </table>
+</div>
+
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">历史记录</span>
+    </div>
+    <div style="padding: 20px;">
+        <table class="table02">
+            <thead>
+            <tr>
+                <th>资产分类</th>
+                <th>资产编号</th>
+                <th>资产名称</th>
+                <th>资产价值</th>
+                <th>取得日期</th>
+                <th>使用处室</th>
+                <th>使用人</th>
+                <th>资产数量</th>
+                <th>折旧状态</th>
+                <th>存放地点</th>
+                <th>资产品牌</th>
+                <th>操作时间</th>
+                <th>原因说明</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>固定资产</td>
+                <td>12622626</td>
+                <td>动植物</td>
+                <td>1200</td>
+                <td>2018/04/01</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>100</td>
+                <td>一般</td>
+                <td>财务室</td>
+                <td>——</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+            </tr>
+            <tr>
+                <td>固定资产</td>
+                <td>12622626</td>
+                <td>动植物</td>
+                <td>1200</td>
+                <td>2018/04/01</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>100</td>
+                <td>一般</td>
+                <td>财务室</td>
+                <td>——</td>
+                <td>2018/04/01</td>
+                <td >无</td>
+            </tr>
+            <tr>
+                <td>固定资产</td>
+                <td>12622626</td>
+                <td>动植物</td>
+                <td>1200</td>
+                <td>2018/04/01</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>100</td>
+                <td>一般</td>
+                <td>财务室</td>
+                <td>——</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--<div class="close_btn">关闭</div>-->
+    </div>
+
+    <!--分页-->
+    <div class="paging">
+        <input type="hidden" id='count' value="200"/>
+        <div class="pages">
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../resource/common_js/page_js.js"></script>
+</html>

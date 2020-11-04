@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报销管理-报销申请</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info .c-td{border-left: 1px solid #dcdcdc;text-align: center;}
+        .company-info td{overflow: visible;}
+        .input01{max-width: 100%;}
+        .textarea01{height: 220px;max-width: 100%;}
+        .h-div{display: none;}
+    </style>
+    <script>
+        function addTr(){
+            var html = ['<tr>',
+'                        <td>3</td>',
+'                        <td>XXX</td>',
+'                        <td>XXX</td>',
+'                        <td>XXX</td>',
+'                        <td><input type="text" class="input01"></td>',
+'                        <td><button class="btn common bgRed" type="button" onclick="delTr(this);">删除</button></td>',
+'                    </tr>'].join("");
+            $("#moneyTable tbody").append(html);
+        }
+        function delTr(obj){
+            $(obj).closest("tr").remove();
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">报销管理-报销申请<a href="#" onclick="window.history.go(-1);" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">基本信息</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">调整类型：</th>
+                    <td>XXXX</td>
+                    <th width="240">调整项目：</th>
+                    <td>XXXXXXX</td>
+                </tr>
+                <tr>
+                    <th>调整金额：</th>
+                    <td>XXX万元</td>
+                    <th>目标处室：</th>
+                    <td>XXXXXXXXXX</td>
+                </tr>
+                <tr>
+                    <th>目标项目：</th>
+                    <td colspan="3">XXXXXXXXX</td>
+                </tr>
+                <tr>
+                    <th>备注：</th>
+                    <td colspan="3">XXXXXXXXXXXXXXXXXXXXX</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">金额明细</span>
+        </div>
+        <div class="pd20">
+            <table class="table01" id="moneyTable">
+                <thead>
+                    <tr>
+                        <th>处室名称</th>
+                        <th>科室名称</th>
+                        <th>当前金额（万元）</th>
+                        <th>调整金额（万元）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXXXXXX</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">审批结果</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">结论：</th>
+                    <td>同意</td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td><textarea name="" class="textarea01 disable" style="height: 100px;" disabled="disabled">XXXXXXXXXXXXXX</textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd20">
+        <span class="btn btn-browser w110">验收</span>
+    </div>
+</body>
+</html>

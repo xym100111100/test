@@ -1,0 +1,138 @@
+
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>报销管理-转账付款发票统计</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            //年月选择器
+            laydate.render({
+              elem: '#date'
+              ,range: true
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">报销管理-转账付款发票统计</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">处室：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="150">是否取得发票：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>是</li>
+                            <li>否</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="100">确认时间：</th>
+                <td><input type="text" class="input01 layui-input w240" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">发票列表</span>
+            <a class="border-btn fr mt5" href="#">确认收到发票</a>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="" class="checkbox01"></th>
+                        <th>报销单号</th>
+                        <th>处室</th>
+                        <th>填报人</th>
+                        <th>预算来源</th>
+                        <th>报账总额</th>
+                        <th>发起时间</th>
+                        <th>流程状态</th>
+                        <th>是否取得发票</th>
+                        <th>确认时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="" class="checkbox01" checked="checked"></td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>2018-07-08</td>
+                        <td>已转账</td>
+                        <td>是</td>
+                        <td>2018-07-08</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="" class="checkbox01"></td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>2018-07-18</td>
+                        <td>未审核</td>
+                        <td>否</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="" class="checkbox01"></td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>2018-07-08</td>
+                        <td>已转账</td>
+                        <td>是</td>
+                        <td>2018-07-08</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

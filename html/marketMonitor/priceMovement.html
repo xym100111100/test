@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮油价格监测-趋势图</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            var data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137]];
+            var rangeData = [{
+                gt: 0,
+                lte: 50,
+                color: '#096'
+            }, {
+                gt: 50,
+                lte: 100,
+                color: '#5dd054'
+            }, {
+                gt: 100,
+                lte: 150,
+                color: '#69a5e1'
+            }, {
+                gt: 150,
+                lte: 200,
+                color: '#ff9933'
+            }, {
+                gt: 200,
+                lte: 300,
+                color: '#609'
+            }, {
+                gt: 300,
+                color: '#7e0023'
+            }];
+            var markLineData = [{
+                yAxis: 50
+            }, {
+                yAxis: 100
+            }, {
+                yAxis: 150
+            }, {
+                yAxis: 200
+            }, {
+                yAxis: 300
+            }];
+            var option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    data: data.map(function (item) {
+                        return item[0];
+                    })
+                },
+                yAxis: {
+                    splitLine: {
+                        show: false
+                    }
+                },
+                dataZoom: [{
+                    startValue: '2000-06-01'
+                }, {
+                    type: 'inside'
+                }],
+                visualMap: {
+                    top: 10,
+                    right: 10,
+                    pieces: rangeData,
+                    outOfRange: {
+                        color: '#999'
+                    }
+                },
+                series: {
+                    type: 'line',
+                    data: data.map(function (item) {
+                        return item[1];
+                    }),
+                    markLine: {
+                        silent: true,
+                        data: markLineData
+                    }
+                }
+            };
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            chart01.setOption(option);
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮油价格监测<a href="priceTest.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="70">市：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>柳州市</li>
+                            <li>南宁市</li>
+                            <li>桂林市</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="90">县：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>XX县</li>
+                            <li>横县</li>
+                            <li>XXXX县</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="90">监测点：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>监测点1</li>
+                            <li>监测点2</li>
+                            <li>监测点3</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>品种：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>品种1</li>
+                            <li>品种2</li>
+                            <li>品种3</li>
+                        </ul>
+                    </div>
+                </td>
+                <th>价格类型：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>类型1</li>
+                            <li>类型2</li>
+                            <li>类型3</li>
+                        </ul>
+                    </div>
+                </td>
+                <th>监测阀值：</th>
+                <td><input type="text" class="input01 w110"> - <input type="text" class="input01 w110"><span class="btn btn-small btn-browser ml20">选择对比数据</span><span class="border-btn ml10">刷新</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">X市稻谷价格趋势图</span>
+        </div>
+        <div class="pd20">
+            <div id="chart01" style="height: 500px"></div>
+        </div>
+    </div>
+</body>
+</html>

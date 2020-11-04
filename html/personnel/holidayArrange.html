@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日常办公-节假日安排</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- bootstrap-fileupload上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            layDate();
+            file();
+        });
+        
+        /**
+         * [addTr description]
+         */
+        function addTr(obj){
+            var html = ['<tr>',
+'                                    <td><input type="text" class="input01"></td>',
+'                                    <td><input type="text" class="input01"></td>',
+'                                    <td><input type="text" class="input01 layui-input w240"></td>',
+'                                    <td></span><span class="plus" onclick="addTr(this);"></span><span class="reduce ml10" onclick="delTr(this);"></td>',
+'                                </tr>'].join("");
+            $(obj).closest("tr").after(html);
+            layDate();
+        }
+        function delTr(obj){
+            $(obj).closest("tr").remove();
+        }
+        /**
+         * [layDate description]
+         * @return {[type]} [description]
+         */
+        function layDate(){
+            lay('.layui-input').each(function(){
+              laydate.render({
+                elem: this
+                ,trigger: 'click',
+                range: true
+              });
+            }); 
+        }
+        /**
+         * [file description]
+         * @return {[type]} [description]
+         */
+        function file(){
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['doc','docx','js','css','jpg'],//接收的文件后缀
+                theme: 'explorer-fa',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image','other'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                //maxFileCount:10, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">日常办公-节假日安排</p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">节假日安排表</span></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="15%">节假日值班安排事项：</th>
+                    <td width="35%"><input class="input01 w240"></input></td>
+                    <th width="15%">单位或部门：</th>
+                    <td width="35%"><input class="input01 w240"></input></td>
+                </tr>
+                <tr>
+                    <th>起止时间：</th>
+                    <td colspan="3"><input class="input01 layui-input w240"></input></td>
+                </tr>
+                <tr>
+                    <th>附件：</th>
+                    <td colspan="3" style="padding: 10px 20% 10px 10px;">
+                        <form enctype="multipart/form-data">
+                            <div class="file-loading">
+                                <!-- <label>Preview File Icon</label> -->
+                                <input id="file" type="file" multiple>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>值班信息：</th>
+                    <td colspan="3" style="padding: 10px 20% 10px 10px;">
+                        <table class="table01">
+                            <thead>
+                                <tr>
+                                    <th>值班人员信息</th>
+                                    <th>联系方式</th>
+                                    <th>值班时间</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                <tr>
+                                    <td><input type="text" class="input01"></td>
+                                    <td><input type="text" class="input01"></td>
+                                    <td><input type="text" class="input01 layui-input w240"></td>
+                                    <td></span><span class="plus" onclick="addTr(this);"></span><span class="reduce ml10" onclick="delTr(this);"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>  
+    </div>
+    <!-- 按钮 -->
+    <div class="tc pd20">
+        <button type="button" class="btn btn-browser w110">保存</button>
+    </div> 
+</body>
+</html>

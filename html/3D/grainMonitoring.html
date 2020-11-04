@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>粮情监控</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- 广西省所有区县对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/gxDistrictMap.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!--swiper-->
+    <script type="text/javascript" src="../../plug-in/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/swiper/css/swiper.min.css">
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!--滚动条-->
+    <script src="../../plug-in/jquery.nicescroll.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <link rel="stylesheet" href="..\..\resource\css\public\public.min.css">
+
+
+    <!-- 大屏样式 -->
+    <link rel="stylesheet" href="..\..\resource\css\visual\style.min.css">
+
+
+    <style>
+        .grvs-left {
+            float: left;
+            height: 100%;
+            width: 40%;
+            box-sizing: border-box;
+            padding: 0 0 15px 15px;
+            position: relative;
+        }
+
+        .grvs-left__top {
+            height: 40%;
+        }
+
+        .grvs-left__bottom {
+            height: 60%;
+            padding-top: 15px;
+            box-sizing: border-box;
+        }
+
+        .grvs-left__table {
+            padding: 15px;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .grvs-right {
+            float: left;
+            height: 100%;
+            width: 60%;
+            box-sizing: border-box;
+            padding: 0 15px 15px;
+            position: relative;
+
+        }
+
+        .grvs-right__top {
+            height: 65%;
+            position: relative;
+        }
+
+        .grvs-right__bottom {
+            height: 35%;
+            padding-top: 15px;
+            box-sizing: border-box;
+        }
+
+        .grvs-right__tools {
+            position: absolute;
+            right: 5px;
+            top: -1px;
+        }
+
+        .grvs-right__tab {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .grvs-left__icon-download {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        /* .layui-layer-tips{
+            margin-left: -12px !important;
+        }
+        .layui-layer-tips .layui-layer-content{
+            color: #333 !important;
+
+        } */
+        .layui-layer-tips {
+            margin-left: -12px !important;
+        }
+
+        .layui-layer-tips .layui-layer-content {
+            color: #333 !important;
+
+        }
+
+        .grvs-tipsbtn {
+            margin-left: 5px;
+        }
+
+        .grvs-tipscolor-1 {
+            background-color: #449FFF;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .grvs-tipscolor-2 {
+            background-color: #A54EF8;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .grvs-tipscolor-3 {
+            background-color: #FDD047;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .grvs-nav {
+            transform: translateX(-365px);
+        }
+
+        .grvs-nav-item1 {
+            height: 38px;
+            line-height: 38px;
+        }
+
+        .grvs-nav-item1 .layui-input {
+            display: inline-block;
+            width: 110px;
+            margin-top: -3px;
+            padding-left: 0;
+        }
+
+         .grvs-headerbtn {
+            transform: translateX(-465px);
+            height: 38px;
+            line-height: 38px;
+            cursor: pointer;
+            padding: 0 6px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container" class="lsvs-container">
+        <div class="lsvs-header lsvs-header--theme2">
+            <img class="lsvs-title" src="..\..\resource\css\visual\images\title2.png">
+            <form id="searchForm" class="layui-form">
+                <div class="lsvs-nav2 grvs-headerbtn ">全部查询</div>
+                <div class="lsvs-nav2 lsvs-layui-form grvs-nav">
+                    <div class="lsvs-nav2__item grvs-nav-item1">日期：<input type="text" class="layui-input input-date j-layui-date"
+                            name="dateTime" autocomplete="off" placeholder="">
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+        <div class="lsvs-body">
+            <div class="grvs-left">
+                <div class="grvs-left__top">
+                    <div class="lsvs-box has-title">
+                        <div class="lsvs-box__title">全区粮仓告警情况<i id="btnTips2"
+                                class="grvs-tipsbtn layui-icon layui-icon-about"></i></div>
+                        <div id="pieChart" class="lsvs-chart"></div>
+
+                    </div>
+                </div>
+                <div class="grvs-left__bottom">
+                    <div class="lsvs-box has-title">
+                        <div class="lsvs-box__title">全区告警详情<img id="btnDownload" class="grvs-left__icon-download"
+                                src="..\..\resource\css\visual\images\icon_download.png">
+                            <span class="lsvs-box__title-suffix">总共10条</span></div>
+                        <div class="grvs-left__table">
+                            <div class="lsvs-table ">
+                                <div class="lsvs-table__header">
+                                    <table class="lsvs-table__own pub_tc">
+                                        <tr>
+                                            <th width="50px">序号</th>
+                                            <th width="70px">地市</th>
+                                            <th width="80px">粮库性质</th>
+                                            <th width="">库点名称</th>
+                                            <th width="60px">仓房</th>
+                                            <th width="80px">告警类型</th>
+                                            <th width="120px">备注</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="lsvs-table__body">
+                                    <table class="lsvs-table__own is-even" id="table"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grvs-right">
+                <div class="grvs-right__top">
+
+                    <div id="mapWrapper" class="pub_w100p pub_h100p pub_pr">
+                        <div id="tab" class="grvs-right__tab lsvs-tab2">
+                            <div class="lsvs-tab2__item is-active j-tab-item" data-id="pjw">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--pjlw"></div>平均粮温
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="zdw">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--zdlw"></div>最低粮温
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="zgw">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--zglw"></div>最高粮温
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="cwqw">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--cwqw"></div>仓外气温
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="cnqw">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--cnqw"></div>仓内气温
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="cwsd">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--cwsd"></div>仓外湿度
+                            </div>
+                            <div class="lsvs-tab2__item   j-tab-item" data-id="cnsd">
+                                <div class="lsvs-tab2__icon lsvs-tab2__icon--cnsd"></div>仓内湿度
+                            </div>
+                        </div>
+
+
+                        <div class="lsvs-box has-title">
+                            <div class="lsvs-box__title">全区粮情情况
+                                <div class="grvs-right__tools lsvs-tools">
+                                    <img class="lsvs-tools__item" src="..\..\resource\css\visual\images\icon_home.png">
+                                    <img id="btnBack" class="lsvs-tools__item"
+                                        src="..\..\resource\css\visual\images\icon_back.png" style="display: none;">
+                                    <img id="btnFullscreem" class="lsvs-tools__item"
+                                        src="..\..\resource\css\visual\images\icon_fullscreem.png">
+                                </div>
+                            </div>
+                            <div id="mapChart" class="lsvs-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-right__bottom">
+                    <div class="lsvs-box has-title">
+                        <div class="lsvs-box__title">全区各地市粮仓累计告警<span class="lsvs-box__title-suffix">单位（个仓）</span>
+                        </div>
+                        <div id="barChart" class="lsvs-chart"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../plug-in/layui/layui.all.js"></script>
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="..\..\resource\common_js\ao.utils.js"></script>
+    <script type="text/javascript" src="js/grainMonitoring.js"></script>
+
+
+</body>
+
+</html>

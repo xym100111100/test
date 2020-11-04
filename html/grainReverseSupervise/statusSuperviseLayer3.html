@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管-熏蒸记录表-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <div class="tr">
+        <button type="button" class="layui-btn">打印</button>
+    </div>
+    <table class="info-table mt5">
+        <col width="120"><col width="120"><col><col width="130"><col width="130"><col><col width="140"><col>
+        <tr>
+            <td colspan="8">
+                <span><em>仓号（货位）：</em><em class="cBlue">18</em></span>
+                <span class="fr cBlue">2013年11月12日</span>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">仓型</th>
+            <td>平房仓</td>
+            <th colspan="2" class="tc">仓房规格（长X宽）（m）</th>
+            <td>56X15.8</td>
+            <th class="tc">风机功率（kw）</th>
+            <td>1.1</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">粮食品种</th>
+            <td>稻谷</td>
+            <th colspan="2" class="tc">风机类型</th>
+            <td>轴流风机</td>
+            <th class="tc">风网总阻力（pa）</th>
+            <td>512</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">粮食数量（t）</th>
+            <td>2181.256</td>
+            <th colspan="2" class="tc">总风量（m³/h）</th>
+            <td>12000</td>
+            <th class="tc">送风方式（吸/压）</th>
+            <td>吸</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">通风目的（降温/降水/调质）</th>
+            <td>降温</td>
+            <th colspan="2" class="tc">单位通风量（m³/h.t）</th>
+            <td>5.5</td>
+            <th class="tc">气流（上行/下行）</th>
+            <td>上行</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">装粮高度（m）</th>
+            <td>4.5</td>
+            <th colspan="2" class="tc">开始通风时间</th>
+            <td colspan="3">2014年11月22日17时30分</td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">风网布置</th>
+            <th class="tc">地槽或地上笼</th>
+            <td>地槽</td>
+            <th colspan="2" class="tc">结束通风时间</th>
+            <td colspan="3">2014年11月22日17时30分</td>
+        </tr>
+        <tr>
+            <th class="tc">空气途径比</th>
+            <td>1.46</td>
+            <th colspan="2" class="tc">累计通风时间（h）</th>
+            <td colspan="3">108h</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">通风期间大气参数</th>
+            <th class="tc">最低值</th>
+            <th colspan="2" class="tc">最高值</th>
+            <th colspan="3" rowspan="4" class="tc">粮食温度和水分最大梯度（℃/m粮层厚度和%/m粮层厚度）</th>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">温度（℃）</th>
+            <td>4.2</td>
+            <td colspan="2">19.6</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">湿度（RH%）</th>
+            <td>50</td>
+            <td colspan="2">95</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">通风期间粮食参数</th>
+            <th class="tc">最低值</th>
+            <th class="tc">最高值</th>
+            <th class="tc">平均值</th>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">粮食温度（℃）</th>
+            <th class="tc">通风前</th>
+            <td>4.2</td>
+            <td>19.6</td>
+            <td>19.6</td>
+            <td colspan="3">2.1</td>
+        </tr>
+        <tr>
+            <th class="tc">通风后</th>
+            <td>50</td>
+            <td>95</td>
+            <td>95</td>
+            <td colspan="3">2.9</td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">粮食水分（%）</th>
+            <th class="tc">通风前</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <th class="tc">通风后</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">总耗电（kw。h）</th>
+            <td colspan="3">235.6</td>
+            <th colspan="2" class="tc">单位能耗（kw.h/℃.t）或（kw.h/1%水分.t）</th>
+            <td>0.006</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">总电费（元）</th>
+            <td colspan="3">235.6</td>
+            <th colspan="2" class="tc">本次通风吨粮成本（元/吨）</th>
+            <td>0.006</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">备注</th>
+            <td colspan="6"></td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                <span><em class="c8">负责人：</em>XXX</span>
+                <span class="ml30"><em class="c8">操作人：</em>XXX</span>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-库存监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 图表js -->
+    <script type="text/javascript" src="js/stockManage.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            $(".tab-zdy a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+            $(".tab2 li").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab2-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("li").removeClass("active");
+            });
+            laydate.render({
+                elem: '#date'
+            });
+            initChart();
+            $("#tab22").hide();
+    	});
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">库存监管<a href="stockSupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    
+    <div class="mt15">
+        <div class="tab-zdy">
+            <a class="active" data-tab="#tab1">库区1</a>
+            <a data-tab="#tab2">库区2</a>
+            <a data-tab="#tab3">库区3</a>
+        </div>
+        <div class="table_outer bgFFF" style="border-top: 0;">
+            <div class="tab-content" id="tab1">
+                <div class="table_search"><input type="text" class="input01 layui-input w200" id="date" placeholder="2018-05-25"></div>
+                <div class="pd20">
+                    <div>
+                        <ul class="tab2">
+                            <li class="active" data-tab="#tab21">粮食等级</li>
+                            <li data-tab="#tab22">品种</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="tab2-content" id="tab21">
+                            <div class="col-xs-3">
+                                <div id="chart01" style="height: 260px;"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <ul class="stock-chart-info clearfix">
+                                    <li>
+                                        <span class="circle green"></span>
+                                        <p>一等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">36%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle purple"></span>
+                                        <p>二等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">30%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle yellow"></span>
+                                        <p>三等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">10%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle red"></span>
+                                        <p>四等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">26%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle blue"></span>
+                                        <p>五等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">8%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle pink"></span>
+                                        <p>六等<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">9%</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab2-content" id="tab22">
+                            <div class="col-xs-3">
+                                <div id="chart02" style="height: 260px;"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <ul class="stock-chart-info clearfix">
+                                    <li>
+                                        <span class="circle green"></span>
+                                        <p>农业产品<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">36%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle purple"></span>
+                                        <p>优质小麦<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">30%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle yellow"></span>
+                                        <p>谷物<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">10%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle red"></span>
+                                        <p>混合小麦<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">26%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle blue"></span>
+                                        <p>小麦及混合小麦<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">8%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle pink"></span>
+                                        <p>冬小麦<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">9%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle green"></span>
+                                        <p>春小麦<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">36%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle purple"></span>
+                                        <p>粟（谷子）<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">30%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle yellow"></span>
+                                        <p>稻谷<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">10%</p>
+                                    </li>
+                                    <li>
+                                        <span class="circle red"></span>
+                                        <p>玉米<span class="fr">4,544公斤</span></p>
+                                        <p class="c8">26%</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="padding: 0 5%;max-height: 240px;overflow-y: auto;margin-top: 0;" class="grain-list">
+                                <div class="table_outer">
+                                    <a href="goodDetail.html"><img src="../../resource/images/list04.png" alt="">货位明细表</a>
+                                </div>
+                                <div class="table_outer">
+                                    <a href="oilDetail.html"><img src="../../resource/images/list05.png" alt="">粮油保管总账</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt10" style="width: 100%;">
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label fr">满仓</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state1 fr">空仓</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state2 fr">占用</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state1 fr">入库中</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state1 fr">出库中</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state1 fr">维修</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">仓库1 <label class="stock-label state3 fr">满仓</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓库1 <label class="stock-label state1 fr">其他</label></div>
+                                <ul>
+                                    <li><span class="c8">属性：</span>订单粮</li>
+                                    <li><span class="c8">品种：</span>稻谷</li>
+                                    <li><span class="c8">等级：</span>三级</li>
+                                    <li><span class="c8">封仓时间：</span>XXXX年X月X日</li>
+                                </ul>
+                                <a href="stockRoomDetail.html" class="see-detail">查看详情</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="tc pd20">
+                        <button type="button" class="border-btn gray">加载更多...</button>
+                    </div>
+                </div>
+            </div>
+            <div id="tab2" style="display: none;"></div>
+            <div id="tab3" style="display: none;"></div>
+        </div>
+    </div>
+</body>
+</html>

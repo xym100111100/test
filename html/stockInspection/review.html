@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>追溯图</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <script src="../../resource/common_js/tabscroll-1.1.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.4.0.zdy.min.js"></script>
+
+    <script type="text/javascript">
+        var myChart = {};
+        var orient = 'LR';
+        $(function(){
+            var options = {
+                ul : $("#reviewSlide>ul"),
+                leftArrow : $(".left-arrow"),
+                rightArrow : $(".right-arrow"),
+            };
+            var tabScroll = $("#reviewSlide").tabScroll(options);
+            tabScroll.ifScroll();
+            $(window).resize(function(){
+                tabScroll.ifScroll();
+            });
+            loadChart();
+            $("#toggleOrient").click(function(){
+                orient = orient == 'LR' ? 'TB' : 'LR';
+                myChart.setOption({
+                    series: [{
+                        orient: orient
+                    }]
+                });
+                $(this).toggleClass("lr");
+            });
+        })
+        function loadChart(){
+            myChart = echarts.init(document.getElementById('chart'));
+            var data = [{
+                name: "治安管理工作",
+                level: 0,
+                children: [{
+                    name: "娱乐场所治",
+                    level: 1,
+                    children: [{
+                        name: "娱乐场所治安",
+                        level: 2,
+                    }]
+                }, {
+                    name: "安保工作",
+                    level: 1,
+                    children: [{
+                        name: "输油气管道",
+                        level: 2,
+                    }, {
+                        name: "校园安保工作",
+                        level: 2,
+                    }, {
+                        name: "节假日、重大活动",
+                        level: 2,
+                        children: [{
+                            name: "输油气管道作",
+                            level: 3,
+                        }, {
+                            name: "校园安保工作",
+                            level: 3,
+                        }, {
+                            name: "节假日、重大活动",
+                            level: 3,
+                        }]
+                    }]
+                }, {
+                    name: "精神病人管控工作",
+                    level: 1,
+                    children: [{
+                        name: "精神病人肇事件",
+                        level: 2,
+                    }]
+                }, {
+                    name: "物流寄递业",
+                    level: 1,
+                    children: [{
+                        name: "物流寄递业",
+                        level: 2,
+                    }],
+                }, {
+                    name: "推进基层基础",
+                    level: 1,
+                    children: [{
+                        name: "加强派出所建设",
+                        level: 2,
+                    }]
+                }, {
+                    name: "地网建设工作",
+                    level: 1,
+                    children: [{
+                        name: "二轮电动车",
+                        level: 2,
+                    }]
+                }, {
+                    name: "无人机管理",
+                    level: 1,
+                    children: [{
+                        name: "无人机管理",
+                        level: 2,
+                    }]
+                }, {
+                    name: "社会面巡逻防控",
+                    level: 1,
+                    children: [{
+                        name: "武装联勤巡逻",
+                        level: 2,
+                    }]
+                }]
+            }];
+            var colors = ['#F8970C',
+                            {type: 'linear',x: 0,y: 0,x2: 1,y2: 0,colorStops: [{offset: 0, color: '#34DBF3' }, {offset: 1, color: '#5FEEF9' }]},
+                            {type: 'linear',x: 0,y: 0,x2: 1,y2: 0,colorStops: [{offset: 0, color: '#50A2FF' }, {offset: 1, color: '#5FEEF9' }]}
+                        ];
+            var root = data[0];
+            findChild(root);
+            function findChild(item) {
+                var children = item.children;
+                var level = item.level;
+                item.itemStyle = {};
+                var idx = level%colors.length;
+                item.itemStyle.color = colors[idx];
+                item.itemStyle.borderColor = colors[idx];
+                if (children != null && children.length > 0) {
+                    for(var i = 0; i < children.length; i++){
+                        findChild(children[i]);
+                    }
+                }
+            }
+            var myTooltip = {
+                trigger: 'item',
+                formatter: '{b}',
+                enterable:true,
+                //alwaysShowContent:true,
+                hideDelay:100,
+                // backgroundColor: 'rgba(255,255,255,1)',//背景颜色（此时为默认色）
+                borderRadius: 2,//边框圆角
+                borderWidth: '0',
+                padding: 0,    // [5, 10, 15, 20] 内边距
+                textStyle:{
+                    color:'#000'
+                },
+                position: function (point, params, dom, rect, size) {
+                    var html = '<div class="review-tip">'
+                            +'      <p style="font-size:16px;">'+ params.name +'</p>'
+                            +'      <p><span class="bold">粮油性质：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">粮油等级：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">粮油品种：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">存储时间：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">产地：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">库存数量：</span>XXXXXXX</p>'
+                            +'      <p><span class="bold">文号：</span>XXXXXXX</p>'
+                            +'  </div>';
+                    $(dom).html(html)
+                }
+            };
+            myChart.setOption(option = {
+                backgroundColor: '#fff',
+                tooltip: myTooltip,
+                series: [{
+                    type: 'tree',
+                    data: data,
+                    left: '100px',
+                    top: '20px',
+                    bottom: '20px',
+                    right: '100px',
+                    label: {
+                        normal: {
+                            color: '#fff',
+                        }
+                    },
+                    lineStyle: {
+                      normal: {
+                          color: '#9CFEFD',
+                          length: 240
+                      }  
+                    },
+                    symbolSize:(rawValue, params) => {
+                        var child = params.data.children;
+                        // if(params.data.name !== undefined && params.data.name != null){
+                        //     var size = params.data.name.length * 14;
+                        //     size = size < 60 ? 60 : size;
+                        //     return child == null ? [size,28] : [size,32]
+
+                        // }
+                        return child == null ? [140,28] : [140,32]
+                    },
+                    symbol: "rect",
+                    expandAndCollapse: false,
+                }]
+            });
+            myChart.on('click',function(params){
+                alert(params.name);
+            })
+        }
+                
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title01.png">追溯图</p>
+    <div class="location-info green part mt20" id="locationInfo">
+        <span>定位信息：</span> <a>南宁市</a> -- <a>青秀区</a>  -- <a>XX企业</a>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="tab-zdy green mt20">
+        <a class="active" data-tab="#tab1">库区一</a>
+        <a data-tab="#tab2" class="">库区二</a>
+        <a data-tab="#tab3" class="">库区三</a>
+    </div>
+    <div>
+        <div class="review-outer">
+            <div style="position: relative;padding-right: 200px;">
+                <div class="house-list list-fixed">
+                    <a href="" class="active">XX货位卡</a><a href="">XX货位卡</a><a href="">XX货位卡</a>
+                </div>
+                <div class="house-list review clearfix part" id="houseList">
+                    <a href="" class="active">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a><a href="">南宁三塘仓房</a>
+                    <div class="toggle-arrow" onclick="toggle('#houseList');"></div>
+                </div>
+            </div>
+        </div>
+        <div class="review-nav mt20" id="reviewSlide">
+            <div class="left-arrow"></div>
+            <div class="right-arrow"></div>
+            <ul class="review-slider">
+                <li>
+                    <div>
+                        <div class="review-icon icon1"></div>
+                        <span>出入库通知单</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="review-icon icon2"></div>
+                        <span>库存凭证</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="active">
+                        <div class="review-icon icon3"></div>
+                        <span>移库信息</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="review-icon icon4"></div>
+                        <span>粮情信息</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="review-icon icon5"></div>
+                        <span>关联文号</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="review-icon icon6"></div>
+                        <span>质量追溯</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div style="position: relative;">
+            <div style="overflow: auto;padding-bottom: 10px;margin-top: 10px;">
+                <div style="width: 2000px;height: 600px;" id="chart"></div>
+            </div>
+            <a id="toggleOrient" class="tree-toggle lr"></a>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

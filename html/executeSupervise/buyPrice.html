@@ -1,0 +1,222 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>新粮收购监管-收购价格</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            initChart();
+        });
+        /**
+         * 渲染图表
+         * @return {[type]} [description]
+         */
+        function initChart(){
+            var legendNames = ['玉米','稻谷', '小麦' , '大米', '食用油'];
+            var datas = [
+                [500, 800, 700, 900, 1000, 1200, 1000],
+                [1300, 1400,1200, 1300, 1500, 1400, 1100],
+                [1500, 1600, 1500, 1650, 1800, 1750, 1500],
+                [300, 1200, 1800, 1400, 900, 2000, 2400],
+                [1800, 1100, 1300, 1500, 1600, 1750, 1800]
+            ];
+            var xDatas = ['7月11日','7月12日','7月1','7月14日','7月15日','7月16日','7月17日'];
+            var itemColors = ['#55b813','#69a5e1','#ff9933','#660099','#13b884'];
+            var option01 = {
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        lineStyle:{
+                            width:0
+                        }
+                    },
+                    // showContent:false
+                },
+                grid: {
+                    top: '40px',
+                    left: '20%',
+                    right: '20%',
+                    bottom: '0',
+                    containLabel: true
+                },
+                legend: {
+                    data: legendNames,
+                    right: '20%',
+                    itemGap: 15
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        axisLabel : {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+                            },
+                            interval:0//横轴信息全部显示 
+                        },
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color:'#ddd'
+                            }
+                            
+                        },
+                        splitLine:{
+                            // show: false
+                            lineStyle: {
+                                color: '#e9e9e9'
+                            }
+                        },
+                        data : xDatas
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name : '价格',
+                        nameTextStyle: {
+                            color:'#444'
+                        },
+                        nameGap:10,
+                        axisLabel : {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+                            }
+                        },
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color:'#ccc'
+                            }
+                            
+                        },
+                        axisTick: {
+                            show:false
+                        },
+                        splitLine:{
+                            // show: false
+                            lineStyle: {
+                                color: '#e9e9e9'
+                            }
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name: legendNames[0],
+                        type:'line',
+                        itemStyle:{
+                            normal:{
+                                color: itemColors[0]
+                            }
+                        },
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top',
+                                backgroundColor:'#69A5E1',
+                                color:'#fff',
+                                padding:[6,9],
+                                borderRadius:100
+                            }
+                        },
+                        data: datas[0]
+                    },
+                    {
+                        name: legendNames[1],
+                        type:'line',
+                        itemStyle:{
+                            normal:{
+                                color: itemColors[1]
+                            }
+                        },
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        data: datas[1]
+                    },
+                    {
+                        name: legendNames[2],
+                        type:'line',
+                        itemStyle:{
+                            normal:{
+                                color: itemColors[2]
+                            }
+                        },
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        data: datas[2]
+                    },
+                    {
+                        name: legendNames[3],
+                        type:'line',
+                        itemStyle:{
+                            normal:{
+                                color: itemColors[3]
+                            }
+                        },
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        data: datas[3]
+                    },
+                    {
+                        name: legendNames[4],
+                        type:'line',
+                        itemStyle:{
+                            normal:{
+                                color: itemColors[4]
+                            }
+                        },
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        data: datas[4]
+                    }
+                ]
+            };
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            chart01.setOption(option01); 
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">新粮收购监管-收购价格<a href="buySupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">新粮收购价格</span></div>
+        <div class="pd20">
+            <div id="chart01" style="height: 500px;"></div>
+        </div>
+    </div>
+</body>
+</html>

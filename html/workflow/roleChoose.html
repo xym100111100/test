@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>待办任务-选择角色</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script>
+        $(function(){
+            $("input[type=radio][name=radio1]").change(function(){
+                var name = $(this).closest("td").data("name");
+                sessionStorage.setItem('handlerName', name);
+            });
+            var name = sessionStorage.getItem('handlerName');
+            $("table input[type=radio][name=radio1]").each(function(){
+                if($(this).closest("td").data("name") == name){
+                    $(this).click();
+                }
+            });
+        });
+    </script>
+</head>
+<body class="bgFFF" style="padding: 0 20px;">
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="60">编号：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="70">用户名：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="60">角色：</th>
+                <td><input type="text" class="input01"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">用户列表</span>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>序号</th>
+                        <th>角色</th>
+                        <th>编号</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-name="王五"><input type="radio" name="radio1" class="radio01"></td>
+                        <td>1</td>
+                        <td>办公室</td>
+                        <td>b001</td>
+                    </tr>
+                    <tr>
+                        <td data-name="赵六"><input type="radio" name="radio1" class="radio01"></td>
+                        <td>2</td>
+                        <td>财务处</td>
+                        <td>c001</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

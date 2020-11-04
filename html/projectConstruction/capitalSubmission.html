@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目建设项目资金报送</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+    <style>
+        input.unit{
+            padding-right: 40px;
+        }
+        span.unit{
+            position:absolute;
+            top:8px;
+            right: 18px;
+            color: #8c8c8c;
+        }
+        .label-auto-width01 .layui-form-item{margin-bottom: 15px}
+        .layui-input-block{margin-left: 130px;line-height: 32px;}
+    </style>
+
+</head>
+<body>
+<div class="table_outer bgFFF">
+    <div class="clearfix top-box-inner01">
+        <form class="layui-form label-auto-width" action="" lay-filter="example" style="margin: 0 10px;">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">任务名称：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">广西军粮供应项目建设</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline ml15">
+                <label class="layui-form-label">任务编码：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">2019-1554-155</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline ml15">
+                <label class="layui-form-label">业务名称：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">广西军粮供应项目建设</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline ml15">
+                <label class="layui-form-label">业务编码：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">2019-1554-155</span>
+                </div>
+            </div>
+
+        </form>
+        <form  class="layui-form label-auto-width" action="" lay-filter="example" style="margin: 0 10px;">
+            <div class="layui-form-item layui-inline ">
+                <label class="layui-form-label">填报单位：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">广西军粮供应项目建设</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline ml15">
+                <label class="layui-form-label">填报时间：</label>
+                <div class="layui-input-block">
+                    <span class="cBlue">2019年11月20日</span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="bgF7" style="background: ">
+        <div class="pd20">
+            <form class="layui-form label-auto-width01 ml10" action="" >
+                <div class="layui-form-item  ">
+                    <label class="layui-form-label"><em class="cR">*</em>项目名称：</label>
+                    <div class="layui-input-inline ">
+                        <input type="text" name="title"  placeholder="" class="layui-input w310">
+                    </div>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn layui-btn-normal ">选择</button>
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>项目编码：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title"  placeholder="" class="layui-input w392">
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>项目资金来源：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title"  placeholder="" class="layui-input w392">
+                    </div>
+
+                </div>
+
+                <div class="layui-form-item  ">
+                    <label class="layui-form-label"><em class="cR">*</em>财政拨款：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>银行贷款：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>自有资金：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item  ">
+                    <label class="layui-form-label">完成总投资额：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+                    <label class="layui-form-label"><em class="cR">*</em>固定资产投资：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title"  placeholder="" class="layui-input w392">
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>累计使用资金：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title"  placeholder="" class="layui-input w392">
+                    </div>
+                </div>
+
+                <div class="layui-form-item  ">
+                    <label class="layui-form-label"><em class="cR">*</em>已用财政拨款：</label>
+                    <div class="layui-input-inline ">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>已用银行贷款：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                    </div>
+                    <label class="layui-form-label"><em class="cR">*</em>已用自有资金：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+                </div>
+
+                <div class="layui-form-item  ">
+                    <label class="layui-form-label"><em class="cR">*</em>当年使用资金：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                        <span class="unit">万元</span>
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>财政批复文号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit w392">
+                    </div>
+
+                    <label class="layui-form-label"><em class="cR">*</em>批复金额：</label>
+                    <div class="layui-input-inline ">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input unit " style="width: 225px">
+                        <span class="unit">万元</span>
+                    </div>
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+                            <i class="layui-icon">&#xe654;</i>
+                        </button>
+                        <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">
+                            <i class="layui-icon">—</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label w240 mt5">项目是否经过财政投资评审：</label>
+                    <div class="layui-input-inline w240" >
+                        <input type="radio" name="radio01" value="是" title="是">
+                        <input type="radio" name="radio01" value="否" title="否" checked>
+                    </div>
+
+                    <label class="layui-form-label w240 mt5">项目是否经过公开招标：</label>
+                    <div class="layui-input-inline w300" >
+                        <input type="radio" name="radio02" value="是" title="是">
+                        <input type="radio" name="radio02" value="否" title="否" checked>
+                    </div>
+
+                    <label class="layui-form-label w240 mt5">项目是否已达到预定可使用状态：</label>
+                    <div class="layui-input-inline " >
+                        <input type="radio" name="radio03" value="是" title="是">
+                        <input type="radio" name="radio03" value="否" title="否" checked>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label w240 mt5">项目是否已转入固定资产管理：</label>
+                    <div class="layui-input-inline w240" >
+                        <input type="radio" name="radio04" value="是" title="是">
+                        <input type="radio" name="radio04" value="否" title="否" checked>
+                    </div>
+
+                    <label class="layui-form-label w240 mt5">项目是否通过验收：</label>
+                    <div class="layui-input-inline w300" >
+                        <input type="radio" name="radio05" value="是" title="是">
+                        <input type="radio" name="radio05" value="否" title="否" checked>
+                    </div>
+
+                    <label class="layui-form-label w240 mt5">项目是否完成竣工财务决算评审：</label>
+                    <div class="layui-input-inline " >
+                        <input type="radio" name="radio06" value="是" title="是">
+                        <input type="radio" name="radio06" value="否" title="否" checked>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label w240 mt5">项目是否完成竣工财务结算评审：</label>
+                    <div class="layui-input-inline " >
+                        <input type="radio" name="radio07" value="是" title="是">
+                        <input type="radio" name="radio07" value="否" title="否" checked>
+                    </div>
+                </div>
+            </form>
+
+            <div class="tc mt10">
+                <button type="button" class="layui-btn layui-btn-normal ">提交</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="../../plug-in/layui/layui.all.js"/>
+<script>
+    layui.use(['form'], function() {
+        var form = layui.form;
+    })
+</script>
+</body>
+</html>

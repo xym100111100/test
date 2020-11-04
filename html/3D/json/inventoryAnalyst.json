@@ -1,0 +1,333 @@
+{
+        "code": 200,
+        "data": {
+                "totalData": {
+                        "zkcs": "119,884.04",
+                        "dtrks": "1471.00",
+                        "dtcks": "1000.00",
+                        "dtshs": "200.50",
+                        "dtyys": "560.00"
+                },
+                "lineData": [
+                        {
+                                "xzqhmc": "14日",
+                                "typeName": "入库数量",
+                                "value": "231.53"
+                        },
+                        {
+                                "xzqhmc": "14日",
+                                "typeName": "出库数量",
+                                "value": "722.34"
+                        },
+                        {
+                                "xzqhmc": "15日",
+                                "typeName": "入库数量",
+                                "value": "184.37"
+                        },
+                        {
+                                "xzqhmc": "15日",
+                                "typeName": "出库数量",
+                                "value": "117.93"
+                        },
+                        {
+                                "xzqhmc": "16日",
+                                "typeName": "入库数量",
+                                "value": "696.09"
+                        },
+                        {
+                                "xzqhmc": "16日",
+                                "typeName": "出库数量",
+                                "value": "649.86"
+                        },
+                        {
+                                "xzqhmc": "17日",
+                                "typeName": "入库数量",
+                                "value": "273.86"
+                        },
+                        {
+                                "xzqhmc": "17日",
+                                "typeName": "出库数量",
+                                "value": "259.92"
+                        },
+                        {
+                                "xzqhmc": "18日",
+                                "typeName": "入库数量",
+                                "value": "751.36"
+                        },
+                        {
+                                "xzqhmc": "18日",
+                                "typeName": "出库数量",
+                                "value": "641.59"
+                        },
+                        {
+                                "xzqhmc": "19日",
+                                "typeName": "入库数量",
+                                "value": "374.56"
+                        },
+                        {
+                                "xzqhmc": "19日",
+                                "typeName": "出库数量",
+                                "value": "75.89"
+                        },
+                        {
+                                "xzqhmc": "20日",
+                                "typeName": "入库数量",
+                                "value": "698.31"
+                        },
+                        {
+                                "xzqhmc": "20日",
+                                "typeName": "出库数量",
+                                "value": "276.54"
+                        }
+                ],
+                "barData": [
+                        {
+                                "xzqhmc": "南宁市",
+                                "typeName": "总库存数量",
+                                "value": "21"
+                        },
+                        {
+                                "xzqhmc": "南宁市",
+                                "typeName": "当天入库数量",
+                                "value": "31"
+                        },
+                        {
+                                "xzqhmc": "南宁市",
+                                "typeName": "当天出库数量",
+                                "value": "21"
+                        },
+                        {
+                                "xzqhmc": "柳州市",
+                                "typeName": "总库存数量",
+                                "value": "37"
+                        },
+                        {
+                                "xzqhmc": "柳州市",
+                                "typeName": "当天入库数量",
+                                "value": "57"
+                        },
+                        {
+                                "xzqhmc": "柳州市",
+                                "typeName": "当天出库数量",
+                                "value": "37"
+                        },
+                        {
+                                "xzqhmc": "桂林市",
+                                "typeName": "总库存数量",
+                                "value": "69.09"
+                        },
+                        {
+                                "xzqhmc": "桂林市",
+                                "typeName": "当天入库数量",
+                                "value": "99.09"
+                        },
+                        {
+                                "xzqhmc": "桂林市",
+                                "typeName": "当天出库数量",
+                                "value": "69.09"
+                        },
+                        {
+                                "xzqhmc": "梧州市",
+                                "typeName": "总库存数量",
+                                "value": "27.86"
+                        },
+                        {
+                                "xzqhmc": "梧州市",
+                                "typeName": "当天入库数量",
+                                "value": "47.86"
+                        },
+                        {
+                                "xzqhmc": "梧州市",
+                                "typeName": "当天出库数量",
+                                "value": "27.86"
+                        },
+                        {
+                                "xzqhmc": "北海市",
+                                "typeName": "总库存数量",
+                                "value": "71.36"
+                        },
+                        {
+                                "xzqhmc": "北海市",
+                                "typeName": "当天入库数量",
+                                "value": "61.36"
+                        },
+                        {
+                                "xzqhmc": "北海市",
+                                "typeName": "当天出库数量",
+                                "value": "71.36"
+                        },
+                        {
+                                "xzqhmc": "防城港市",
+                                "typeName": "总库存数量",
+                                "value": "74.56"
+                        },
+                        {
+                                "xzqhmc": "防城港市",
+                                "typeName": "当天入库数量",
+                                "value": "94.56"
+                        },
+                        {
+                                "xzqhmc": "防城港市",
+                                "typeName": "当天出库数量",
+                                "value": "74.56"
+                        },
+                        {
+                                "xzqhmc": "钦州市",
+                                "typeName": "总库存数量",
+                                "value": "69.31"
+                        },
+                        {
+                                "xzqhmc": "钦州市",
+                                "typeName": "当天入库数量",
+                                "value": "89.31"
+                        },
+                        {
+                                "xzqhmc": "钦州市",
+                                "typeName": "当天出库数量",
+                                "value": "69.31"
+                        },
+                        {
+                                "xzqhmc": "贵港市",
+                                "typeName": "总库存数量",
+                                "value": "22.24"
+                        },
+                        {
+                                "xzqhmc": "贵港市",
+                                "typeName": "当天入库数量",
+                                "value": "42.24"
+                        },
+                        {
+                                "xzqhmc": "贵港市",
+                                "typeName": "当天出库数量",
+                                "value": "22.24"
+                        },
+                        {
+                                "xzqhmc": "玉林市",
+                                "typeName": "总库存数量",
+                                "value": "72.78"
+                        },
+                        {
+                                "xzqhmc": "玉林市",
+                                "typeName": "当天入库数量",
+                                "value": "92.78"
+                        },
+                        {
+                                "xzqhmc": "玉林市",
+                                "typeName": "当天出库数量",
+                                "value": "72.78"
+                        },
+                        {
+                                "xzqhmc": "百色市",
+                                "typeName": "总库存数量",
+                                "value": "16.73"
+                        },
+                        {
+                                "xzqhmc": "百色市",
+                                "typeName": "当天入库数量",
+                                "value": "46.73"
+                        },
+                        {
+                                "xzqhmc": "百色市",
+                                "typeName": "当天出库数量",
+                                "value": "16.73"
+                        },
+                        {
+                                "xzqhmc": "贺州市",
+                                "typeName": "总库存数量",
+                                "value": "57.73"
+                        },
+                        {
+                                "xzqhmc": "贺州市",
+                                "typeName": "当天入库数量",
+                                "value": "67.73"
+                        },
+                        {
+                                "xzqhmc": "贺州市",
+                                "typeName": "当天出库数量",
+                                "value": "57.73"
+                        },
+                        {
+                                "xzqhmc": "河池市",
+                                "typeName": "总库存数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "河池市",
+                                "typeName": "当天入库数量",
+                                "value": "82.25"
+                        },
+                        {
+                                "xzqhmc": "河池市",
+                                "typeName": "当天出库数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "来宾市",
+                                "typeName": "总库存数量",
+                                "value": "58.38"
+                        },
+                        {
+                                "xzqhmc": "来宾市",
+                                "typeName": "当天入库数量",
+                                "value": "88.38"
+                        },
+                        {
+                                "xzqhmc": "来宾市",
+                                "typeName": "当天出库数量",
+                                "value": "58.38"
+                        },
+                        {
+                                "xzqhmc": "崇左市",
+                                "typeName": "总库存数量",
+                                "value": "93.92"
+                        },
+                        {
+                                "xzqhmc": "崇左市",
+                                "typeName": "当天入库数量",
+                                "value": "123.92"
+                        },
+                        {
+                                "xzqhmc": "崇左市",
+                                "typeName": "当天出库数量",
+                                "value": "93.92"
+                        }
+                ],
+                "pieData1": [
+                        {
+                                "name": "中储粮系统商品粮",
+                                "value": 350
+                        },
+                        {
+                                "name": "其他商品粮",
+                                "value": 150
+                        },
+                        {
+                                "name": "国家临时存储粮",
+                                "value": 280
+                        },
+                        {
+                                "name": "广西待核定存储粮",
+                                "value": 120
+                        },
+                        {
+                                "name": "订单粮",
+                                "value": 100
+                        }
+                ],
+                "pieData2": [
+                        {
+                                "name": "玉米",
+                                "value": 150
+                        },
+                        {
+                                "name": "高粱",
+                                "value": 350
+                        },
+                        {
+                                "name": "不再细分的谷物和杂豆类",
+                                "value": 500
+                        }
+                ]
+        },
+        "message": "success"
+}

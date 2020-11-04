@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>党组织管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            initTree();
+            initChart();
+        });
+        /**初始化树*/
+        function initTree(){
+            // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+            var setting = {
+                data: {            //这里不动
+                    simpleData: {
+                        enable: true,
+                        idKey: "id",
+                        pidKey: "pId",
+                        rootPid: '-1'
+                    }
+                },
+                // check: {
+                //     enable: true,     //这里设置是否显示复选框
+                //     chkboxType: { "Y": "ps", "N": "ps" }      //设置复选框是否与 父/子 级相关联
+                // },
+                callback: {
+                    // onCheck: zTreeOnCheck         //点击复选框相关回调（回调名称固定）
+                    // beforeCheck : function(treeId, treeNode) {      //选择复选框前相关回调
+                    //     if (treeNode.isParent) {
+                    //         if(treeNode.myAttr !== "1"){ //判断是否是需要显示复选框的节点
+                    //             treeNode.nocheck = true;   //设置复选框不显示
+                    //         }
+                    //         return false;
+                    //     }
+                    //  }
+                }  
+            };
+            // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+            var zNodes = [
+                // {name:"广西省", open:true,children:[
+                    {name:"XXX党委", open:true,children:[
+                        {
+                            name:"XXX党委",
+                            open:true,
+                            children:[
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'}
+                            ]
+                        },
+                        {
+                            name:"XXX党委2",
+                            open:true,
+                            children:[
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'}
+                            ]
+                        },
+                        {
+                            name:"XXX党委3",
+                            open:true,
+                            children:[
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'},
+                                {name: 'XXX支部'}
+                            ]
+                        },
+                        {name:"XXX支部"},
+                        {name:"XXX支部"},
+                        {name:"XXX支部"},
+                        {name:"XXX支部"}
+                    ]}
+                // ]}
+            ];
+            var $dom = $("#areaTree");
+            var zTreeObj = $.fn.zTree.init($dom, setting, zNodes);
+        }
+        //用于存储被隐藏的结点
+        var hiddenNodes = [];
+        //过滤ztree显示数据
+        function zTreeKeyfilter() {
+            var zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+            //显示上次搜索后背隐藏的结点
+            zTreeObj.showNodes(hiddenNodes);
+
+            //查找不符合条件的叶子节点
+            function filterFunc(node) {
+                //需要过滤的关键词
+                var _keywords = $("#nodeKeyword").val();
+                var rootName = zTreeObj.getNodes()[0].name;
+                // if(rootName.indexOf(_keywords) != -1){
+                //  _keywords = '';
+                // }
+
+                if (node.name.indexOf(_keywords) != -1){
+                    return false;
+                }
+
+                if(!CheckParentNodesIsContainKeyword(node)){
+                    return false;
+                }
+                if (node.isParent){
+                    //是父节点时需要判断子节点是否符合条件，是的话则父节点需要保留
+                    var bl = CheckChildNodesIsContainKeyword(node);
+                    //console.log(bl);
+                    return bl;
+                }else {
+                    //是子节点时，需要判断父节点是否符合条件，是的话则子节点需要保留
+                    var bl2 = CheckParentNodesIsContainKeyword(node);
+                    return bl2;
+                }
+
+                return true;
+            };
+
+            //获取不符合条件的叶子结点
+            hiddenNodes = zTreeObj.getNodesByFilter(filterFunc);
+
+            //隐藏不符合条件的叶子结点
+            zTreeObj.hideNodes(hiddenNodes);
+        };
+        //tree搜索时：是父节点时需要判断子节点是否符合条件，是的话则父节点需要保留
+        function CheckChildNodesIsContainKeyword(pNode)
+        {
+            var childs = pNode.children;
+
+            var isexit = true;
+            var _keywords = $("#nodeKeyword").val();
+
+            for(var i=0;i<childs.length;i++)
+            {
+                if (childs[i].isParent)
+                {
+                    if (childs[i].name.indexOf(_keywords) != -1){
+                        return false;
+                    }
+                    isexit = CheckChildNodesIsContainKeyword(childs[i]);
+                    if (!isexit)
+                        return isexit;
+                }
+                else {
+                    if (childs[i].name.indexOf(_keywords) != -1)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        //tree 搜索时：子节点时，需要判断父节点是否符合条件，是的话则子节点需要保留
+        function CheckParentNodesIsContainKeyword(cNode) {
+
+            var pnode = cNode.getParentNode();
+
+            if (pnode != null)
+            {
+                var _keywords = $("#nodeKeyword").val();
+                if (pnode.name.indexOf(_keywords) != -1)
+                    return false;
+                else {
+                    return CheckParentNodesIsContainKeyword(pnode)
+                }
+            }
+            return true;
+        }
+        /*enter搜索*/
+        function inpPress(){
+            var e = window.event || arguments.callee.caller.arguments[0];
+            if(e.keyCode == "13"){  
+                zTreeKeyfilter();
+            }  
+        }
+        /*图标chart*/
+        function initChart(){
+            var chart05 = echarts.init(document.getElementById('chart05'));
+            option05 = {
+                backgroundColor:'#fff',
+                legend: {
+                    data:[
+                        {
+                            name:'年初金额',
+                            icon:'rect'
+                        },
+                        {
+                            name:'年末金额',
+                            icon:'rect'
+                        }
+                    ],
+                    right:'30px',
+                    top:'10px',
+                    itemGap:15
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        lineStyle:{
+                            width:0
+                        }
+                    },
+                    //showContent:false
+                },
+                grid: {
+                    top: '60px',
+                    left: '0',
+                    right: '20px',
+                    left: '30px',
+                    bottom: '0',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color:'#eee'
+                            }
+                            
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+                            }
+                        },
+                       data : ['第一行','第二行','第三行','第四行','第五行','第六行']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        splitNumber:4,
+                        boundaryGap : false,
+                        axisLine: {
+                            lineStyle: {
+                                color:'#fff'
+                            }
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+
+                            }
+                        },
+                        splitLine:{
+                            show: true,
+                            lineStyle:{
+                                color:'#eee'            //网格分割线
+                            }
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'年末金额',
+                        type:'line',
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top',
+                                backgroundColor:'#69A5E1',
+                                color:'#fff',
+                                padding:[6,9],
+                                borderRadius:100
+                            }
+                        },
+                        lineStyle:{
+                            normal:{
+                                color:'#69A5E1'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#69A5E1"
+                            }
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: '#d2e4f6',
+                                opacity:1
+                            }
+                        },
+                        data:[45, 30, 28, 40, 65, 50]
+                    },
+
+                    {
+                        name:'年初金额',
+                        type:'line',
+                        symbolSize:10,
+                        hoverAnimation:false,
+                        showSymbol:false,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top',
+                                backgroundColor:'#5DD054',
+                                color:'#fff',
+                                padding:[6,9],
+                                borderRadius:100
+                            }
+                        },
+                        lineStyle:{
+                            normal:{
+                                color:'#5DD054'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: "#5DD054"
+                            }
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: '#cef1cb',
+                                opacity:1
+                            }
+                        },
+                        data:[32, 20, 25, 40, 45, 36]
+                    }
+                ]
+            };
+            chart05.setOption(option05);   
+        }
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">基础管理-党组织管理</p>
+    <div class="mt10" style="position: relative;width: 100%;">
+        <div class="" style="height: 100%;position: absolute;width: 290px;;">
+            <div class="table_outer bgFFF" style="height: 100%;min-height: 500px;">
+                <div class="table_search" style="padding-right: 15px;">
+                    <input class="input01" type="text" placeholder="请输入关键字搜索" style="width: 160px;" id="nodeKeyword" onkeypress="inpPress();"><span class="search_btn01 ml15" style="width: 80px;padding-left: 35px;background-position: 10px;" onclick="zTreeKeyfilter();">查询</span>
+                </div>
+                <div style="padding: 20px;">
+                    <ul class="ztree" id="areaTree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="" style="margin-left: 307px;margin-right: 20px;">
+          <div class="table_outer bgFFF mt20">
+               <div class="table_search"><span class="title">党组织基本情况信息</span></div>
+                <div class="pd20">
+                        <div class="tab-content" id="tab1">
+                            <table class="company-info">
+                            <tr>
+                                <th width="15%">组织名称：</th>
+                                <td width="35%">XXX</td>
+                                <th width="15%">组织全称：</th>
+                                <td width="35%">XXX</td>
+                            </tr>
+                            <tr>
+                                <th>组织属性：</th>
+                                <td>XXX</td>
+                                <th>单位名称：</th>
+                                <td>XXX</td>
+                            </tr>
+                            <tr>
+                                <th>单位属性：</th>
+                                <td>XXX</td>
+                                <th>所属行业：</th>
+                                <td>XXX</td>
+                            </tr>
+                            <tr>
+                                <th>企业类型：</th>
+                                <td>XXX</td>
+                                <th>企业规模：</th>
+                                <td>XXX</td>
+                            </tr>
+                            <tr>
+                                <th>组织属地关系：</th>
+                                <td>XXX</td>
+                                <th>建立日期：</th>
+                                <td>XXX</td>
+                            </tr>
+                            <tr>
+                                <th>建立文号：</th>
+                                <td colspan="3">XXX</td>
+                              </tr>
+                            <tr>
+                                <th>建立原因：</th>
+                                <td colspan="3">XXX</td>
+                              </tr>
+                          </table>
+                        </div>   
+                        <!-- 按钮 -->
+                        <div class="tc pd10 mt20">
+                        <span class="btn btn-browser w110" onclick="window.location.href='partyorganization02.html'">修改</span><span class="btn btn-browser w110 ml10">保存</span><span class="btn border-btn w110 ml10">删除</span>
+                    </div> 
+                                  
+                </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

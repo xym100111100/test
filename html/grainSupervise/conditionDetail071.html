@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮情监管<a href="conditionDetail07.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc">
+            <span class="f18">储粮机械通风作业记录表</span>
+        </div>
+        <div class="pd20">
+            <table class="multiline-table table_outer">
+                <tr>
+                    <td colspan="8">
+                        <span><em class="bold">仓号（货位）：</em>18</span>
+                        <span class="fr">2013年11月12日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">仓型</th>
+                    <td>平房仓</td>
+                    <th colspan="2">仓房规格（长X宽）（m）</th>
+                    <td>56X15.8</td>
+                    <th>风机功率（kw）</th>
+                    <td>1.1</td>
+                </tr>
+                <tr>
+                    <th colspan="2">粮食品种</th>
+                    <td>稻谷</td>
+                    <th colspan="2">风机类型</th>
+                    <td>轴流风机</td>
+                    <th>风网总阻力（pa）</th>
+                    <td>512</td>
+                </tr>
+                <tr>
+                    <th colspan="2">粮食数量（t）</th>
+                    <td>2181.256</td>
+                    <th colspan="2">总风量（m³/h）</th>
+                    <td>12000</td>
+                    <th>送风方式（吸/压）</th>
+                    <td>吸</td>
+                </tr>
+                <tr>
+                    <th colspan="2">通风目的（降温/降水/调质）</th>
+                    <td>降温</td>
+                    <th colspan="2">单位通风量（m³/h.t）</th>
+                    <td>5.5</td>
+                    <th>气流（上行/下行）</th>
+                    <td>上行</td>
+                </tr>
+                <tr>
+                    <th colspan="2">装粮高度（m）</th>
+                    <td>4.5</td>
+                    <th colspan="2">开始通风时间</th>
+                    <td colspan="3">2014年11月22日17时30分</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">风网布置</th>
+                    <th>地槽或地上笼</th>
+                    <td>地槽</td>
+                    <th colspan="2">结束通风时间</th>
+                    <td colspan="3">2014年11月22日17时30分</td>
+                </tr>
+                <tr>
+                    <th>空气途径比</th>
+                    <td>1.46</td>
+                    <th colspan="2">累计通风时间（h）</th>
+                    <td colspan="3">108h</td>
+                </tr>
+                <tr>
+                    <th class="bgF7" colspan="2">通风期间大气参数</th>
+                    <th class="bgF7">最低值</th>
+                    <th class="bgF7" colspan="2">最高值</th>
+                    <th colspan="3" rowspan="4">粮食温度和水分最大梯度（℃/m粮层厚度和%/m粮层厚度）</th>
+                </tr>
+                <tr>
+                    <th colspan="2">温度（℃）</th>
+                    <td>4.2</td>
+                    <td colspan="2">19.6</td>
+                </tr>
+                <tr>
+                    <th colspan="2">湿度（RH%）</th>
+                    <td>50</td>
+                    <td colspan="2">95</td>
+                </tr>
+                <tr class="bgF7">
+                    <th colspan="2">通风期间粮食参数</th>
+                    <th>最低值</th>
+                    <th>最高值</th>
+                    <th>平均值</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">粮食温度（℃）</th>
+                    <th>通风前</th>
+                    <td>4.2</td>
+                    <td>19.6</td>
+                    <td>19.6</td>
+                    <td colspan="3">2.1</td>
+                </tr>
+                <tr>
+                    <th>通风后</th>
+                    <td>50</td>
+                    <td>95</td>
+                    <td>95</td>
+                    <td colspan="3">2.9</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">粮食水分（%）</th>
+                    <th>通风前</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th>通风后</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">总耗电（kw。h）</th>
+                    <td colspan="3">235.6</td>
+                    <th colspan="2">单位能耗（kw.h/℃.t）或（kw.h/1%水分.t）</th>
+                    <td>0.006</td>
+                </tr>
+                <tr>
+                    <th colspan="2">总电费（元）</th>
+                    <td colspan="3">235.6</td>
+                    <th colspan="2">本次通风吨粮成本（元/吨）</th>
+                    <td>0.006</td>
+                </tr>
+                <tr>
+                    <th colspan="2">备注</th>
+                    <td colspan="6"></td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <span><em class="c8">负责人：</em>XXX</span>
+                        <span class="ml30"><em class="c8">操作人：</em>XXX</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        
+    </div>
+
+</body>
+</html>

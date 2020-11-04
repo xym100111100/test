@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-库存数量监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            laydate.render({
+                elem: '#date'
+            });
+            var data1 = [];  
+            var itemStyle1 = ['#02b1ee','#01cd5f','#a486f9','#ef8871','#f9d959','#11d0b6'];
+            for(var i = 0; i < 14;i++){
+                var colorIdx = i%itemStyle1.length;
+                var num = 4000 * Math.random();
+                var obj = {
+                            value: num, 
+                            name:'XX市',
+                            itemStyle:{
+                                normal: {
+                                    color: itemStyle1[colorIdx]
+                                }
+                            }
+                        };
+                data1.push(obj);
+            }
+            renderCity(data1);
+            var xData = [];
+            var yData = [];
+            for(j = 0;j < 10; j++){
+                xData.push("XXX县");
+                yData.push(1000 * Math.random());
+            }
+            var data2 = {
+                xData: xData,
+                yData: yData
+            };
+            renderArea(data2);
+                 
+    	});
+        function renderCity(data){
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            var option01 = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{b}: {c}"
+                },
+                title : {
+                    text: '各市库存数量',
+                    left: '20px',
+                    top: '10px',
+                    textStyle:{
+                        color: '#333',
+                        fontSize:20,
+                        fontWeight:'normal',
+                        fontFamily:"Microsoft YaHei"
+                    }
+                },
+                series: [
+                    {
+                        name:'',
+                        type:'pie',
+                        hoverAnimation: false,                  //悬浮放大效果
+                        radius : ['45%','60%'],
+                        // center: ['50%', '50%'],
+                        avoidLabelOverlap: false,
+                        data:data
+                    }
+                ]
+            }
+            chart01.setOption(option01);   
+        }
+        function renderArea(data){
+            var chart02 = echarts.init(document.getElementById('chart02'));
+            var option02 = {
+                backgroundColor:'#fff',
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        lineStyle:{
+                            width:0
+                        }
+                    },
+                    // showContent:false
+                },
+                grid: {
+                    top: '50px',
+                    left: '50px',
+                    right: '70px',
+                    bottom: '30px',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        axisLine: {
+                            lineStyle: {
+                                color:'#eee'
+                            }
+                            
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+                            }
+                        },
+                       data : data.xData
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        splitNumber: 5,
+                        axisLine: {
+                            lineStyle: {
+                                color:'#fff'
+                            }
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+
+                            }
+                        },
+                        splitLine:{
+                            show: true,
+                            lineStyle:{
+                                color:'#eee'
+                            }
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'',
+                        type:'bar',
+                        barWidth: '30%',
+                        itemStyle:{
+                            normal:{
+                                color:'#55B813'
+                            }
+                        },
+                        data: data.yData
+                    }
+                ]
+            };
+            chart02.setOption(option02); 
+        }
+        
+    </script>
+    <style>
+        .stock-chart-info{width: 600px;}
+        .stock-chart-info li{margin-top: 14px;margin-right: 50px;width: 240px;}
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">储备粮监管-库存数量监管</p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">品种：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>品种1</li>
+                            <li>品种2</li>
+                            <li>品种3</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="100">时间：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
+            <div class="col-xs-6">
+                <div id="chart01" style="height: 380px;"></div>
+            </div>
+            <div class="col-xs-6">
+                <p style="margin-top: 10px;">总计 <span style="font-size: 24px;">123224</span> 吨</p>
+                <ul class="stock-chart-info clearfix">
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #FDBA4F;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #69a5e1;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #13B884;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #51c4f8;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #FDBA4F;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #69a5e1;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #13B884;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #51c4f8;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX市 <span class="c8 ml15">| 10%</span><span class="fr">4,544</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">各县（区）库存数量</span>
+        </div>
+        <div class="row" style="margin-top: 15px;margin-bottom: 15px;">
+            <div class="col-xs-6">
+                <div id="chart02" style="height: 380px;"></div>
+            </div>
+            <div class="col-xs-6">
+                <p style="margin-top: 30px;"><span style="font-size: 24px;">库存数量</span></p>
+                <ul class="stock-chart-info clearfix">
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #FDBA4F;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #69a5e1;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #13B884;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #51c4f8;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #55B813;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #FDBA4F;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #69a5e1;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #13B884;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                    <li>
+                        <span class="circle" style="border-color: #51c4f8;"></span>
+                        <p>XXXX县 <span class="fr">4,544</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

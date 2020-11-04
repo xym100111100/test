@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            $("#houses a").click(function(){
+                $(this).addClass("active").siblings("a").removeClass("active");
+                $("#houseList").html('数据查询操作渲染<div class="toggle-arrow" onclick="toggle(\'#houseList\');">');
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮情监管<a href="conditionSupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="tab-zdy mt15" id="houses">
+        <a class="active">库区1</a>
+        <a>库区2</a>
+        <a>库区3</a>
+    </div>
+    
+    <div class="table_outer bgFFF mt10">
+        <div class="table_search"><span class="title">仓房列表</span></div>
+        <div style="padding: 20px 15px;background: #fff;min-height: 200px;">
+            <div style="position: relative;padding-left: 270px;">
+                <img src="../../resource/images/stock04.jpg" alt="" style="position: absolute;left: 0;">
+                <div class="house-list clearfix part" id="houseList">
+                    <a href="" class="active">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a><a href="">XXX仓房</a>
+                    <div class="toggle-arrow" onclick="toggle('#houseList');"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt15" style="width: 100%;">
+        <div class="col-xs-9">
+            <div class="table_outer bgFFF">
+                <div class="table_search tc">
+                    <span class="f18">仓房基本情况表</span>
+                </div>
+                <table class="multiline-table">
+                    <tr>
+                        <td colspan="10">
+                            <span class="fr"><em class="c8">单位：</em>米、平方米、立方米、吨、个、根</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>仓房类型</th>
+                        <td colspan="2">平仓房</td>
+                        <th>仓房编号</th>
+                        <td colspan="2">19</td>
+                        <th>交付使用期</th>
+                        <td colspan="3">2003年12月</td>
+                    </tr>
+                    <tr class="bgF7">
+                        <th colspan="2">结构</th>
+                        <th colspan="2">仓外</th>
+                        <th colspan="2">仓内</th>
+                        <th colspan="4">附属设施及其它</th>
+                    </tr>
+                    <tr>
+                        <th>墙体</th>
+                        <td>砖墙</td>
+                        <th>长</th>
+                        <td>64.38</td>
+                        <th>长</th>
+                        <td>64.38</td>
+                        <th>仓门数量</th>
+                        <td>4</td>
+                        <th>通风口</th>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th>仓顶</th>
+                        <td>金刚混凝土（木瓦）</td>
+                        <th>宽</th>
+                        <td>24.38</td>
+                        <th>宽</th>
+                        <td>24.38</td>
+                        <th>仓门规格</th>
+                        <td>2.44X2.98</td>
+                        <th>通风道类型</th>
+                        <td>地槽（地上笼）</td>
+                    </tr>
+                    <tr>
+                        <th>仓架</th>
+                        <td>金刚水泥架（木架）</td>
+                        <th>檐高</th>
+                        <td>6.38</td>
+                        <th>檐高</th>
+                        <td>6.38</td>
+                        <th>窗户数量</th>
+                        <td>14</td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>地台</th>
+                        <td>水泥地坪（青砖地坪）</td>
+                        <th>顶高</th>
+                        <td>8.38</td>
+                        <th>装粮线高</th>
+                        <td>8.38</td>
+                        <th>窗户规格</th>
+                        <td>1.44X0.98</td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>设计仓容</th>
+                        <td>按设计填</td>
+                        <th>筒仓或（浅圆仓）外径</th>
+                        <td></td>
+                        <th>筒仓或（浅圆仓）外径</th>
+                        <td></td>
+                        <th>测温电缆</th>
+                        <td>70</td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>有效仓容</th>
+                        <td>按小麦算</td>
+                        <th></th>
+                        <td></td>
+                        <th>仓内体积</th>
+                        <td>7776</td>
+                        <th>环流熏蒸类型</th>
+                        <td>固定式（移动式）</td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="5">隔热措施</th>
+                        <th>仓顶</th>
+                        <td colspan="8">遮阳网（隔热棚）</td>
+                    </tr>
+                    <tr>
+                        <th>上下弦板</th>
+                        <td colspan="8">喷涂发泡聚氨酯（隔热聚苯板、泡沫板）</td>
+                    </tr>
+                    <tr>
+                        <th>仓门</th>
+                        <td colspan="8">隔热门（薄膜密封）</td>
+                    </tr>
+                    <tr>
+                        <th>仓窗</th>
+                        <td colspan="8">隔热窗（薄膜密封）</td>
+                    </tr>
+                    <tr>
+                        <th>粮面</th>
+                        <td colspan="8">薄膜压盖（铺麻袋）</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-3">
+                <div style="margin-top: 0;padding: 10px 20px 20px;" class="grain-list table_outer bgFFF">
+                    <div class="table_outer">
+                        <a href="conditionDetail01.html" title="测温电缆摆布三温图"><img src="../../resource/images/list08.png" alt="">测温电缆摆布三温图</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail02.html" title="储粮三温图"><img src="../../resource/images/list09.png" alt="">储粮三温图</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail03.html" title="熏蒸记录表"><img src="../../resource/images/list10.png" alt="">熏蒸记录表</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail04.html" title="磷化氢气体溶度检测记录表"><img src="../../resource/images/list11.png" alt="">磷化氢气体溶度检测记录表</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail05.html" title="仓房充氢降氧作业记录表"><img src="../../resource/images/list12.png" alt="">仓房充氢降氧作业记录表</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail06.html" title="氧气气体溶度检测记录表"><img src="../../resource/images/list10.png" alt="">氧气气体溶度检测记录表</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail07.html" title="储粮机械通风作业记录表"><img src="../../resource/images/list12.png" alt="">储粮机械通风作业记录表</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="conditionDetail08.html" title="谷物冷却机低温储粮作业记录表"><img src="../../resource/images/list10.png" alt="">谷物冷却机低温储粮作业记录表</a>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

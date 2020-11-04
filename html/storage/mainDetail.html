@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仓储备案-基础设施管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            laydate.render({
+                elem: '#date'
+                ,type: 'year'
+                ,range: true
+            });
+            $("#question").mouseenter(function(){
+                $("#questionPop").fadeIn();
+            }).mouseout(function(){
+                $("#questionPop").fadeOut();
+            });
+    	});
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">基础设施管理<a href="baseDetail.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    
+    <div class="table_outer bgFFF pd20 mt15">
+        <input type="text" class="input01 layui-input w200" id="date" placeholder="2013 - 2018">
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th>XXXXX：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>XXXXX</li>
+                            <li>XXXXX</li>
+                        </ul>
+                    </div>
+                </td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc" style="position: relative;">
+            <span class="f18">主要设备器材明细表</span>
+            <img src="../../resource/images/question.png" alt="" id="question" style="position: relative;top: -3px;">
+            <div class="file-detail-pop abs" id="questionPop" style="left: 50%; top: 40px;width: 500px;margin-left: -170px;text-align: left;display: none;">
+                <div class="arrow up"></div>   
+                    <ul>            
+                        <li style="font-weight: bold;color: #333;">填表说明：</li>  
+                        <li>1.该表用于反映企业主要设备器材情况。此表由企业资产管理人员每年填写一次，存档不少于5年。</li>   
+                        <li>2.目前状态：填写良好、需大修、待维护、待报废。</li>   
+                        <li>3.管理人：填写对该设备器材负有管理职责的人员。</li>                    
+                    </ul>    
+                </div>
+        </div>
+        <div class="pd20">
+            <div class="table_outer bgFFF">
+                <p>
+                    <span><em class="c8">填制单位：</em>广西壮族自治区南宁粮食储备库</span>
+                    <span class="ml30"><em class="c8">制表时间：</em>2013年12月31日</span>
+                </p>
+                <table class="table01" style="border-left: 0;border-right: 0;">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>名称</th>
+                            <th>单位</th>
+                            <th>数量</th>
+                            <th>型号/规格</th>
+                            <th>采购制作年份</th>
+                            <th>目前状态</th>
+                            <th>管理人</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>消防水池</td>
+                            <td>个</td>
+                            <td>1</td>
+                            <td>砖混</td>
+                            <td>2003</td>
+                            <td>良好</td>
+                            <td>***</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>消防水池</td>
+                            <td>个</td>
+                            <td>1</td>
+                            <td>砖混</td>
+                            <td>2003</td>
+                            <td>良好</td>
+                            <td>***</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>消防水池</td>
+                            <td>个</td>
+                            <td>1</td>
+                            <td>砖混</td>
+                            <td>2003</td>
+                            <td>良好</td>
+                            <td>***</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <span><em class="c8">负责人：</em>设备经理</span>
+                    <span class="ml30"><em class="c8">填表人：</em>设施管理员</span>
+                </p>
+            </div>
+            
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

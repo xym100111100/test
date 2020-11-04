@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仓储备案-基础设施管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            $("#question").mouseenter(function(){
+                $("#questionPop").fadeIn();
+            }).mouseout(function(){
+                $("#questionPop").fadeOut();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">基础设施管理<a href="baseDetail.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="row mt15 bgFFF" style="width: 100%;position: relative;">
+        <div class="col-xs-7">
+            <div class="table_outer">
+                <div class="table_search tc" style="position: relative;">
+                    <span class="f18">设备保管卡片（正面）</span>
+                    <img src="../../resource/images/question.png" alt="" id="question" style="position: relative;top: -3px;">
+                    <div class="file-detail-pop abs" id="questionPop" style="left: 50%; top: 40px;width: 300px;margin-left: -70px;text-align: left;display: none;">
+                        <div class="arrow up"></div>   
+                            <ul>            
+                                <li style="font-weight: bold;color: #333;">填表说明：</li>  
+                                <li>该表用于反映每台设备基本情况。此表由设备管理人员填写，维护及记录等情况应随时更新，并悬挂在该设备明显位置。卡片在 设备报废后存档不少于1年。</li>                      
+                            </ul>    
+                        </div>
+                </div>
+                <table class="multiline-table">
+                    <tr>
+                        <td colspan="8">
+                            <span><em class="c8">填制单位：</em>广西壮族自治区南宁粮食储备库</span>
+                            <span class="ml30"><em class="c8">制表时间：</em>2013年12月31日</span>
+                            <span class="ml30"><em class="c8">单位：</em>米、KW、台、t/h</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>品名</th>
+                        <td>移动式胶带输送机</td>
+                        <th>规格型号</th>
+                        <td>DTSY50-12</td>
+                        <th>制造单位</th>
+                        <td>常熟吉亚</td>
+                        <th>采购时间</th>
+                        <td>2013-05</td> 
+                    </tr>
+                    <tr>
+                        <th>设备编号</th>
+                        <td>6</td>
+                        <th>功率</th>
+                        <td>4.0kw</td>
+                        <th>产量</th>
+                        <td>50T/h</td>
+                        <th>外形尺寸</th>
+                        <td>12米</td> 
+                    </tr>
+                    <tr>
+                        <th>主要功能</th>
+                        <td colspan="7">包（散）输送</td>
+                    </tr>
+                    <tr>
+                        <th>保管负责人</th>
+                        <td colspan="3">XXX</td>
+                        <th>维护负责人</th>
+                        <td colspan="3">XXX</td>
+                    </tr>
+                    <tr>
+                        <th>主要保管要求</th>
+                        <td colspan="7">防晒、防雨、定期清洁、维护保养、摆放整齐。</td>
+                    </tr>
+                    <tr>
+                        <th>随机附件、备件及工具</th>
+                        <td colspan="7" style="padding: 0;">
+                            <table class="table01" style="border: 0;border-bottom: 1px solid #dcdcdc;">
+                                <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>型号/规格</th>
+                                        <th>数量</th>
+                                        <th>存储地点</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>活动扳手</td>
+                                        <td>12</td>
+                                        <td>1</td>
+                                        <td>机修间2#柜</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>钳子</td>
+                                        <td>6寸</td>
+                                        <td>1</td>
+                                        <td>机修间2#柜</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="line-height: 40px;padding: 0 15px;">
+                                <span><em class="c8">负责人：</em>设备经理</span>
+                                <span class="fr"><em class="c8">填表人：</em>设施管理员</span>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            
+        </div>
+        <div class="col-xs-5" style="position: absolute;left: 58.33%;height: 100%;">
+            <div class="table_outer" style="height: 100%;">
+                <div class="table_search tc" style="position: relative;"><span class="f18">设备保管卡片（背面）</span></div>
+                <table class="multiline-table">
+                    <tr>
+                        <th style="border-top: 1px solid #dcdcdc;border-bottom: 1px solid #dcdcdc;" width="80">主要修养保养记录</th>
+                        <td style="padding: 0;">
+                            <table class="table01" style="border-left: 0;border-right: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>维修保养人员</th>
+                                        <th>主要内容</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2014-06-21</td>
+                                        <td>XXX</td>
+                                        <td>更换减速器#柜</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2014-06-21</td>
+                                        <td>XXX</td>
+                                        <td>更换减速器#柜</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

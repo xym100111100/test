@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食储备库分布</title>
+    <script src="plugin/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="css/map.css?r=r">
+    <link rel="stylesheet" href="plugin/layer/skin/layer.css">
+    <style>
+        #loading{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(5, 54, 146, .9);
+            display: none;
+        }
+        .loading{
+            width: 150px;
+            height: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .loading span{
+            position: absolute;
+            width: 15px;
+            height: 100%;
+            border-radius: 50%;
+            background: #3393f7;
+            -webkit-animation: load 0.8s ease-in infinite alternate;
+        }
+        @-webkit-keyframes load{
+            0%{
+                opacity: 1;
+                -webkit-transform: translate(0px);
+            }
+            100%{
+                opacity: 0.2;
+                -webkit-transform: translate(150px);
+            }
+        }
+        .loading span:nth-child(1){
+            -webkit-animation-delay:0.1s;
+        }
+        .loading span:nth-child(2){
+            -webkit-animation-delay:0.2s;
+        }
+        .loading span:nth-child(3){
+            -webkit-animation-delay:0.3s;
+        }
+        .loading span:nth-child(4){
+            -webkit-animation-delay:0.4s;
+        }
+        .loading span:nth-child(5){
+            -webkit-animation-delay:0.5s;
+        }
+    </style>
+</head>
+<body id="body1">
+<div id="loading">
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- 背景及分布 -->
+<div class="map-wrapper" id="wrapDiv">
+    <img id="oImg" src="" alt=""/>
+</div>
+<!-- 粮库详情pop -->
+<div class="warehouse-details" style="display:none; width:361px">
+    <i id="sj-l" class="sj-l"></i>
+    <div class="hd" id="granary_hd">
+        <div class="wareh-info"><strong class="number" id="granaryName"></strong><span class="name" id="personName"></span><span class="job">保管员</span></div>
+        <!--<span class="toxic-gas">磷化氢</span>-->
+        <a class="link-camera" href="javascript:void(0);" id="camera">仓内摄像头</a>
+        <!--<a class="enter" href="javascript:void(0);" id="granaryEnter">进入</a>-->
+    </div>
+
+    <div id="mapScrollB" class="bd">
+        <div class="granary-humidity">
+            <div class="gh-hd">
+                <h3 id="categoryName"></h3>
+                <span class="second" id="levelName"></span>
+                <p class="fr">
+                    <span class="nature" id="grainTypeName"></span><span class="year" id="years"></span>
+                </p>
+            </div>
+            <div class="gh-bd mt5" style="padding-left: 20px;">单位：吨</div>
+            <div class="gh-bd">
+                <ul class="humidity-list humidity-list2">
+                    <li class="hl01"><em id="baudRate"></em>总入库数</li>
+                    <li class="hl02"><em id="water"></em>总出库数</li>
+                    <li class="hl03"><em id="inTemp"></em>总溢余数</li>
+                </ul>
+                <ul class="humidity-list humidity-list2">
+                    <li class="hl04"><em id="inMois"></em>总损失数</li>
+                    <li class="hl05"><em id="outTemp"></em>总移入数</li>
+                    <li class="hl06"><em id="outMois"></em>总移出数</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="warehouseList" hidden>
+    <div class="silo-state" hidden="true">
+        <i class="number"></i>
+    </div>
+</div>
+<!--悬浮框-->
+<div class="home-basic-area">
+    <!--左侧悬浮列表B-->
+    <ul class="menu-map">
+        <li>
+            <a href="javascript:;" onclick="filterParam(0);" class="cur">
+                <p><img src="images/i_map1.png" alt="储粮情况"></p>
+                <p class="tit-menu">库存</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="filterParam(1);" class="">
+                <p><img src="images/i_map2.png" alt="仓房使用"></p>
+                <p class="tit-menu">仓容</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="filterParam(2);">
+                <p><img src="images/i_map3.png" alt="粮食质量"></p>
+                <p class="tit-menu">质量</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="filterParam(3);">
+                <p><img src="images/i_map4.png" alt="视频监控"></p>
+                <p class="tit-menu">监控</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="filterParam(4);">
+                <p><img src="images/i_map5.png" alt="储粮预警"></p>
+                <p class="tit-menu">粮情</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="filterParam(5);">
+                <p><img src="images/i_map9.png" alt="智能出入库"></p>
+                <p class="tit-menu">出入库</p>
+            </a>
+        </li>
+    </ul>
+    <!--左侧悬浮列表E-->
+    <!--右侧天气悬浮B-->
+    <!--<div class="reservoir-area-weather" id="weather">-->
+        <!--<span class="weather-temp">17℃</span>-->
+        <!--<span class="weather-img">-->
+            <!--<img src="images/d2.png">-->
+        <!--</span>-->
+        <!--<span class="weather-humidity"></span>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;右侧天气悬浮E&ndash;&gt;-->
+    <!--&lt;!&ndash;右侧信息展示B&ndash;&gt;-->
+    <!--<div class="over-map-info">-->
+        <!--<div class="over-info-list" id="over_info_list">-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--右侧信息展示E-->
+</div>
+<!-- 方向 -->
+<div class="map-compass"><i class="d-top"></i></div>
+<!-- 放大缩小控件 -->
+<div class="zoom">
+    <a class="enlarge" id="enlarge" href="javascript:shiftzoom._initZoom(1,2,'true','oImg');"><i></i></a>
+    <span class="xline"></span>
+    <a class="narrow not-narrow" id="narrow" href="javascript:shiftzoom._initZoom(0,1,'true','oImg');"><i></i></a>
+</div>
+<!--版权-->
+<!--<div class="map-footer">-->
+    <!--<p>广西钦州粮食储备库&nbsp;©COPYRIGHT 2019, DOUNION ALL RIGHTS RESERVED.    经营许可证：桂ICP备12006906号<a class="clink" href="">设备运行情况</a></p>-->
+<!--</div>-->
+<script src="plugin/layer/layer.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script src="plugin/shiftzoom.js?r=r" type="text/javascript"></script>
+</body>
+</html>

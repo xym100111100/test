@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产清理管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/pages.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date',
+                type: 'year'
+            });
+
+        });
+    </script>
+    <style>
+        .stock-chart-info{width: 600px;}
+        .stock-chart-info li{margin-top: 14px;margin-right: 50px;width: 240px;}
+    </style>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">资产清理管理</p>
+<div class="search-table clearfix mt15">
+    <table>
+        <tr>
+            <th width="110">处室：</th>
+            <td><input type="text" class="input01"></td>
+            <th>使用人：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="90">状态：</th>
+            <td><input type="text" class="input01"></td>
+        </tr>
+    </table>
+    <table style="margin: 30px 0">
+        <tr>
+            <th width="110">通知时间：</th>
+            <td><input type="text" class="input01 layui-input" id="date"></td>
+            <th>核对时间：</th>
+            <td><input type="text" class="input01 layui-input" id="date001"></td>
+            <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+        </tr>
+    </table>
+</div>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">资产列表</span>
+        <a class="border-btn fr mt5" href="Clear_notice.html">资产清理设置</a>
+    </div>
+    <div class="pd20">
+        <table class="table01">
+            <thead>
+            <tr>
+                <th>处室</th>
+                <th>使用人</th>
+                <th>状态</th>
+                <th>通知时间</th>
+                <th>核对时间</th>
+                <th>备注信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>粮食局</td>
+                <td>吴不懂</td>
+                <td>资产认领</td>
+                <td>2017-09-21</td>
+                <td>2017-09-21</td>
+                <td>核对人张三李四</td>
+            </tr>
+            <tr>
+                <td>粮食局</td>
+                <td>吴不懂</td>
+                <td>资产认领</td>
+                <td>2017-09-21</td>
+                <td>2017-09-21</td>
+                <td>核对人张三李四</td>
+            </tr>
+            <tr>
+                <td>粮食局</td>
+                <td>吴不懂</td>
+                <td>资产认领</td>
+                <td>2017-09-21</td>
+                <td>2017-09-21</td>
+                <td>核对人张三李四</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--分页-->
+        <div class="paging">
+            <input type="hidden" id='count' value="200"/>
+            <div class="pages">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../resource/common_js/page_js.js"></script>
+</html>

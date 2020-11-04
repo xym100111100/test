@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目资金管理-项目资金报表详情</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+            });
+        });
+    </script>
+    <style>
+        .company-info th{
+            text-align: left;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        .ti-2{
+            text-indent: 2em;
+        }
+        .ti-5{
+            text-indent: 5em;
+        }
+        .ti-7{
+            text-indent: 7em;
+        }
+        .ti-9{
+            text-indent: 9em;
+        }
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">项目资金报表查询<a href="projectFundManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="120">填报单位：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="120">上报时间：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc">
+            <span class="f18">项目资金详情</span>
+        </div>
+        <div class="pd20">
+            <p class="clearfix"><span class="fr"><em class="c8">单位：</em>万元</p>
+            <table class="company-info mt10">
+                <tr>
+                    <th width="15%">建设项目名称</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th>一、项目计划总投资额</td>
+                    <td></td>
+                    <th>六、财政拨款批复文件号</th>
+                    <td>批复金额</td>
+                </tr>
+                <tr>
+                    <th>二、项目资金来源</th>
+                    <td></td>
+                    <th>1.</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="ti-2">其中：财政拨款</th>
+                    <td></td>
+                    <th>2.</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="ti-5">银行拨款</th>
+                    <td></td>
+                    <th>3.</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th class="ti-5">单位自有资金</th>
+                    <td></td>
+                    <th>4.</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>三、项目完成总投资额</td>
+                    <td></td>
+                    <th>七、项目是否经过财政投资审评</th>
+                    <td><label><input type="radio" name="radio01" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio01" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th class="ti-2">其中：固定资产投资</td>
+                    <td></td>
+                    <th>八、项目是否经过公开招投标</th>
+                    <td><label><input type="radio" name="radio02" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio02" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th>四、累计已使用资金项目</td>
+                    <td></td>
+                    <th>九、项目是否已到达预定可使用状态</th>
+                    <td><label><input type="radio" name="radio03" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio03" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th class="ti-2">其中：财政拨款</td>
+                    <td></td>
+                    <th>十、项目是否已转入固定资产管理</th>
+                    <td><label><input type="radio" name="radio04" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio04" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th class="ti-5">银行贷款</td>
+                    <td></td>
+                    <th>十一、单位是否已完成竣工财务决算审评</th>
+                    <td><label><input type="radio" name="radio05" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio05" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th class="ti-5">单位固有资金</td>
+                    <td></td>
+                    <th>十二、是否已通过验收</th>
+                    <td><label><input type="radio" name="radio06" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio06" class="radio01">否</label></td>
+                </tr>
+                <tr>
+                    <th>五、当年使用项目资金</td>
+                    <td></td>
+                    <th>十三、项目是否完成竣工结算审评</th>
+                    <td><label><input type="radio" name="radio07" class="radio01" checked="checked">是</label><label class="ml30"><input type="radio" name="radio07" class="radio01">否</label></td>
+                </tr>
+            </table>
+            <div class="mt15" style="line-height: 1.6;">
+                <p>备注：</p>
+                <p>1.该表由信息平台内有项目建设的国有粮食企业填报。</p>
+                <p>2.项目建设期内，相关数据变动当月末填报。</p>
+                <p>3.资金来源有财政拨款数据，则需填报批复文件号，文件号与资金拨付来源级次对应（自治区资金填报自治区的文件号，市县资金填报市县文件号）。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

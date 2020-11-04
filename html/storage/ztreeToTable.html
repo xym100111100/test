@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据ztree生成table</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.all.js"></script>
+
+    <script>
+        $(function(){
+            initTree();
+            loadTable();
+        });
+        var rows = [],selectedLeafIds = [],maxLevel = 1;
+        var trTh = ['广西','直报广西区粮食局单位','南宁市','柳州市','桂林市','梧州市','北海市','防港城市','钦州市','贵港市','玉林市','百色市','贺州市','河池市','来宾市','崇左市'],
+            firstTh = '组织机构';
+        /**初始化树*/
+        function initTree(){
+            // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+            var setting = {
+                view: {
+                    showIcon: false
+                },
+                data: {            //这里不动
+                    simpleData: {
+                        enable: true,
+                        idKey: "id",
+                        pidKey: "pId",
+                        rootPid: '-1',
+                        // chkboxType: { "Y": "ps", "N": "ps" }      //设置复选框是否与 父/子 级相关联
+                    }
+                },
+                check: {
+                    enable: true,     //这里设置是否显示复选框
+                    chkStyle: "checkbox",  //单选框
+                    radioType: "all",   //对所有节点设置单选
+                },
+                callback: {
+                    onClick: onClick,
+                    // onCheck: onCheck,
+                    // onNodeCreated: onNodeCreated
+                }
+            };
+            // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+            var zNodes = [
+                {id: 1,name:"常住人口", open:true,children:[
+                    {id: 11,name:"总户数", open:true, children:[
+                        {id: 111,name:"城镇户数"},
+                        {id: 112,name:"乡村户数",open: true
+                            ,children:[
+                                {id: 1121,name: '户数2'},
+                                {id: 1122,name: '户数3'}
+                            ]
+                        },
+                    ]},
+                    {id: 12,name:"总人口", open:true, children:[
+                        {id: 121,name:"城镇户数"},
+                        {id: 122,name:"乡村户数",open: true
+                            ,children:[
+                                {id: 1221,name: '户数1'}
+                            ]
+                        },
+                    ]}
+                ]},
+                {id: 2,name:"流动人口"},
+                {id: 3,name:"播种面积", open:true,children:[
+                    {id: 31,name:"小麦",row: 2,open:true,children:[       // 默认最后一个节点跨行，如果设置了row,则本节点跨行，一个层级结构下只能设置一个节点
+                            {id: 311,name:"小麦1"},
+                        ]
+                    },
+                    {id: 32,name:"稻谷",open: true,children:[             // 此节点不跨行
+                            {id: 321,name:"稻谷1"},
+                        ]
+                    },
+                    {id: 33,name:"玉米"},
+                    {id: 34,name:"大豆"},
+                    {id: 35,name:"其他"},
+                ]},
+                {id: 4,name:"粮食产量", open:true,children:[
+                    {id: 41,name:"小麦"},
+                    {id: 42,name:"稻谷"},
+                    {id: 43,name:"玉米"},
+                    {id: 44,name:"大豆"},
+                    {id: 45,name:"其他"},
+                ]},
+                {id: 5,name:"测试", open:true,children:[
+                    {id: 51,name:"测试1"},
+                    {id: 52,name:"测试2"},
+                ]},
+
+            ];
+            var $dom = $("#areaTree");
+            var zTreeObj = $.fn.zTree.init($dom, setting, zNodes);
+        }
+        function onClick(e, treeId, treeNode) {
+            $(e.target).parent().prev().click();
+            return false;
+        }
+        function createTable() {
+            rows = [];selectedLeafIds = [];
+            var zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+            var selectedNodes = zTreeObj.getCheckedNodes(true);
+            var levels = [];
+            selectedNodes.forEach(function (item) {
+                levels.push(item.level);
+                if(!item.isParent){
+                    selectedLeafIds.push(item.id);
+                }else{
+                    item.colspan = getCols(item,selectedNodes);
+                }
+            });
+            maxLevel = Math.max.apply(null,levels);
+            console.log(selectedLeafIds);
+            rows = getRows(selectedNodes);
+            loadTable();
+        }
+        function getRows(nodes) {
+            var rows = [];
+            nodes.forEach(function (item) {
+                var prevRows = 0;
+                var prevs = item.getPath();
+                prevs.forEach(function (node,idx) {
+                    if(idx !== prevs.length - 1){
+                        prevRows += node.row ? 1 + node.row : 1;
+                    }
+                });
+                item.rowspan = item.row >= maxLevel || prevRows > maxLevel ? 1 : item.row;
+                if(!item.isParent && prevRows < (maxLevel + 1)){
+                    item.rowspan = maxLevel + 1 - prevRows;
+                }
+                prevRows = prevRows > maxLevel ? maxLevel : prevRows;
+                if(!(rows[ prevRows])){
+                    rows[prevRows] = [item];
+                }else{
+                    rows[prevRows].push(item);
+                }
+            });
+            console.log(rows);
+            return rows;
+        }
+        function getCols(node,allNodes) {
+            var cols = 0;
+            allNodes.forEach(function(item){
+                if(!item.isParent && item.getPath()[node.level] === node){
+                    cols++;
+                }
+            });
+            return cols;
+        }
+        function loadTable() {
+            $("#table thead,#table tbody").empty();
+            var trArr = [];
+            rows.forEach(function (row,index) {
+                var _tr = '<tr>';
+                if(index === 0){
+                    _tr += '<th width="200" rowspan="' + rows.length + '">' + firstTh + '</th>';
+                }
+                row.forEach(function (col) {
+                    var colspan = col.colspan === 0 || col.colspan === undefined ? 1 : col.colspan;
+                    _tr += '<th colspan="' + colspan + '" rowspan="' + col.rowspan + '">' + col.name + '</th>';
+                });
+                _tr += '</tr>';
+                trArr.push(_tr);
+            });
+            $("#table thead").append(trArr.join(""));
+            trTh.forEach(function (item) {
+                var _html = '<tr><td class="td-bg">' + item + '</td>';
+                for(var i = 0; i < selectedLeafIds.length; i++){
+                    _html += '<td></td>';
+                }
+                _html += '</tr>';
+                $("#table tbody").append(_html);
+            });
+        }
+    </script>
+    <style>
+        .table01 tbody tr:nth-child(even){background-color: #fff;}
+        .td-bg{background-color: #f7f7f7;}
+    </style>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title01.png">根据ztree生成表格</p>
+<div style="position: relative;" class="mt15">
+    <div style="position:absolute;top: 0;width: 260px;height: 100%;" class="table_outer bgFFF pd20">
+        <div style="height: 100%;overflow: auto;">
+            <ul class="ztree" id="areaTree"></ul>
+        </div>
+    </div>
+    <a class="btn btn-browser" style="position: absolute;left: 275px;top: 50%;margin-top: -17px;" onclick="createTable();">生成表格 》</a>
+    <div class="table_outer bgFFF" style="margin-left: 386px;min-height: 500px;">
+        <div class="table_search tc" style="position: relative;">
+            <span class="f18">供需平衡调查辖区概况</span>
+        </div>
+        <div style="padding: 10px 20px;">
+            <p class="tc">
+                <span class="fl">编制单位：广西</span>
+                <span>2019年</span>
+                <span class="fr">计量单位：无</span>
+            </p>
+            <table class="table01 mt5" id="table">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

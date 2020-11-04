@@ -1,0 +1,12 @@
+@import './mixin.scss'; // 变量、函数
+@import './reset.scss'; // 整体样式重置
+@import './base.scss'; // 
+@import './iconfont.scss'; // 字体样式
+@import './ztree.scss'; // ztree样式重置
+@import './jsmind.scss'; // jsmind思维导图
+@import './layui.scss'; // 部分layui样式修改
+@import './module.scss'; // 模块
+@import './filecard.scss'; // 上传文件控件
+@import './layout.scss'; // 统一布局
+
+// PS:project文件夹中的css是各个项目各自的样式，好用的模块可收录入module.scss中

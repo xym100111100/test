@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产报废报损申请</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info .c-td{border-left: 1px solid #dcdcdc;text-align: center;}
+        .company-info td{overflow: visible;}
+        .input01{max-width: 100%;}
+        .textarea01{height: 220px;max-width: 100%;}
+        .h-div{display: none;}
+        .textarea02{width:98%;height:150px;padding:5px 10px;border:1px solid #dcdcdc;resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size: 14px;}
+        .input01:focus,.textarea02:focus {border-color: #55B813;background-color: #fafafa;color: #007465;}
+        .input03{width: 250px;line-height:30px;height:30px;padding:0 10px;border:1px solid #dcdcdc;background:#fff;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size: 14px;}
+        .input03:focus{border-color: #55B813;background-color: #fafafa;color: #007465;}
+    </style>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">资产报废报损申请<a href="Assets_list.html" class="fr border-btn w60">返回</a></p>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">基本信息</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <th colspan="2">资产卡片编号：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th width="150">资产类别：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th width="150">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th width="150">资产价值：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"><span style="margin-left: 5px">元</span></td>
+                <th width="150">使用处室：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">使用人：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th width="150">资产品牌：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th >取得日期：</th>
+                <td colspan="3"><input type="text" class="input01 layui-input w240" id="date02"></td>
+            </tr>
+            <tr>
+                <th colspan="2">折旧状态：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th>存放地点：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+                <td  colspan="4" class="c-td"></td>
+            </tr>
+            <tr>
+                <th colspan="2">报废报损原因说明</th>
+                <td colspan="11"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="tc pd20">
+    <span class="btn border-btn w110">取消</span>
+    <span class="btn btn-browser w110 ml10">保存</span>
+    <span class="btn btn-browser w110 ml10">提交</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,350 @@
+@import './mixin.scss';
+
+
+.#{$prev}-iconbtn--mini {
+    height: 18px;
+    line-height: 16px;
+    min-width: 18px;
+    box-sizing: border-box;
+    font-size: 12px;
+    // padding: 0 5px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        background: #cdcdcd;
+    }
+}
+
+
+// 数字显示小模块
+.#{$prev}-count {
+    .#{$prev}-count__lable {
+        color: #DAF5FF;
+        font-size: 16px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .#{$prev}-count__value {
+        color: #FBD218;
+        font-weight: bold;
+        font-size: 32px;
+        display: inline-block;
+    }
+
+    .#{$prev}-count__unit {
+        color: #FBD218;
+        font-size: 16px;
+        display: inline-block;
+    }
+}
+
+
+//排行榜
+.#{$prev}-ranking {
+    border: 1px solid #f6f6f6;
+
+    &__title {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 3;
+        border-bottom: 1px solid #f6f6f6;
+        background: #f7f7f7;
+        padding: 0 10px;
+    }
+
+    &__list {}
+
+    &__item {
+        line-height: 2.5;
+        padding: 0 10px;
+
+        &:hover {
+            background: #f7f7f7;
+        }
+    }
+
+    &__item-left {
+        float: left;
+        width: 70%;
+        @include ove;
+        padding-left: 8px;
+    }
+
+    &__item-right {
+        float: left;
+        width: 30%;
+        @include ove;
+        padding-left: 8px;
+        text-align: right;
+    }
+
+    &__badge {
+        margin-right: 8px;
+        width: 22px;
+    }
+}
+
+
+// 大屏
+.#{$prev}-rpt {
+    &__bg {
+        background-image: url(./images/reports/body_bg.jpg);
+        padding-top: 75px;
+        height: 100%;
+        background-size: 100% 100%;
+        overflow: hidden;
+        padding-bottom: 10px;
+        position: relative;
+    }
+
+    &__title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        line-height: 70px;
+        text-align: center;
+        font-family: "PingFang SC";
+        color: #75dcff;
+        background: url(./images/reports/title.png) no-repeat center;
+
+    }
+
+    &__title-label {
+        font-size: 24px;
+    }
+
+    &__title-time {
+        font-size: 16px;
+        color: #BDECF6;
+        top: 44px;
+        right: 20px;
+        position: absolute;
+        font-weight: normal;
+        font-family: "Microsoft YaHei", "微软雅黑", "SimHei", "黑体";
+        line-height: 1.2;
+    }
+
+    &__pie-bg {
+        position: absolute;
+        height: 70%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    /*盒子*/
+    &__box-outer {
+        position: relative;
+        padding: 5px;
+    }
+
+    &__box {
+        padding-top: 45px;
+        position: relative;
+        border: 1px solid #204c8a;
+    }
+
+    &__box-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        color: #BEEFFC;
+        height: 45px;
+        line-height: 45px;
+        padding: 0 0px 0 10px;
+        font-weight: bold;
+    }
+
+    &__box-title>span {
+        display: inline-block;
+        position: relative;
+        padding-left: 16px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &__box-title>span::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        height: 2vh;
+        width: 2px;
+        background-color: #BEEFFC;
+        top: 50%;
+        margin-top: -1vh;
+    }
+
+    &__box2 {
+        position: relative;
+        border: 2px solid #23766f;
+        box-shadow: inset 0 0 10px #23766f;
+        padding-top: 5vh;
+    }
+
+    &__box2-title {
+        height: 5vh;
+        line-height: 5vh;
+        background-color: rgba(21, 121, 97, 0.2);
+        color: #BEEFFC;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &__box2-title>span {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &__box3 {
+        position: relative;
+        border: 1px solid #157961;
+        padding-top: 5vh;
+        background: rgba(0, 15, 60, 0.26);
+    }
+
+    &__box3-title {
+        height: 5vh;
+        line-height: 5vh;
+        background-color: rgba(21, 121, 97, 0.2);
+        color: #00EEFC;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-left: 15px;
+    }
+
+    &__box3-title>span {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+/* 占位图片 不能直接写的img标签中，要套一层div */
+.#{$prev}-placeholder-img {
+    position: relative;
+    background: #e6e6e6;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.#{$prev}-placeholder-img:before {
+    content: " ";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(./images/placeholder.png) no-repeat;
+    background-size: 100%;
+}
+
+.#{$prev}-placeholder-img>img {
+    position: relative;
+}
+
+.#{$prev}-badge {
+    position: relative;
+    display: inline-block;
+    min-width: 20px;
+    // padding: 0;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #F97878;
+    color: #fff;
+    border-radius: 2px;
+
+    &--red {
+        background-color: #F97878;
+    }
+
+    &--orange {
+        background-color: #F79A5C;
+
+    }
+
+    &--yellow {
+        background-color: #F3CF6C;
+    }
+
+    &--gray {
+        background-color: #CDD1D2;
+    }
+}
+
+// ao-icon的图标按钮
+.#{$prev}-aoiconbtn {
+    font-size: 18px;
+    color: #3A89F5;
+    cursor: pointer;
+
+    &:hover {
+        color: rgb(97, 162, 253);
+    }
+}
+
+ 
+.#{$prev}-word,
+.#{$prev}-word:hover {
+    color: #3A89F5;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--info,
+.#{$prev}-word--info:hover {
+    color: #333;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--light,
+.#{$prev}-word--light:hover {
+    color: #666;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--light2,
+.#{$prev}-word--light2:hover {
+    color: #999;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--success,
+.#{$prev}-word--success:hover {
+    color: #0EBA93;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--warning,
+.#{$prev}-word--warning:hover {
+    color: #FF5722;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--danger,
+.#{$prev}-word--danger:hover {
+    color: #F56868;
+    text-decoration: none;
+    margin-right: 8px;
+}

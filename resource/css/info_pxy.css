@@ -1,0 +1,109 @@
+.count{
+    width: 1400px;
+    margin: auto;
+    border: 1px solid #dedede;
+    border-bottom: transparent;
+    background: #ffffff;
+    padding-bottom: 20px;
+}
+.layui-table th {
+    text-align: center;
+}
+.layui-table tr {
+    border-left: transparent;
+    border-right: transparent;
+}
+.layui-tab{
+    margin-bottom: 0;
+}
+.layui-table{
+    margin-top: 0;
+    padding-top: 0;
+}
+table tbody tr{
+    text-align: center;
+}
+.tex{
+    color: #4CADFF;
+    cursor: pointer;
+}
+.layui-tab-content{
+    background: #ffffff;
+}
+.td_color{
+    background: #f7f7f7;
+}
+.company-info th{
+    text-align: center;
+}
+.company-info td {
+    border-left: 1px solid #dcdcdc;
+}
+.td_txtCor{
+    color: #b4b4b4;
+}
+.count_box{
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+}
+.flex{
+    display: flex;
+}
+
+.flex .flex_left{
+    width: 450px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 14px;
+    text-align: right;
+    color: #666666;
+}
+.flex .flex_right{
+    width: 750px;
+    height: 52px;
+    line-height: 52px;
+    display: flex;
+    align-items: center;
+}
+.layui-input-block{
+    margin-left: 0;
+}
+.layui-form-item{
+    margin-bottom: 0;
+}
+.layui-input, .layui-textarea{
+    width: 460px;
+}
+.em{
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 48px;
+    color: #E02020;
+}
+.input_copy .layui-input{
+    width: 180px;
+}
+.input_copy1 .layui-input{
+    width: 290px;
+}
+.flex_left_copy{
+    width: 100px!important;
+}
+.image{
+    width: 170px;
+    height: 110px;
+}
+.info_title{
+    font-weight: bold;
+    font-size: 18px;
+    background:rgba(251,251,251,1);
+}
+.box{
+    width:1380px;
+    height:234px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(237,237,237,1);
+    margin: auto;
+}

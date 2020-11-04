@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-移库监管-实物内部移库单-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <p style="height: 40px;line-height: 40px;">
+        <span class="cBlue">日期：<em>2019年11月11日</em></span>
+        <span class="cBlue fr">单位：公斤,条</span>
+    </p>
+    <table class="info-table">
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <tr>
+            <th>移出仓号</th>
+            <td colspan="4"></td>
+            <th>移入仓号</th>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <th colspan="5" class="tc">实发数量</th>
+            <th colspan="5" class="tc">实收数量</th>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">品种</th>
+            <th rowspan="2" class="tc">件数</th>
+            <th rowspan="2" class="tc">数量</th>
+            <th colspan="2" class="tc">包装物</th>
+            <th rowspan="2" class="tc">品种</th>
+            <th rowspan="2" class="tc">件数</th>
+            <th rowspan="2" class="tc">数量</th>
+            <th colspan="2" class="tc">包装物</th>
+        </tr>
+        <tr>
+            <th class="tc">编织袋</th>
+            <th class="tc"></th>
+            <th class="tc">编织袋</th>
+            <th class="tc"></th>
+        </tr>
+        <tr class="tc">
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">备注</th>
+            <td colspan="9"></td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

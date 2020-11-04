@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D集成页</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <style>
+        html,body{height: 100%;}
+        body{padding-bottom: 30px;}
+        .third-search-div{position: absolute;top: 30px;left: 30px;}
+        .s-btn{background-color: #55b813;color: #fff;width: 80px;height: 30px;line-height: 30px;}
+        .s-btn:hover{background-color: #479c0f;}
+        .map-bg{height: 100%;position: relative;background: #0e1958 url(../../resource/images/thd_bg.png) no-repeat center 90%;}
+        .hot-span{color: #E1E1E1;line-height: 30px;}
+        .hot-span a+a{margin-left: 20px;}
+    </style>
+</head>
+<body>
+    <div class="map-bg">
+        <div id="main" style="height:100%;"></div>
+        <div class="third-search-div">
+            <div class="fl">
+                <input type="text" name="" class="input01" style="border-radius: 4px 0 0 4px;width: 350px;"><button type="button" class="s-btn">搜索</button>
+            </div>
+            <div class="fl hot-span ml20">
+                热门搜索：<a>3d</a><a>模型</a><a>粮库</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>

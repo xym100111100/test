@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "name": "1号仓",
+    "canClick": "1",
+    "xAxis": "2215",
+    "yAxis": "1257"
+  },
+  {
+    "id": 2,
+    "name": "2号仓",
+    "canClick": "1",
+    "xAxis": "2884",
+    "yAxis": "1053"
+  },
+  {
+    "id": 3,
+    "name": "3号仓",
+    "canClick": "1",
+    "xAxis": "2000",
+    "yAxis": "687"
+  },
+  {
+    "id": 4,
+    "name": "4号仓",
+    "canClick": "1",
+    "xAxis": "2311",
+    "yAxis": "606"
+  },
+  {
+    "id": 5,
+    "name": "5号仓",
+    "canClick": "1",
+    "xAxis": "2614",
+    "yAxis": "531"
+  },
+  {
+    "id": 6,
+    "name": "6号仓",
+    "canClick": "1",
+    "xAxis": "1892",
+    "yAxis": "558"
+  },
+  {
+    "id": 7,
+    "name": "7号仓",
+    "canClick": "1",
+    "xAxis": "2197",
+    "yAxis": "489"
+  },
+  {
+    "id": 8,
+    "name": "8号仓",
+    "canClick": "1",
+    "xAxis": "2488",
+    "yAxis": "417"
+  },
+  {
+    "id": 9,
+    "name": "9号仓",
+    "canClick": "1",
+    "xAxis": "1721",
+    "yAxis": "345"
+  },
+  {
+    "id": 10,
+    "name": "10号仓",
+    "canClick": "1",
+    "xAxis": "2212",
+    "yAxis": "240"
+  }
+
+]

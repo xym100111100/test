@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-库存监管</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body>
+<div class="top-box">
+    <div class="top-box-title">
+        <div class="top-box-line1"></div>
+        <div class="top-box-line2"></div>
+        <div class="top-box-line3"></div>
+        <div class="top-box-line4"></div>
+        <div class="top-title-inner">
+            <div class="top-box-title-center">
+                <a onclick="selectLink();">库存监管 <i class="layui-edge"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="top-box-content">
+        <div class="clearfix top-box-inner">
+            <form class="layui-form label-auto-width" action="" lay-filter="example" style="margin: 0 10px;">
+                <div class="layui-form-item layui-inline special-select2 w150">
+                    <select name="type" lay-filter="type1">
+                        <option value="记账凭证">记账凭证</option>
+                        <option value="货位卡">货位卡</option>
+                        <option value="粮食收支存报表">粮食收支存报表</option>
+                        <option value="损益单">损益单</option>
+                    </select>
+                </div>
+                <div class="layui-form-item layui-inline ml5">
+                    <label class="layui-form-label">库区名称：</label>
+                    <div class="layui-input-block">
+                        <span class="c8">南宁储备仓储库</span>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline ml5">
+                    <label class="layui-form-label">廒间号：</label>
+                    <div class="layui-input-block w140 special-select">
+                        <select name="type">
+                            <option value="">全部</option>
+                            <option value="1号厫间">1号厫间</option>
+                            <option value="2号厫间">2号厫间</option>
+                            <option value="3号厫间">3号厫间</option>
+                            <option value="4号厫间">4号厫间</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline ml5">
+                    <label class="layui-form-label">货位卡：</label>
+                    <div class="layui-input-block w140 special-select">
+                        <select name="type">
+                            <option value="">全部</option>
+                            <option value="一号货位卡">一号货位卡</option>
+                            <option value="二号货位卡">二号货位卡</option>
+                            <option value="三号货位卡">三号货位卡</option>
+                            <option value="四号货位卡">四号货位卡</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline last-item">
+                    <button class="layui-btn search-btn ml10" type="button">查询</button>
+                </div>
+            </form>
+            <a href="visualSupervise2.html" class="back-icon"></a>
+        </div>
+    </div>
+</div>
+<div class="layui-card mt15">
+    <div class="layui-card-body">
+        <div class="typeDiv">
+            <table id="table" lay-filter="demo" class="layui-hide">
+            </table>
+        </div>
+        <div style="display: none;" class="typeDiv">
+            <table class="multiline-table info-table">
+                <col width="150">
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <tr>
+                    <td colspan="8">
+                        <span class="cBlue">制表单位：<em>XXXX</em></span>
+                        <span class="cBlue ml30">填表日期：<em>2019年11月11日</em></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>货位编号</th>
+                    <td></td>
+                    <th>粮油性质</th>
+                    <td></td>
+                    <th>粮权归属</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th>仓型</th>
+                    <td></td>
+                    <th>设计容量（吨）</th>
+                    <td></td>
+                    <th>入库时间</th>
+                    <td></td>
+                    <th>成货位时间</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>粮油品种</th>
+                    <td></td>
+                    <th>收获年度</th>
+                    <td></td>
+                    <th>实际数量（吨）</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th>产地</th>
+                    <td></td>
+                    <th>价位（年/公斤）</th>
+                    <td></td>
+                    <th>管理方式</th>
+                    <td></td>
+                    <th>包装存粮包数</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>散存粮油体积（㎡）</th>
+                    <td></td>
+                    <th>长 m</th>
+                    <th>宽 m</th>
+                    <th>直径 m</th>
+                    <th>高 m</th>
+                    <th>平均包重（kg）</th>
+                    <th>长 m</th>
+                </tr>
+                <tr>
+                    <th>等级</th>
+                    <td></td>
+                    <th>容重(g/L)</th>
+                    <td></td>
+                    <th>水分(%)</th>
+                    <td></td>
+                    <th>杂质(%)</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>出糙率%</th>
+                    <td></td>
+                    <th>整精米率%</th>
+                    <td></td>
+                    <th>面筋吸水量%</th>
+                    <td></td>
+                    <th>不完善粒%</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>脂肪酸酯(脂肪酸)(mgKOH/100g)</th>
+                    <td></td>
+                    <th>色泽气味</th>
+                    <td></td>
+                    <th>储存方式</th>
+                    <td></td>
+                    <th>保管员</th>
+                    <td></td>
+                </tr>
+                <tr class="bg-info">
+                    <th class="diagonal">
+                        <p style="text-align: right;">检验项目</p>
+                        <p style="text-align: left;">检验时间</p>
+                    </th>
+                    <th>水分</th>
+                    <th>脂肪酸酯(mgKOH/100g)</th>
+                    <th>面筋吸水量%</th>
+                    <th>不完善粒%</th>
+                    <th>品尝评分值(分)</th>
+                    <th>色泽气味</th>
+                    <th>检验单位</th>
+                </tr>
+                <tr>
+                    <th>年    月    日</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>年    月    日</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div style="display: none;" class="typeDiv">
+            <ul class="notice-ul">
+                <li class="tc">
+                    <span class="fl"><em class="c8">仓号：</em>19</span>
+                    <span><em class="c8">2018年6月1日—2018年8月1日</em></span>
+                    <span class="fr"><em class="c8">单位：</em>公斤</span>
+                </li>
+            </ul>
+            <table id="table2" lay-filter="demo" class="layui-hide">
+            </table>
+            <ul class="notice-ul">
+                <li>
+                    <span><em class="c8">复核：</em>仓储统计</span>
+                    <span class="ml30"><em class="c8">制表：</em>19仓保管员</span>
+                </li>
+            </ul>
+        </div>
+        <div style="display: none;" class="typeDiv">
+            <table id="table3" lay-filter="demo" class="layui-hide">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+    <a class="op-word" lay-event="detail">查看</a>
+</script>
+<script type="text/html" id="barDemo3">
+    <a class="op-word" lay-event="detail3">查看</a>
+</script>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+        // initTree();
+
+        initTable1();
+        form.on('select(type1)', function(data){
+            $(".typeDiv").hide().eq(data.elem.selectedIndex).show();
+            if(data.elem.selectedIndex === 2){
+                initTable2();
+            }
+            if(data.elem.selectedIndex === 3){
+                initTable3();
+            }
+        });
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            if(obj.event === 'detail'){
+                var param = {
+                    title: '粮油保管记账凭证',
+                    area:["900px","550px"],
+                    btn: ['关闭'],
+                    yes: function(index, layero){
+                        // TODO render表格
+
+                        layer.close(index);
+                    },
+                    end: function(){
+
+                    }
+                };
+                //传值给子窗口 确定被选的值
+                // var code = $("#code").val();
+                var content = 'storageSuperviseLayer1.html?id=';
+                param.content = content;
+                param.success = function(){
+                    //设置选中行数
+                }
+
+                var upgradeLayer = $.layerFrame02(param);
+            }
+            if(obj.event === 'detail3'){
+                var param = {
+                    title: '损益单明细',
+                    area:["900px","600px"],
+                    btn: ['关闭'],
+                    yes: function(index, layero){
+                        // TODO render表格
+
+                        layer.close(index);
+                    },
+                    end: function(){
+
+                    }
+                };
+                //传值给子窗口 确定被选的值
+                // var code = $("#code").val();
+                var content = 'storageSuperviseLayer2.html?id=';
+                param.content = content;
+                param.success = function(){
+                    //设置选中行数
+                }
+
+                var upgradeLayer = $.layerFrame02(param);
+            }
+
+        });
+
+    });
+    function initTable1() {
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": i + 1,
+                "name2": "稻谷",
+                "name3": "自治区储备粮",
+                "name4": "一等",
+                "name5": "自治区人民政府",
+                "name6": "入库",
+                "name7": "999kg",
+                "name8": "仓内散储",
+                "name9": "直储",
+                "name10": "人工入仓",
+                "name11": "XXXXXX"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/grainReverseSupervise/storageSupervise1.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1', title: '货位编号'},
+                {field: 'name2', title: '粮油品种'},
+                {field: 'name3', title: '粮油性质'}
+                ,{field: 'name4', title: '粮油等级'}
+                ,{field: 'name5', title: '粮权归属'}
+                ,{field: 'name6', title: '业务类型'}
+                ,{field: 'name7', title: '实际数量'}
+                ,{field: 'name8', title: '存储方式'}
+                ,{field: 'name9', title: '管理方式'}
+                ,{field: 'name10', title: '入仓方式'}
+                ,{field: 'name11', title: '保管员'}
+                ,{field: 'op', title: '操作', toolbar: '#barDemo'}
+            ]]
+        });
+    }
+    function initTable2() {
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": '稻谷',
+                "name2": "XX",
+                "name3": "XX",
+                "name4": "XX",
+                "name5": "XX",
+                "name6": "XX",
+                "name7": "XX",
+                "name8": "XX",
+                "name9": "XX",
+                "name10": "XX"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table2'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/grainReverseSupervise/storageSupervise2.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1',rowspan: '2', title: '品名'},
+                {field: 'name2',rowspan: '2', title: '单位'},
+                {field: 'name3',rowspan: '2', title: '上期结存'}
+                ,{colspan: '3', title: '收入'}
+                ,{colspan: '3', title: '支出'}
+                ,{field: 'name4',rowspan: '2', title: '结存'}
+            ],
+                [
+                {field: 'name5', title: '购进'},
+                {field: 'name6', title: '移入'},
+                {field: 'name7', title: '溢余'}
+                ,{field: 'name8', title: '销出'}
+                ,{field: 'name9', title: '移出'}
+                ,{field: 'name10', title: '损耗损失'}
+            ]]
+        });
+    }
+    function initTable3() {
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": '稻谷',
+                "name2": "XX",
+                "name3": "XX",
+                "name4": "XX",
+                "name5": "XX",
+                "name6": "XX",
+                "name7": "XX",
+                "name8": "XX"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table3'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/grainReverseSupervise/storageSupervise3.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1', title: '粮油品种'},
+                {field: 'name2', title: '粮油性质'},
+                {field: 'name3', title: '损益类型'}
+                ,{field: 'name4', title: '经营类型'}
+                ,{field: 'name5', title: '损益数量'}
+                ,{field: 'name6', title: '自然实际损耗量'}
+                ,{field: 'name7', title: '水分实际损耗量'}
+                ,{field: 'name8', title: '杂质实际损耗量'}
+                ,{field: 'op', title: '操作', toolbar: '#barDemo3'}
+            ]]
+        });
+    }
+    function selectLink() {
+        var param = {
+            area:["700px","350px"],
+            // shade: 0.1,
+            shadeClose: true
+        };
+        param.content = '<div style="margin-left: 20px;margin-top: 15px;">\n' +
+            '    <a class="supervise-link" href="storageSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon1"></i>\n' +
+            '        <p>库存监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="qualitySSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon2"></i>\n' +
+            '        <p>质量监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="inAndOutSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon3"></i>\n' +
+            '        <p>移库监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="changeSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon4"></i>\n' +
+            '        <p>粮油性质变更监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="statusSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon5"></i>\n' +
+            '        <p>粮情监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="iOSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon6"></i>\n' +
+            '        <p>出入库监管</p>\n' +
+            '    </a>\n' +
+            '</div>';
+        $.layerContent02(param);
+    }
+
+</script>
+</body>
+</html>

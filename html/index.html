@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- bootstrap    -->
+    <link rel="stylesheet" href="../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plug-in/laydate/theme/default/laydate.css">
+    <script src="../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../resource/common_js/tabScroll.js"></script>
+    <!-- 日历插件 -->
+    <script src="../plug-in/laydate/laydate.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../resource/css/style.css">
+
+    <script type="text/javascript">
+        Index = function() {
+            this.tabScroll = null;
+            this.zTreeObj = null;
+
+            this.init = function() {
+                //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+                layer.config({
+                    extend: 'myskin/style.css', //加载您的扩展样式
+                    skin: 'layer-ext-myskin no-padding'
+                });
+                var options = {
+                    ul: $("#indexSlide>ul"),
+                    leftArrow: $(".left-arrow"),
+                    rightArrow: $(".right-arrow"),
+                };
+                this.tabScroll = $("#indexSlide").tabScroll(options);
+                this.tabScroll.ifScroll();
+                laydate.render({
+                    elem: '#calendar',
+                    // theme: 'molv',
+                    position: 'static',
+                    mark: {
+                        '0-10-14': '',
+                        '0-12-31': '' //每年的日期
+                            ,
+                        '0-0-10': '工资' //每月某天
+                            ,
+                        '0-0-15': '',
+                        '2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+                            ,
+                        '2099-10-14': ''
+                    }
+                });
+                //如果不需要日历下的按钮
+                //$("#calendar").addClass("no-foot");
+            }
+            this.initTree = function() {
+                // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+                var setting = {
+                    data: { //这里不动
+                        simpleData: {
+                            enable: true,
+                            idKey: "id",
+                            pidKey: "pId",
+                            rootPid: '-1'
+                        }
+                    },
+                    check: {
+                        enable: true, //这里设置是否显示复选框
+                        chkboxType: {
+                            "Y": "",
+                            "N": ""
+                        } //设置复选框是否与 父/子 级相关联
+                    },
+                    callback: {
+                        onCheck: zTreeOnCheck //点击复选框相关回调（回调名称固定）
+                            // beforeCheck : function(treeId, treeNode) {      //选择复选框前相关回调
+                            //     if (treeNode.isParent) {
+                            //         if(treeNode.myAttr !== "1"){ //判断是否是需要显示复选框的节点
+                            //             treeNode.nocheck = true;   //设置复选框不显示
+                            //         }
+                            //         return false;
+                            //     }
+                            //  }
+                    }
+                };
+                // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+                var zNodes = [{
+                    name: "日常办公",
+                    open: true,
+                    nocheck: true,
+                    children: [{
+                        name: "个人办公",
+                        open: true,
+                        nocheck: true,
+                        children: [{
+                            name: "档案管理",
+                            icon: "../resource/images/tree_ico01.png"
+                        }, {
+                            name: "用工申请",
+                            icon: "../resource/images/tree_ico02.png"
+                        }, ]
+                    }, {
+                        name: "内部服务",
+                        open: true,
+                        nocheck: true,
+                        children: [{
+                            name: "新建工程",
+                            icon: "../resource/images/tree_ico03.png"
+                        }, {
+                            name: "文档管理",
+                            icon: "../resource/images/tree_ico04.png"
+                        }, {
+                            name: "人事管理",
+                            icon: "../resource/images/tree_ico05.png"
+                        }]
+                    }]
+                }];
+                var $dom = $(".layui-layer-content .left-pop-menu").find("ul");
+                $dom.attr("id", "menuTreeDemo");
+                this.zTreeObj = $.fn.zTree.init($dom, setting, zNodes);
+            }
+        }
+        var index = new Index();
+
+        $(function() {
+                index.init();
+            })
+            /**
+             * 快捷菜单选择弹框
+             * @param  {[type]}  
+             * @return {[type]}     
+             */
+        function openMenuChoose() {
+            var param = {
+                area: ["865px", "510px"],
+                success: function() {
+                    // 初始化树
+                    index.initTree();
+                    resizeTableScroll();
+                }
+            };
+            var content = $("#menuPop").html();
+            param.content = content;
+            var dispassLayer = $.layerContent02(param);
+        }
+        /**
+         * 调整菜单选择弹窗里的表格
+         * @param  {[type]}  
+         * @return {[type]}     
+         */
+        function resizeTableScroll() {
+            var $outer = $(".layui-layer-content .pop-table-outer");
+            var $table = $outer.find(">table");
+            $table.height() > $outer.height() ? $outer.addClass("scroll") : $outer.removeClass("scroll");
+        }
+        /**
+         * 删除快捷菜单
+         * @param  {[type]}  
+         * @return {[type]}     
+         */
+        function removeTr(target) {
+            //删除行
+            $(target).closest("tr").remove();
+            //调整表格
+            resizeTableScroll();
+            //置空左侧树对应的复选框  TODO
+
+        }
+        /**
+         * 树节点选择
+         * @param  {[type]}  
+         * @return {[type]}     
+         */
+        function zTreeOnCheck(zTree, treeId, treeNode) {
+            var $outer = $(".layui-layer-content .pop-table-outer");
+            var $table = $outer.find(">table");
+            if (treeNode.checked) {
+                //添加对应行
+                $table.append(['<tr>',
+                    '                            <td>3</td>',
+                    '                            <td>新建流程</td>',
+                    '                            <td><img src="../resource/images/nav3.png" alt=""></td>',
+                    '                            <td><input class="input01 w60"></input></td>',
+                    '                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>',
+                    '                        </tr>'
+                ].join(""));
+            } else {
+                // 删除对应行
+                $table.find("tbody tr:last-child").remove();
+            }
+        }
+        /**
+         * 树对象公共操作方法
+         */
+        //全部展开
+        function openAll(id) {
+            var treeObj = $.fn.zTree.getZTreeObj(id);
+            treeObj.expandAll(true);
+        }
+
+        //全部收缩
+        function closeAll(id) {
+            var treeObj = $.fn.zTree.getZTreeObj(id);
+            treeObj.expandAll(false);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="head">
+        <div class="content"><img src="../resource/images/logo.png" alt=""></div>
+    </div>
+    <div class="content-bg">
+        <div class="content">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="fast-nav">
+                        <div class="nav-title">便捷导航</div>
+                        <div class="nav-content" id="indexSlide">
+                            <div class="left-arrow"></div>
+                            <div class="right-arrow"></div>
+                            <ul class="nav-slider">
+                                <li>
+                                    <img src="../resource/images/nav1.png">
+                                    <p>档案管理</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav2.png">
+                                    <p>用工申请</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav3.png">
+                                    <p>新建流程</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav4.png">
+                                    <p>文档管理</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav5.png">
+                                    <p>人事管理</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav6.png">
+                                    <p>人员考核</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav7.png">
+                                    <p>报销申请</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav7.png">
+                                    <p>报销申请</p>
+                                </li>
+                                <li>
+                                    <img src="../resource/images/nav7.png">
+                                    <p>报销申请</p>
+                                </li>
+                                <li class="nav-add">
+                                    <img src="../resource/images/nav_add.png" onclick="openMenuChoose();">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="user-info">
+                        <dl class="user-dl">
+                            <dt><img src="../resource/images/user_avater.png"></dt>
+                            <dd class="name">张立友</dd>
+                            <dd>区局综合管理部</dd>
+                            <dd><span class="btn common">个人设置</span><span class="btn common ml10">退出</span></dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <div class="user-remind">
+                            代办任务 <span>3</span> 未读通知 <span>6</span> 未读公告 <span>5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt20">
+                <div class="col-xs-8">
+                    <div class="index-middle">
+                        <div class="module-head">
+                            <a href="" class="title active">我的待办</a>
+                            <a href="" class="fr">>>更多</a>
+                        </div>
+                        <div class="module-table-outer">
+                            <table>
+                                <tr>
+                                    <td class="point-type01">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type01">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type02">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type02">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type03">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type03">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type03">采购合同审批流程（2017-10-17 15:38）</td>
+                                    <td>张三</td>
+                                    <td>截止日期：2018-1-5</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="entrance"><img src="../resource/images/extranet.png" class="mr10">外网门户</div>
+                    <div class="index-middle mt20" style="height: 260px;">
+                        <div class="module-head">
+                            <span><a href="" class="title active">公告栏</a><a href="" class="title">通知栏</a></span>
+                            <a href="" class="fr">>>更多</a>
+                        </div>
+                        <div class="module-table-outer">
+                            <table>
+                                <tr>
+                                    <td class="point-type04 cR">2018年关于端午放假的通知</td>
+                                    <td class="td-date">2018-02-17</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type04 cR">2018年关于端午放假的通知</td>
+                                    <td class="td-date">2018-02-17</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type04">2018年关于端午放假的通知</td>
+                                    <td class="td-date">2018-02-17</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type04">2018年关于端午放假的通知</td>
+                                    <td class="td-date">2018-02-17</td>
+                                </tr>
+                                <tr>
+                                    <td class="point-type04">2018年关于端午放假的通知</td>
+                                    <td class="td-date">2018-02-17</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="nav-title"><img src="../resource/images/wx.png">在线沟通</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt20">
+                <div class="col-xs-8">
+                    <div class="index-bottom">
+                        <div class="module-head">
+                            <a href="" class="title active">应用列表</a>
+                        </div>
+                        <ul class="application-list mt10">
+                            <li>
+                                <img src="../resource/images/application01.png">
+                                <p>人事管理系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application02.png">
+                                <p>行政管理系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application03.png">
+                                <p>财务管理系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application04.png">
+                                <p>办公自动化系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application05.png">
+                                <p>党建管理系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application06.png">
+                                <p>仓储管理系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application07.png">
+                                <p>绩效考核系统</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application08.png">
+                                <p>社会服务</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application09.png">
+                                <p>信用管理</p>
+                            </li>
+                            <li>
+                                <img src="../resource/images/application10.png">
+                                <p>日常办公</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="index-bottom" id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index-conpyright"><img src="../resource/images/copyright.png">Copyright© 2018 广西粮食局 | 桂ICP证040922号 技术支持：深圳天源迪科</div>
+    <div id="menuPop" style="position: relative;margin-bottom: 200px;background: #fff;display: none;">
+        <div class="left-pop-menu">
+            <div class="module-head"><a href="" class="title">菜单展示</a></div>
+            <div class="mt10">
+                <a class="tools-unfold" href="###" id="openAll" onclick="openAll('menuTreeDemo');">全部展开</a></li>
+                <a class="tools-all-fold" href="###" id="closeAll" onclick="closeAll('menuTreeDemo');">全部折叠</a>
+            </div>
+            <ul class="ztree"></ul>
+        </div>
+        <div class="right-pop-content">
+            <div class="module-head"><a href="" class="title w110">快捷菜单选择</a></div>
+            <div class="pop-table-outer">
+                <div class="table-head-fix">
+                    <table class="table01">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>菜单名称</th>
+                                <th>图片</th>
+                                <th>序列号</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <table class="table01">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>菜单名称</th>
+                            <th>图片</th>
+                            <th>序列号</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>档案管理</td>
+                            <td><img src="../resource/images/nav1.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>用工申请</td>
+                            <td><img src="../resource/images/nav2.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>新建流程</td>
+                            <td><img src="../resource/images/nav3.png" alt=""></td>
+                            <td><input class="input01 w60"></input>
+                            </td>
+                            <td><span class="btn common bgRed" onclick="removeTr(this);">删除</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tc pd10">
+                <span class="btn btn-browser w110">保存</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产申请</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <!--<script src="../js/jquery-1.9.0.min.js"></script>-->
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info .c-td{border-left: 1px solid #dcdcdc;text-align: center;}
+        .company-info td{overflow: visible;}
+        .input01{max-width: 100%;}
+        .textarea01{height: 220px;max-width: 100%;}
+        .inp_down{width: 100px;}
+        .h-div{display: none;}
+        .textarea02{width:98%;height:150px;padding:5px 10px;border:1px solid #dcdcdc;resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size: 14px;}
+        .input01:focus,.textarea02:focus {border-color: #55B813;background-color: #fafafa;color: #007465;}
+        .input03{width: 200px;line-height:30px;height:30px;padding:0 10px;border:1px solid #dcdcdc;background:#fff;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size: 14px;}
+        .input03:focus{border-color: #55B813;background-color: #fafafa;color: #007465;}
+    </style>
+    <script>
+    $(function(){
+        $("#inpd li").click(function(){
+            var id = $(this).data("id");
+            $(".h-div").hide();
+            $(id).show();
+        });
+        laydate.render({
+            elem: '#date'
+            ,range: true
+        });
+    });
+    $(function(){
+        $("#inpd01 li").click(function(){
+            var id = $(this).data("id");
+            $(".h-div").hide();
+            $(id).show();
+        });
+        laydate.render({
+            elem: '#date'
+            ,range: true
+        });
+    });
+</script>
+</head>
+<body>
+
+<div class="search-table clearfix mt15">
+    <table>
+        <tr>
+            <th width="240">卡片编号：</th>
+            <td><input type="text" class="input01" placeholder="自动生成"></td>
+            <th width="240">资产类型：</th>
+            <td>
+                <div class="inp_down">
+                    <input type="text" class="input01 w150" value="固定资产">
+                    <ul>
+                        <li>固定资产</li>
+                        <li>无形资产</li>
+                    </ul>
+                </div>
+            </td>
+            <th width="240">资产分类：</th>
+            <td>
+                <div class="inp_down" id="inpd">
+                    <input type="text" class="input01 w150" value="家具">
+                    <ul>
+                        <li data-id="#div1">家具</li>
+                        <li data-id="#div1">用具</li>
+                        <li data-id="#div1">动植物</li>
+                        <li data-id="#div2">通用设备</li>
+                        <li data-id="#div3">专用设备</li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div class="inp_down" id="inpd01">
+                    <input type="text" class="input01 w150" value="软件">
+                    <ul>
+                        <li data-id="#div4">软件</li>
+                        <li data-id="#div5">土地</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="table_outer bgFFF mt15 h-div" id="div1" style="display: block;">
+    <div class="table_search"><span class="title">新增资产</span></div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;">
+                    <span class="fl"><em class="c8">处室：</em>粮食局</span>
+                    <span class="fr"><em class="c8">日期：</em>2018年10月25日</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">资产卡片编号：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">资产类别：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">资产价值：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"><span style="margin-left: 5px">元</span></td>
+            </tr>
+            <tr>
+                <th colspan="2">使用人：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">资产品牌：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">取得日期：</th>
+                <td colspan="8"><input type="text" class="input01 layui-input w240" id="date"></td>
+            </tr>
+            <tr>
+                <th colspan="2">折旧状态：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">存放地点：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">备注：</th>
+                <td colspan="8"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="table_outer bgFFF mt15 h-div" id="div2">
+    <div class="table_search">
+        <span class="title">通用设备新增资产</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;">
+                    <span class="fl"><em class="c8">处室：</em>粮食局</span>
+                    <span class="fr"><em class="c8">日期：</em>2018年10月25日</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03"></td>
+                <th colspan="2">资产价值：</th>
+                <td colspan="3"><input type="text" class="input03"><span style="margin-left: 5px">元</span></td>
+            </tr>
+            <tr>
+                <th colspan="2">使用处室：</th>
+                <td colspan="3"><input type="text" class="input03"></td>
+                <th colspan="2">使用人：</th>
+                <td colspan="3"><input type="text" class="input03"> </td>
+
+            </tr>
+            <tr>
+                <th colspan="2">取得日期：</th>
+                <td colspan="8"><input type="text" class="input01 layui-input w240" id="date02"></td>
+
+            </tr>
+            <tr>
+                <th colspan="2">折旧状态：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">存放地点：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">车牌号：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">车辆用途：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">品牌：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">合计：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">备注</th>
+                <td colspan="8"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="table_outer bgFFF mt15 h-div" id="div3">
+    <div class="table_search"><span class="title">专用设备新增资产</span></div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;">
+                    <span class="fl"><em class="c8">处室：</em>粮食局</span>
+                    <span class="fr"><em class="c8">日期：</em>2018年10月25日</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">资产价值：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"><span style="margin-left: 5px">元</span></td>
+            </tr>
+            <tr>
+                <th colspan="2">使用处室：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">使用人：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+            </tr>
+            <tr>
+                <th colspan="2">取得日期：</th>
+                <td colspan="8"><input type="text" class="input01 layui-input w240" id="date03"></td>
+            </tr>
+            <tr>
+                <th colspan="2">折旧状态：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">存放地点：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">备注</th>
+                <td colspan="8"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="table_outer bgFFF mt15 h-div" id="div4">
+    <div class="table_search"><span class="title">软件新增资产</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;">
+                    <span class="fl"><em class="c8">处室：</em>粮食局</span>
+                    <span class="fr"><em class="c8">日期：</em>2018年10月25日</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2" >资产价值：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"><span style="margin-left: 5px">元</span></td>
+            </tr>
+            <tr>
+                <th colspan="2">使用处室：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">使用人：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+            </tr>
+            <tr>
+                <th colspan="2">取得日期：</th>
+                <td colspan="8"><input type="text" class="input01 layui-input w240" id="date04"></td>
+            </tr>
+            <tr>
+                <th colspan="2">资产数量：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"> </td>
+                <th colspan="2">存放地点：</th>
+                <td colspan="3" ><input type="text" class="input03" placeholder="请输入"></td>
+            </tr>
+            <tr>
+                <th colspan="2">备注</th>
+                <td colspan="8"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="table_outer bgFFF mt15 h-div" id="div5">
+    <div class="table_search">
+        <span class="title">土地新增资产</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;">
+                    <span class="fl"><em class="c8">处室：</em>粮食局</span>
+                    <span class="fr"><em class="c8">日期：</em>2018年10月25日</span>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">资产名称：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"></td>
+                <th colspan="2">资产价值：</th>
+                <td colspan="3"><input type="text" class="input03" placeholder="请输入"><span style="margin-left: 5px">元</span></td>
+            </tr>
+            <tr>
+                <th colspan="2">取得日期：</th>
+                <td colspan="8"><input type="text" class="input01 layui-input w240" id="date05"></td>
+            </tr>
+            <tr>
+                <th colspan="2">资产数量：</th>
+                <td colspan="2"><input type="text" class="input01" placeholder="请输入"> </td>
+                <th>面积：</th>
+                <td colspan="2" ><input type="text" class="input01" placeholder="请输入"></td>
+                <th>权属证号：</th>
+                <td colspan="2" ><input type="text" class="input01" placeholder="请输入"></td>
+
+            </tr>
+            <tr>
+                <th colspan="2">备注</th>
+                <td colspan="8"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="tc pd20">
+    <span class="btn border-btn w110">取消</span>
+    <span class="btn btn-browser w110 ml10">保存</span>
+    <span class="btn btn-browser w110 ml10">提交</span>
+</div>
+</body>
+</html>

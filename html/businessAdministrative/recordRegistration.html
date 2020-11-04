@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行政检查备案登记</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css" media="all">
+    <scRipt src="../../plug-in/jquery-1.10.2.min.js"></scRipt>
+    <scRipt src="../../resource/common_js/common.js"></scRipt>
+    <!-- layer弹窗 -->
+    <scRipt src="../../plug-in/layer/layer.js" type="text/javascRipt"></scRipt>
+    <scRipt src="../../plug-in/layer/layerExtend.js" type="text/javascRipt"></scRipt>
+    <!-- 日历插件 -->
+    <scRipt src="../../plug-in/laydate/laydate.js"></scRipt>
+    <!--bootstrap-->
+    <scRipt src="../../plug-in/bootstrap/js/bootstrap.min.js"></scRipt>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .input01,.textarea01{width: 90% !important}
+        .layui-upload-list{margin: 0!important;}
+    </style>
+</head>
+<body>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">行政检查备案登记</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <th width="150"><em class="cR">*</em>关联行政检查：</th>
+                <td colspan="3">
+                    <input class="input01 w_600" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+                    <span class="btn common ml10">选择</span>
+                </td>
+            </tr>
+            <tr>
+                <th><em class="cR">*</em>行政检查备案名称：</th>
+                <td colspan="3">
+                    <input class="input01 " />
+                </td>
+            </tr>
+            <col />
+            <col />
+            <col width="150"/>
+            <col />
+            <tr style="border-top: 1px solid #dcdcdc">
+                <th width="150"><em class="cR">*</em>单 位 名 称：</th>
+                <td><input class="input01 " /></td>
+                <th width="150"><em class="cR">*</em>审 批 号：</th>
+                <td>
+                    <input class="input01" placeholder="自动生成" style="width: 75%!important;"/>
+                    <span class="c6 ml10">自动生成</span>
+                </td>
+            </tr>
+            <tr>
+                <th><em class="cR">*</em>紧 急 程 度</th>
+                <td ><input class="input01 " /></td>
+                <!--<th></th>-->
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th><em class="cR">*</em>检查小组名单：</th>
+                <td colspan="3"><input name="" class="input01 " ></td>
+            </tr>
+            <tr>
+                <th><em class="cR">*</em>违法违规情况：</th>
+                <td colspan="3">
+                    <label><input type="checkbox" name="checkbox" class="checkbox01 mr5">违规</label>
+                    <label class="ml15"><input type="checkbox" name="checkbox" class="checkbox01 mr5">违法</label>
+                </td>
+            </tr>
+            <tr>
+                <th>检 查 笔 录：</th>
+                <td colspan="3">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn layui-btn-normal layui-btn-sm" id="testList">上传</button>
+                        <div class="layui-upload-list">
+                            <!--<table class="layui-table">-->
+                            <!--<thead>-->
+                            <!--<tr><th>文件名</th>-->
+                            <!--<th>大小</th>-->
+                            <!--<th>状态</th>-->
+                            <!--<th>操作</th>-->
+                            <!--</tr></thead>-->
+                            <!--<tbody id="demoList"></tbody>-->
+                            <!--</table>-->
+                        </div>
+                        <!--<button type="button" class="layui-btn" id="testListAction">开始上传</button>-->
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <th><em class="cR">*</em>检 查 结 论：</th>
+                <td colspan="3"><textarea name="" class="textarea01 " ></textarea></td>
+            </tr>
+
+            <tr>
+                <th><em class="cR">*</em>下一步申请人：</th>
+                <td colspan="3">
+                    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">选择</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="tc pd20">
+    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm w100">提交</button>
+    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm ml10 w100">返回</button>
+</div>
+</body>
+<script src="../../plug-in/layui/layui.js"></script>
+<script>
+    layui.use('upload', function() {
+        var $ = layui.jquery
+            , upload = layui.upload;
+
+        //多文件列表示例
+        var demoListView = $('#demoList')
+            , uploadListIns = upload.render({
+            elem: '#testList'
+            , url: '/upload/'
+            , accept: 'file'
+            , multiple: true
+            , auto: false
+            , bindAction: '#testListAction'
+            , choose: function (obj) {
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function (index, file, result) {
+                    var tr = $(['<tr id="upload-' + index + '">'
+                        , '<td>' + file.name + '</td>'
+                        , '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>'
+                        , '<td>等待上传</td>'
+                        , '<td>'
+                        , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        , '</td>'
+                        , '</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function () {
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function () {
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+
+                    demoListView.append(tr);
+                });
+            }
+            , done: function (res, index, upload) {
+                if (res.code == 0) { //上传成功
+                    var tr = demoListView.find('tr#upload-' + index)
+                        , tds = tr.children();
+                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                    tds.eq(3).html(''); //清空操作
+                    return delete this.files[index]; //删除文件队列已经上传成功的文件
+                }
+                this.error(index, upload);
+            }
+            , error: function (index, upload) {
+                var tr = demoListView.find('tr#upload-' + index)
+                    , tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+        });
+    });
+
+</script>
+</html>

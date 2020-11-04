@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目建设和维修进展归集</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/font/dtreefont.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+    <style>
+        .tree {
+            /* display: none; */
+            z-index: 999;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 9px 32px 0px rgba(196,204,233,0.72);
+            border-radius: 4px;
+            padding: 0 10px;
+            min-width: 400px;
+        }
+        .ztree{width: 100% !important}
+    </style>
+</head>
+<body class="bgF7">
+
+<div class="clearfix bgFFF ">
+    <form class="layui-form label-auto-width mt15" action="" lay-filter="example" style="margin: 0 10px;">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">填报单位：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title"  placeholder="" class="layui-input w240">
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline ml15">
+            <label class="layui-form-label">项目进度：</label>
+            <div class="layui-input-block">
+                <select name="interest" lay-filter="aihao" >
+                    <option value=""></option>
+                    <option value="0">1</option>
+                    <option value="1" selected="">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline ml15">
+            <label class="layui-form-label">项目名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title"  placeholder="" class="layui-input w240">
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline last-item">
+            <button class="layui-btn search-btn ml10" type="button" id="searchBtn">查询</button>
+        </div>
+    </form>
+</div>
+
+<div class="bgFFF mt15">
+    <div class="layui-row">
+        <div class="layui-col-md3">
+            <div class="pd20">
+                <div id="treePop" class="tree">
+                    <div style="max-height: 600px;overflow: auto;">
+                        <ul id="treeDemo" class="ztree" ></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md9">
+           <div class="pd20">
+               <div class="layui-card ">
+                   <div class="layui-card-body">
+                       <table id="table" lay-filter="demo" class="layui-hide">
+                       </table>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/html" id="barDemo">
+    <a class="op-word" href="collectionMaintenancedetail.html">查看</a>
+</script>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/layui.all.js"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.extend({
+        dtree: '../../plug-in/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    }).use(['form', 'layedit', 'laydate','table','element','upload','dtree'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,dtree = layui.dtree
+            ,laydate = layui.laydate;
+
+        // initTreeDown();
+        var myTree = dtree.render({
+            elem: "#treeDemo",
+            url: "../../resource/json/dataTree.json",
+            initLevel: 5,
+            line: true,  // 显示树线
+            nodeIconArray:{"3":{}},  // 自定扩展的二级非最后一级图标，从1开始
+            leafIconArray:{"11":"dtree-icon-location"},  // 自定义扩展的二级最后一级图标，从11开始
+            icon: ["3","11"], // 使用
+            skin: "laySimple"  // layui主题风格
+        });
+
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": "广西粮食局",
+                "name2": "项目维修进度归集",
+                "name3": "1259-1556-123",
+                "name4": "102,586平方",
+                "name5": "26562323",
+                "name6": "4156626",
+                "name7": "456",
+                "name8": "建设中",
+                "name9": "2019-10-10"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/projectConstruction/collectionMaintenance.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1', title: '填报单位'}
+                ,{field: 'name2', title: '项目名称'}
+                ,{field: 'name3', title: '项目编码'}
+                ,{field: 'name4', title: '计划建设规模'}
+                ,{field: 'name5', title: '当年建设仓容'}
+                ,{field: 'name6', title: '计划投资合计'}
+                ,{field: 'name7', title: '累计支出数'}
+                ,{field: 'name8', title: '项目形象进度呀'}
+                ,{field: 'name9', title: '填报时间'}
+                ,{field: 'op', title: '操作', toolbar: '#barDemo'}
+            ]]
+        });
+    });
+    function hideSelect() {
+        $("#treePop").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+</script>
+</html>

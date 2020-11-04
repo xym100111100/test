@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代储资格认定填报内容</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css" media="all">
+
+    <scRipt src="../../plug-in/jquery-1.10.2.min.js"></scRipt>
+    <scRipt src="../../resource/common_js/common.js"></scRipt>
+    <!-- layer弹窗 -->
+    <scRipt src="../../plug-in/layer/layer.js" type="text/javascRipt"></scRipt>
+    <scRipt src="../../plug-in/layer/layerExtend.js" type="text/javascRipt"></scRipt>
+    <!-- 日历插件 -->
+    <scRipt src="../../plug-in/laydate/laydate.js"></scRipt>
+    <!--bootstrap-->
+    <scRipt src="../../plug-in/bootstrap/js/bootstrap.min.js"></scRipt>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .layui-form-label{
+            width: 140px;
+        }
+        .layui-form-item{margin-bottom: 0!important;}
+    </style>
+
+    <scRipt>
+        $(function(){
+            //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+        });
+    </scRipt>
+</head>
+<body>
+<!--<p class="page-title">我的值班列表</p>-->
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15" style="margin-top: 10px">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <fieldset class="layui-elem-field">
+                    <div class="layui-field-box">
+                        <form class="layui-form " method="post">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>行政许可名称：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>行政许可类型：</label>
+                                    <div class="layui-input-inline">
+                                        <select >
+                                            <option value="0">政治部</option>
+                                            <option value="1">政治部</option>
+                                            <option value="2">政治部</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>单位名称：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">审批号：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>粮库总仓容：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>申请资格仓容：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>现存自治区储备粮数量：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>法定代表人：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>手机号码：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <scRipt type="text/html" id="toolbarDemo">
+                            <button type="button" class="layui-btn layui-btn-normal layui-btn-sm fr">
+                                <i class="layui-icon">&#xe654;</i>
+                                添加附件
+                            </button>
+                        </scRipt>
+                        <scRipt type="text/html" id="barDemo">
+                            <a class="layui-btn layui-btn-xs" lay-event="edit">预览</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" >删除</a>
+                            <a class="layui-btn layui-btn-normal layui-btn-xs" >下载</a>
+                        </scRipt>
+                        <table class="table01">
+                            <thead>
+                            <tr>
+
+                                <th>材料名称</th>
+                                <th>材料必要性</th>
+                                <th width="200">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td>XXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>XXXXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td>XXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                                <td>
+                                    <a class="btn common">下载</a>
+                                    <a class="btn common bgRed">删除</a>
+                                    <a class="btn common bgLightG">预览</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <form class="layui-form mt20" method="post">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>审批意见：</label>
+                                    <div class="layui-input-inline" style="width: 300px">
+                                        <input type="text" class="layui-input w240" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>下一步审批人：</label>
+                                    <div class="layui-input-inline">
+                                        <textarea class="layui-input "></textarea>
+                                    </div>
+                                    <div class="layui-input-inline">
+                                        <button type="button" class="layui-btn layui-btn-normal ">下一步审批人</button>
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"><em class="cR">*</em>紧急程度：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<scRipt src="../../plug-in/layui/layui.js" charset="utf-8"></scRipt>
+<scRipt>
+    layui.use(['form', 'layedit', 'laydate','layer','element','table'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element                //nav需要
+            ,laydate = layui.laydate;
+
+        //年选择器
+        laydate.render({
+            elem: '#test2'
+            ,type: 'year'
+        });
+
+        //监听单元格编辑
+        table.on('edit(test2)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+        });
+        //静态方法使用转换
+        table.init('table01', {
+            toolbar: '#toolbarDemo'
+            ,totalRow: true
+            // ,height: "full-325" //容器高度最大化
+            // ,toolbar: "#toolbar"    //工具栏
+            // ,limit: 10              //每页条数
+            // ,text: {
+            //     none: '暂无相关数据' //默认：无数据。
+            // }
+            // ,skin: 'line' //无边框风格
+            // ,even: true //开启隔行背景
+            // ,size: 'lg' //小尺寸的表格
+            // ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+            //     layout: ['count', 'prev', 'page', 'next'] //自定义分页布局
+            //     // ,groups: 1 //只显示 1 个连续页码
+            //     // ,first: false //不显示首页
+            //     // ,last: false //不显示尾页
+            //     ,limit: false //不显示每页条数选择
+            //     ,skip: false //不显示跳转页面
+            //     ,prev: '上一页'
+            //     ,next: '下一页'
+            //     ,first: '首页'
+            //     ,last: '尾页'
+            //
+            // }
+        });
+
+
+        // table.render({
+        //     elem: '#test-table-toolbar'
+        //     // ,url: layui.setter.base + 'json/table/demo.js'
+        //     ,toolbar: '#test-table-toolbar-toolbarDemo'
+        //     ,title: '用户数据表'
+        //     ,cols: [[
+        //         {type: 'checkbox', fixed: 'left'}
+        //         ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
+        //         ,{field:'username', title:'用户名', width:120, edit: 'text'}
+        //         ,{field:'email', title:'邮箱', width:150, edit: 'text'}
+        //         ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
+        //         ,{field:'city', title:'城市', width:100}
+        //         ,{field:'sign', title:'签名'}
+        //         ,{field:'experience', title:'积分', width:80, sort: true}
+        //         ,{field:'ip', title:'IP', width:120}
+        //         ,{field:'logins', title:'登入次数', width:100, sort: true}
+        //         ,{field:'joinTime', title:'加入时间', width:120}
+        //         ,{fixed: 'right', title:'操作', toolbar: '#test-table-toolbar-barDemo', width:150}
+        //     ]]
+        //     ,page: true
+        // });
+
+        //头工具栏事件
+        // table.on('toolbar(test-table-toolbar)', function(obj){
+        //     var checkStatus = table.checkStatus(obj.config.id);
+        //     switch(obj.event){
+        //         case 'getCheckData':
+        //             var data = checkStatus.data;
+        //             layer.alert(JSON.stringify(data));
+        //             break;
+        //         case 'getCheckLength':
+        //             var data = checkStatus.data;
+        //             layer.msg('选中了：'+ data.length + ' 个');
+        //             break;
+        //         case 'isAll':
+        //             layer.msg(checkStatus.isAll ? '全选': '未全选');
+        //             break;
+        //     };
+        // });
+
+        //监听行工具事件
+
+        // });  table.on('tool(test-table-toolbar)', function(obj){
+        //     var data = obj.data;
+        //     if(obj.event === 'del'){
+        //         layer.confirm('真的删除行么', function(index){
+        //             obj.del();
+        //             layer.close(index);
+        //         });
+        //     } else if(obj.event === 'edit'){
+        //         layer.prompt({
+        //             formType: 2
+        //             ,value: data.email
+        //         }, function(value, index){
+        //             obj.update({
+        //                 email: value
+        //             });
+        //             layer.close(index);
+        //         });
+        //     }
+
+
+    });
+</scRipt>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息录入</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- bootstrap-fileupload上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- codemirror编辑器 -->
+    <script src="../../plug-in/codemirror/lib/codemirror.js"></script>
+    <script src="../../plug-in/codemirror/mode/sql/sql.js"></script>
+    <script src="../../plug-in/codemirror/addon/hint/show-hint.js" type="text/javascript"></script>
+    <script src="../../plug-in/codemirror/addon/hint/sql-hint.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../plug-in/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/theme/idea.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info li{margin: 5px 0;}
+        .krajee-default .file-caption-info, .krajee-default .file-size-info{height: auto;}
+        .krajee-default.file-preview-frame .kv-file-content {width: 180px;height: 120px;}
+        .company-info td{overflow: visible;}
+        .CodeMirror{border: 1px solid #dcdcdc;}
+    </style>
+    <script>
+        $(function(){
+            $("#notice").click(function(){
+                $("#noticeH").show();
+            });
+            $("#notice").siblings().click(function(){
+                $("#noticeH").hide();
+            });
+            $("#custom").click(function(){
+                $(".custom-hide").show();
+            });
+            $("#custom").siblings().click(function(){
+                $(".custom-hide").hide();
+            });
+            file();
+            var myTextarea = document.getElementById('code');
+            var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+                mode: "text/x-mysql",
+                ndentWithTabs: true,
+                smartIndent: true,
+                lineNumbers: true,
+                matchBrackets : true,
+                autofocus: true,
+                extraKeys: {"Ctrl-/": "autocomplete"},
+                hintOptions: {
+                    tables: {
+                        users: ["name", "score", "birthDate"],
+                        countries: ["name", "population", "size"]
+                    }
+                },
+                theme: "idea"
+            });
+        });
+        /**
+         * 文件上传初始化
+         * @return {[type]} [description]
+         */
+        function file(){
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['png','jpg'],//接收的文件后缀
+                theme: 'explorer',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                // maxFileCount:1, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+        }
+        /**
+         * 删除一行
+         * @param  {[type]} obj [description]
+         * @return {[type]}     [description]
+         */
+        function delLi(obj){
+            $(obj).closest("li").remove();
+        }
+        /**
+         * 添加一行
+         * @param {[type]} obj [description]
+         */
+        function addLi(obj){
+            var html = ['<li>',
+'                                <input type="text" class="input01 w200">',
+'                                <div class="inp_down ml10">',
+'                                    <input type="text" class="input01" value="严重">',
+'                                    <ul>',
+'                                        <li>严重</li>',
+'                                        <li>一般</li>',
+'                                    </ul>',
+'                                </div>',
+'                                <span class="reduce ml30" onclick="delLi(this);"></span><span class="plus ml30" onclick="addLi(this);"></span>',
+'                            </li>'].join("");
+            $(obj).after(html);
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">仪表盘管理<a href="dashboardManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">仪表盘管理</span></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="150">仪表盘编码：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                    <th width="150">仪表盘名称：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                </tr>
+                <tr>
+                    <th>仪表盘定义：</th>
+                    <td><label><input type="radio" name="r1" class="radio01" checked="checked">预定义</label><label class="ml30" id="custom"><input type="radio" name="r1" class="radio01">自定义</label></td>
+                    <th>仪表盘URL：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                </tr>
+                <tr class="custom-hide" style="display: none;">
+                    <th>仪表盘SQL：</th>
+                    <td colspan="3"><textarea class="textarea01" id="code"></textarea></td>
+                </tr>
+                <tr class="custom-hide" style="display: none;">
+                    <th>仪表盘类型：</th>
+                    <td colspan="3"><label><input type="radio" name="r2" class="radio01" checked="checked">饼图</label><label class="ml30"><input type="radio" name="r2" class="radio01">折线图</label><label class="ml30"><input type="radio" name="r2" class="radio01">柱状图</label><label class="ml30"><input type="radio" name="r2" class="radio01">仪表盘</label><label class="ml30" id="notice"><input type="radio" name="r2" class="radio01">通知类</label></td>
+                </tr>
+                <tr style="display: none;" id="noticeH">
+                    <th>仪表盘内容：</th>
+                    <td colspan="3">
+                        <ul>
+                            <li>
+                                <input type="text" class="input01 w200">
+                                <div class="inp_down ml10">
+                                    <input type="text" class="input01" value="严重">
+                                    <ul>
+                                        <li>严重</li>
+                                        <li>一般</li>
+                                    </ul>
+                                </div>
+                                <span class="reduce ml30" onclick="delLi(this);"></span><span class="plus ml30" onclick="addLi(this);"></span>
+                            </li>
+                            <li>
+                                <input type="text" class="input01 w200">
+                                <div class="inp_down ml10">
+                                    <input type="text" class="input01" value="严重">
+                                    <ul>
+                                        <li>严重</li>
+                                        <li>一般</li>
+                                    </ul>
+                                </div>
+                                <span class="reduce ml30" onclick="delLi(this);"></span><span class="plus ml30" onclick="addLi(this);"></span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>仪表盘描述：</th>
+                    <td colspan="3"><textarea class="textarea01"></textarea></td>
+                </tr>
+                <tr>
+                    <th>仪表盘预览：</th>
+                    <td colspan="3">
+                        <form enctype="multipart/form-data">
+                            <div class="file-loading">
+                                <!-- <label>Preview File Icon</label> -->
+                                <input id="file" type="file" multiple>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd10 mt20">
+        <span class="btn btn-browser w110">保存</span>
+    </div>
+</body>
+</html>

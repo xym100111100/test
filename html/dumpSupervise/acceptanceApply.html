@@ -1,0 +1,202 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>转储监管-验收申请管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date',
+                type: 'year'
+            });
+             //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+
+        });
+        /**
+         * 上传
+         * @return {[type]} [description]
+         */
+        function upload(obj){
+            var param = {
+                area:["700px","500px"],
+                success: function(){
+                },
+                yes: function(index, layero){
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = ['<div class="mt10"><table class="company-info" style="font-size:14px;">',
+'                <th width="150">验收申请报告：</th>',
+'                <td>',
+'                    <input type="file" style="display: none;" class="hide-file" data-id="#fileName1" id="file1" onchange="showName(this);"/>',
+'                    <div><button type="button" class="btn btn-browser" onclick="$(\'#file1\').click();" ><span class="glyphicon glyphicon-open mr10"></span>上传</button><span class="ml30" id="fileName1"></span></div>',
+'                    <p class="c8">支持扩展名：.doc .docx </p>',
+'                </td>',
+'            </tr>',
+'            <tr>',
+'                <th>验收申请表：</th>',
+'                <td>',
+'                    <input type="file" style="display: none;" class="hide-file" data-id="#fileName2" id="file2" onchange="showName(this);" />',
+'                    <div><button type="button" onclick="$(\'#file2\').click();" class="btn btn-browser"><span class="glyphicon glyphicon-open mr10"></span>上传</button><span class="ml30" id="fileName2"></span></div>',
+'                    <button type="button" class="btn btn-browser mt10"><span class="glyphicon glyphicon-save mr10"></span>下载</button>',
+'                    <p class="c8">支持扩展名：.doc .docx </p>',
+'                </td>',
+'            </tr>',
+'            <tr>',
+'                <th>当地验收情况表：</th>',
+'                <td>',
+'                    <input id="lefile" type="file" style="display: none;" class="hide-file" data-id="#fileName3" id="file3" onchange="showName(this);"/>',
+'                    <div><button type="button" onclick="$(\'#file3\').click();" class="btn btn-browser"><span class="glyphicon glyphicon-open mr10"></span>上传</button><span class="ml30" id="fileName3"></span></div>',
+'                    <button type="button" class="btn btn-browser mt10"><span class="glyphicon glyphicon-save mr10"></span>下载</button>',
+'                    <p class="c8">支持扩展名：.doc .docx </p>',
+'                </td>',
+'            </tr>',
+'        </table></div>'].join("");
+            param.content = content;
+            var areaLayer = $.layerContent(param);
+        }
+        /**
+         * 显示上传文件名
+         * @param  {[type]} obj [description]
+         * @return {[type]}     [description]
+         */
+        function showName(obj){
+            var id = $(obj).data("id");
+            $(id).html($(obj).val());
+        }
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">转储监管-验收申请管理</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">名称：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">年度：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">验收申请列表</span>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th>验收单位名称</th>
+                        <th>归属市</th>
+                        <th>归属县/区</th>
+                        <th>年度</th>
+                        <th>上报状态</th>
+                        <th>上报时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXX企业</td>
+                        <td>南宁市</td>
+                        <td>青秀区</td>
+                        <td>2017</td>
+                        <td>已上报</td>
+                        <td>2016-09-21</td>
+                        <td><a class="btn common" href="applyDetail.html">查看申请资料</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXX企业</td>
+                        <td>南宁市</td>
+                        <td>青秀区</td>
+                        <td>2017</td>
+                        <td>未上报</td>
+                        <td></td>
+                        <td><a class="btn common bgG" href="#">催收上报</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXX企业</td>
+                        <td>南宁市</td>
+                        <td>青秀区</td>
+                        <td>2017</td>
+                        <td>未对接</td>
+                        <td></td>
+                        <td><a class="btn common bgRed" href="#" onclick="upload(this);">上传</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="uploadDiv" >
+        <table class="company-info">
+            <tr>
+                <th width="150">验收申请报告：</th>
+                <td>
+                    <input type="file" style="display: none;" class="hide-file" data-id="#fileName1" id="file1" onchange="showName(this);"/>
+                    <div><button type="button" class="upload-btn" onclick="$('#file1').click();" >上传</button><span class="ml30" id="fileName1"></span></div>
+                    <p class="c8">支持扩展名：.doc .docx </p>
+                </td>
+            </tr>
+            <tr>
+                <th>验收申请表：</th>
+                <td>
+                    <input type="file" style="display: none;" class="hide-file" data-id="#fileName2" id="file2" onchange="showName(this);" />
+                    <div><button type="button" onclick="$('#file2').click();" class="upload-btn">上传</button><span class="ml30" id="fileName2"></span></div>
+                    <button type="button" class="download-btn">下载</button>
+                    <p class="c8">支持扩展名：.doc .docx </p>
+                </td>
+            </tr>
+            <tr>
+                <th>当地验收情况表：</th>
+                <td>
+                    <input id="lefile" type="file" style="display: none;" class="hide-file" data-id="#fileName3" id="file3" onchange="showName(this);"/>
+                    <div><button type="button" onclick="$('#file3').click();" class="upload-btn">上传</button><span class="ml30" id="fileName3"></span></div>
+                    <button type="button" class="download-btn">下载</button>
+                    <p class="c8">支持扩展名：.doc .docx </p>
+                </td>
+            </tr>
+        </table>
+    </div> -->
+</body>
+</html>

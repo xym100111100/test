@@ -1,0 +1,235 @@
+$prev:'lsj';
+
+.#{$prev}_pr {
+    position: relative;
+}
+
+.#{$prev}-inputscore {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+
+    .layui-input {
+        width: 100%;
+        padding-right: 25px;
+        box-sizing: border-box;
+
+    }
+
+    &__right {
+        position: absolute;
+        right: 9px;
+        top: 0;
+        line-height: 30px;
+        font-size: 14px;
+        color: #B7B7B7;
+    }
+}
+
+.#{$prev}-layer-wrapper {
+    .layui-layer-content {
+        padding-top: 5px !important;
+    }
+}
+
+// 表头不换行
+.#{$prev}-table-header-wrap {
+    .layui-table-header .layui-table-cell {
+        height: auto;
+        white-space: normal;
+    }
+}
+
+.#{$prev}-title1 {
+    color: #1588C2;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 28px;
+    padding: 0 10px;
+}
+
+.#{$prev}-title2 {
+    color: #3BB6F0;
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 1;
+    padding: 0 10px;
+    display: inline-block;
+    border-left: 3px solid #3BB6F0;
+
+    &--dark {
+        color: #333;
+    }
+
+    &__wrapper {
+        padding: 10px 0 15px;
+
+    }
+
+    &__suffix {
+        // padding: 10px 0 15px;
+        color: #1588C2;
+        font-size: 14px;
+        float: right;
+    }
+}
+
+
+// 表单相关
+.#{$prev}-input-label {
+    width: 200px;
+}
+
+.#{$prev}-form-label2 {
+    width: 220px !important;
+    float: left;
+}
+
+.#{$prev}-input-block2 {
+    margin-left: 220px !important;
+    float: none !important;
+}
+
+.#{$prev}-input-block2__main {
+    margin-left: 150px !important;
+    margin-right: 80px !important;
+    float: none !important;
+}
+
+.#{$prev}-input-block2__right {
+    position: absolute;
+    right: 0;
+    top: 2px;
+}
+
+
+
+.#{$prev}-label-suffix {
+    padding: 0 5px;
+    line-height: 32px;
+}
+
+.#{$prev}-btn-suffix {
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.#{$prev}-table-dialog {
+    padding: 10px;
+}
+
+.#{$prev}-iconbtn {
+    width: 20px;
+    height: 20px;
+    background: #3BB6F0;
+    border-radius: 3px;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+
+    &--danger {
+        background-color: #f66;
+    }
+}
+
+
+.#{$prev}-form-label3 {
+    width: 130px !important;
+    float: left;
+}
+
+.#{$prev}-input-block3 {
+    margin-left: 130px !important;
+    float: none !important;
+}
+
+
+// 分数input
+.#{$prev}-inputscore {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+
+    .layui-input {
+        width: 100%;
+        padding-right: 25px;
+        box-sizing: border-box;
+
+    }
+
+    &__right {
+        position: absolute;
+        right: 9px;
+        top: 0;
+        line-height: 30px;
+        font-size: 14px;
+        color: #B7B7B7;
+    }
+}
+
+.#{$prev}-bolder {
+    font-weight: bolder;
+}
+
+.#{$prev}-word,
+.#{$prev}-word:hover {
+    color: #1588C2;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--success,
+.#{$prev}-word--success:hover {
+    color: #12B08D;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--success2,
+.#{$prev}-word--success2:hover {
+    color: #0EBA93;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--success3,
+.#{$prev}-word--success3:hover {
+    color: #6DD400;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--warning,
+.#{$prev}-word--warning:hover {
+    color: #FA6400;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--danger,
+.#{$prev}-word--danger:hover {
+    color: #e12f45;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--danger2,
+.#{$prev}-word--danger2:hover {
+    color: #F56868;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--info,
+.#{$prev}-word--info:hover {
+    color: #999;
+    text-decoration: none;
+    margin-right: 8px;
+}

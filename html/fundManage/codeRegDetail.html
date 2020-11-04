@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食质量安全追溯-库存识别代码</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- codemirror编辑器 -->
+    <script src="../../plug-in/codemirror/lib/codemirror.js"></script>
+    <script src="../../plug-in/codemirror/mode/xml/xml.js"></script>
+    <script src="../../plug-in/codemirror/addon/hint/show-hint.js" type="text/javascript"></script>
+    <script src="../../plug-in/codemirror/addon/hint/xml-hint.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../plug-in/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/theme/idea.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .CodeMirror{border: 1px solid #dcdcdc;}
+    </style>
+    <script>
+        $(function(){
+            var myTextarea = document.getElementById('code');
+            var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+                mode: "text/xml",
+                ndentWithTabs: true,
+                smartIndent: true,
+                lineNumbers: true,
+                matchBrackets : true,
+                autofocus: true,
+                extraKeys: {"Ctrl-/": "autocomplete"},
+                hintOptions: {
+                    tables: {
+                        users: ["name", "score", "birthDate"],
+                        countries: ["name", "population", "size"]
+                    }
+                },
+                theme: "idea"
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮食质量安全追溯-库存识别代码<a href="codeReg.html" class="fr border-btn w60">返回</a></p>
+    <div class="row mt15">
+        <div class="col-md-7">
+            <div class="table_outer bgFFF" style="min-height: 450px;">
+                <div class="table_search"><span class="title">库存识别代码</span></div>
+                <div class="pd20">
+                    <textarea id="code" class="textarea01">
+                        <? xml version="1.0" encoding="gb2312" ?>
+                        <note>
+                            <to>Tove</to>
+                            <from>Jani</from>
+                            <heading>Reminder</heading>
+                            <body>Don't forget me this weekend!</body>
+                        </note>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="table_outer bgFFF">
+                <div class="table_search"><span class="title">二维码</span></div>
+                <div class="pd20">
+                    <div class="tc">
+                        <img src="../../resource/images/qrcode.jpg" alt="" style="max-width: 100%;">
+                    </div>
+                    <div class="tc" style="margin: 30px 20px;">
+                        <p>二维码内容</p>
+                        <div style="border: 1px dashed #dcdcdc;padding: 20px 10px;margin-top: 10px;line-height: 1.6;">
+                            组织代码：301432656；货位代码：001006001003；货位封仓时间：201409020103；
+                            组织代码：301432656；货位代码：001006001003；货位封仓时间：201409020103；
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</html>

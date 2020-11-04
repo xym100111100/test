@@ -1,0 +1,17 @@
+
+/*分页*/
+.paging {
+    width: 100%;margin-top:20px;
+}
+/*pages样式		*/
+.pages{height:35px;overflow:hidden;width:650px;margin: 0 auto;}
+.pages ul{overflow:hidden;font-size:14px;}
+.pages li{float:left;display:inline-block;margin-right:5px;color:#222222;overflow:hidden;}
+.pages a{float:left;padding:0 12px;border:1px solid #CCCCCC;height:25px;line-height:25px;display:inline-block;color:#666666;}
+.pages a:hover{color:white;background: #55b813}
+.pages .pagego{border: 1px solid #ededed;width: 42px;height: 25px;text-align: center;}
+.pages span.disabled,.pages .disabled span{float:left;display:inline-block;height:25px;line-height:25px;border:1px solid #ededed;padding:0 12px;color:#767676;}
+.pages a.active,.pages li.active span,.pages li.active a,.pages li a.pagego_btn{background: #55b813;color:white;}
+.pages li.active span{display:inline-block;padding:0 12px;height:25px;line-height:25px;color:#fff;overflow:hidden;}
+.pages span.pageinfo{display:inline-block;height:25px;line-height:25px;border:0;padding-left:20px;}
+.pages span.pageinfo strong{display:inline-block;padding:0 3px;color:#b3b3b3;font-weight:normal;}

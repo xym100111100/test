@@ -1,0 +1,86 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 6,
+  "data":
+  [
+    {
+      "name1": "1号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    },
+    {
+      "name1": "2号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    },
+    {
+      "name1": "3号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    },
+    {
+      "name1": "4号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    },
+    {
+      "name1": "5号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    },
+    {
+      "name1": "6号厫间",
+      "name2": "XXXXXX",
+      "name3": "XXXXXX",
+      "name4": "自治区人民政府",
+      "name5": "XXXXXX",
+      "name6": "XXXXXX",
+      "name7": "1.39kg",
+      "name8": "59.70kg",
+      "name9": "49",
+      "name10": "53",
+      "name11": "2.41kg"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮油价格监测-环比同比</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            var xAxisData = ['1/2','2/3','3/4','4/5','5/6','6/7'];
+            var data = [-0.2, -0.5, 0, 0.3, 0.8, 0.5];
+            var options = [];
+            var lineColors = ['#5DD054','#6AA5E1'];
+            for(var i = 0 ; i < 2 ; i++){
+                var option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer:{
+                            lineStyle:{
+                                width:0
+                            }
+                        },
+                        // showContent:false
+                    },
+                    grid: {
+                        top: '30px',
+                        left: '15px',
+                        right: '30px',
+                        bottom: '15px',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            axisLine: {
+                                show: false,
+                                lineStyle: {
+                                    color:'#fff'
+                                }
+                            },
+                            axisLabel: {
+                                textStyle: {
+                                    color: '#222',//坐标值得具体的颜色
+                                }
+                            },
+                           data : xAxisData
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            splitNumber: 2,
+                            boundaryGap : false,
+                            max: 2,
+                            axisLine: {
+                                lineStyle: {
+                                    color:'#fff'
+                                }
+                            },
+                            axisLabel: {
+                                textStyle: {
+                                    color: '#222',//坐标值得具体的颜色
+
+                                }
+                            },
+                            splitLine:{
+                                show: true,
+                                lineStyle:{
+                                    color:'#ededed'         //网格分割线
+                                }
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            type:'line',
+                            symbolSize:10,
+                            hoverAnimation:false,
+                            // showSymbol:false,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top',
+                                    backgroundColor:lineColors[i],
+                                    color:'#fff',
+                                    padding:[6,9],
+                                    borderRadius:100
+                                }
+                            },
+                            lineStyle:{
+                                normal:{
+                                    color: lineColors[i]
+                                }
+                            },
+                            areaStyle: {
+                                normal: {
+                                    color: lineColors[i],
+                                    opacity: .3
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: lineColors[i]
+                                }
+                            },
+                            data: data
+                        }
+                    ]
+                };
+                options.push(option);
+            }
+            
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            var chart02 = echarts.init(document.getElementById('chart02'));
+            var chart03 = echarts.init(document.getElementById('chart03'));
+            var chart04 = echarts.init(document.getElementById('chart04'));
+            chart01.setOption(options[0]);
+            chart02.setOption(options[0]);
+            chart03.setOption(options[1]);
+            chart04.setOption(options[1]);
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮油价格监测<a href="priceTest.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="70">市：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>柳州市</li>
+                            <li>南宁市</li>
+                            <li>桂林市</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="120">县：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>XX县</li>
+                            <li>横县</li>
+                            <li>XXXX县</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="120">监测点：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>监测点1</li>
+                            <li>监测点2</li>
+                            <li>监测点3</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>品种：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>品种1</li>
+                            <li>品种2</li>
+                            <li>品种3</li>
+                        </ul>
+                    </div>
+                </td>
+                <th>价格类型：</th>
+                <td>
+                    <div class="inp_down">
+                        <input type="text" class="input01" placeholder="请选择">
+                        <ul>
+                            <li>类型1</li>
+                            <li>类型2</li>
+                            <li>类型3</li>
+                        </ul>
+                    </div>
+                </td>
+                <th colspan="2"><span class="search_btn01 mr20">查询</span></th>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12 mt15">
+            <div class="table_outer bgFFF">
+                <div class="table_search">
+                    <span class="title">环比</span>
+                </div>
+                <div id="chart01" style="height: 240px"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12 mt15">
+            <div class="table_outer bgFFF">
+                <div class="table_search">
+                    <span class="title">环比增长率</span>
+                </div>
+                <div id="chart02" style="height: 240px"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12 mt15">
+            <div class="table_outer bgFFF">
+                <div class="table_search">
+                    <span class="title">同比</span>
+                </div>
+                <div id="chart03" style="height: 240px"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12 mt15">
+            <div class="table_outer bgFFF">
+                <div class="table_search">
+                    <span class="title">同比增长率</span>
+                </div>
+                <div id="chart04" style="height: 240px"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+$prev:'lsjcc';
+
+.#{$prev}-clearfix {
+    zoom: 1;
+}
+
+.#{$prev}-clearfix:after {
+    clear: both;
+    content: '\20';
+    display: block;
+    height: 0;
+}
+
+.#{$prev}-layer-hidden {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.#{$prev}-layer-hidden .layui-layer-content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.#{$prev}-dialog {
+    // width: 100%;
+    height: 600px;
+    position: relative;
+    margin: 0 5px;
+    box-sizing: border-box;
+}
+
+.#{$prev}-dialog__side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 230px;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+}
+
+.#{$prev}-dialog__main {
+    margin-left: 235px;
+    background-color: #f8f8f8;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #e7e7e7;
+
+}
+
+.#{$prev}-dialog__side-tree {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 200px;
+    box-sizing: border-box;
+    overflow: auto;
+
+
+}
+
+.#{$prev}-dialog__side-btns {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    padding-top: 10px;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+
+}
+
+.#{$prev}-dialog__main-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0px;
+    box-sizing: border-box;
+    background-color: #333;
+}
+
+.#{$prev}-dialog__main-btns {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f8f8;
+    height: 45px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-align: center;
+
+    .#{$prev}-btn {
+        margin: 0 5px;
+    }
+}
+
+.#{$prev}-btn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-size: 100% 100%;
+    display: inline-block;
+
+    // 截图
+    &--screenshot {
+        background-image: url(../images/#{$prev}/screenshot.png);
+    }
+
+    // 音频
+    &--audio {
+        background-image: url(../images/#{$prev}/audio.png);
+    }
+
+    // 静音
+    &--mute {
+        background-image: url(../images/#{$prev}/mute.png);
+    }
+
+    // 全屏
+    &--fullscreen {
+        background-image: url(../images/#{$prev}/fullscreen.png);
+    }
+
+    // 播放
+    &--play {
+        background-image: url(../images/#{$prev}/play.png);
+    }
+
+    // 暂停
+    &--suspend {
+        background-image: url(../images/#{$prev}/suspend.png);
+    }
+
+}
+
+// 圆盘按钮
+.#{$prev}-discbtns {
+    margin: 0 auto;
+    width: 163px;
+    height: 163px;
+    background-size: 100% 100%;
+    background-image: url(../images/#{$prev}/disc.png);
+    position: relative;
+
+    &__btn1 {
+
+        cursor: pointer;
+        width: 18px;
+        height: 22px;
+        background-size: 100% 100%;
+        background-image: url(../images/#{$prev}/triangle_right.png);
+        display: inline-block;
+        position: absolute;
+
+        &.is-right {
+            transform: rotate(0);
+            top: 70px;
+            right: 15px;
+        }
+
+        &.is-left {
+            transform: rotate(180deg);
+            top: 70px;
+            left: 12px;
+        }
+
+        &.is-up {
+            transform: rotate(-90deg);
+            top: 14px;
+            left: 72px;
+        }
+
+        &.is-down {
+            transform: rotate(90deg); // 顺时针
+            bottom: 14px;
+            left: 72px;
+        }
+
+    }
+
+    &__btn2 {
+
+        cursor: pointer;
+        width: 24px;
+        height: 22px;
+        background-size: 100% 100%;
+        background-image: url(../images/#{$prev}/arrow_right.png);
+        display: inline-block;
+        position: absolute;
+
+        &.is-top-left {
+            transform: rotate(-135deg);
+            top: 28px;
+            left: 28px;
+        }
+
+        &.is-top-right {
+            transform: rotate(-45deg);
+            top: 28px;
+            right: 30px;
+        }
+
+        &.is-bottom-left {
+            transform: rotate(135deg);
+            bottom: 32px;
+            left: 28px;
+        }
+
+        &.is-bottom-right {
+            transform: rotate(45deg); // 顺时针
+            bottom: 32px;
+            right: 28px;
+        }
+
+    }
+
+    &__btn-stop {
+
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        background-size: 100% 100%;
+        background-image: url(../images/#{$prev}/stop.png);
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+}

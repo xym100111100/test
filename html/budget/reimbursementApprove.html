@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报销管理-流程查看</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            $(".radio-tr input[type=radio]").change(function(){
+                $(this).parent().index() == 0 ? $(this).closest("tr").next().show() : $(this).closest("tr").next().hide();
+            }); 
+            loadDiff();
+    	});
+        /**
+         * [loadDiff description]
+         * @return {[type]} [description]
+         */
+        function loadDiff(){
+            var types = ['差旅费报销单','公务卡、现金报销单','现金支出单','转账付款审批单','自制报销单'];
+            var index = getParam().index;
+            $("#tables .company-info").eq(index).show();
+            $("#type").html(types[index]);
+        }
+        function getParam(){
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+    </script>
+    <style>
+        .company-info .c-td{border-left: 1px solid #dcdcdc;text-align: center;}
+        .company-info td{overflow: visible;}
+        #tables .company-info{display: none;}
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">报销管理-流程查看<a href="reimbursementFlow.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">报销单号：</th>
+                <td>XXXXXX</td>
+                <th width="240">填报人：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="240">报销类型：</th>
+                <td id="type">差旅报销费</td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">报销单审批</span></div>
+        <div class="pd20" id="tables">
+            <table class="company-info">
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;padding-right: 20px;text-align: center;"><span class="fl"><em class="c8">单位：</em>XXXXXXXXXXXXX</span><span class="fr"><em class="c8">日期：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="140">姓名：</th>
+                    <td colspan="3">XXXXX</td>
+                    <th width="140">合计人数：</th>
+                    <td colspan="3">XXXXX</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <th>事由：</th>
+                    <td colspan="3">XXXXX</td>
+                    <th>出发地点：</th>
+                    <td colspan="3">从XXXXX 到 XXXX</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <th>出差日期：</th>
+                    <td colspan="7">从 2018 年 07 月 27 日 至  2018 年 08 月 08 日</td>
+                    <th rowspan="2" class="c-td">说明</th>
+                </tr>
+                <tr>
+                    <th>费别：</th>
+                    <th colspan="2" class="c-td">人数</th>
+                    <th colspan="2" class="c-td">天数</th>
+                    <th class="c-td">标准</th>
+                    <th colspan="2" class="c-td">金额</th>
+                </tr>
+                <tr>
+                    <th>伙食补助费：</th>
+                    <td colspan="2" class="c-td">XXXXX</td>
+                    <td colspan="2" class="c-td">XXXXX</td>
+                    <td class="c-td">100元/人天</td>
+                    <td class="c-td" colspan="2">XXXXX</td>
+                    <td class="c-td" rowspan="7"></td>
+                </tr>
+                <tr>
+                    <th>市内交通费：</th>
+                    <td colspan="2" class="c-td">XXXXX</td>
+                    <td colspan="2" class="c-td">XXXXX</td>
+                    <td class="c-td">80元/人天</td>
+                    <td class="c-td" colspan="2">XXXXX</td>
+                </tr>
+                <tr>
+                    <th>XXXX：</th>
+                    <td colspan="2" class="c-td"></td>
+                    <td colspan="2" class="c-td"></td>
+                    <td class="c-td"></td>
+                    <td class="c-td" colspan="2"></td>
+                </tr>
+                <tr>
+                    <th>车船、住宿费：</th>
+                    <td colspan="4">单据<span class="ml30">XXXX张</span></td>
+                    <th>单据金额合计：</th>
+                    <td colspan="2" class="c-td">XXXX</td>
+                </tr>
+                <tr>
+                    <th>合计（大写）：</th>
+                    <td colspan="4" class="c-td">XXXX</td>
+                    <th>合计：</th>
+                    <td colspan="2" class="c-td">XXXX</td>
+                </tr>
+                <tr>
+                    <th>预计资金来源：</th>
+                    <td colspan="7">XXXX</td>
+                </tr>
+                <tr>
+                    <th>预借款：</th>
+                    <td class="c-td">XXXX</td>
+                    <th>应缴金额：</th>
+                    <td class="c-td">XXXX</td>
+                    <th>应补金额：</th>
+                    <td class="c-td">XXXXX</td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td">XXXX</td>
+                </tr>
+                <tr>
+                    <th>结论：</th>
+                    <td colspan="8" class="radio-tr"><label><input type="radio" name="radio01" value="" class="radio05" checked="checked">同意</label><label class="ml30"><input type="radio" name="radio05" value="" class="radio01">驳回</label></td>
+                </tr>
+                <tr>
+                    <th>经济分类：</th>
+                    <td colspan="8"><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>分类1</li>
+                            <li>分类2</li>
+                        </ul>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td colspan="8"><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+            </table>
+            <table class="company-info">
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>部门：</th>
+                    <td colspan="4">XXXXXX</td>
+                    <th width="140">姓名：</th>
+                    <td colspan="3">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">报销事由：</th>
+                    <td colspan="8">XXXXXX</td>
+                </tr>
+                <tr>
+                    <td colspan="8">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th>报销单据：</th>
+                    <td colspan="7"><span class="ml30">合计金额（大写）：</span><span class="fr"><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                    <td class="c-td">￥</td>
+                </tr>
+                <tr>
+                    <th>预借款：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>应缴金额：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>应补金额：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td" colspan="2">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th>预计资金来源：</th>
+                    <td colspan="8">XXXXX</td>
+                </tr>
+                <tr>
+                    <th>结论：</th>
+                    <td colspan="8" class="radio-tr"><label><input type="radio" name="radio01" value="" class="radio01" checked="checked">同意</label><label class="ml30"><input type="radio" name="radio01" value="" class="radio01">驳回</label></td>
+                </tr>
+                <tr>
+                    <th>经济分类：</th>
+                    <td colspan="8"><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>分类1</li>
+                            <li>分类2</li>
+                        </ul>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td colspan="8"><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+            </table>
+            <table class="company-info">
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>部门：</th>
+                    <td colspan="4">XXXXXX</td>
+                    <th width="140">姓名：</th>
+                    <td colspan="3">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">报销事由：</th>
+                    <td colspan="8">XXXXXX</td>
+                </tr>
+                <tr>
+                    <td colspan="8">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th>报销单据：</th>
+                    <td colspan="7"><span class="ml30">合计金额（大写）：</span><span class="fr"><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                    <td class="c-td">￥</td>
+                </tr>
+                <tr>
+                    <th>预借款：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>应缴金额：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>应补金额：</th>
+                    <td class="c-td">XXXXXX</td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td" colspan="2">XXXXXX</td>
+                </tr>
+                <tr>
+                    <th>预计资金来源：</th>
+                    <td colspan="8">XXXXX</td>
+                </tr>
+                <tr>
+                    <th>结论：</th>
+                    <td colspan="8" class="radio-tr"><label><input type="radio" name="radio02" value="" class="radio01" checked="checked"同意</label><label class="ml30"><input type="radio" name="radio02" value="" class="radio01">驳回</label></td>
+                </tr>
+                <tr>
+                    <th>经济分类：</th>
+                    <td colspan="8"><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>分类1</li>
+                            <li>分类2</li>
+                        </ul>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td colspan="8"><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+            </table>
+            <table class="company-info">
+                <tr>
+                    <td colspan="3" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="3">收款单位：</th>
+                    <td class="c-td">全称</td>
+                    <td style="border-left: 1px solid #dcdcdc;">XXXX</td>
+                </tr>
+                <tr>
+                    <td class="c-td">账号</td>
+                    <td style="border-left: 1px solid #dcdcdc;">XXXX</td>
+                </tr>
+                <tr>
+                    <td class="c-td">开户行</td>
+                    <td style="border-left: 1px solid #dcdcdc;">XXXX</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">付款金额：</th>
+                    <td class="c-td">大写</td>
+                    <td style="border-left: 1px solid #dcdcdc;"><span><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                </tr>
+                <tr>
+                    <td class="c-td">小写</td>
+                    <td style="border-left: 1px solid #dcdcdc;">XXXX</td>
+                </tr>
+                <tr>
+                    <th>预计资金来源：</th>
+                    <td colspan="2">XXXXX</td>
+                <tr>
+                    <th>结论：</th>
+                    <td colspan="2" class="radio-tr"><label><input type="radio" name="radio03" value="" class="radio01" checked="checked">同意</label><label class="ml30"><input type="radio" name="radio03" value="" class="radio01">驳回</label></td>
+                </tr>
+                <tr>
+                    <th>经济分类：</th>
+                    <td colspan="2"><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>分类1</li>
+                            <li>分类2</li>
+                        </ul>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td colspan="2"><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+            </table>
+            <table class="company-info">
+                <tr>
+                    <th width="150">金额：</th>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <th>预算来源：</th>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <th>用途：</th>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <th width="150">结论：</th>
+                    <td class="radio-tr"><label><input type="radio" name="radio04" value="" class="radio01" checked="checked">同意</label><label class="ml30"><input type="radio" name="radio04" value="" class="radio01">驳回</label></td>
+                </tr>
+                <tr>
+                    <th>经济分类：</th>
+                    <td><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>分类1</li>
+                            <li>分类2</li>
+                        </ul>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th>意见：</th>
+                    <td><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd20">
+        <span class="btn border-btn w110">取消</span><span class="btn btn-browser w110 ml10">提交</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经营类型定制查询</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .table01 tbody tr:nth-child(even) {
+            background: #fff;
+        }
+        .table01 td {
+            line-height: 15px;
+            height: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding:  5px;
+            background: #fff;
+        }
+        .table01 tbody tr+tr {
+            border-color: #dcdcdc;
+        }
+        .table01 td+td {
+            border-left-color: #dcdcdc;
+        }
+        .table01 .bg{background: #f7f7f7}
+        .list_ul{
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 16px;
+        }
+        .list_ul li{
+            padding:10px 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .list_ul li:hover,.list_ul li.active{
+            background: #f7f7f7;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function(){
+            //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            // layer.config({
+            //     extend: 'myskin/style.css', //加载您的扩展样式
+            //     skin: 'layer-ext-myskin'
+            // });
+
+            laydate.render({
+                elem: '#date'
+            });
+
+        });
+    </script>
+</head>
+<body>
+<!--<p class="page-title"><img src="../../resource/images/page_title02.png">涉粮企业信息统计</p>-->
+
+<div class="mt10" style="position: relative;width: 100%;">
+    <div class="11" style="height: 100%;position: absolute;width: 340px;;">
+        <div class="table_outer bgFFF" style="height: 100%;min-height: 500px;">
+            <div class="table_search" style="padding-right: 15px;">
+                <span class="f18 c8">按企业主要经营类型作为统计维度</span>
+                <!--<input class="input01" type="text" placeholder="请输入关键字搜索" style="width: 160px;" id="nodeKeyword" onkeypress="inpPress();"><span class="search_btn01 ml15" style="width: 80px;padding-left: 35px;background-position: 10px;" onclick="zTreeKeyfilter();">查询</span>-->
+            </div>
+            <div style="padding: 10px;overflow: auto">
+                <ul class="list_ul">
+                    <li class="active">
+                        <a href="#">统计行政管理单位</a>
+                    </li>
+                    <li>
+                        <a href="#">统计粮油质检单位的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计粮油科研单位的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计粮油经营及加工单位数量</a>
+                    </li>
+                    <li>
+                        <a href="#">同级食用植物油及油料经营加工单位的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计中央储备粮承储的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计地方储备粮承储的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计粮油机械制造单位的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计粮油转化单位的数量</a>
+                    </li>
+                    <li>
+                        <a href="#">统计拥有粮食收购资格许可单位的数量</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="" style="margin-left: 360px;margin-right: 20px;">
+        <div class="table_outer bgFFF mt15">
+            <div class="search-table clearfix  ">
+                <table>
+                    <tr>
+                        <th width="150">统计范围：</th>
+                        <td>
+                            <select class="input01 w200">
+                                <option value="0">--请选择--</option>
+                                <option value="1">直报广西区粮食局单位</option>
+                            </select>
+                        </td>
+                        <th width="150">时间：</th>
+                        <td><input  class="input01 w200 layui-input" id="date"></td>
+                        <td>
+                            <a class="border-btn ml30" href="">生成报表</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding: 20px;">
+                <table class="table01 ">
+                    <thead>
+                    <tr>
+                        <th width="140">组织机构</th>
+                        <th width="100">粮油收储企业</th>
+                        <th>小麦粉加工企业</th>
+                        <th>大米加工企业</th>
+                        <th>其他成品粮加工企业</th>
+                        <th>食用植物油加工企业</th>
+                        <th >饲料企业</th>
+                        <th >养殖企业</th>
+                        <th>食品及副食酿造企业</th>
+                        <th >酒精企业</th>
+                        <th>制酒企业</th>
+                        <th > 淀粉企业</th>
+                        <th>粮油机械制造企业</th>
+                        <th>粮油批发市场</th>
+                        <th>非填报指标</th>
+                        <th width="50">超市</th>
+                        <th >其他粮油深加工企业</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="bg" style="color:#333;text-align: left">广西</td>
+                        <td>412</td>
+                        <td>5</td>
+                        <td>337</td>
+                        <td>0</td>
+                        <td>13</td>
+                        <td>105</td>
+                        <td>13</td>
+                        <td>21</td>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td  class="bg">直报广西区粮食局单位</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td  class="bg">南宁市</td>
+                        <td>29</td>
+                        <td>0</td>
+                        <td>61</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>41</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td  class="bg">柳州市</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>27</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>11</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">桂林市</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>51</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">梧州市</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">北海市</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">防城港市</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>7</td>
+                        <td>0</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">钦州市</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>7</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">贵港市</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>72</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>11</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">玉林市</td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>12</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>10</td>
+                        <td>6</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">百色市</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>15</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">贺州市</td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>12</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">河池市</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>9</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">来宾市</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>31</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">崇左市</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>23</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg">中储粮广西分公司</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

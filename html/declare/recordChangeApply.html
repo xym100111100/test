@@ -1,0 +1,279 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-19 14:17:10
+ * @LastEditTime: 2020-05-20 16:26:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \粮食二期_2020-05-12\html\declare\recordChangeApply.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <title>备案变更申请</title>
+        <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+        <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+        <script src="../../plug-in/layui/layui.all.js"></script>
+        <script src="../../resource/common_js/common.js"></script>
+        <!-- Echarts3 -->
+        <!-- <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script> -->
+        <!-- 日历插件 -->
+        <script src="../../plug-in/laydate/laydate.js"></script>
+        <!-- 自定义样式 -->
+        <link rel="stylesheet" href="../../resource/css/style.css">
+        <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+
+        <!-- 自定义样式 -->
+        <link rel="stylesheet" href="../../resource/css/info_pxy.css">
+        <link rel="stylesheet" href="../../resource/css/why.min.css">
+        <link rel="stylesheet" href="../../resource/css/ccwl.min.css">
+        <style>
+                .ccwls-page {
+                        /* width: 1200px; */
+                        padding: 20px 20px 20px;
+                        margin: 0 auto;
+                        box-sizing: border-box;
+                        /* background: #fff; */
+                }
+
+                .ccwls-formbox {
+                        margin-top: 20px;
+                }
+
+                .ccwls-btns {
+                        margin-top: 20px;
+                        text-align: center;
+                }
+
+                .ccwls-btns-2 {
+                        margin-bottom: 8px;
+                }
+
+                .ccwls-form-item-upload {
+                        margin-top: 10px;
+                }
+        </style>
+</head>
+
+<body>
+        <div class="ccwls-page">
+                <div>
+
+                        <div class=" ccwls-formbox">
+                                <form id="form1" class="ccwl-form2 layui-form" action="">
+                                        <table class="company-info">
+                                                <tr>
+                                                        <td class="td_color ccwl-form2__title" colspan="9">
+                                                                国有粮食仓储物流设施变化备案表</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">单位名称</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                        <td class="td_color">法定代表人</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                        <td class="td_color">电话</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">备案编辑</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                        <td class="td_color">仓储业务类型</td>
+                                                        <td colspan="2" class="tl">
+                                                                <input type="radio" class="j-radio" name="ccywlx"
+                                                                        value="1" title="仓储" checked>
+                                                                <input type="radio" class="j-radio" name="ccywlx"
+                                                                        value="2" title="物流">
+
+                                                        </td>
+                                                        <td class="td_color">单位性质</td>
+                                                        <td colspan="2" class="tl">
+                                                                <input type="radio" class="j-radio" name="dwxz"
+                                                                        value="1" title="国有" checked>
+                                                                <input type="radio" class="j-radio" name="dwxz"
+                                                                        value="2" title="外企">
+                                                                <input type="radio" class="j-radio" name="dwxz"
+                                                                        value="3" title="民管">
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">地址</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                        <td class="td_color">邮政编码</td>
+                                                        <td colspan="2" class="tl"> 530049
+                                                        </td>
+                                                        <td class="td_color">数量</td>
+                                                        <td colspan="2">
+                                                                <input type="text" name="title1" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td class="td_color">备案情形</td>
+                                                        <td colspan="8" class="tl">
+                                                                <input type="radio" class="j-radio" name="baqx"
+                                                                        value="1" title="拆除" checked>
+                                                                <input type="radio" class="j-radio" name="baqx"
+                                                                        value="2" title="迁移">
+                                                                <input type="radio" class="j-radio" name="baqx"
+                                                                        value="3" title="改变用途">
+                                                                <input type="radio" class="j-radio" name="baqx"
+                                                                        value="4" title="行政征收征用">
+                                                                <input type="radio" class="j-radio" name="baqx"
+                                                                        value="5" title="出租出借">
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">备案内容</td>
+                                                        <td colspan="8" class="tl">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="1" title="仓房" lay-skin="primary" checked>
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="2" title="油罐" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="3" title="专用道路" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="4" title="铁路" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="5" title="码头" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="6" title="烘干设备" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="7" title="器材库" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="8" title="维修车间" lay-skin="primary">
+                                                                <input type="checkbox" class="j-checkbox" name="banr"
+                                                                        value="9" title="其他" lay-skin="primary">
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">备案有效期</td>
+                                                        <td colspan="2" class="tl">
+                                                                <input type="text" name="bayxq" lay-verify="required"
+                                                                        placeholder="" autocomplete="off"
+                                                                        class="layui-input j-input">
+
+                                                        </td>
+                                                        <td colspan="6" ></td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="td_color">单位简介</td>
+                                                        <td colspan="8" class="tl">
+                                                                <textarea name="desc" placeholder=""
+                                                                        class="layui-textarea  j-input"></textarea>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+
+                                                        <td colspan="9">
+                                                                <div class="ccwl-form2__box">
+                                                                        本单位因<input type="text" name="title1"
+                                                                                lay-verify="required" placeholder=""
+                                                                                autocomplete="off"
+                                                                                class="ccwl-form2__boxinput layui-input j-input">原因，特此申报相关设施备案。
+                                                                </div>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan="9">
+                                                                <div class="layui-row">
+                                                                        <div class="layui-col-xs4">
+                                                                                <div class="ccwl-form2__filetitle"><span
+                                                                                                class="ccwl-form__star">*</span>批复文件复印件：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper1"></div>
+                                                                        </div>
+                                                                        <div class="layui-col-xs4 ">
+                                                                                <div class="ccwl-form2__filetitle"><span
+                                                                                                class="ccwl-form__star">*</span>相关政策执行文件复印件：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper2"></div>
+                                                                        </div>
+                                                                        <div class="layui-col-xs4">
+                                                                                <div class="ccwl-form2__filetitle"><span
+                                                                                                class="ccwl-form__star">*</span>合同复印件：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper3"></div>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="ccwl-form2__explain">
+                                                                        如改变国有粮油仓储物流设施用途的，需提交相关部门意见批复文件原件及复印件（原件核对后返还）；政府行政征收、征用的，需提交相关政策执行文件原件及复印件（原件核对后返还）；出租、出借国有粮油仓储物流设施的，需提交粮油仓储单位与承租方（承借方）签订的出租（出借）合同原件及复印件（原件核对后返还）。
+                                                                </div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td colspan="9">
+                                                                <div class="layui-row">
+                                                                        <div class="layui-col-xs4">
+                                                                                <div class="ccwl-form2__filetitle"><span class="ccwl-form__star">*</span>上传营业执照：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper4"></div>
+                                                                        </div>
+                                                                        <div class="layui-col-xs4 ">
+                                                                                <div class="ccwl-form2__filetitle"><span class="ccwl-form__star">*</span>粮油仓储物流设施产权证或租赁合同：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper5"></div>
+                                                                        </div>
+                                                                        <div class="layui-col-xs4">
+                                                                                <div class="ccwl-form2__filetitle"><span class="ccwl-form__star">*</span>粮油仓储物流设施布局图：
+                                                                                </div>
+                                                                                <div class="j-files-wrapper6"></div>
+                                                                        </div>
+                                                                </div>
+                                                              
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan="9">
+                                                                <div class="ccwl-form2__filetitle">回显测试：</div>
+                                                                <div class="j-files-wrapper7"></div>
+
+                                                        </td>
+                                                </tr>
+
+                                        </table>
+                                        <button class="layui-btn j-btn-trigger-form1" lay-submit lay-filter="form1"
+                                                type="button" style="display: none;">触发按钮</button>
+                                </form>
+                        </div>
+                </div>
+
+                <div class="ccwls-btns layui-btns">
+                        <button type="button" class="layui-btn  layui-btn-normal  j-btn-submit">提交</button>
+                </div>
+
+        </div>
+</body>
+<!-- 自定义工具 -->
+<script src="../../resource/common_js/ao.utils.js"></script>
+<script src="../../resource/common_js/ao.annex.upload.js"></script>
+<script src="./js/recordChangeApply.js"></script>
+
+</html>

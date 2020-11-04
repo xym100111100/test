@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新粮收购填报</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">新粮收购填报</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">名称：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">填报时间：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><a class="border-btn ml10" href="buyAdd.html">新增</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">新粮收购信息表</span>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>填报时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2018年X月X日新粮收购进度汇报</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgLightG ml10">上报</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td>2018年X月X日新粮收购进度汇报</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgLightG ml10">重新上报</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td>2018年X月X日新粮收购进度汇报</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgLightG ml10">重新上报</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td>2018年X月X日新粮收购进度汇报</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgLightG ml10">重新上报</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

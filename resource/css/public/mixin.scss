@@ -1,0 +1,40 @@
+$prev:'pub';
+
+
+$baseColor:#3787F1;
+$fontColor:#333; // 正常文字
+$fontColorLight:#666; // 稍浅的文字
+$infoColor:#979797;
+
+$dangerColor:#E02020;
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+        height: 0;
+    }
+
+    &:before {
+        clear: both;
+        content: '\20';
+        display: block;
+        height: 0;
+    }
+
+    zoom: 1;
+}
+
+@mixin ove {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+@mixin boxShadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食收购资金管理-收购资金报表详情</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+            });
+        });
+    </script>
+    <style>
+        .table01 td:first-child{
+            text-align: left;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .ti-2{
+            text-indent: 2em;
+        }
+        .ti-5{
+            text-indent: 5em;
+        }
+        .ti-7{
+            text-indent: 7em;
+        }
+        .ti-9{
+            text-indent: 9em;
+        }
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">收购资金报表查询<a href="fundList.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="120">查询单位：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="120">上报时间：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc">
+            <span class="f18">收购资金详情</span>
+        </div>
+        <div class="pd20">
+            <p class="clearfix"><span class="fr"><em class="c8">单位：</em>万元、原粮、吨</p>
+            <table class="table01 mt10">
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th width="80">行次</th>
+                        <th>填报数据</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>一、预计粮食收购量（稻谷/吨）</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-2">其中：政策性收购量（吨）</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-5">自主经营收购量（吨）</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>二、预计当年收购资金需求量</td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>三、累计筹集粮食收购资金</td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-2">其中：农发行贷款额</td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-5">商业银行贷款</td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-5">企业自筹</td>
+                        <td>8</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-7">其中：企业自有资金</td>
+                        <td>9</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-9">其他方式筹资</td>
+                        <td>10</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>四、已使用粮食收购资金</td>
+                        <td>11</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-2">其中：企业缴存的贷款保证金</td>
+                        <td>12</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-5">用于政策性粮食收购</td>
+                        <td>13</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="ti-5">用于自主经营粮食收购</td>
+                        <td>14</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>五、粮食收购资金结余（或缺口）额</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt15" style="line-height: 1.6;">
+                <p>说明：</p>
+                <p>1.该表由纳入信息平台中有粮食收购的企业填报。</p>
+                <p>2.该表填报当年粮食收购资金需求和筹集情况。</p>
+                <p>3.填报时间：填报当年6月至12月累计数据，次月7日前填报上月末数据。</p>
+                <p>4.15行 = 4行 - 5行。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

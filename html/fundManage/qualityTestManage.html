@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食质量安全追溯-质检检测管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 图表js -->
+    <script type="text/javascript" src="js/searchData.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            $(".tab-zdy a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-c").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮食质量安全追溯-质检检测管理</p>
+    
+    <div class="tab-zdy mt15">
+        <a class="active" data-tab="#tab1">新收获粮食质量安全检测</a>
+        <a data-tab="#tab2">库存粮食质量抽检</a>
+        <a data-tab="#tab3">储备粮油质量抽检</a>
+        <a data-tab="#tab4">社会委托检验</a>
+    </div>
+            
+    <div class="mt15 tab-c" id="tab1">
+        <div class="search-table clearfix">
+            <table>
+                <tr>
+                    <th width="120">质检机构名称：</th>
+                    <td><input type="text" class="input01"></td>
+                    <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search">
+                <span class="title">质检检测列表</span>
+            </div>
+            <div style="padding: 20px;">
+                <table class="table01">
+                    <thead>
+                        <tr>
+                            <th>质检机构名称</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XXXXXXX</td>
+                            <td><a class="btn common" href="qualityTestDetail.html">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>XXXXXXX</td>
+                            <td><a class="btn common" href="qualityTestDetail.html">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>XXXXXXX</td>
+                            <td><a class="btn common" href="qualityTestDetail.html">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="page_div clearfix">
+                    <ul class="fr">
+                        <li class="prev"></li>
+                        <li>1</li>
+                        <li class="hover">2</li>
+                        <li>3</li>
+                        <li>...</li>
+                        <li>9</li>
+                        <li class="next"></li>
+                        <li class="to-page">到<input type="text">页</li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt15 tab-c" id="tab2" style="display: none;">
+    </div>
+    <div class="mt15 tab-c" id="tab3" style="display: none;">
+    </div>
+    <div class="mt15 tab-c" id="tab4" style="display: none;">
+    </div>
+</body>
+</html>

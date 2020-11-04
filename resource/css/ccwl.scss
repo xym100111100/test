@@ -1,0 +1,422 @@
+html,
+body {
+    // background: #f8f7fc;
+    background: #fff;
+}
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+        height: 0;
+    }
+
+    zoom: 1;
+}
+
+@mixin ove {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ove {
+    @include ove;
+}
+
+.clearfix {
+    @include clearfix;
+}
+
+.ccwl_w50 {
+    width: 50%;
+}
+
+.ccwl-word,
+.ccwl-word:hover {
+    color: #1588C2;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.ccwl-word--success,
+.ccwl-word--success:hover {
+    color: #12B08D;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.ccwl-word--success2,
+.ccwl-word--success2:hover {
+    color: #0EBA93;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.ccwl-word--success3,
+.ccwl-word--success3:hover {
+    color: #6DD400;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.ccwl-word--warning,
+.ccwl-word--warning:hover {
+    color: #FA6400;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.ccwl-word--danger,
+.ccwl-word--danger:hover {
+    color: #e12f45;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.ccwl-word--danger2,
+.ccwl-word--danger2:hover {
+    color: #F56868;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.ccwl-word--info,
+.ccwl-word--info:hover {
+    color: #999;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.ccwl-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(21, 136, 194, 1);
+    line-height: 26px;
+    position: relative;
+    padding-left: 15px;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        top: 5px;
+        border-left: 3px solid #1588C2;
+        width: 0;
+        height: 16px;
+    }
+
+    &__warnicon {
+        font-size: 20px;
+        margin-left: 5px;
+        color: #FA6400;
+        position: relative;
+        top: 1px;
+    }
+
+    &__btns {
+        float: right;
+        font-weight: normal;
+
+    }
+}
+
+.ccwl-title2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(51, 51, 51, 1);
+    line-height: 48px;
+
+    &__icon {
+        font-size: 20px;
+        margin-left: 5px;
+        color: #1588C2;
+        position: relative;
+        top: 1px;
+    }
+
+}
+
+// 列宽增大
+.ccwl-table-large {
+    .layui-table-cell {
+        padding: 0 10px;
+        height: 36px;
+        line-height: 36px;
+        min-height: 36px;
+    }
+}
+
+// 分数input
+.ccwl-inputscore {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+
+    .layui-input {
+        width: 100%;
+        padding-right: 25px;
+        box-sizing: border-box;
+
+    }
+
+    &__right {
+        position: absolute;
+        right: 9px;
+        top: 0;
+        line-height: 30px;
+        font-size: 14px;
+        color: #B7B7B7;
+    }
+}
+
+.ccwl-formitem {
+    height: 32px;
+    line-height: 32px;
+    position: relative;
+    background: #E6E6E6;
+
+    &__label {
+        width: 120px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        text-align: right;
+        color: #333;
+    }
+
+    &__block {
+        width: 100%;
+        padding-left: 120px;
+        box-sizing: border-box;
+
+        .layui-input {
+            border-color: #E6E6E6;
+        }
+    }
+}
+
+.ccwl-table-title__label {
+    font-weight: normal;
+    line-height: 18px;
+}
+
+// 进度条
+.ccwl-steps {
+    $base: &;
+
+    white-space: nowrap;
+    padding-right: 40px;
+    padding-left: 80px;
+    box-sizing: border-box;
+
+    &__item {
+        width: 33.33%;
+        display: inline-block;
+        position: relative;
+
+        &.is-first {
+            width: 0;
+        }
+
+
+    }
+
+    &__text {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 40px;
+        color: #666;
+        background-color: #E0E0E0;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        float: right;
+
+    }
+
+    &__title {
+        display: inline-block;
+        color: #666;
+        font-size: 16px;
+        transform: translateX(50%);
+        margin-right: 20px;
+        margin-top: 10px;
+        float: right;
+    }
+
+    &__line {
+        position: absolute;
+        background-color: #D8D8D8;
+        right: 42px;
+        left: 0;
+        top: 19px;
+        height: 2px;
+
+    }
+
+    &__item {
+
+
+
+        &.is-active {
+
+
+
+
+            #{$base}__text {
+
+                color: #fff;
+                background-color: #4CADFF;
+
+            }
+
+            #{$base}__title {
+
+                color: #248CE4;
+
+            }
+
+            #{$base}__line {
+
+                background-color: #248CE4;
+
+            }
+        }
+    }
+}
+
+// 表单
+.ccwl-form {
+    width: 900px;
+    margin: 0 auto;
+
+    .layui-input,
+    .layui-textarea {
+        width: 100%;
+    }
+
+    &__wrap {
+        padding: 10px;
+        border: 1px solid #EDEDED;
+        box-sizing: border-box;
+
+    }
+
+    &__label {
+        width: 200px;
+    }
+
+    &__block {
+        margin-left: 200px;
+    }
+
+    &__label2 {
+        width: 150px;
+    }
+
+    &__block2 {
+        margin-left: 150px;
+    }
+
+    &__tip {
+        color: #E02020;
+        line-height: 40px;
+    }
+
+    &__star {
+        color: #E02020;
+    }
+}
+
+.ccwl-form2 {
+
+    $base: &;
+
+    .layui-input,
+    .layui-textarea {
+        width: 100%;
+    }
+
+    &__title {
+        font-size: 20px;
+        line-height: 65px;
+        font-weight: bolder;
+    }
+
+    &__box {
+        text-align: left;
+        color: #333333;
+        font-size: 14px;
+        height: 250px;
+        box-sizing: border-box;
+
+        #{$base}__boxinput {
+            width: 200px;
+            margin: 0 10px;
+            display: inline-block;
+
+        }
+    }
+
+    &__explain {
+        font-size: 14px;
+        color: #999999;
+        white-space: normal;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    &__filetitle{
+        text-align: left;
+        padding-left: 5px;
+        font-size: 14px;
+        color: #666;
+    }
+}
+
+// =================================================================
+
+.ccwl-color-base {
+    color: #1588C2
+}
+
+.ccwl-color-success {
+    color: #12B08D
+}
+
+.ccwl-color-warning {
+    color: #FA6400
+}
+
+.ccwl-bg-base {
+    background-color: #1588C2
+}
+
+.ccwl-bg-success {
+    background-color: #12B08D
+}
+
+.ccwl-bg-warning {
+    background-color: #FA6400
+}
+
+.ccwl-fwbold {
+    font-weight: 700;
+}
+
+// 解决表格里面checkbox没有垂直居中的问题
+.layui-table-cell.laytable-cell-checkbox:after {
+    content: "\00A0";
+}

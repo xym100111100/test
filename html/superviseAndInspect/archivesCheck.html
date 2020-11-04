@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监督检查-检查档案</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+            laydate.render({
+                elem: '#date',
+                type: 'year'
+            });
+
+        });
+        function addCheck(){
+            var param = {
+                title: '新增检查目录',
+                area:["700px","500px"],
+                success: function(){
+                    file();
+                },
+                yes: function(index, layero){
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = ['<div class="bgFFF">',
+                        '        <table class="company-info">',
+                        '            <tr>',
+                        '                <th width="160">检查目录名称：</th>',
+                        '                <td><input type="text" class="input01 w-full"></td>',
+                        '            </tr>',
+                        '            <tr>',
+                        '                <th>检查目录描述：</th>',
+                        '                <td><input type="text" class="input01 w-full"></td>',
+                        '            </tr>',
+                        '            <tr>',
+                        '                <th>文号：</th>',
+                        '                <td><input type="text" class="input01 w-full"></td>',
+                        '            </tr>',
+                        '            <tr>',
+                        '                <th>附件：</th>',
+                        '                <td><form enctype="multipart/form-data">',
+                        '                        <div class="file-loading">',
+                        '                           <input id="file" type="file" multiple>',
+                        '                        </div>',
+                        '                    </form>',
+                        '                </td>',
+                        '            </tr>',
+                        '        </table>',
+                        '    </div>'].join("");
+            param.content = content;
+            var areaLayer = $.layerContent(param);
+        }
+        /**
+         * 文件上传
+         * @return {[type]} [description]
+         */
+        function file(){
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['doc','docx'],//接收的文件后缀
+                theme: 'explorer-fa',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['other'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                //maxFileCount:10, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+        }
+    </script>
+    <style>
+        .each-scene table td:last-child{vertical-align: middle;}
+        .add-scene, .each-scene{height: 150px;}
+        .each-scene table td{height: 110px;}
+        .add-scene img{margin-top: 20px;}
+        .each-scene table p{margin-top: 0;}
+        .each-scene table p:nth-child(2){height: auto;font-size: 26px;}
+        .file-error-message li{white-space: initial;}
+        .theme-explorer-fa .file-preview .table{table-layout: fixed;}
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">监督检查-检查档案</p>
+    <!-- <div class="skin1 mt15">
+        <ul class="tabs">
+            <li class="tabs-selected">
+                <a href="javascript:void(0)" class="tabs-inner">
+                    <span class="tabs-title">常规检查</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="tabs-inner">
+                    <span class="tabs-title">自定义检查</span>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+    <div class="tab-zdy mt15">
+        <a class="active" data-tab="#tab1">常规检查</a>
+        <a data-tab="#tab2">自定义检查</a>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">年度：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <th width="100">目录名称：</th>
+                <td><input type="text" class="input01"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="pd20">
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="add-scene" onclick="addCheck(this);">
+                        <img src="../../resource/images/scene_add.png" alt="">
+                        <p>新增检查</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene active">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    <div class="each-scene">
+                        <table>
+                            <tr>
+                                <td width="100"><img src="../../resource/images/scene01.png" alt=""></td>
+                                <td>
+                                    <p class="c8">XXX检查</p>
+                                    <p class="f18">1234</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="tools">
+                            <ul class="clearfix fr">
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool02.png" alt="">
+                                    编辑</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool04.png" alt="">
+                                    删除</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="../../resource/images/scene_tool03.png" alt="">
+                                    查看详情</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tc pd20">
+                <button type="button" class="border-btn gray">加载更多...</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

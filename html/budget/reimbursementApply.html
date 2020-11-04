@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报销管理-报销申请</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info .c-td{border-left: 1px solid #dcdcdc;text-align: center;}
+        .company-info td{overflow: visible;}
+        .input01{max-width: 100%;}
+        .textarea01{height: 220px;max-width: 100%;}
+        .h-div{display: none;}
+    </style>
+    <script>
+        $(function(){
+            $("#inpd li").click(function(){
+                var id = $(this).data("id");
+                $(".h-div").hide();
+                $(id).show();
+            });
+            laydate.render({
+              elem: '#date'
+              ,range: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">报销管理-报销申请</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">报销单号：</th>
+                <td>XXXXXX</td>
+                <th width="240">填报人：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="240">报销类型：</th>
+                <td><div class="inp_down" id="inpd">
+                        <input type="text" class="input01 w150" value="差旅费报销单">
+                        <ul>
+                            <li data-id="#div1">差旅费报销单</li>
+                            <li data-id="#div2">公务卡、现金报销单</li>
+                            <li data-id="#div3">现金支出单</li>
+                            <li data-id="#div4">转账付款审批单</li>
+                            <li data-id="#div5">自制报销单</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15 h-div" id="div1" style="display: block;">
+        <div class="table_search"><span class="title">差旅费报账单</span><button type="button" class="border-btn fr mt5">报账单打印</button></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <td colspan="10" style="padding-left: 20px;padding-right: 20px;text-align: center;"><span class="fl"><em class="c8">单位：</em>XXXXXXXXXXXXX</span><span class="fr"><em class="c8">日期：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">姓名：</th>
+                    <td colspan="3"><input type="text" class="input01"></td>
+                    <th width="140">合计人数：</th>
+                    <td colspan="3"><input type="text" class="input01"></td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">事由：</th>
+                    <td colspan="3"><input type="text" class="input01"></td>
+                    <th>出发地点：</th>
+                    <td colspan="3">从 <input type="text" class="input01"> 到 <input type="text" class="input01"></td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">出差日期：</th>
+                    <td colspan="7"><input type="text" class="input01 layui-input w240" id="date"></td>
+                    <th rowspan="2" class="c-td">说明</th>
+                </tr>
+                <tr>
+                    <th colspan="2">费别：</th>
+                    <th colspan="2" class="c-td">人数</th>
+                    <th colspan="2" class="c-td">天数</th>
+                    <th class="c-td">标准</th>
+                    <th colspan="2" class="c-td">金额</th>
+                </tr>
+                <tr>
+                    <th colspan="2">伙食补助费：</th>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td class="c-td">100元/人天</td>
+                    <td class="c-td" colspan="2"><input type="text" class="input01"></td>
+                    <td class="c-td" rowspan="7" valign="top"><textarea name="" class="textarea01"></textarea></td>
+                </tr>
+                <tr>
+                    <th colspan="2">市内交通费：</th>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td class="c-td">80元/人天</td>
+                    <td class="c-td" colspan="2"><input type="text" class="input01"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">XXXX：</th>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"></td>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <td class="c-td" colspan="2"><input type="text" class="input01"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">车船、住宿费：</th>
+                    <td colspan="4">单据<span class="ml30"><input type="text" class="input01"> 张</span></td>
+                    <th>单据金额合计：</th>
+                    <td colspan="2" class="c-td"><input type="text" class="input01"> 元</td>
+                </tr>
+                <tr>
+                    <th colspan="2">合计（大写）：</th>
+                    <td colspan="4" class="c-td"></td>
+                    <th>合计：</th>
+                    <td colspan="2" class="c-td"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">预计资金来源：</th>
+                    <td colspan="7">
+                        <div class="inp_down ml15">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>项目1</li>
+                                <li>项目2</li>
+                            </ul>
+                        </div>
+                        <div class="inp_down ml30">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>费别1</li>
+                                <li>费别2</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">预借款：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应缴金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应补金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                </tr>
+                <tr>
+                    <td class="tc">主要领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">分管领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">财务处审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">办公室审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">处（室）审核：</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <td class="tc">财会主管：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">会计：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">出纳：</td>
+                    <td></td>
+                    <td class="tc">填报人：</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15 h-div" id="div2">
+        <div class="table_search"><span class="title">公务卡、现金报账单</span><button type="button" class="border-btn fr mt5">报账单打印</button></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <td colspan="10" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">部门：</th>
+                    <td colspan="4"></td>
+                    <th width="140">姓名：</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th colspan="2" rowspan="2">报销事由：</th>
+                    <td colspan="8"></td>
+                </tr>
+                <tr>
+                    <td colspan="8"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">报销单据：</th>
+                    <td colspan="7"><span class="ml30">合计金额（大写）：</span><span class="fr"><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                    <td class="c-td">￥</td>
+                </tr>
+                <tr>
+                    <th colspan="2">预借款：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应缴金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应补金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td" colspan="2"><input type="text" class="input01"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">预计资金来源：</th>
+                    <td colspan="7">
+                        <div class="inp_down ml15">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>项目1</li>
+                                <li>项目2</li>
+                            </ul>
+                        </div>
+                        <div class="inp_down ml30">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>费别1</li>
+                                <li>费别2</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tc">主要领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">分管领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">财务处审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">办公室审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">处（室）审核：</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <td class="tc">财会主管：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">会计：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">出纳：</td>
+                    <td></td>
+                    <td class="tc">填报人：</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15 h-div" id="div3">
+        <div class="table_search"><span class="title">现金支出单</span><button type="button" class="border-btn fr mt5">报账单打印</button></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <td colspan="10" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">部门：</th>
+                    <td colspan="4"></td>
+                    <th width="140">姓名：</th>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <th colspan="2" rowspan="2">报销事由：</th>
+                    <td colspan="8"></td>
+                </tr>
+                <tr>
+                    <td colspan="8"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">报销单据：</th>
+                    <td colspan="7"><span class="ml30">合计金额（大写）：</span><span class="fr"><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                    <td class="c-td">￥</td>
+                </tr>
+                <tr>
+                    <th colspan="2">预借款：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应缴金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>应补金额：</th>
+                    <td class="c-td"><input type="text" class="input01"></td>
+                    <th>公务卡消费：</th>
+                    <td class="c-td" colspan="2"><input type="text" class="input01"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">预计资金来源：</th>
+                    <td colspan="7">
+                        <div class="inp_down ml15">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>项目1</li>
+                                <li>项目2</li>
+                            </ul>
+                        </div>
+                        <div class="inp_down ml30">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>费别1</li>
+                                <li>费别2</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tc">主要领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">分管领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">财务处审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">办公室审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">处（室）审核：</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <td class="tc">财会主管：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">会计：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">出纳：</td>
+                    <td></td>
+                    <td class="tc">填报人：</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15 h-div" id="div4">
+        <div class="table_search"><span class="title">转账付款审批单</span><button type="button" class="border-btn fr mt5">报账单打印</button></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <td colspan="10" style="padding-left: 20px;"><span><em class="c8">填报时间：</em>2013年10月25日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" rowspan="3">收款单位：</th>
+                    <td class="c-td">全称</td>
+                    <td colspan="6" style="border-left: 1px solid #dcdcdc;"></td>
+                </tr>
+                <tr>
+                    <td class="c-td">账号</td>
+                    <td colspan="6" style="border-left: 1px solid #dcdcdc;"></td>
+                </tr>
+                <tr>
+                    <td class="c-td">开户行</td>
+                    <td colspan="6" style="border-left: 1px solid #dcdcdc;"></td>
+                </tr>
+                <tr>
+                    <th colspan="2" rowspan="2">付款金额：</th>
+                    <td class="c-td">大写</td>
+                    <td colspan="6" style="border-left: 1px solid #dcdcdc;"><span><em style="width: 80px;display: inline-block;"></em>万<em style="width: 80px;display: inline-block;"></em>仟<em style="width: 80px;display: inline-block;"></em>佰<em style="width: 80px;display: inline-block;"></em>拾</span></td>
+                </tr>
+                <tr>
+                    <td class="c-td">小写</td>
+                    <td colspan="6" style="border-left: 1px solid #dcdcdc;"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">预计资金来源：</th>
+                    <td colspan="7">
+                        <div class="inp_down ml15">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>项目1</li>
+                                <li>项目2</li>
+                            </ul>
+                        </div>
+                        <div class="inp_down ml30">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>费别1</li>
+                                <li>费别2</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tc">主要领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">分管领导审批：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">财务处审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">办公室审核：</td>
+                    <td class="c-td"></td>
+                    <td class="c-td">处（室）审核：</td>
+                    <td class="c-td"></td>
+                </tr>
+                <tr>
+                    <td class="tc">财会主管：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">会计：</td>
+                    <td colspan="2"></td>
+                    <td class="tc">出纳：</td>
+                    <td></td>
+                    <td class="tc">填报人：</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15 h-div" id="div5">
+        <div class="table_search"><span class="title">自制报销单</span><button type="button" class="border-btn fr mt5">报账单打印</button></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="160">金额：</th>
+                    <td><input type="text" class="input01"> 元</td>
+                </tr>
+                <tr>
+                    <th>预算来源：</th>
+                    <td>
+                        <div class="inp_down">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>项目1</li>
+                                <li>项目2</li>
+                            </ul>
+                        </div>
+                        <div class="inp_down ml30">
+                            <input type="text" class="input01" placeholder="请选择项目">
+                            <ul>
+                                <li>费别1</li>
+                                <li>费别2</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>用途：</th>
+                    <td><textarea name="" class="textarea01" style="height: 100px;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd20">
+        <span class="btn border-btn w110">取消</span><span class="btn btn-browser w110 ml10">保存</span><span class="btn btn-browser w110 ml10">提交</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+@import './mixin.scss'; // 变量、函数
+
+.#{$prev}-container {
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding: 8px;
+    @include clearfix();
+
+    .#{$prev}-aside {
+        width: 29%;
+        height: 100%;
+        float: left;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // bottom: 0;
+        // width: 220px;
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+        padding: 8px;
+        box-sizing: border-box;
+        overflow: auto;
+
+        .ztree {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+    }
+
+    .#{$prev}-main {
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+        overflow: auto;
+        padding: 8px;
+        box-sizing: border-box;
+        height: 100%;
+        float: right;
+        width: 100%;
+
+    }
+
+    .#{$prev}-aside+.#{$prev}-main {
+        width: 70%;
+    }
+}
+
+
+// 列表页查询表单
+.#{$prev}-search-block {
+    margin-bottom: 8px;
+    padding: 8px 8px;
+
+    border-bottom: 1px solid #e6e6e6;
+    // border-radius: 3px;
+    background-color: #fff;
+
+    .layui-card-body {
+        padding: 8px 8px;
+    }
+
+    .layui-inline {
+        vertical-align: middle;
+    }
+
+    .layui-input-block {
+        min-height: auto;
+        width: 200px;
+    }
+
+    &__btns {
+        display: inline-block;
+        vertical-align: middle;
+
+        .layui-btn {
+            margin-left: 8px;
+        }
+
+    }
+}
+
+// 列表页表格
+.#{$prev}-table-block {
+    margin-bottom: 8px;
+    // border: 1px solid #efefef;
+    padding: 8px 8px;
+    // border-radius: 3px;
+    background-color: #fff;
+
+    .layui-card-body {
+        padding: 8px 8px;
+    }
+}
+
+// 模块分区
+.#{$prev}-module-block {
+    margin-bottom: 8px;
+    padding: 8px 8px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+
+}
+
+
+// layer弹框
+.#{$prev}-layer {
+    height: 0;
+    overflow: hidden;
+
+    .layui-layer-content {
+        padding-top: 0 !important;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    &__container {
+        height: 100%;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+
+    &__body {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 40px;
+        overflow: auto;
+        padding: 8px;
+
+        &.is-ovh {
+            overflow: hidden;
+        }
+    }
+
+    &__btns {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 40px;
+        text-align: center;
+        background-color: #fff;
+        padding-top: 5px;
+    }
+}
+
+// 页面底部按钮
+.#{$prev}-footer-btns {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

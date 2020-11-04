@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可视化管理-场景管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script>
+        $(function(){
+            //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+        });
+        function addChart(){
+            var param = {
+                type: 2,
+                title: '选择仪表盘',
+                area:["950px","780px"],
+                success: function(){
+                },
+                yes: function(index, layero){
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = 'chartAdd.html';
+            param.content = content;
+            var areaLayer = $.layerContent(param);
+        }
+    </script>
+    <style>
+        .add-scene{width: 60%;margin: 10px auto;}
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">场景管理<a href="mVersionManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15 pd20">
+        <table style="table-layout: fixed;width: 100%;color: #444;word-wrap: break-word;">
+            <tr>
+                <td>
+                    <p style="font-size: 20px;">桂林市粮食管理驾驶舱</p>
+                    <p class="mt15">产品简介：简介简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介XXXX简介</p>
+    
+                </td>
+                <td style="width: 300px;text-align: center;"><img src="../../resource/images/visual01.png" alt=""></td>
+            </tr>
+        </table>
+    </div>   
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">母版配置</span></div>
+        <div class="pd20">
+            <div class="row">
+                <div class="col-xs-8">
+                    <table class="table01">
+                        <thead>
+                            <tr>
+                                <th>仪表盘编码</th>
+                                <th>仪表板预览</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ⅰ</td>
+                                <td>
+                                    <div class="outer-bg">
+                                        <img src="../../resource/images/chart01.jpg" alt="">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ⅱ</td>
+                                <td>
+                                    <div class="add-scene" onclick="addChart();">
+                                        <img src="../../resource/images/scene_add.png" alt="">
+                                        <p>添加</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ⅲ</td>
+                                <td>
+                                    <div class="add-scene" onclick="addChart();">
+                                        <img src="../../resource/images/scene_add.png" alt="">
+                                        <p>添加</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-4">
+                    <div class="outer-bg" style="margin-top: 50px;">
+                       <table class="table table-bordered tc" style="margin-bottom: 0;">
+                           <tr>
+                               <td id="c1">Ⅰ</td>
+                               <td id="c8">Ⅴ</td>
+                               <td id="c7">空</td>
+                           </tr>
+                           <tr>
+                               <td id="c2">Ⅲ</td>
+                               <td id="c9">空</td>
+                               <td id="c6">空</td>
+                           </tr>
+                           <tr>
+                               <td id="Ⅱ">空</td>
+                               <td id="c4">空</td>
+                               <td id="c5">Ⅳ</td>
+                           </tr>
+                       </table> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

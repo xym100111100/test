@@ -1,0 +1,536 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>预算管理-预算编制审核</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+              elem: '#date1'
+              ,range: true
+            });
+            laydate.render({
+              elem: '#date2'
+            });
+            file();
+            $("#r1").click(function(){
+                $("#hide1").show();
+            });
+            $("#r1").parent().siblings().click(function(){
+                $("#hide1").hide();
+            });
+            $("#r2").click(function(){
+                $(".org-hide").show();
+            });
+            $("#r2").parent().siblings().click(function(){
+                $(".org-hide").hide();
+            });
+            $("#typeTd .radio01").click(function(){
+                var name = $(this).data("name");
+                $("#typeName").html(name + "：")
+            });
+            $("#sumInp").keyup(function(){
+                var value = $(this).val();
+                /[^\d]/.test(value) ? $(this).val(value.replace(/[^\d]/g,'')) : ''; 
+                $(this).val() > 2000000 ? $("#hide2").show() : $("#hide2").hide();
+            });
+        });
+        function file(){
+            $("#file,#file2,#file3").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['doc','docx','js','css','jpg'],//接收的文件后缀
+                theme: 'explorer-fa',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image','other'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                //maxFileCount:10, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+
+        }
+        /**
+         * [AddTr description]
+         */
+        function AddTr(){
+            var html = ['<tr>',
+'                        <td><input type="checkbox" name="" class="checkbox01"></td>',
+'                        <td align="left">',
+'                            <span class="ml30">科目：</span>',
+'                            <div class="inp_down">',
+'                                <input type="text" class="input01">',
+'                                <ul>',
+'                                    <li>差旅费</li>',
+'                                    <li>XX费</li>',
+'                                </ul>',
+'                            </div>',
+'                            <span class="ml30">金额：</span>',
+'                            <input type="text" name="" class="input01"> 万元',
+'                            <span class="ml30">天数：</span>',
+'                            <input type="text" name="" class="input01"> 天',
+'                            <span class="ml30">人数：</span>',
+'                            <input type="text" name="" class="input01"> 人',
+'                        </td>',
+'                    </tr>'].join("");
+            $("#tarTable tbody").append(html);
+        }
+        /**
+         * [delTr description]
+         * @return {[type]} [description]
+         */
+        function delTr(){
+            $("#tarTable tbody .checkbox01:checked").each(function(){
+                $(this).closest("tr").remove();
+            });
+        }
+    </script>
+    <style>
+        .company-info td,.table01 td{overflow: visible;}
+    </style>
+
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">预算管理-预算编制审核</p>
+    <div class="tab-zdy mt15">
+        <a class="active" href="#">一般项目</a>
+        <a href="budgetaryAudit2.html">补助市县项目</a>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="120">项目名称：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="120">项目类别：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="120">项目起止时间：</th>
+                <td><input type="text" class="input01 layui-input w240" id="date1"></td>
+                <!-- <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td> -->
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">项目概况</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">项目立项依据：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>可行性和必要性说明：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>实施范围及内容：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">三年财政规划项目概况</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">项目立项依据：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>可行性和必要性说明：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>实施范围及内容：</th>
+                    <td><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="120">类型：</th>
+                <td id="typeTd">
+                    <label><input type="radio" name="radio03" value="" class="radio01" checked="checked" data-name="项目金额">“一上”金额明细</label>
+                    <label class="ml30"><input type="radio" name="radio03" value="" class="radio01" data-name="一下金额">“一下”金额明细</label>
+                    <label class="ml30"><input type="radio" name="radio03" value="" class="radio01" data-name="二上金额">“二上”金额明细</label>
+                    <label class="ml30"><input type="radio" name="radio03" value="" class="radio01" data-name="批复金额">批复金额明细</label>
+                </td>
+            </tr>
+            <tr>
+                <th width="120" id="typeName">项目金额：</th>
+                <td><input type="text" class="input01" id="sumInp"><span class="cR ml10">（大于200万需填报）</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15" id="hide2" style="display: none;">
+        <div class="table_search">
+            <span class="title">项目绩效目标申报表</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">项目名称：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                    <th width="240">项目实施单位：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                </tr>
+                <tr>
+                    <th>项目实施进度安排：</th>
+                    <td colspan="3"><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>年度绩效目标：</th>
+                    <td colspan="3"><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+                <tr>
+                    <th>年中绩效目标：</th>
+                    <td colspan="3"><input type="text" class="input01" style="width: 70%;"></td>
+                </tr>
+            </table>
+            <table class="table01 mt15">
+                <thead>
+                    <tr>
+                        <th>一级指标</th>
+                        <th>二级指标</th>
+                        <th>指标内容</th>
+                        <th>指标值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">产出指标</td>
+                        <td>产出数量</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>产出质量</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>产出时效</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>产出成本</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">效果指标</td>
+                        <td>经济效益</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>社会效益</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>生态效益</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>社会公众满意度</td>
+                        <td>可持续影响</td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                        <td><input type="text" class="input01" style="width: 70%;"></td>
+                    </tr>
+                    <tr>
+                        <td>相关绩效资料附件</td>
+                        <td colspan="3" style="padding-right: 20%;" align="left">
+                            <form enctype="multipart/form-data" >
+                                <div class="file-loading">
+                                    <!-- <label>Preview File Icon</label> -->
+                                    <input id="file" type="file" multiple>
+                                </div>
+                            </form>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">项目金额明细说明</span>
+            <button type="button" class="border-btn fr mt5 ml10" onclick="delTr();">删除</button>
+            <button type="button" class="border-btn fr mt5" onclick="AddTr();">新增</button>
+        </div>
+        <div class="pd20">
+            <table class="table01 mt15">
+                <tbody>
+                    <tr>
+                        <td width="50"><input type="checkbox" name="" class="checkbox01"></td>
+                        <td align="left">
+                            <span class="ml30">科目：</span>
+                            <div class="inp_down">
+                                <input type="text" class="input01">
+                                <ul>
+                                    <li>办公费</li>
+                                    <li>XX费</li>
+                                </ul>
+                            </div>
+                            <span class="ml30">金额：</span>
+                            <input type="text" name="" class="input01"> 万元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="" class="checkbox01"></td>
+                        <td align="left">
+                            <span class="ml30">科目：</span>
+                            <div class="inp_down">
+                                <input type="text" class="input01">
+                                <ul>
+                                    <li>差旅费</li>
+                                    <li>XX费</li>
+                                </ul>
+                            </div>
+                            <span class="ml30">金额：</span>
+                            <input type="text" name="" class="input01"> 万元
+                            <span class="ml30">天数：</span>
+                            <input type="text" name="" class="input01"> 天
+                            <span class="ml30">人数：</span>
+                            <input type="text" name="" class="input01"> 人
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="" class="checkbox01"></td>
+                        <td align="left">
+                            <span class="ml30">科目：</span>
+                            <div class="inp_down">
+                                <input type="text" class="input01">
+                                <ul>
+                                    <li>会议费</li>
+                                    <li>XX费</li>
+                                </ul>
+                            </div>
+                            <span class="ml30">金额：</span>
+                            <input type="text" name="" class="input01"> 万元
+                            <span class="ml30">天数：</span>
+                            <input type="text" name="" class="input01"> 天
+                            <span class="ml30">人数：</span>
+                            <input type="text" name="" class="input01"> 人
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="200">是否为政府采购项目：</th>
+                <td><label><input type="radio" name="radio01" value="" class="radio01" checked="checked" id="r1">是</label><label class="ml30"><input type="radio" name="radio01" value="" class="radio01">否</label></td>
+            </tr>
+        </table>
+    </div>
+    <div id="hide1">
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search">
+                <span class="title">政府采购表</span>
+            </div>
+            <div class="pd20">
+                <table class="company-info">
+                    <tr>
+                        <th width="240">采购品目名称：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                        <th>品目编码：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                    </tr>
+                    <tr>
+                        <th>组织形式：</th>
+                        <td><div class="inp_down">
+                                <input type="text" class="input01 w200">
+                                <ul>
+                                    <li>形式1</li>
+                                    <li>形式2</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <th>采购方式：</th>
+                        <td><div class="inp_down">
+                                <input type="text" class="input01 w200">
+                                <ul>
+                                    <li>方式1</li>
+                                    <li>方式2</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>是否进口商品：</th>
+                        <td colspan="3"><label><input type="radio" name="radio02" value="" class="radio01" checked="checked" id="r2">是</label><label class="ml30"><input type="radio" name="radio02" value="" class="radio01">否</label></td>
+                    </tr>
+                    <tr class="org-hide">
+                        <th>机构代理：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                        <th>配置标准、投资评审金额或市场询价：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                    </tr>
+                    <tr class="org-hide">
+                        <th>协议供应商：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                        <th>采购数量</th>
+                        <td><input type="text" class="input01 w200"></td>
+                    </tr>
+                    <tr class="org-hide">
+                        <th>采购单价：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                        <th>计划采购日期：</th>
+                        <td><input type="text" class="input01 w200 layui-input" id="date2"></td>
+                    </tr>
+                    <tr class="org-hide">
+                        <th>采购内容细带说明：</th>
+                        <td colspan="3"><textarea name="" class="textarea01" style="width: 70%;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>相关附件：</th>
+                        <td colspan="3" style="padding-right: 20%;">
+                            <form enctype="multipart/form-data" >
+                                <div class="file-loading">
+                                    <!-- <label>Preview File Icon</label> -->
+                                    <input id="file2" type="file" multiple>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search">
+                <span class="title">政府购买服务表</span>
+            </div>
+            <div class="pd20">
+                <table class="company-info">
+                    <tr>
+                        <th width="240">购买服务名称：</th>
+                        <td><input type="text" class="input01 w200"></td>
+                        <th>购买方式：</th>
+                        <td><div class="inp_down">
+                                <input type="text" class="input01 w200">
+                                <ul>
+                                    <li>形式1</li>
+                                    <li>形式2</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>购买金额：</th>
+                        <td colspan="3"><input type="text" class="input01 w200"></td>
+                    </tr>
+                    <tr>
+                        <th>政府购买目录：</th>
+                        <td colspan="3" style="padding-right: 20%;">
+                            <form enctype="multipart/form-data" >
+                                <div class="file-loading">
+                                    <!-- <label>Preview File Icon</label> -->
+                                    <input id="file3" type="file" multiple>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">分预算执行考核时段用款计划表</span>
+        </div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="240">1-3月：</th>
+                    <td><input type="text" class="input01 w200"> 万元</td>
+                    <th width="240">1-11月：</th>
+                    <td><input type="text" class="input01 w200"> 万元</td>
+                </tr>
+                <tr>
+                    <th>1-6月：</th>
+                    <td><input type="text" class="input01 w200"> 万元</td>
+                    <th>1-12月：</th>
+                    <td><input type="text" class="input01 w200"> 万元</td>
+                </tr>
+                <tr>
+                    <th>1-9月：</th>
+                    <td><input type="text" class="input01 w200"> 万元</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd20">
+        <span class="btn border-btn w110">取消</span><span class="btn btn-browser w110 ml10">调整回退</span><span class="btn btn-browser w110 ml10">审批</span><span class="btn btn-browser w110 ml10">暂存</span>
+    </div>
+</body>
+</html>

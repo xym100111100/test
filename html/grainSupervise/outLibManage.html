@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-库存监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            $(".tab-zdy a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+            laydate.render({
+                elem: '#date'
+                ,range: true
+            });
+    	});
+        /*
+        *隐藏磅码单显示通知单
+        */
+        function showNotice(){
+            $("#notice").show();
+            $("#oil").hide();
+        }
+        /*
+        *显示磅码单隐藏通知单
+        */
+        function showOil(){
+            $("#notice").hide();
+            $("#oil").show();
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">出入库管理<a href="ioLibSupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    
+    <div class="tab-zdy mt15">
+        <a class="active" data-tab="#tab1">库区1</a>
+        <a data-tab="#tab2">库区2</a>
+        <a data-tab="#tab3">库区3</a>
+    </div>
+    <div class="mt10 row" style="width: 100%;position: relative;">
+        <div class="col-xs-4" style="position: absolute;height: 100%;">
+            <div class="table_outer bgFFF pd20" style="height: 100%;">
+                <div id="tab1" class="tab-content">
+                    <ul class="date-ul mt10 clearfix">
+                        <li>今日</li><li>本周</li><li>本月</li><li>今年</li>
+                    </ul>
+                    <input type="text" class="input01 layui-input mt15" style="width: 100%;" id="date" placeholder="2018-05-25 - 2018-05-28">
+                    <div style="margin-top: 35px;" class="grain-list">
+                        <div class="table_outer">
+                            <a href="inLibManage.html"><img src="../../resource/images/list06.png" alt="">入库情况</a>
+                        </div>
+                        <div class="table_outer">
+                            <a href="#"><img src="../../resource/images/list07.png" alt="">出库情况</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab-content" style="display: none;"></div>
+                <div id="tab3" class="tab-content" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="col-xs-8" style="margin-left: 33.33%;">
+            <div class="table_outer bgFFF">
+                <div id="notice">
+                    <div class="table_search tc"><span class="f18">粮油出库通知单</span></div>
+                    <div class="pd20">
+                        <table class="company-info">
+                            <tr>
+                                <td colspan="4" style="padding-left: 20px;"><span><em class="c8">填写单位：</em>广西壮族自治区南宁粮食储备库</span>
+                                    <span class="ml30"><em class="c8">日期：</em>2013年10月25日</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="160">执行文件：</th>
+                                <td style="white-space: normal;line-height: 24px;padding-top: 4px;padding-bottom: 4px;">关于下达2013订单收购粮食使用计划的通知 管挂粮发【2013】36号</td>
+                                <th width="160">仓号：</th>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <th>品种：</th>
+                                <td>早灿稻谷</td>
+                                <th>粮油性质：</th>
+                                <td>GXCB（订单粮）</td>
+                            </tr>
+                            <tr>
+                                <th>生产年度：</th>
+                                <td>2013</td>
+                                <th>计划入（出）库数量（吨）：</th>
+                                <td>3200</td>
+                            </tr>
+                            <tr>
+                                <th>计划入（出）库时间：</th>
+                                <td colspan="3">2013 年 11 月起 2013 年 12 月止</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="padding-left: 20px;"><span><em class="c8">审批：</em>粮库领导</span>
+                                    <span class="ml30"><em class="c8">审核：</em>业务部经理</span>
+                                    <span class="ml30"><em class="c8">制表：</em>业务员</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="oil" style="display: none;">
+                    <div class="table_search tc"><span class="f18">粮油保管总账</span><span class="fr"><em class="f8">No：</em>XXXX</span></div>
+                    <div class="pd20">
+                        <div class="table_outer bgFFF">
+                            <ul class="notice-ul">
+                                <li>
+                                    <span><em class="c8">日期：</em>2013年11月3日</span>
+                                    <span class="ml30"><em class="c8">时间：</em>10:12</span>
+                                </li>
+                                <li>
+                                    <span><em class="c8">发货单位：</em>南宁储备粮公司</span>
+                                    <span class="ml30"><em class="c8">车（船）号：</em>XXXXXX</span>
+                                    <span class="ml30"><em class="c8">发货地点：</em>蒲庙库</span>
+                                </li>
+                                <li>
+                                    <span><em class="c8">收货单位：</em>广西壮族自治区南宁储备粮公司</span>
+                                    <span class="ml30"><em class="c8">承运单位：</em>第二粮食运输局</span>
+                                    <span class="ml30"><em class="c8">收货地点：</em>19仓</span>
+                                </li>
+                            </ul>
+                            <table class="table01" style="border-left: 0;border-right: 0;">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">承运车号</th>
+                                        <th rowspan="2">货物名称</th>
+                                        <th rowspan="2">毛重(kg)</th>
+                                        <th rowspan="2">皮重(kg)</th>
+                                        <th colspan="2" class="bbdc">编织袋</th>
+                                        <th rowspan="2">净重（kg）</th>
+                                    </tr>
+                                    <tr>
+                                        <th>数量（件）</th>
+                                        <th>扣袋（kg）</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>桂A12133</td>
+                                        <td>稻谷</td>
+                                        <td>44655</td>
+                                        <td>44655</td>
+                                        <td>44655</td>
+                                        <td></td>
+                                        <td>44655</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ul class="notice-ul">
+                                <li>
+                                    <span class="cR">注：包装物随车回皮</span>
+                                </li>
+                                <li>
+                                    <span><em class="c8">司磅员签名：</em>XXXXXX</span>
+                                    <span class="ml30"><em class="c8">保管员签名：</em>XXXXXX</span>
+                                    <span class="ml30"><em class="c8">司机签名：</em>XXXXXX</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th>XXXXX：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>XXXXX</li>
+                            <li>XXXXX</li>
+                        </ul>
+                    </div>
+                </td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">粮油出入库列表</span>
+        </div>
+        <div class="pd20">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th>规则编号</th>
+                        <th>描述</th>
+                        <th>服务调用次数</th>
+                        <th>状态</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state">未开始</span></td>
+                        <td>2016-09-10    08:52:12</td>
+                        <td><span class="btn common" onclick="showNotice();">出库通知单</span><span class="btn common bgG ml10" onclick="showOil();">磅码单</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state going">进行中</span></td>
+                        <td>2016-09-10    08:52:12</td>
+                        <td><span class="btn common" onclick="showNotice();">出库通知单</span><span class="btn common bgG ml10" onclick="showOil();">磅码单</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state success">成功</span></td>
+                        <td>2016-09-10    08:52:12</td>
+                        <td><span class="btn common" onclick="showNotice();">出库通知单</span><span class="btn common bgG ml10" onclick="showOil();">磅码单</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state fail">失败</span></td>
+                        <td>2016-09-10    08:52:12</td>
+                        <td><span class="btn common" onclick="showNotice();">出库通知单</span><span class="btn common bgG ml10" onclick="showOil();">磅码单</span></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>这是一段描述</td>
+                        <td>XXX</td>
+                        <td><span class="io-state warn">警告</span></td>
+                        <td>2016-09-10    08:52:12</td>
+                        <td><span class="btn common" onclick="showNotice();">出库通知单</span><span class="btn common bgG ml10" onclick="showOil();">磅码单</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产认领</title>
+    <link rel="stylesheet" type="text/css" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/styles1.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/pages.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+</head>
+<body>
+<p class="page_title"><img src="../../resource/images/page_title02.png" />资产认领<a href="Assets_list.html" class="fr border-btn w60">返回</a></p>
+<div class="search-table clearfix mt15">
+    <table style="width: 1000px">
+        <tr>
+            <th width="100">资产名称：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="150">使用处室：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="100">使用人：</th>
+            <td><input type="text" class="input01"></td>
+        </tr>
+        <tr>
+            <th width="100">认领状态：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="150">导入时间：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="100">确认时间：</th>
+            <td><input type="text" class="input01"></td>
+        </tr>
+    </table>
+</div>
+<div class="search-table clearfix mt15">
+    <table>
+        <tbody><tr>
+            <th>资产类型：</th>
+            <td>
+                <a href="#" class="type-span active">
+                    全部
+                    <!--<span class="num">12</span>-->
+                </a>
+                <a href="#" class="type-span ">家具</a>
+                <a href="#" class="type-span">用具</a>
+                <a href="#" class="type-span">动植物</a>
+                <a href="#" class="type-span">通用设备</a>
+                <a href="#" class="type-span">专用设备</a>
+                <a href="#" class="type-span">土地</a>
+                <a href="#" class="type-span">软件</a>
+            <td ><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">资产列表</span>
+    </div>
+    <div style="padding: 20px;">
+        <table class="table02">
+            <thead>
+            <tr>
+                <th>资产编号</th>
+                <th>资产名称</th>
+                <th>使用处室</th>
+                <th>使用人</th>
+                <th>存放地点</th>
+                <th>资产大类</th>
+                <th>资产分类</th>
+                <th>认领状态</th>
+                <th>导入时间</th>
+                <th>确认时间</th>
+                <th>备注</th>
+                <th colspan="2">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>001010102</td>
+                <td>植物</td>
+                <td>财务室</td>
+                <td>张三李四</td>
+                <td>税务局</td>
+                <td>固定资产</td>
+                <td>植物</td>
+                <td>已认领</td>
+                <td>2018/04/01</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+                <td >
+                    <a class="btn common" href="Assets_details.html">详情</a>
+                    <a class="btn common bgRed ml10" href="Claim_details.html">认领</a>
+                </td>
+            </tr>
+            <tr>
+                <td>001010102</td>
+                <td>植物</td>
+                <td>保安室</td>
+                <td>张三李四</td>
+                <td>税务局</td>
+                <td>固定资产</td>
+                <td>植物</td>
+                <td>未认领</td>
+                <td>2018/04/01</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+                <td colspan="2">
+                    <a class="btn common" href="Assets_details.html">详情</a>
+                    <a class="btn common bgRed ml10" href="Claim_details.html">认领</a>
+                </td>
+            </tr>
+            <tr>
+                <td>001010102</td>
+                <td>植物</td>
+                <td>总经理室</td>
+                <td>张三李四</td>
+                <td>税务局</td>
+                <td>固定资产</td>
+                <td>植物</td>
+                <td>已认领</td>
+                <td>2018/04/01</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+                <td colspan="2">
+                    <a class="btn common" href="Assets_details.html">详情</a>
+                    <a class="btn common bgRed ml10" href="Claim_details.html">认领</a>
+                </td>
+            </tr>
+            <tr>
+                <td>001010102</td>
+                <td>植物</td>
+                <td>税务局</td>
+                <td>张三李四</td>
+                <td>税务局</td>
+                <td>固定资产</td>
+                <td>植物</td>
+                <td>未认领</td>
+                <td>2018/04/01</td>
+                <td>2018/04/01</td>
+                <td>无</td>
+                <td colspan="2">
+                    <a class="btn common" href="Assets_details.html">详情</a>
+                    <a class="btn common bgRed ml10" href="Claim_details.html">认领</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页-->
+    <div class="paging">
+        <input type="hidden" id='count' value="200"/>
+        <div class="pages">
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../resource/common_js/page_js.js"></script>
+</html>

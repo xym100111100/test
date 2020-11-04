@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星级粮库-资料上传</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 富文本编辑 -->
+    <script type="text/javascript"  charset="utf-8" src="../../plug-in/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript"  charset="utf-8" src="../../plug-in/ueditor/ueditor.all.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/ueditor/themes/iframe.css">
+    <link rel="stylesheet" href="../../plug-in/ueditor/themes/default/dialogbase.css">
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <script>
+        // pop元素
+        var $dom = null;
+        // 进度条位置
+        var progressIndex = 0;
+        $(function(){
+            //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['doc','docx','js','css','jpg'],//接收的文件后缀
+                theme: 'explorer-fa',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image','other'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                //maxFileCount:10, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+
+            // 富文本编辑   
+            var editor = UE.getEditor('ueditorContent');
+
+            // 模拟tab切换
+            $("#tabsOne li").click(function(){
+                // 可点击变量标识
+                var clickable = $(this).data("click");
+                if(!clickable){
+                    return;
+                }
+                var index = $(this).index();
+                $(this).addClass("tabs-selected").siblings().removeClass("tabs-selected");
+                $(".panel").hide();
+                $(".panel").eq(index).show();
+                progressIndex = index - 1;
+                setProgress();
+            });
+        });
+        /**
+         * 通过弹窗
+         * @return {[type]} [description]
+         */
+        function pass(){
+            var passLayer = $.layerConfirm('请确认粮库XXX通过初审','点击确定继续，点击取消关闭对话框',{
+                yes: function(index, layero){
+                    alert("通过了");
+                    layer.close(index);
+                },
+                no: function(){}
+            });
+        }
+        /**
+         * 不通过弹窗
+         * @return {[type]} [description]
+         */
+        function dispass(){
+            var param = {
+                area:["500px","280px"],
+                yes: function(index, layero){
+                    alert("不通过");
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = ['<div>',
+                        '        <div class="star-head">',
+                        '            <span class="title-span">粮库升星</span>',
+                        '            <span>粮库名称</span>',
+                        '        </div>',
+                        '        <table width="100%">',
+                        '            <td valign="top" width="80" class="c8 f16">原因描述：</td>',
+                        '            <td><textarea class="textarea01" style="width:80%;border-color:#ccc;"></textarea></td>',
+                        '        </table>',
+                        '    </div>'].join("");
+            param.content = content;
+            var dispassLayer = $.layerContent(param);
+        }
+        /**
+         * 表格pop
+         * @param  {[type]} targetDom [目标元素]
+         * @return {[type]}           [description]
+         */
+        function popList(targetDom){
+            var e = window.event || arguments.callee.caller.arguments[0];
+            e.stopPropagation();
+            if($dom != null){
+                $dom.remove();
+                $dom = null;
+                return;
+            }
+            var html = ['<div class="file-detail-pop abs">',
+                    '        <div class="arrow"></div>',
+                    '        <ul>',
+                    '            <li><a onclick="downloadFile(this);">“星级粮库”申请表（表1）.doc</a></li>',
+                    '            <li><a onclick="downloadFile(this);">“星级粮库”创建活动情况报告.doc</a></li>',
+                    '            <li><a onclick="downloadFile(this);">“星级粮库”创建评价计分表（表2）.doc</a></li>',
+                    '            <li><a onclick="downloadFile(this);">粮食库存数量及账实相符情况表（表2）.doc</a></li>',
+                    '            <li><a onclick="downloadFile(this);">地方储备粮油质量控制管理情况表（表3）.doc</a></li>',
+                    '            <li><a onclick="downloadFile(this);">库存粮食粮温控制情况表（表4）.doc</a></li>',
+                    '        </ul>',
+                    '    </div>'].join("");
+            $dom = $(html);
+            $("body").append($dom);
+            var x = $(targetDom).offset().left;
+            var y = $(targetDom).offset().top;
+            var left = x + $(targetDom).width()/2 - $dom.width()/2;
+            var top = y + $(targetDom).height() + 5;
+            $dom.css({
+                'left' : left  + "px",
+                'top' : top + "px" 
+            });
+            $dom.find(".arrow").addClass("up");
+            $(document).click(function(){
+                if($dom != null){
+                    $dom.remove();
+                    $dom = null;
+                }
+            });
+        }
+        /**
+         * 调整进度条位置
+         */
+        function setProgress(){
+            $("#proPrgress li").removeClass("past active");
+            $("#proPrgress li").each(function(){
+                var index = $(this).index();
+                if(index < progressIndex){
+                    $(this).addClass("past");
+                }
+                if(index == progressIndex){
+                    $(this).addClass("active");
+                }
+            });
+        }
+        /**
+         * 下载文件
+         * @param  {[type]} targetA [description]
+         * @return {[type]}         [description]
+         */
+        function downloadFile(targetA){
+            var e = window.event || arguments.callee.caller.arguments[0];
+            e.stopPropagation();
+            //下载文件
+            alert("下载文件");
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">星级粮库创建</p>
+    <div class="mt15">
+        <span class="btn btn-browser w110">创建</span>
+        <span class="btn border-btn w110 ml10">重置</span>
+    </div>
+    <ul class="project-progress mt15" id="proPrgress">
+        <li class="first">
+            <div class="title">创建项目</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">
+                <p>进度：已上传XX个粮库的材料</p>
+            </div>
+        </li>
+        <li>
+            <div class="title">材料初审</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">进度：已有XX个粮库的材料进入初审</div>
+        </li>
+        <li>
+            <div class="title">专家评分</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">进度：已有XX个粮库的材料进入专家评分阶段</div>
+        </li>
+        <li>
+            <div class="title">编写汇报材料</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">进度：已有XX个粮库完成专家评分，等待进入综合评分阶段</div>
+        </li>
+        <li>
+            <div class="title">综合评分</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">进度：已有XX个粮库的材料进入综合评分阶段</div>
+        </li>
+        <li class="last">
+            <div class="title">评级完成</div>
+            <div class="progress-devider"><span></span></div>
+            <div class="content">进度：xxxx年度星级粮库评比结束。2星粮库XX个，3星粮库XX个。4星粮库XX个，5星粮库XX个。</div>
+        </li>
+    </ul>
+    <!-- 静态的 easyUI的tab组件 样式修改追加在easyUI.css末尾 -->
+    <div id="tabsOne" tabposition="top" border="flase" class="skin1 tabs-container" fit="false">
+        <div class="tabs-header tabs-header-noborder">
+            <div class="tabs-wrap">
+                <ul class="tabs">
+                    <li class="tabs-selected" data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">企业申请</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">上传明细</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">材料初审</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">专家评分</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">汇报材料</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">综合评分</span>
+                        </a>
+                    </li>
+                    <li data-click = true>
+                        <a href="javascript:void(0)" class="tabs-inner">
+                            <span class="tabs-title">评级完成</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tabs-panels tabs-panels-noborder">
+            <div class="panel">
+                <div title="" iconcls="icon-search" href="" class="panel-body panel-body-noheader panel-body-noborder">
+                    <div class="table_outer bgFFF">
+                        <div class="table_search">
+                            <span class="title">申请材料上传</span>
+                        </div>
+                        <div style="padding: 30px 100px;">
+                            <form enctype="multipart/form-data">
+                                <div class="file-loading">
+                                    <!-- <label>Preview File Icon</label> -->
+                                    <input id="file" type="file" multiple>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-save" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                    <div class="table_outer bgFFF">
+                        <div class="table_search">
+                            <span class="title">材料明细</span>
+                            <span class="border-btn fr mt5 ml10">全部进入初审</span>
+                            <span class="border-btn fr mt5">进入初审</span>
+                        </div>
+                        <div style="padding: 20px;">
+                            <table class="table01">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" class="checkbox01"></th>
+                                        <th>申请企业名称/库区名称</th>
+                                        <th>企业性质</th>
+                                        <th>标准仓房仓容(万吨)</th>
+                                        <th>自评得分</th>
+                                        <th>申请星级</th>
+                                        <th>曾评星级</th>
+                                        <th>法定代表人</th>
+                                        <th>手机号码</th>
+                                        <th>备注</th>
+                                        <th>附件</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区柳州粮食储备库</td>
+                                        <td>国有（含国有投资、国有控股）</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传</span><span class="btn common bgLightG ml10">清空附件</span><span class="btn common bgRed ml10">删除</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区南宁粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传</span><span class="btn common bgLightG ml10">清空附件</span><span class="btn common bgRed ml10">删除</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区贵港粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>无</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传</span><span class="btn common bgLightG ml10">清空附件</span><span class="btn common bgRed ml10">删除</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="page_div clearfix">
+                                <ul class="fr">
+                                    <li class="prev"></li>
+                                    <li>1</li>
+                                    <li class="hover">2</li>
+                                    <li>3</li>
+                                    <li>...</li>
+                                    <li>9</li>
+                                    <li class="next"></li>
+                                    <li class="to-page">到<input type="text">页</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-cut" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                    <div class="table_outer bgFFF">
+                        <div class="table_search">
+                            <span class="title">材料初审</span>
+                            <span class="border-btn fr mt5 ml10">全部通过</span>
+                            <span class="border-btn fr mt5">批量通过</span>
+                        </div>
+                        <div style="padding: 20px;">
+                        	<table class="table01">
+                                <thead>
+                                    <tr>
+                                    	<th><input type="checkbox" class="checkbox01"></th>
+                                        <th>申请企业名称/库区名称</th>
+                                        <th>企业性质</th>
+                                        <th>标准仓房仓容(万吨)</th>
+                                        <th>自评得分</th>
+                                        <th>申请星级</th>
+                                        <th>曾评星级</th>
+                                        <th>法定代表人</th>
+                                        <th>手机号码</th>
+                                        <th>备注</th>
+                                        <th>附件</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    	<td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区柳州粮食储备库</td>
+                                        <td>国有（含国有投资、国有控股）</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10" onclick="pass();">通过</span><span class="btn common bgRed ml10" onclick="dispass();">不通过</span></td>
+                                    </tr>
+                                    <tr>
+                                    	<td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区南宁粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>无</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10" onclick="pass();">通过</span><span class="btn common bgRed ml10" onclick="dispass();">不通过</span></td>
+                                    </tr>
+                                    <tr>
+                                    	<td><input type="checkbox" class="checkbox01"></td>
+                                        <td>广西壮族自治区贵港粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10" onclick="pass();">通过</span><span class="btn common bgRed ml10" onclick="dispass();">不通过</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                           
+                            <div class="page_div clearfix">
+                                <ul class="fr">
+                                    <li class="prev"></li>
+                                    <li>1</li>
+                                    <li class="hover">2</li>
+                                    <li>3</li>
+                                    <li>...</li>
+                                    <li>9</li>
+                                    <li class="next"></li>
+                                    <li class="to-page">到<input type="text">页</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-save" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                    <div class="table_outer bgFFF">
+                        <div class="table_search">
+                            <span class="title">专家评分</span>
+                        </div>
+                        <div style="padding: 20px;">
+                        	<table class="table01">
+                                <thead>
+                                    <tr>
+                                        <th>申请企业名称/库区名称</th>
+                                        <th>企业性质</th>
+                                        <th>标准仓房仓容(万吨)</th>
+                                        <th>自评得分</th>
+                                        <th>考评得分</th>
+                                        <th>扣分</th>
+                                        <th>申请星级</th>
+                                        <th>曾评星级</th>
+                                        <th>法定代表人</th>
+                                        <th>手机号码</th>
+                                        <th>备注</th>
+                                        <th>附件</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>广西壮族自治区柳州粮食储备库</td>
+                                        <td>国有（含国有投资、国有控股）</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>未上传评分</td>
+                                        <td>未上传评分</td>
+                                        <td>五星粮库</td>
+                                        <td>五星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>广西壮族自治区南宁粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>无</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>广西壮族自治区贵港粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="page_div clearfix">
+                                <ul class="fr">
+                                    <li class="prev"></li>
+                                    <li>1</li>
+                                    <li class="hover">2</li>
+                                    <li>3</li>
+                                    <li>...</li>
+                                    <li>9</li>
+                                    <li class="next"></li>
+                                    <li class="to-page">到<input type="text">页</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-save" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                 	<div class="clearfix" style="padding: 0 15px;"><span class="border-btn fr ml10">导入模版</span></div>
+                    <textarea name="ueditorContent" id="ueditorContent" class="mt15"></textarea>
+                    <div class="tc pd10 mt20">
+                        <span class="btn btn-print w110">设置模版</span><span class="btn btn-browser w110 ml10">预览</span><span class="btn btn-print w110 ml10">打印</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-save" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                    <div class="clearfix" style="padding: 0 15px;"><span class="border-btn fr ml10">完成评级</span><span class="border-btn fr">上传计分表</span></div>
+                      <div style="padding: 20px;">
+                      		<table class="table01">
+                                <thead>
+                                    <tr>
+                                        <th>申请企业名称/库区名称</th>
+                                        <th>企业性质</th>
+                                        <th>标准仓房仓容(万吨)</th>
+                                        <th>自评得分</th>
+                                        <th>考评得分</th>
+                                        <th>扣分</th>
+                                        <th>综合得分</th>
+                                        <th>曾评星级</th>
+                                        <th>申请星级</th>
+                                        <th>本次星级定档</th>
+                                        <th>法定代表人</th>
+                                        <th>手机号码</th>
+                                        <th>备注</th>
+                                        <th>附件</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>广西壮族自治区柳州粮食储备库</td>
+                                        <td>国有（含国有投资、国有控股）</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>未上传评分</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>未上传评分</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>广西壮族自治区南宁粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>未上传评分</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>未上传评分</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>广西壮族自治区贵港粮食储备库</td>
+                                        <td>国有参股</td>
+                                        <td>100.12</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>99.99</td>
+                                        <td>五星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>二星粮库</td>
+                                        <td>XXX</td>
+                                        <td>1862542XXXX</td>
+                                        <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                        <td><a onclick="popList(this);">申请材料附件共 5 个</a></td>
+                                        <td><span class="btn common">下载</span><span class="btn common bgG ml10">上传评分</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="page_div clearfix">
+                                <ul class="fr">
+                                    <li class="prev"></li>
+                                    <li>1</li>
+                                    <li class="hover">2</li>
+                                    <li>3</li>
+                                    <li>...</li>
+                                    <li>9</li>
+                                    <li class="next"></li>
+                                    <li class="to-page">到<input type="text">页</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="panel" style="display: none;">
+                <div title="" iconcls="icon-save" href="" class="panel-body panel-body-noheader panel-body-noborder" id="">
+                    <div class="tc bgFFF pd20">
+                        <img src="../../resource/images/star_success.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

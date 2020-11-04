@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-仓容管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            $(".tab-zdy a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+            laydate.render({
+                elem: '#date'
+            });
+            initChart();
+    	});
+        function initChart(){
+            /*图表*/
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            
+            var option01 = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{b}: {c}"
+                },
+                series: [
+                    {
+                        name:'',
+                        type:'pie',
+                        hoverAnimation: false,                  //悬浮放大效果
+                        radius : '60%',
+                        center: ['50%', '55%'],
+                        avoidLabelOverlap: false,
+                        data:[
+                            {
+                                value:80, 
+                                name:'满仓',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#55B813'
+                                    }   
+                                }
+                            },
+                            {
+                                value:20, 
+                                name:'维修',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#FDBA4F'
+                                    }   
+                                }
+                            },
+                            {
+                                value:60, 
+                                name:'空仓',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#767F95'
+                                    }   
+                                }
+                            },
+                            {
+                                value:100, 
+                                name:'出库中',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#13B884'
+                                    }   
+                                }
+                            },
+                            {
+                                value:30, 
+                                name:'入库中',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#69A5E1'
+                                    }   
+                                }
+                            },
+                            {
+                                value:90, 
+                                name:'占用',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#FF5500'
+                                    }   
+                                }
+                            },
+                            {
+                                value:90, 
+                                name:'其他',
+                                itemStyle:{
+                                    normal: {
+                                        color:'#A587FD'
+                                    }   
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+
+            chart01.setOption(option01);   
+        }
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">仓容管理<a href="storageSupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    
+    <div class="mt15">
+        <div class="tab-zdy">
+            <a class="active" data-tab="#tab1">库区1</a>
+            <a data-tab="#tab2">库区2</a>
+            <a data-tab="#tab3">库区3</a>
+        </div>
+        <div class="table_outer bgFFF mt10">
+            <div class="tab-content" id="tab1">
+                <div class="table_search"><input type="text" class="input01 layui-input w200" id="date" placeholder="2018-05-25"></div>
+                <div class="pd20">
+                    <div class="row">
+                        <div class="col-xs-6" style="position: relative;">
+                            <div id="chart01" style="height: 320px;"></div>
+                            <p style="position: absolute;top: 10px;left: 0;right: 0;text-align: center;color: #888;">有效仓容 <span style="font-size: 24px;color: #444;">123,224</span> 吨</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <table class="stock-chart-info2" style="width: 80%;">
+                                <thead>
+                                    <tr class="c8">
+                                        <th width="10"></th>
+                                        <th>类型</th>
+                                        <th>仓容占比</th>
+                                        <th>有效仓容</th>
+                                        <th>目前仓容</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="circle c1"></span></td>
+                                        <td>满仓</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle c2"></span></td>
+                                        <td>空仓</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle c3"></span></td>
+                                        <td>出库中</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle c4"></span></td>
+                                        <td>入库中</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle c5"></span></td>
+                                        <td>占用</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle c6"></span></td>
+                                        <td>维修</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="circle"></span></td>
+                                        <td>其他</td>
+                                        <td>36%</td>
+                                        <td>2323吨</td>
+                                        <td>2323吨</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mt10" style="width: 100%;">
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store01.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store02.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store03.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store04.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store05.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store06.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock">
+                                <div class="stock-head">仓房1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/store07.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil01.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil02.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil03.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil04.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil05.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil06.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="each-stock oil">
+                                <div class="stock-head">油罐1 </div>
+                                <div style="padding: 0 20px;">
+                                    <div class="tc"><img src="../../resource/images/oil07.png" alt="" style="max-width: 100%;"></div>
+                                    <ul>
+                                        <li><span class="c8">有效仓容：</span>XXX</li>
+                                        <li><span class="c8">满仓仓容：</span>XXX</li>
+                                        <li><span class="c8">占比：</span>满仓/有效</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="tc pd20">
+                        <button type="button" class="border-btn gray">加载更多...</button>
+                    </div>
+                </div>
+            </div>
+            <div id="tab2" style="display: none;"></div>
+            <div id="tab3" style="display: none;"></div>
+        </div>
+    </div>
+</body>
+</html>

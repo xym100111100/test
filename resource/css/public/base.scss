@@ -1,0 +1,278 @@
+@import './mixin.scss';
+
+
+.#{$prev}-bg-main {
+    background: #F8F8F8;
+}
+
+.#{$prev}-bg-white {
+    background: #fff;
+}
+
+// 渐变背景
+.#{$prev}-bg-linear1 {
+    background: linear-gradient(90deg, rgba(75, 211, 248, 1) 0%, rgba(45, 152, 251, 1) 100%);
+}
+
+.#{$prev}-bg-linear2 {
+    background: linear-gradient(90deg, rgba(173, 158, 248, 1) 0%, rgba(159, 81, 189, 1) 100%);
+}
+
+.#{$prev}-bg-linear3 {
+    background: linear-gradient(90deg, rgba(249, 126, 88, 1) 0%, rgba(248, 79, 75, 1) 100%);
+}
+
+.#{$prev}-bg-linear4 {
+    background: linear-gradient(90deg, rgba(75, 225, 161, 1) 0%, rgba(43, 181, 81, 1) 100%);
+}
+
+.#{$prev}-bg-linear5 {
+    background: linear-gradient(90deg, rgba(250, 175, 65, 1) 0%, rgba(249, 105, 47, 1) 100%);
+}
+
+
+.#{$prev}-color-1 {
+    color: #3787F1;
+}
+
+.#{$prev}-color-2 {
+    color: #A054BF;
+
+}
+
+.#{$prev}-color-3 {
+    color: #F84F4B;
+}
+
+.#{$prev}-color-4 {
+    color: #2CB653;
+}
+
+.#{$prev}-color-5 {
+    color: #F96B30;
+}
+
+.#{$prev}_star {
+    color: #f33;
+}
+
+.#{$prev}_ove {
+    @include ove;
+}
+
+.#{$prev}_csp {
+    cursor: pointer;
+}
+
+.#{$prev}_csa {
+    cursor: auto;
+}
+
+.#{$prev}_fl {
+    float: left;
+}
+
+.#{$prev}_fr {
+    float: right;
+}
+
+.#{$prev}_fn {
+    float: none;
+}
+
+.#{$prev}_fn_imp {
+    float: none !important;
+}
+
+.#{$prev}_clearfix {
+    @include clearfix;
+}
+
+.#{$prev}_tl {
+    text-align: left;
+}
+
+.#{$prev}_tr {
+    text-align: right;
+}
+
+.#{$prev}_tc {
+    text-align: center;
+}
+
+.#{$prev}_dpn {
+    display: none;
+}
+
+.#{$prev}_dpi {
+    display: inline
+}
+
+.#{$prev}_dpib {
+    display: inline-block
+}
+
+.#{$prev}_dpb {
+    display: block
+}
+
+.#{$prev}_dpn_imp {
+    display: none !important;
+}
+
+.#{$prev}_dpb_imp {
+    display: block !important;
+}
+
+.#{$prev}_pr {
+    position: relative;
+}
+
+.#{$prev}_pa {
+    position: absolute;
+}
+
+.#{$prev}_hr {
+    height: 1px;
+    background-color: #EFEFEF;
+}
+
+.#{$prev}_shadow {
+    @include boxShadow;
+}
+
+.#{$prev}_shadow_none {
+    box-shadow: none !important;
+}
+
+.#{$prev}_flex_wrap {
+    display: flex;
+}
+
+.#{$prev}_flex_1 {
+    flex: 1;
+}
+
+.#{$prev}_flex_2 {
+    flex: 2;
+}
+
+.#{$prev}_flex_3 {
+    flex: 3;
+}
+
+
+
+// 宽高,margin padding px
+$numbers: (0)(1)(2)(3) (5) (8) (10) (12) (15) (20) (30)(50);
+
+@each $num in $numbers {
+    $i: index($numbers, $num);
+
+    .#{$prev}_w#{$num} {
+        width: $num+px;
+    }
+
+    .#{$prev}_h#{$num} {
+        height: $num+px;
+    }
+
+    .#{$prev}_pd#{$num} {
+        padding: $num+px !important;
+    }
+
+    .#{$prev}_mg#{$num} {
+        margin: $num+px !important;
+    }
+
+    .#{$prev}_pdlr#{$num} {
+        padding-left: $num+px !important;
+        padding-right: $num+px !important;
+    }
+
+    .#{$prev}_pdtb#{$num} {
+        padding-top: $num+px !important;
+        padding-bottom: $num+px !important;
+    }
+
+    .#{$prev}_mglr#{$num} {
+        margin-left: $num+px !important;
+        margin-right: $num+px !important;
+    }
+
+    .#{$prev}_mgtb#{$num} {
+        margin-top: $num+px !important;
+        margin-bottom: $num+px !important;
+    }
+
+    .#{$prev}_pt#{$num} {
+        padding-top: $num+px !important;
+    }
+
+    .#{$prev}_pb#{$num} {
+        padding-bottom: $num+px !important;
+    }
+
+    .#{$prev}_pl#{$num} {
+        padding-left: $num+px !important;
+    }
+
+    .#{$prev}_pr#{$num} {
+        padding-right: $num+px !important;
+    }
+
+    .#{$prev}_mt#{$num} {
+        margin-top: $num+px !important;
+    }
+
+    .#{$prev}_mb#{$num} {
+        margin-bottom: $num+px !important;
+    }
+
+    .#{$prev}_ml#{$num} {
+        margin-left: $num+px !important;
+    }
+
+    .#{$prev}_mr#{$num} {
+        margin-right: $num+px !important;
+    }
+
+}
+
+
+
+$numbers2: (10) (20) (25) (50) (100);
+
+@each $num in $numbers2 {
+    $i: index($numbers2, $num);
+
+    .#{$prev}_w#{$num}p {
+        width: percentage($num/100);
+    }
+
+    .#{$prev}_maxw#{$num}p {
+        max-width: percentage($num/100);
+    }
+
+    .#{$prev}_minw#{$num}p {
+        min-width: percentage($num/100);
+    }
+
+    .#{$prev}_h#{$num}p {
+        height: percentage($num/100);
+    }
+
+    .#{$prev}_maxh#{$num}p {
+        max-height: percentage($num/100);
+    }
+
+    .#{$prev}_minh#{$num}p {
+        min-height: percentage($num/100);
+    }
+
+}
+
+.#{$prev}_mgauto {
+    margin-left: auto;
+    margin-right: auto;
+}

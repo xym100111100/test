@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>涉粮企业信息统计</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .table01 tbody tr:nth-child(even) {
+            background: #fff;
+        }
+        .table01 td {
+            line-height: 15px;
+            height: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding:  5px;
+            background: #f7f7f7;
+        }
+        .table01 tbody tr+tr {
+            border-color: #dcdcdc;
+        }
+        .table01 td+td {
+            border-left-color: #dcdcdc;
+        }
+        .table01 .bg{background: #fff}
+
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            initTree();
+            renderSeasonDate(document.getElementById('date'));
+        });
+        /**初始化树*/
+        function initTree(){
+            // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+            var setting = {
+                data: {            //这里不动
+                    simpleData: {
+                        enable: true,
+                        idKey: "id",
+                        pidKey: "pId",
+                        rootPid: '-1'
+                    }
+                },
+                // check: {
+                //     enable: true,     //这里设置是否显示复选框
+                //     chkboxType: { "Y": "ps", "N": "ps" }      //设置复选框是否与 父/子 级相关联
+                // },
+                callback: {
+                    // onCheck: zTreeOnCheck         //点击复选框相关回调（回调名称固定）
+                    // beforeCheck : function(treeId, treeNode) {      //选择复选框前相关回调
+                    //     if (treeNode.isParent) {
+                    //         if(treeNode.myAttr !== "1"){ //判断是否是需要显示复选框的节点
+                    //             treeNode.nocheck = true;   //设置复选框不显示
+                    //         }
+                    //         return false;
+                    //     }
+                    //  }
+                }
+            };
+            // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+            var zNodes = [
+                {name:"广西壮族自治区", open:true,iconSkin:"pIcon02",children:[
+                        // {name:"XXX党委", open:true,children:[
+                        {
+                            name:"南宁市",
+                            open:true,
+                            iconSkin:"pIcon02",
+                            children:[
+                                {name: '南宁', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"南宁市邕宁区粮食储备库",iconSkin:"cIcon03"}]
+                                },
+                                {name: '南宁市', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西军粮配送中心",iconSkin:"cIcon03"}]
+                                },
+                                {name: '江南区', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西壮族自治区南宁粮食储备库有限公司",iconSkin:"cIcon03"}]
+                                },
+                                {name: '南宁', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"马山县粮食储备中心库",iconSkin:"cIcon03"}]
+                                },
+                                {name: '南宁', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"上林粮库",iconSkin:"cIcon03"}]
+                                },
+                                {name: '中卫', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"横县储备粮管理中心",iconSkin:"cIcon03"}]
+                                },
+                            ]
+                        },
+                        {
+                            name:"柳州市",
+                            open:true,
+                            iconSkin:"pIcon02",
+                            children:[
+                                {name: '柳州', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西柳州黄村国家粮食储备库",iconSkin:"cIcon03"}]
+                                },
+                                {name: '柳州市柳南区', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西壮族自治区柳州粮食储备库",iconSkin:"cIcon03"},
+                                        {name:"广西柳州国家粮食储备库",iconSkin:"cIcon03"}
+                                    ]
+                                },
+                                {name: '柳州', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"融水苗族自治县储备粮管理中心",iconSkin:"cIcon03"}]
+                                },
+                            ]
+                        },
+                        { name:"桂林市",
+                            open:true,
+                            iconSkin:"pIcon02",
+                            children:[
+                                {name: '桂林市', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西壮族自治区粮食局临桂粮食储备库",iconSkin:"cIcon03"}]
+                                }
+                            ]
+                        },
+                        { name:"北海市",
+                            open:true,
+                            iconSkin:"pIcon02",
+                            children:[
+                                {name: '北海市', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西北海国家粮食储备粮库",iconSkin:"cIcon03"}]
+                                }
+                            ]
+                        },
+                        { name:"钦州市",
+                            open:true,
+                            iconSkin:"pIcon02",
+                            children:[
+                                {name: '钦州', open:true,iconSkin:"pIcon02",children:[
+                                        {name:"广西壮族自治区钦州粮食储备库有限公司",iconSkin:"cIcon03"},
+                                        {name:"钦北区大寺中心粮所",iconSkin:"cIcon03"}]
+                                }
+                            ]
+                        },
+                    ]}
+                // ]}
+            ];
+            var $dom = $("#areaTree");
+            var zTreeObj = $.fn.zTree.init($dom, setting, zNodes);
+        }
+        //用于存储被隐藏的结点
+        var hiddenNodes = [];
+        //过滤ztree显示数据
+        function zTreeKeyfilter() {
+            var zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+            //显示上次搜索后背隐藏的结点
+            zTreeObj.showNodes(hiddenNodes);
+
+            //查找不符合条件的叶子节点
+            function filterFunc(node) {
+                //需要过滤的关键词
+                var _keywords = $("#nodeKeyword").val();
+                var rootName = zTreeObj.getNodes()[0].name;
+                // if(rootName.indexOf(_keywords) != -1){
+                //  _keywords = '';
+                // }
+
+                if (node.name.indexOf(_keywords) != -1){
+                    return false;
+                }
+
+                if(!CheckParentNodesIsContainKeyword(node)){
+                    return false;
+                }
+                if (node.isParent){
+                    //是父节点时需要判断子节点是否符合条件，是的话则父节点需要保留
+                    var bl = CheckChildNodesIsContainKeyword(node);
+                    //console.log(bl);
+                    return bl;
+                }else {
+                    //是子节点时，需要判断父节点是否符合条件，是的话则子节点需要保留
+                    var bl2 = CheckParentNodesIsContainKeyword(node);
+                    return bl2;
+                }
+
+                return true;
+            };
+
+            //获取不符合条件的叶子结点
+            hiddenNodes = zTreeObj.getNodesByFilter(filterFunc);
+
+            //隐藏不符合条件的叶子结点
+            zTreeObj.hideNodes(hiddenNodes);
+        };
+        //tree搜索时：是父节点时需要判断子节点是否符合条件，是的话则父节点需要保留
+        function CheckChildNodesIsContainKeyword(pNode)
+        {
+            var childs = pNode.children;
+
+            var isexit = true;
+            var _keywords = $("#nodeKeyword").val();
+
+            for(var i=0;i<childs.length;i++)
+            {
+                if (childs[i].isParent)
+                {
+                    if (childs[i].name.indexOf(_keywords) != -1){
+                        return false;
+                    }
+                    isexit = CheckChildNodesIsContainKeyword(childs[i]);
+                    if (!isexit)
+                        return isexit;
+                }
+                else {
+                    if (childs[i].name.indexOf(_keywords) != -1)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        //tree 搜索时：子节点时，需要判断父节点是否符合条件，是的话则子节点需要保留
+        function CheckParentNodesIsContainKeyword(cNode) {
+
+            var pnode = cNode.getParentNode();
+
+            if (pnode != null)
+            {
+                var _keywords = $("#nodeKeyword").val();
+                if (pnode.name.indexOf(_keywords) != -1)
+                    return false;
+                else {
+                    return CheckParentNodesIsContainKeyword(pnode)
+                }
+            }
+            return true;
+        }
+        /*enter搜索*/
+        function inpPress(){
+            var e = window.event || arguments.callee.caller.arguments[0];
+            if(e.keyCode == "13"){
+                zTreeKeyfilter();
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--<p class="page-title"><img src="../../resource/images/page_title02.png">涉粮企业信息统计</p>-->
+
+<div class="mt10" style="position: relative;width: 100%;">
+    <div class="11" style="height: 100%;position: absolute;width: 340px;;">
+        <div class="table_outer bgFFF" style="height: 100%;min-height: 700px;">
+            <div class="table_search" style="padding-right: 15px;">
+                <input class="input01" type="text" placeholder="请输入关键字搜索" style="width: 160px;" id="nodeKeyword" onkeypress="inpPress();"><span class="search_btn01 ml15" style="width: 80px;padding-left: 35px;background-position: 10px;" onclick="zTreeKeyfilter();">查询</span>
+            </div>
+            <div style="padding: 10px;overflow: auto">
+                <p class=" mt10">接入<span class="cGreen">84</span>个粮库单位</p>
+                <ul class="ztree" id="areaTree"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="" style="margin-left: 360px;margin-right: 20px;">
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search ">
+                <a class="border-btn fr mt5 w60" href="">导出</a>
+                <a class="border-btn fr mt5 w60 mr20" href="">打印</a>
+            </div>
+            <div style="padding: 20px;">
+
+                <table class="table01 ">
+                    <thead>
+                    <tr>
+                        <th colspan="2">纬度</th>
+                        <th>指标</th>
+                        <th>单位</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="10">企业类型</td>
+                        <td>粮食仓储企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>中央直属储备粮库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+
+                    <tr>
+                        <td >省级储备粮库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>地市级储备粮库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>县级储备粮库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+
+                        <td>其他仓储企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>粮食购销企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+
+                        <td>粮食加工企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>粮食设备制造企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>其他粮食企业　</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="8" >企业性质</td>
+                        <td>国有企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>民营企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>事业单位</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>港澳台商投资企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>外商投资企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>其他内资企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>个体工商户</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>其他</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="5">企业经营种类</td>
+                        <td>收储</td>
+                       <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >加工</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >物流中转</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >特殊</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>其他</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">资金</td>
+                        <td>自有资金</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>万元</td>
+                    </tr>
+                    <tr>
+                        <td >注册资本</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>万元</td>
+                    </tr>
+                    <tr>
+                        <td >固定资产</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>万元</td>
+                    </tr>
+                    <tr>
+                        <td >资产总额</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>万元</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">隶属关系</td>
+                        <td>中央企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+
+                        <td>地方企业</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >其他</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">直属库分类</td>
+                        <td>非直属库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >自治区直属库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >市级直属库</td>
+                        <td class="bg">XXXXXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+
+                        <td>县级直属库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td >中央直属库</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">年加工量</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>吨</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">年经营量</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>吨</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">年收购量</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>吨</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">列入应急体系数量</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">仓储容量</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>吨</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">继续经营</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">继续收购</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">企业从业人员数</td>
+                        <td class="bg">XXXXXX</td>
+                        <td>人</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

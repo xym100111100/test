@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管-熏蒸记录表-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <div class="tr">
+        <button type="button" class="layui-btn">打印</button>
+    </div>
+    <table class="info-table mt5">
+        <col><col><col><col><col><col><col><col><col><col><col>
+        <tr>
+            <th class="tc">仓号（货位）</th>
+            <td colspan="10">18</td>
+        </tr>
+        <tr>
+            <th class="tc">天气</th>
+            <td>阴</td>
+            <th colspan="2" class="tc">气温</th>
+            <td>30.0℃</td>
+            <th class="tc">药剂名称</th>
+            <td colspan="3">磷化铝</td>
+            <th class="tc">单位用药量</th>
+            <td>5.1g/m³</td>
+        </tr>
+        <tr>
+            <th class="tc">仓温</th>
+            <td>28.0℃</td>
+            <th colspan="2" class="tc">仓湿</th>
+            <td>80%</td>
+            <th class="tc">设定施药溶度</th>
+            <td colspan="3">300</td>
+            <th class="tc">施药人数</th>
+            <td>9人</td>
+        </tr>
+        <tr>
+            <th class="tc">品种</th>
+            <td>黄玉米</td>
+            <th rowspan="3" class="tc">体积</th>
+            <th class="tc">粮堆</th>
+            <td>5986 m³</td>
+            <th class="tc">首次用药量</th>
+            <td colspan="3">40.5kg</td>
+            <th class="tc">首次施药时间</th>
+            <td>5月15日 11时</td>
+        </tr>
+        <tr>
+            <th class="tc">数量</th>
+            <td>4198.160t</td>
+            <th class="tc">空间</th>
+            <td>1986 m³</td>
+            <th class="tc">补药情况</th>
+            <td colspan="5">第一次6月6日24kg；第二次6月10日24kg、</td>
+        </tr>
+        <tr>
+            <th class="tc">粮食水分</th>
+            <td>14%</td>
+            <th class="tc">总体积</th>
+            <td>7986 m³</td>
+            <th class="tc">总用药量</th>
+            <td>40.5kg</td>
+            <th class="tc">施药方法</th>
+            <td>环流熏蒸</td>
+            <th class="tc">密闭时间</th>
+            <td>53天</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="tc">熏蒸前情况</th>
+            <th colspan="6" class="tc">熏蒸后情况</th>
+        </tr>
+        <tr>
+            <th class="tc">平均粮温℃</th>
+            <td colspan="4">上层25.2，中上层16.7，中下层，下层17.3，整仓19.7</td>
+            <th class="tc">散气日期</th>
+            <td colspan="3">2016年7月10日</td>
+            <th class="tc">害虫密度</th>
+            <td>0头/kg</td>
+        </tr>
+        <tr>
+            <th class="tc">主要虫种</th>
+            <td colspan="4">玉米象、锈赤扁谷盗</td>
+            <th class="tc">散气方式</th>
+            <td>机械通风</td>
+            <th class="tc">除药渣日期</th>
+            <td>7月10日</td>
+            <th class="tc">杀虫率</th>
+            <td>100%</td>
+        </tr>
+        <tr>
+            <th class="tc">害虫密度</th>
+            <td colspan="4">10头/kg，其中主要害虫 8 头/kg</td>
+            <th class="tc">平均粮温℃</th>
+            <td colspan="5">上层25.2，中上层16.7，中下层，下层17.3，整仓19.7</td>
+        </tr>
+        <tr>
+            <th class="tc">备注</th>
+            <td colspan="10">薄膜压盖</td>
+        </tr>
+        <tr>
+            <td colspan="11">
+                <div class="layui-row">
+                    <div class="layui-col-xs4">
+                        <em class="c8">熏蒸负责人：</em>XXX
+                    </div>
+                    <div class="layui-col-xs4 tc">
+                        <em class="c8">保管员：</em>XXX
+                    </div>
+                    <div class="layui-col-xs4 tr">
+                        <em class="c8">熏蒸人员：</em>XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

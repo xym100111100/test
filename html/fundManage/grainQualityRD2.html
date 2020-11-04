@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食质量安全追溯-粮食质量追溯</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            $("#forms a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+            // loadTab();
+            $("#question").mouseenter(function(){
+                $("#questionPop").fadeIn();
+            }).mouseout(function(){
+                $("#questionPop").fadeOut();
+            });
+        });
+        // /*获取参数*/
+        // function getParam(){
+        //     var params = window.location.href.split("?")[1]; //得到参数
+        //     var index = params.split("=")[1]; 
+        //     return index;
+        // }  
+        // /*显示tab内容*/
+        // function loadTab(){
+        //     var index = parseInt(getParam());
+        //     $("#forms a").eq(index).click();
+        // } 
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮食质量安全追溯-粮食质量追溯<a href="grainQualityRD.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="tab-zdy mt15" id="forms">
+        <a data-tab="#tab1" class="active">出入库通知单</a>
+        <a data-tab="#tab2">检验报告</a>
+        <a data-tab="#tab3">检验登记表</a>
+    </div>
+    <div class="tab-content" id="tab1">
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search tc" style="position: relative;">
+                <span class="f18">粮食出入库通知单</span><span class="fr"><em class="c8">No：</em>88888</span>
+            </div>
+            <div class="pd20">
+                <div class="table_outer">
+                    <table class="multiline-table">
+                        <tr>
+                            <td colspan="9">
+                                <em class="bold">品种：</em><label>稻谷 <input type="checkbox" class="checkbox01" checked="checked"></label><label class="ml10">小麦 <input type="checkbox" class="checkbox01"></label><label class="ml10">玉米 <input type="checkbox" class="checkbox01"></label>
+                                <span class="fr">2013年12月31日</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>样品来源</th>
+                            <td colspan="8">横县蒙垌粮库</td>
+                        </tr>
+                        <tr>
+                            <th>品名</th>
+                            <td colspan="2">早籼稻谷</td>
+                            <th>估重t</th>
+                            <td>30</td>
+                            <th>等级</th>
+                            <td>三等</td>
+                            <th>货位</th>
+                            <td>19仓</td> 
+                        </tr>
+                        <tr>
+                            <th rowspan="2">检验项目</th>
+                            <th rowspan="2" class="bgF7">水分（%）</th>
+                            <th colspan="2" class="bgF7">杂质（%）</th>
+                            <th rowspan="2" class="bgF7">粗糙率（%）</th>
+                            <th rowspan="2" class="bgF7">整精米率（%）</th>
+                            <th rowspan="2" class="bgF7">黄粒米（%）</th>
+                            <th rowspan="2" class="bgF7">脂肪酸值（mgKOH/100g）</th>
+                            <th rowspan="2" class="bgF7">色泽气味</th>
+                        </tr>
+                        <tr>
+                            <th class="bgF7">总量</th>
+                            <th class="bgF7">其中矿物质</th>
+                        </tr>
+                        <tr class="tc">
+                            <th>检验结果</th>
+                            <td>12.6</td>
+                            <td>0.8</th>
+                            <td></td>
+                            <td>76.0</th>
+                            <td>49.0</td>
+                            <td>0.5</th>
+                            <td></td> 
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">检验项目</th>
+                            <th rowspan="2" class="bgF7">容重（%）</th>
+                            <th colspan="2" class="bgF7">不完善粒（%）</th>
+                            <th rowspan="2" class="bgF7">硬度指数</th>
+                            <th rowspan="2" class="bgF7">谷外糙米（%）</th>
+                            <th rowspan="2" class="bgF7">互混率（%）</th>
+                            <th rowspan="2" class="bgF7">面筋吸水量（%）</th>
+                            <th rowspan="2" class="bgF7">品尝评分值（分）</th>
+                        </tr>
+                        <tr>
+                            <th class="bgF7">总量</th>
+                            <th class="bgF7">其中生霉粒</th>
+                        </tr>
+                        <tr class="tc">
+                            <th>检验结果</th>
+                            <td></td>
+                            <td></th>
+                            <td></td>
+                            <td></th>
+                            <td></td>
+                            <td></th>
+                            <td></td> 
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>结论</th>
+                            <td colspan="4"></td>
+                            <th>备注</th>
+                            <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <th>主要保管要求</th>
+                            <td colspan="7">
+                                <span><em class="c8">负责人：</em>分管检验经理</span>
+                                <span style="margin-left: 50px;"><em class="c8">检验员：</em>XXX</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id="tab2" style="display: none;">
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search tc" style="position: relative;">
+                <span class="f18">稻谷检验报告</span>
+            </div>
+            <div class="pd20">
+                <div class="table_outer">
+                    <table class="multiline-table">
+                    <tr>
+                        <td colspan="7">
+                            <em class="bold">类别：</em><label>入库 <input type="checkbox" class="checkbox01" checked="checked"></label><label class="ml10">存储 <input type="checkbox" class="checkbox01"></label><label class="ml10">出库 <input type="checkbox" class="checkbox01"></label>
+                            <span class="fr">报告编号：20151102</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">检验单位</th>
+                        <td colspan="5">广西壮族自治区南宁粮食储备库</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">受检单位</th>
+                        <td colspan="5">广西壮族自治区南宁粮食储备库</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">仓号</th>
+                        <td>1</td>
+                        <th>粮食性质</th>
+                        <td>订单粮</td>
+                        <th>粮食产地</th>
+                        <td>陆川、灵山</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">收获年度</th>
+                        <td>2015</td>
+                        <th>包装/散装</th>
+                        <td>散装</td>
+                        <th>成货位时间</th>
+                        <td>2013年11月</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">扦样地点</th>
+                        <td colspan="5">1仓</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">代表数量（吨）</th>
+                        <td>3036.580</td>
+                        <th>扦（送）日期</th>
+                        <td>2013-11-01</td>
+                        <th>扦（送）样人</th>
+                        <td>XXX</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">检验依据（标准代号）</th>
+                        <td colspan="5">GB1360-2009     GB/T253354-2006</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="9">检验结果</th>
+                        <th>检验指标</th>
+                        <th>标准</th>
+                        <th>检验结果</th>
+                        <th>检验指标</th>
+                        <th>标准</th>
+                        <th>检验结果</th>
+                    </tr>
+                    <tr class="tc">
+                        <th>出糙率（%）</th>
+                        <th>中等≥75.0</th>
+                        <td>76.2</td>
+                        <th>脂肪酸值（mgKOH/100g）</th>
+                        <th>≤30</th>
+                        <td>20.8</td>
+                    </tr>
+                    <tr class="tc">
+                        <th>整精米率（%）</th>
+                        <th>中等≥44.0</th>
+                        <td>57.3</td>
+                        <th>品尝评分值（分）</th>
+                        <th>≥70</th>
+                        <td>78</td>
+                    </tr>
+                    <tr class="tc">
+                        <th>杂质含量（%）</th>
+                        <th>≤1.0</th>
+                        <td>0.9</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr class="tc">
+                        <th>水分含量（%）</th>
+                        <th>≤13.5</th>
+                        <td>12.1</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr class="tc">
+                        <th>谷外糙米含量（%）</th>
+                        <th>≤2.0</th>
+                        <td>0.4</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr class="tc">
+                        <th>黄粒米含量（%）</th>
+                        <th>≤1.0</th>
+                        <td>0.3</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr class="tc">
+                        <th>互混率（%）</th>
+                        <th>≤5.0</th>
+                        <td>0.0</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr class="tc">
+                        <th>色泽、气味（%）</th>
+                        <th>正常</th>
+                        <td>正常</td>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>检验结论</th>
+                        <td colspan="6">
+                            <p>该样品符合三等稻谷质量指标，为宜存粮。</p>
+                            <p><span class="fr"><em class="c8">报告日期：</em>2015年11月04日</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>备注</th>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr class="tc">
+                        <td colspan="7">
+                            <span class="fl"><em class="c8">批准：</em>粮库分管领导</span>
+                            <span><em class="c8">审核：</em>分管经理</span>
+                            <span class="fr"><em class="c8">编制：</em>检验员</span>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id="tab3" style="display: none;">
+        <div class="table_outer bgFFF mt15">
+            <div class="table_search tc" style="position: relative;">
+                <span class="f18">粮油质量分货位检验结果登记表（稻谷）</span>
+                <img src="../../resource/images/question.png" alt="" id="question" style="position: relative;top: -3px;">
+                <div class="file-detail-pop abs" id="questionPop" style="left: 50%; top: 40px;width: 500px;margin-left: -90px;text-align: left;display: none;">
+                    <div class="arrow up"></div>   
+                        <ul>            
+                            <li style="font-weight: bold;color: #333;">填表说明：</li>  
+                            <li>1.表中可以添加行，每年年底将本年度登记表装订成册，存档不少于5年。</li>   
+                            <li>2.检测日期填写到年、月、日。</li>   
+                            <li>3.品种分类：指早籼稻谷、晚籼稻谷、粳稻等。</li>                    
+                        </ul>    
+                    </div>
+            </div>
+            <div class="pd20">
+                <div class="table_outer bgFFF">
+                    <p>
+                        <span><em class="c8">填制单位：</em>广西壮族自治区南宁粮食储备库</span>
+                        <span class="fr"><em class="c8">单位：</em>吨、（mgKOH/100g）、分</span>
+                    </p>
+                    <table class="table01" style="border-left: 0;border-right: 0;">
+                        <thead>
+                            <tr>
+                                <th rowspan="3">序号</th>
+                                <th rowspan="3">货位编号</th>
+                                <th rowspan="3">品种</th>
+                                <th rowspan="3">代表数量</th>
+                                <th rowspan="3">产地</th>
+                                <th rowspan="3">收获年度</th>
+                                <th rowspan="3">入库时间</th>
+                                <th colspan="11" class="bb-dc">检测结果</th>
+                                <th rowspan="3">检测人</th>
+                                <th rowspan="3">检测日期</th>
+                            </tr>
+                            <tr>
+                                <th colspan="7" class="bb-dc">质量检验项目</th>
+                                <th colspan="3" class="bb-dc">品质检测项目</th>
+                                <th rowspan="3">品质判定</th>
+                            </tr>
+                            <tr>
+                                <th>出糙率</th>
+                                <th>整精米率</th>
+                                <th>杂质</th>
+                                <th>水分</th>
+                                <th>黄粒米</th>
+                                <th>谷外糙米</th>
+                                <th>互混</th>
+                                <th>脂肪酸值</th>
+                                <th>品尝评分值</th>
+                                <th>色泽气味</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <span><em class="c8">填表日期：</em>2016年12月11日</span>
+                        <span class="ml30"><em class="c8">填表人：</em>XXX</span>
+                    </p>
+                </div>
+                <div class="page_div clearfix">
+                    <ul class="fr">
+                        <li class="prev"></li>
+                        <li>1</li>
+                        <li class="hover">2</li>
+                        <li>3</li>
+                        <li>...</li>
+                        <li>9</li>
+                        <li class="next"></li>
+                        <li class="to-page">到<input type="text">页</li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

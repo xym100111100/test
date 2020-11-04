@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人事管理-民主测评考核新增</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            layDate();
+        });
+
+        function layDate(){
+            lay('.layui-input').each(function(){
+                laydate.render({
+                    elem: this
+                    ,trigger: 'click'
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">人事管理-民主测评考核新增<a href="" class="fr border-btn w60">返回</a></p>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search"><span class="title">新增考核</span></div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <th width="20%">考核名称: ：</th>
+                <td><input type="text" class="input01 w-full"></td>
+            </tr>
+            <tr>
+                <th>表头名称: ：</th>
+                <td><input type="text" class="input01 w-full"></td>
+            </tr>
+            <tr>
+                <th>测评时间:：</th>
+                <td>
+                    <input type="text" class="input01 w240 layui-input">~
+                    <input type="text" class="input01 w240 layui-input">
+                </td>
+            </tr>
+            <tr>
+                <th>测评类型：</th>
+                <td>
+                    <input type="radio" class="radio01" name="radio01" checked="checked">局机关公务员测评
+                    <input type="radio" class="radio01 " name="radio01" style="margin-left: 30px">局机关工作人员测评
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<!-- 按钮 -->
+<div class="tc pd20">
+    <button type="button" class="btn btn-browser w110">发起测评</button>
+    <button type="button" class="btn  w110">返回</button>
+</div>
+</body>
+</html>

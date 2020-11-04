@@ -1,0 +1,116 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>新粮收购监管-收购进度</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            initChart();
+        });
+        /**
+         * 渲染图表
+         * @return {[type]} [description]
+         */
+        function initChart(){
+            var option01 = {
+                backgroundColor:'#fff',
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        lineStyle:{
+                            width:0
+                        }
+                    },
+                    // showContent:false
+                },
+                grid: {
+                    top: '30px',
+                    left: '20%',
+                    right: '20%',
+                    bottom: '0',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        name : '城市',
+                        nameTextStyle: {
+                            color:'#444'
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color:'#ccc'
+                            }
+                            
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+                            }
+                        },
+                       data : ['XX市','XX市','XX市','XX市','XX市','XX市','XX市']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name : '百分比',
+                        nameTextStyle: {
+                            color:'#444'
+                        },
+                        splitNumber:5,
+                        max: 100,
+                        axisLine: {
+                            lineStyle: {
+                                color:'#ccc'
+                            }
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#444',//坐标值得具体的颜色
+
+                            }
+                        },
+                        splitLine:{
+                            show: true,
+                            lineStyle:{
+                                color:'#ddd'
+                            }
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'',
+                        type:'bar',
+                        barWidth: '30%',
+                        itemStyle:{
+                            normal:{
+                                color:'#55B813'
+                            }
+                        },
+                        data:[20, 40, 15, 18, 80, 55, 10]
+                    }
+                ]
+            };
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            chart01.setOption(option01); 
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">新粮收购监管-收购进度<a href="buySupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">新粮收购进度</span></div>
+        <div class="pd20">
+            <div id="chart01" style="height: 500px;"></div>
+        </div>
+    </div>
+</body>
+</html>

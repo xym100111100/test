@@ -1,0 +1,186 @@
+{
+  "status":{"code":200,"message":"操作成功"},
+  "data":[{
+    "id":"001",
+    "title": "广西壮族自治区",
+    "last": false,
+    "level": "1",
+    "parentId": "0",
+    "checkArr": [{"type": "0", "checked": "0"}],
+    "children":[
+      {
+      "id":"001001",
+      "title": "南宁市",
+      "last":false,
+      "parentId": "001",
+      "checkArr": [{"type": "0", "checked": "0"}],
+      "level": "2",
+      "children": [
+        {
+          "id":"001001001",
+          "title": "江南区",
+          "last":false,
+          "parentId": "001001",
+          "checkArr": [{"type": "0", "checked": "0"}],
+          "level": "3",
+          "children": [
+            {
+              "id":"001001001001",
+              "title": "南宁市邕宁市粮食储备库1",
+              "last":true,
+              "parentId": "001001001",
+              "checkArr": [{"type": "0", "checked": "0"}],
+              "level": "4"
+            },
+            {
+              "id":"001001001002",
+              "title": "南宁市邕宁市粮食储备库2",
+              "last":true,
+              "parentId": "001001001",
+              "checkArr": [{"type": "0", "checked": "0"}],
+              "level": "4"
+            },
+            {
+              "id":"001001001003",
+              "title": "南宁市邕宁市粮食储备库3",
+              "last":true,
+              "parentId": "001001001",
+              "checkArr": [{"type": "0", "checked": "0"}],
+              "level": "4"
+            },
+            {
+              "id":"001001001004",
+              "title": "南宁市邕宁市粮食储备库4",
+              "last":true,
+              "parentId": "001001001",
+              "checkArr": [{"type": "0", "checked": "0"}],
+              "level": "4"
+            }
+          ]
+        }
+      ]
+    },
+      {
+        "id": "001002",
+        "title": "柳州市",
+        "last": false,
+        "parentId": "001",
+        "checkArr": [
+          {
+            "type": "0",
+            "checked": "0"
+          }
+        ],
+        "level": "2",
+        "children": [
+          {
+            "id": "001002001",
+            "title": "柳南区",
+            "last": false,
+            "parentId": "001002",
+            "checkArr": [
+              {
+                "type": "0",
+                "checked": "0"
+              }
+            ],
+            "level": "3",
+            "children": [
+              {
+                "id": "001002001001",
+                "title": "柳南区粮食储备库1",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001002",
+                "title": "柳南区粮食储备库2",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001003",
+                "title": "柳南区粮食储备库3",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001004",
+                "title": "柳南区粮食储备库4",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001005",
+                "title": "柳南区粮食储备库5",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001006",
+                "title": "广西壮族自治区南宁粮食储备库有限公司",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              },
+              {
+                "id": "001002001007",
+                "title": "柳南区粮食储备库柳南区粮食储备库柳南区粮7",
+                "last": true,
+                "parentId": "001002001",
+                "checkArr": [
+                  {
+                    "type": "0",
+                    "checked": "0"
+                  }
+                ],
+                "level": "4"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }]
+}

@@ -1,0 +1,136 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资产核对信息列表</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/pages.css">
+    <style>
+        .textarea02{width:80%;height:100px;padding:5px 10px;border:1px solid #dcdcdc;resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;font-size: 14px;}
+        .input01:focus,.textarea02:focus {border-color: #55B813;background-color: #fafafa;color: #007465;}
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+            });
+        });
+    </script>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">个人资产核对信息列表<a href="Assets_list.html" class="fr border-btn w60">返回</a></p>
+<div class="search-table clearfix mt15">
+    <table>
+
+        <tr>
+            <th width="100">资产名称：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="150">资产编号：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="120">资产分类：</th>
+            <td><input type="text" class="input01"></td>
+            <th width="150">取得时间时间：</th>
+            <td ><input type="text" class="input01 layui-input" id="date"></td>
+            <td ><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+        </tr>
+
+    </table>
+
+</div>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">信息列表</span>
+    </div>
+    <div style="padding: 20px;">
+        <table class="table01">
+            <thead>
+            <tr>
+                <th>卡片编号</th>
+                <th>资产名称</th>
+                <th>使用处室</th>
+                <th>使用人</th>
+                <th>存放地点</th>
+                <th>资产分类</th>
+                <th>资产类型</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>000102</td>
+                <td>电脑</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>财务室</td>
+                <td>通用设备</td>
+                <td>固定资产</td>
+                <td><a class="btn common" href="Assets_details.html">查看详情</a></td>
+            </tr>
+            <tr>
+                <td>000102</td>
+                <td>电脑</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>财务室</td>
+                <td>通用设备</td>
+                <td>固定资产</td>
+                <td><a class="btn common" href="fundDetail.html">查看详情</a></td>
+            </tr>
+            <tr>
+                <td>000102</td>
+                <td>电脑</td>
+                <td>财务室</td>
+                <td>张三</td>
+                <td>财务室</td>
+                <td>通用设备</td>
+                <td>固定资产</td>
+                <td><a class="btn common" href="fundDetail.html">查看详情</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <!--分页-->
+        <div class="paging" >
+            <input type="hidden" id='count' value="200"/>
+            <div class="pages"style="margin-right: 0">
+            </div>
+        </div>
+    </div>
+
+    <div class="Per_tab"style="margin: 50px auto">
+        <table class="company-info">
+            <tr>
+                <th colspan="3">核对信息：</th>
+                <td colspan="7">
+                    <label><input type="radio" name="radio02" class="radio01">核对无误</label>
+                    <label><input type="radio" name="radio02" class="radio01" style="margin-left: 10px">信息有误</label>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">备注</th>
+                <td colspan="7"><textarea name="" class="textarea02" placeholder="请输入"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tc pd20">
+        <span class="btn border-btn w110">关闭</span>
+        <span class="btn btn-browser w110 ml10">保存</span>
+        <span class="btn btn-browser w110 ml10">提交</span>
+    </div>
+
+</div>
+</body>
+<script src="../../resource/common_js/page_js.js"></script>
+</html>

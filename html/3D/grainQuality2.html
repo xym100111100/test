@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地方储备粮油质量集成</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- 广西省所有区县对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/gxDistrictMap.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!--swiper-->
+    <script type="text/javascript" src="../../plug-in/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/swiper/css/swiper.min.css">
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <style>
+        html,body{height: 100%;}
+        .table_search{height: 40px;line-height: 40px;padding: 0 12px;position: relative;}
+        .search-icon{width: 20px;height: 20px;position: absolute;top: 50%;margin-top: -10px;right: 15px;background: url(../../resource/images/search.png);}
+        .row{margin-left: -5px;margin-right: -5px;}
+        .col-xs-12,.col-sm-2,.col-sm-4,.col-sm-6{padding-left: 5px;padding-right: 5px;}
+
+        .slide-outer{position: relative;padding: 2px 12px;}
+        #slide{position: relative;overflow:hidden;}
+        .slide-outer .swiper-button-prev, .slide-outer .swiper-button-next{position: absolute;width: 0;height: 0;top: 50%;margin-top: -7px;font-size: 0;line-height: 0;border-width: 7px;border-color: #888;border-style: dashed;border-style: dashed;border-top-color: transparent;border-bottom-color: transparent;background: none;outline: 0 !important;}
+        .slide-outer .swiper-button-prev{border-right-style: solid; border-left-width: 0;left: 0;}
+        .slide-outer .swiper-button-next{border-left-style: solid; border-right-width: 0;right: 0;}
+        /*#slide>ul{width: 100%;height: 100%;white-space:nowrap;overflow:hidden;word-break: keep-all;}*/
+        #slide>ul li{display: inline-block;height: 100%;padding: 0 2px;width: auto;}
+        #slide>ul li a{display: block;padding: 0 5px;height: 26px;line-height: 26px;background-color: #fff;border: 1px solid #DCDCDC;border-radius: 3px;}
+        #slide>ul li a.active{background-color: #69A5E1;color: #fff;}
+
+        .filter-div{position: absolute;top: 15px;left: 15px;}
+
+        #tab{padding: 0;}
+        #tab span{display: inline-block;width: 50%;height: 38px;line-height: 38px;text-align: center;color: #999;cursor: pointer;}
+        #tab span.active{border-bottom: 2px solid #55B813;color: #55B813;}
+
+        .company-info th,.company-info td{padding-top: 0;padding-bottom: 0;height: 35px;}
+
+        #maps,#grains{transition: all ease .3s;}
+        .full-screen{position: fixed;left: 0;right: 0;top: 0;bottom: 10px;background-color: #fff;z-index: 10000000;padding-top: 40px;}
+        .full-screen .table_search{position: absolute;top: 0;width: 100%;}
+        .full-screen #top2,.full-screen #top21{height: 100% !important;}
+        .full-screen #main{height: 95% !important}
+
+        #backBtn{position: absolute;right: 10px;top: 10px;width: 32px;height: 32px;background: #69A5E1 url(../../resource/images/back.png) no-repeat center;border-radius: 3px;cursor: pointer;}
+
+        .grain-label{position: absolute;height: 20px;width: 20px;background-color: #55b813;}
+
+        .slide-outer .inp_down a{display: block;}
+        .slide-outer .inp_down input{background: #fff;padding-right: 30px;cursor: pointer;}
+        .slide-outer .inp_down::after{content:'';position: absolute;right: 10px;top: 10px;;width: 0;height: 0;font-size: 0;border-right: 6px solid transparent;border-left: 6px solid transparent;border-top: 6px solid #888;transition: all ease .3s;}
+        .slide-outer .inp_down.open::after{transform: rotate(-180deg);}
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-xs-12 col-sm-2">
+        <div class="table_outer">
+            <div class="table_search">
+                <input type="text" class="input01 w-full" placeholder="请输入关键字回车搜索" onkeypress="inpPress();" id="nodeKeyword" style="padding-right: 30px;">
+                <div class="search-icon"></div>
+            </div>
+            <div style="height: 500px;overflow: auto;background-color: #fff;" id="top1">
+                <p class="ml10 mt10">已介入<span class="cGreen">84</span>个粮库单位</p>
+                <ul class="ztree" id="areaTree"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="table_outer" id="maps">
+            <div class="table_search">
+                <span class="title">储备粮粮食质量情况</span>
+                <div class="fr">
+                    <img src="../../resource/images/home1.png" alt="" style="cursor: pointer;">
+                    <img src="../../resource/images/back1.png" class="ml5" alt="" style="cursor: pointer;">
+                    <img src="../../resource/images/fullScreen.png" alt="" class="ml5 full-screen-icon" style="cursor: pointer;">
+                </div>
+            </div>
+            <div style="background-color: #fff;position: relative;" id="top2">
+                <div id="main" style="height: 100%;"></div>
+                <div class="filter-div">
+                    <div class="inp_down"><input type="text" class="input01" value="储备粮" readonly onclick="toggleSelect(this);" id="grain"></div>
+                    <div class="inp_down" style="width: 110px;">
+                        <input type="text" class="input01" value="总库存" readonly style="width: 110px;">
+                        <ul>
+                            <li class="active">总库存</li>
+                            <li>未检测</li>
+                            <li>宜存</li>
+                            <li>轻度不宜存</li>
+                            <li>重度不宜存</li>
+                        </ul>
+                    </div>
+                    <span class="search_btn01" style="width: 80px;padding-left: 35px;background-position: 10px;">查询</span>
+                </div>
+                <!--<i id="backBtn"></i>-->
+            </div>
+        </div>
+        <div class="table_outer" style="display: none;" id="grains">
+            <div class="table_search">
+                <span class="title" id="title">XX自治区储备粮粮食质量情况</span>
+                <div class="fr">
+                    <img src="../../resource/images/home1.png" alt="" style="cursor: pointer;">
+                    <img src="../../resource/images/back1.png" class="ml5" alt="" style="cursor: pointer;">
+                    <img src="../../resource/images/fullScreen.png" alt="" class="ml5 full-screen-icon" style="cursor: pointer;">
+                </div>
+            </div>
+            <div style="background-color: #fff;position: relative;" id="top2">
+                <img src="../../resource/images/pic.png" alt="" style="width: 100%;height: 100%;">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <div class="slide-outer" style="padding: 0;">
+            <div class="inp_down w-full">
+                <input type="text" class="input01 w-full" readonly value="仓储设施">
+                <ul>
+                    <li><a>仓储设施</a></li>
+                    <li><a>库存信息</a></li>
+                    <li><a>质量信息</a></li>
+                    <li><a>粮情信息</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="table_outer mt10">
+            <div class="table_search">
+                <span class="title">自治区储备粮粮油质检年度宜存情况</span>
+            </div>
+            <div class="bgFFF" id="top3">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" >
+        <div class="table_outer mt10">
+            <div class="table_search">
+                <span class="title">自治区储备粮分城市质检情况统计</span>
+            </div>
+            <div class="bgFFF" id="bottom1">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="menuContent" class="menuContent" style="display:none;z-index: 999; position: absolute;background-color: #fff;box-shadow: 0 0 10px 0 #dcdcdc;border: 1px solid #ddd;">
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+<script type="text/javascript" src="js/grainQuality2.js"></script>
+
+</body>
+</html>

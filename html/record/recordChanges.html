@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>备案审查-查看变化</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../plug-in/layui/layui.all.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.mobile.css">
+    <link rel="stylesheet" href="../../resource/css/info_pxy.css">
+</head>
+<style>
+    .layui-tab{
+        margin: 0;
+    }
+    .layui-form-label{
+        text-align: center;
+        width: 115px;
+    }
+    .layui-btn-container{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn1{
+        width:110px;
+        height:40px;
+        background:rgba(76,173,255,1);
+        border-radius:2px;
+    }
+    .btn{
+        width:110px;
+        height:40px;
+        line-height: 28px;
+        border-radius:2px;
+        border:1px solid rgba(153,153,153,1);
+        color:rgba(153,153,153,1);
+        background: transparent;
+    }
+
+</style>
+<body>
+ <div class="count" style="width: 1400px;">
+     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+         <div class="layui-tab-content" style="height: auto;">
+             <div class="layui-tab-item layui-show">
+                 <table class="company-info">
+                     <tr>
+                         <th colspan="12" class="info_title" style="height: 65px;font-weight: bold;font-size: 20px">国有粮食仓储物流设施变化备案表</th>
+                     </tr>
+                     <tr>
+                         <td class="td_color">单位名称</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">法定代表人</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">电话</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">备案编辑</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">仓储业务类型</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">单位性质</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">地址</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">邮政编码</td>
+                         <td colspan="3"></td>
+                         <td class="td_color">数量</td>
+                         <td colspan="3"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">备案情形</td>
+                         <td colspan="11"></td>
+                     </tr>
+                     <tr>
+                         <td class="td_color">内容</td>
+                         <td colspan="11" style="height: 90px;"></td>
+                     </tr>
+
+                     <tr>
+                         <td colspan="12" style="text-align: left;color:rgba(102,102,102,1);">本单位因XXXXX原因，特此申报相关设施备案。</td>
+                     </tr>
+                 </table>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="layui-btn-container">
+     <div class="btn">打印</div>
+ </div>
+</body>
+</html>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        var $ = layui.jquery
+            ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+           tabChange: function(){
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+
+
+
+    });
+</script>

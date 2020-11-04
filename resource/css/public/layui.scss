@@ -1,0 +1,136 @@
+@import './mixin.scss';
+
+// 隐藏表头
+.#{$prev}-layui-table__hide-header {
+    .layui-table-header {
+        display: none !important;
+    }
+}
+
+// 允许dialog内容超出 用于select
+.#{$prev}-layui-layer__ovv.layui-layer-content {
+    overflow: visible !important;
+}
+
+// table的header换行
+.#{$prev}-layui-table-header-cell--visible {
+    .layui-table-header {
+        .layui-table-cell {
+            overflow: visible;
+            white-space: normal;
+            height: auto;
+        }
+    }
+}
+
+.#{$prev}-layui-table--large {
+    td .layui-table-cell {
+        height: 34px;
+        min-height: 34px;
+        line-height: 34px;
+    }
+}
+
+// 大屏页面的layui input框样式覆盖
+.layui-input {
+    $color: #94d9f7;
+
+    &.#{$prev}-layui-input--visual {
+        background: rgba(31, 226, 228, 0.3);
+        border: 1px solid #40a6d0;
+        color: $color;
+
+        &::-webkit-input-placeholder {
+            color: $color;
+        }
+
+        &:-moz-placeholder {
+            color: $color;
+        }
+
+        &:-ms-input-placeholder {
+            color: $color;
+        }
+
+        &:hover {
+            border-color: #40a6d0 !important;
+        }
+
+        &:focus {
+            border-color: #40a6d0 !important;
+        }
+
+        // 时间选择器不需要图标
+        &.input-date {
+            background-image: none;
+        }
+    }
+}
+
+// 大屏页面的layui select样式覆盖
+.#{$prev}-layui-select--visual {
+    $color: #94d9f7;
+
+    .layui-input {
+        background: rgba(31, 226, 228, 0.3);
+        border: 1px solid #40a6d0;
+        color: $color;
+
+        &::-webkit-input-placeholder {
+            color: $color;
+        }
+
+        &:-moz-placeholder {
+            color: $color;
+        }
+
+        &:-ms-input-placeholder {
+            color: $color;
+        }
+
+        &:hover {
+            border-color: #40a6d0 !important;
+        }
+
+        &:focus {
+            border-color: #40a6d0 !important;
+        }
+
+
+    }
+}
+
+// 大屏的按钮
+.#{$prev}-visual-button {
+    height: 32px;
+    line-height: 32px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0 1.5em;
+    font-size: 16px;
+    color: #fff;
+    background: -webkit-gradient(linear, left top, right top, from(rgb(31, 226, 228)), to(rgb(35, 108, 236)));
+    background: linear-gradient(to right, rgb(31, 226, 228), rgb(35, 108, 236));
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+// 表单选项布局
+.#{$prev}-layui-form {
+    .layui-form-item {
+        width: 100%;
+    }
+
+    .layui-form-label {
+        width: 100px;
+        float: left;
+    }
+
+    .layui-input-block {
+        margin-left: 100px;
+        float: none;
+    }
+
+    
+}

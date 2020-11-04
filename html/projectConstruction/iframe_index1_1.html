@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图表</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style-fenxi.css">
+<style>
+    .layui-input{color: #00a2ff!important;}
+    }
+    input.unit{
+        padding-right: 40px;
+
+    }
+    span.unit{
+        position:absolute;
+        top:8px;
+        right: 18px;
+        color: #00a2ff;
+    }
+</style>
+    <script>
+        $(function () {
+            var params = decodeURI(window.location.href).split("?")[1]; //得到参数
+            var name = params.split("=")[1];
+
+            var names = ['总项目数','再建数','竣工数'],
+                names2 = ['计划总投资','完成总投资额','当年使用资金'],
+                names3 = ['财政拨款','银行贷款','自由资金'];
+                names4 = ['财政拨款','银行贷款','自由资金'];
+                names5 = '' , unit = '元';
+                names6 = '' , unit = '元';
+            names.forEach(function (item) {
+                var _li = '<div class="count-li1">\n' +
+                    '            <div class="count1-center">\n' +
+                    '                <p class="f14 tc"><em class="count-num1 ">' + (Math.random() * 900).toFixed(0) + '</em> ' +  '</p>\n' +
+                    '                <p>' + item + '</p>\n' +
+                    '            </div>\n' +
+                    '        </div>';
+                $("#count1").append(_li);
+            });
+            names2.forEach(function (item) {
+                var _li = '<div class="count-li1 mt10">\n' +
+                    '            <div class="count1-center">\n' +
+                   '                <p class="f14 tc"><em class="count-num1">' + (Math.random() * 3000).toFixed(0) + '</em> </p>\n' +
+                   '               <p>' + item + '</p>\n' +
+                    '            </div>\n' +
+                    '        </div>';
+                $("#count1").append(_li);
+            });
+            names3.forEach(function (item) {
+                var _li = '<div class="count-li1 mt10">\n' +
+                    '            <div class="count1-center">\n' +
+                    '                <p class="f14"><em class="count-num1">' + (Math.random() * 30000).toFixed(0) + '</em> </p>\n' +
+                    '                <p class="tc">' + item + '</p>\n' +
+                    '            </div>\n' +
+                    '        </div>';
+                $("#count2").append(_li);
+            });
+            names4.forEach(function (item) {
+                var _li = '<div class="count-li1 mt10">\n' +
+                    '            <div class="count1-center">\n' +
+                    '                <p class="f14"><em class="count-num1">' + (Math.random() * 30000).toFixed(0) + '</em> </p>\n' +
+                    '                <p class="tc">' + item + '</p>\n' +
+                    '            </div>\n' +
+                    '        </div>';
+                $("#count3").append(_li);
+            });
+
+        });
+    </script>
+
+</head>
+<body style="background: inherit;">
+    <div id="count1">
+    </div>
+    <hr style="display: inline-block;background: #f5f5f5;height: 1px;width: 100%">
+    <div id="count2">
+        <p style="font-size: 18px;font-weight: 500;margin: 10px 0 15px 10px">项目资金来源<span class="fr " id="count2_1" style="color: #eea236;margin-right: 30px"></span></p>
+    </div>
+    <hr style="display: inline-block;background: #f5f5f5;height: 1px;width: 100%">
+    <div id="count3" style="margin: 0 7px; ">
+        <p style="font-size: 18px;font-weight: 500;margin: 10px 0 15px 10px">累计已使用项目资金<span class="fr" id="count3_1" style="color: #eea236;margin-right: 30px"></span></p>
+    </div>
+    <hr style="display: inline-block;background: #f5f5f5;height: 1px;width: 100%">
+
+    <div id="count4">
+        <form class="layui-form mt20" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 150px;font-size: 18px;font-weight: bold">计划建设规模</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input unit" style="width: 200px;color: #00a2ff" readonly>
+                    <span class="unit">元<span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 150px;font-size: 18px;font-weight: bold">当年建设仓容</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input unit" style="width: 200px;color: #00a2ff" readonly>
+                    <span class="unit">元<span>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    $(function () {
+        var _count = names5 + ' ';
+        var num = (Math.random() * 100000).toFixed(0);
+        for(var i = 0; i < num.length; i++){
+            _count += '<span class="count-num">' + num[i] + '</span>';
+        }
+        _count += ' ' + '<em>' + unit + '</em>';
+        $("#count2_1").append(_count);
+
+    });
+    $(function () {
+        var _count = names6 + ' ';
+        var num = (Math.random() * 100000).toFixed(0);
+        for(var i = 0; i < num.length; i++){
+            _count += '<span class="count-num">' + num[i] + '</span>';
+        }
+        _count += ' ' + '<em>' + unit + '</em>';
+        $("#count3_1").append(_count);
+
+    });
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作流-表单列表</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+                ,range: true
+            });
+            loadForm();
+            $("[data-toggle='tooltip']").tooltip({html: true}); 
+        });
+        function loadForm(){
+            var num = 20;
+            for(var i = 0;i < num ; i++){
+                var html = ['<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">',
+'                    <div class="each-form">',
+'                        <div class="each-form-content" data-toggle="tooltip" data-placement="top" title="创建人：李建<br>创建时间：2018-10-10">',
+'                            <div class="each-form-img"></div>',
+'                            <p class="">工作流程表单</p>',
+'                        </div>',
+'                        <p class="each-form-op">',
+'                            <a href="">查看</a>|<a href="">编辑</a>|<a href="">删除</a>',
+'                        </p>',
+'                    </div>',
+'                </div>'].join("");
+                $("#forms").append(html);
+            }
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">表单列表</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th>表单类型：</th>
+                <td><a class="type-span">全部</a><a class="type-span active">建设完成</a><a class="type-span">建设中</a><a class="type-span">民关联流程</a><a href="" class="type-span">未关联流程</a></td>
+            </tr>
+            <tr>
+                <th>其他条件：</th>
+                <td><input type="text" class="input01"><span class="search_btn01 ml30">查询</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">表单列表</span>
+            <a class="border-btn fr mt5" href="#">新增</a>
+        </div>
+        <div class="pd20">
+            <div class="row" id="forms">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <div class="each-form">
+                        <div class="each-form-content" data-toggle="tooltip" data-placement="top" title="创建人：李建<br>创建时间：2018-10-10">
+                            <div class="each-form-img"></div>
+                            <p class="">工作流程表单</p>
+                        </div>
+                        <p class="each-form-op">
+                            <a href="">查看</a>|<a href="">编辑</a>|<a href="">删除</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

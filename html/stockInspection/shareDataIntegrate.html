@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>国家数据共享</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <script src="../../resource/common_js/tabscroll-1.1.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.4.0.zdy.min.js"></script>
+
+    <script type="text/javascript">
+        var myChart = {};
+        $(function(){
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-review'
+            });
+            loadChart();
+        })
+        function loadChart(){
+            myChart = echarts.init(document.getElementById('chart'));
+            var data = [{
+                name: "XXX单位",
+                level: 0,
+                children: [{
+                    name: "单位基本信息",
+                    level: 1
+                }, {
+                    name: "加工转化企业基本情况",
+                    level: 1
+                }, {
+                    name: "仓储设施基本信息",
+                    level: 1
+                }, {
+                    name: "粮油科技信息",
+                    level: 1
+                }, {
+                    name: "粮油收支平衡月报",
+                    level: 1,
+                    children: [{
+                        name: "商品粮油收支平衡月报",
+                        level: 2,
+                    },{
+                        name: "地方储备粮油收支平衡月报",
+                        level: 2,
+                    },{
+                        name: "地方政策性粮油收支平衡月报",
+                        level: 2,
+                    },{
+                        name: "供需平衡调查辖区概况",
+                        level: 2,
+                    }]
+                }, {
+                    name: "规模库存信息",
+                    level: 1,
+                    children: [{
+                        name: "商品粮油收支平衡月报",
+                        level: 2,
+                    }]
+                }, {
+                    name: "粮油购销数据",
+                    level: 1,
+                    children: [{
+                        name: "粮油购销省外购进信息",
+                        level: 2,
+                    },{
+                        name: "粮油购销销往省外信息",
+                        level: 2,
+                    },{
+                        name: "收购进度日报数据",
+                        level: 2,
+                    }]
+                }, {
+                    name: "居民农户信息",
+                    level: 1,
+                    children: [{
+                        name: "乡村居民户存粮专项调查",
+                        level: 2,
+                    },{
+                        name: "城乡居民户粮油供需平衡调查推算信息",
+                        level: 2,
+                    },{
+                        name: "城乡居民户粮油收支平衡基础调查数据",
+                        level: 2,
+                    }]
+                }, {
+                    name: "粮油加工信息",
+                    level: 1,
+                    children: [{
+                        name: "玉米深加工信息数据",
+                        level: 2,
+                    }]
+                }]
+            }];
+            var colors = ['#F8970C',
+                {type: 'linear',x: 0,y: 0,x2: 1,y2: 0,colorStops: [{offset: 0, color: '#34DBF3' }, {offset: 1, color: '#5FEEF9' }]},
+                {type: 'linear',x: 0,y: 0,x2: 1,y2: 0,colorStops: [{offset: 0, color: '#50A2FF' }, {offset: 1, color: '#5FEEF9' }]}
+            ];
+            var root = data[0];
+            findChild(root);
+            function findChild(item) {
+                var children = item.children;
+                // var level = item.level;
+                // item.itemStyle = {};
+                // var idx = level%colors.length;
+                // item.itemStyle.color = colors[idx];
+                // item.itemStyle.borderColor = colors[idx];
+                if (children != null && children.length > 0) {
+                    for(var i = 0; i < children.length; i++){
+                        findChild(children[i]);
+                    }
+                }
+            }
+            var myTooltip = {
+                trigger: 'item',
+                formatter: '{b}',
+                enterable:true,
+                //alwaysShowContent:true,
+                hideDelay:100,
+                // backgroundColor: 'rgba(255,255,255,1)',//背景颜色（此时为默认色）
+                borderRadius: 2,//边框圆角
+                borderWidth: '0',
+                padding: 0,    // [5, 10, 15, 20] 内边距
+                textStyle:{
+                    color:'#000'
+                },
+                position: function (point, params, dom, rect, size) {
+                    var html = '<div class="review-tip">'
+                        +'      <p style="font-size:16px;">'+ params.name +'</p>'
+                        +'      <p><span class="bold">粮油性质：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">粮油等级：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">粮油品种：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">存储时间：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">产地：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">库存数量：</span>XXXXXXX</p>'
+                        +'      <p><span class="bold">文号：</span>XXXXXXX</p>'
+                        +'  </div>';
+                    $(dom).html(html)
+                }
+            };
+            myChart.setOption(option = {
+                // backgroundColor: '#fff',
+                // tooltip: myTooltip,
+                series: [{
+                    type: 'tree',
+                    data: data,
+                    left: '20%',
+                    top: '20px',
+                    bottom: '20px',
+                    right: '20%',
+                    label: {
+                        normal: {
+                            color: '#fff',
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: 'rgba(156, 254, 253, 0.6)',
+                            width: 2,
+                            // curveness: 1,
+                            // length: 240
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                offset: 0,
+                                color: '#28F19D'
+                            }, {
+                                offset: 1,
+                                color: '#09B1E7'
+                            }]),
+                            // borderRadius: 3,
+                            opacity: .8,
+                            borderWidth : 0
+                        },
+                        emphasis: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                offset: 0,
+                                color: '#767CFE'
+                            }, {
+                                offset: 1,
+                                color: '#F482ED'
+                            }]),
+                            borderWidth : 0
+                        }
+                    },
+                    symbolSize: (rawValue, params) => {
+                        if(params.data.name !== undefined && params.data.name != null){
+                            var size = params.data.name.length * 14;
+                            size = size < 150 ? 150 : size;
+                            return [size,30]
+
+                        }
+                        return [150,30]
+                    },
+                    symbol: "rect",
+                    expandAndCollapse: false,
+                }]
+            });
+            myChart.on('click',function(params){
+                if(params.data.children == undefined || params.data.children.length < 0){
+                    location.href = params.data.level === 1 ? 'shareDataInfo1.html' : 'shareDataInfo2.html';
+                }
+
+            })
+        }
+
+    </script>
+</head>
+<body class="review-bg">
+<p class="review-title clearfix"><a href="shareDataList.html" class="btn btn-browser w60 review-btn fr">返回</a></p>
+<div class="review-outer2 clearfix">
+    <div class="review-param-list">
+        <label class="review-label" style="width: 120px;">单位最基础信息：</label>
+        <div class="review-content clearfix" style="color: #fff;margin-left: 120px;line-height: 30px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci
+        </div>
+    </div>
+</div>
+<div style="position: relative;">
+    <div style="overflow: auto;margin-bottom: 20px;">
+        <div style="width: 100%;height: 720px;" id="chart"></div>
+    </div>
+</div>
+
+</body>
+</html>

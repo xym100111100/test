@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作流-表单列表</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.4.0.min.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style type="text/css">
+
+        .chart-op{position: absolute;right: 20px;top: 10px;line-height: 30px;}
+        .chart-op label+label{margin-left: 15px;}
+        .io-state.color1::before{background-color: #ed4f4c;}
+        .io-state.color2::before{background-color: #fcc64b;}
+        .io-state.color3::before{background-color: #1bcd20;}
+    </style>
+    <script type="text/javascript" src="js/flowSummary.js"></script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">流程监控概述</p>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="table_outer bgFFF h300 mt20">
+                <div class="table_search">
+                    <span class="title">运行中流程列表</span>
+                </div>
+                <div class="form-outer1 mt5">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div>表单数量</div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div>508</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div>表单正常数量</div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div>206</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div>表单废弃数量</div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div>180</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="table_outer bgFFF h300 mt20">
+                <a class="border-btn fr mr15 mt15" href="#">选择流程</a>
+                <div class="clear"></div>
+                <div id="graph" style="height: 250px;width: 85%;margin: 0 auto;"></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="table_outer bgFFF h300 mt20">
+                <div class="table_search">
+                    <span class="title">及时率</span>
+                </div>
+                <div id="percent1" style="height: 180px;"></div>
+                <div class="tc" style="margin-top: -15px;">
+                    <p><span class="io-state color1">未达标（&lt;80%）</span></p>
+                    <p><span class="io-state color2">一般（&gt;=80% 且 &lt;90%）</span></p>
+                    <p><span class="io-state color3">未达标优秀（&gt;=90%）</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="table_outer bgFFF h300 mt20">
+                <div class="table_search">
+                    <span class="title">工单完成率</span>
+                </div>
+                <div id="percent2" style="height: 180px;"></div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="table_outer bgFFF h370 mt20" style="position: relative;">
+                <div id="chart3" style="height: 100%;"></div>
+                <div class="chart-op">
+                    <input type="text" name="" id="date1" class="input01 layui-input ml20">
+                    <div class="fl">
+                        <label><input type="radio" name="chart3" class="radio03" checked="checked"><em>待办工单</em></label>
+                        <label><input type="radio" name="chart3" class="radio03"><em>超时工单</em></label>
+                        <label><input type="radio" name="chart3" class="radio03"><em>已办工单</em></label>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="table_outer bgFFF h370 mt20">
+                <div class="bg-div green">
+                    <p>工单总数</p>
+                    <p class="num">1602</p>
+                </div>
+                <div class="bg-div red">
+                    <p>待办工单总数</p>
+                    <p class="num">168</p>
+                </div>
+                <div class="bg-div purple">
+                    <p>超时工单总数</p>
+                    <p class="num">89</p>
+                </div>
+                <div class="bg-div yellow">
+                    <p>已办工单总数</p>
+                    <p class="num">682</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="table_outer bgFFF h370 mt20" style="position: relative;">
+                <div id="chart4" style="height: 100%;"></div>
+                <div class="chart-op">
+                    <input type="text" name="" id="date2" class="input01 layui-input w110 ml20">
+                    <div class="fl">
+                        <label><input type="radio" name="chart4" class="radio02" checked="checked"><em>运行中流程</em></label>
+                        <label><input type="radio" name="chart4" class="radio02"><em>挂起流程</em></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="table_outer bgFFF h370 mt20">
+                <ul class="circle-ul">
+                    <li>
+                        <div id="circle1"></div>
+                    </li>
+                    <li>
+                        <div id="circle2"></div>
+                    </li>
+                    <li>
+                        <div id="circle3"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

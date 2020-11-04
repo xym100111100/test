@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮情监管<a href="conditionDetail08.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc">
+            <span class="f18">谷物冷却机低温储粮作业记录表</span>
+        </div>
+        <div class="pd20">
+            <table class="multiline-table table_outer">
+                <tr>
+                    <td colspan="8">
+                        <span><em class="bold">仓号（货位）：</em>18</span>
+                        <span class="fr">2013年11月12日</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>粮种</th>
+                    <td>玉米</td>
+                    <th>等级</th>
+                    <td>二等</td>
+                    <th>杂质（%）</th>
+                    <td>1.0</td>
+                    <th>数量（t）</th>
+                    <td>1.1</td>
+                </tr>
+                <tr>
+                    <th>仓型</th>
+                    <td>平房仓</td>
+                    <th>直径（跨度）</th>
+                    <td>20.0</td>
+                    <th>粮层厚度（m）</th>
+                    <td>4.5</td>
+                    <th>粮堆体积（m³）</th>
+                    <td>512</td>
+                </tr>
+                <tr>
+                    <th>风网类型</th>
+                    <td>地槽</td>
+                    <th>风网总阻力范围（pa）</th>
+                    <td>334</td>
+                    <th>总风量范围（m³/h）</th>
+                    <td colspan="3">11000</td>
+                </tr>
+                <tr>
+                    <th>谷冷机型号</th>
+                    <td>GLA85</td>
+                    <th>台数</th>
+                    <td>2</td>
+                    <th>总功率（kw）</th>
+                    <td>49</td>
+                    <th rowspan="2">单位通风量[m³/（h/t）]</th>
+                    <td rowspan="2">2.6</td>
+                </tr>
+                <tr>
+                    <th>冷却通风目的</th>
+                    <td colspan="5">应急</td>
+                </tr>
+                <tr>
+                    <th>通风时间</th>
+                    <td colspan="2">开始：2014.06.23 18:00</td>
+                    <td colspan="2">结束：2014.06.23 18:00</td>
+                    <th>累计通风时间（h）</th>
+                    <td colspan="2">49.0</td>
+                </tr>
+                <tr class="bgF7">
+                    <th>冷却通风期间参数</th>
+                    <th></th>
+                    <th>平均值</th>
+                    <th colspan="2">最高值</th>
+                    <th colspan="2">最低值</th>
+                    <th>备注</th>
+                </tr>
+                <tr>
+                    <th colspan="2">大气温度/℃</th>
+                    <td>29.0</td>
+                    <td colspan="2">33.0</td>
+                    <td colspan="2">25.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2">大气相对湿度%</th>
+                    <td>80</td>
+                    <td colspan="2">92</td>
+                    <td colspan="2">68</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th rowspan="2">粮食温度（℃）</th>
+                    <th>冷却前</th>
+                    <td>24.9</td>
+                    <td colspan="2">39.3</td>
+                    <td colspan="2">13.6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>冷却后</th>
+                    <td>21.9</td>
+                    <td colspan="2">32.3</td>
+                    <td colspan="2">10.6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th rowspan="2">粮食水分（%）</th>
+                    <th>冷却前</th>
+                    <td>14.9</td>
+                    <td colspan="2">14.3</td>
+                    <td colspan="2">14.6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>冷却后</th>
+                    <td>14.2</td>
+                    <td colspan="2">12.3</td>
+                    <td colspan="2">13.6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2">粮层温度梯度/（℃/m粮层厚度）</th>
+                    <td>1.2</td>
+                    <td colspan="2">4.3</td>
+                    <td colspan="2">0.06</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2">粮层水分梯度/（%/m粮层厚度）</th>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th rowspan="2">冷却送风温度</th>
+                    <th>设定值</th>
+                    <td colspan="5">13.5, 14.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>检测值</th>
+                    <td colspan="5">13.5, 14.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th rowspan="2">冷却送风湿度</th>
+                    <th>设定值</th>
+                    <td colspan="5">85, 92</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>检测值</th>
+                    <td colspan="5">85, 92</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>实际冷却处理能力（t/24h）</th>
+                    <td colspan="4">3582, 9</td>
+                    <th>总电费（元）</th>
+                    <td>1582, 9</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>单位能耗（[（kw.h）/℃.t]）[（kw.h）/1%水分.t]</th>
+                    <td colspan="2">0.17</td>
+                    <th>总电耗（kw.h）</th>
+                    <td>2017</td>
+                    <th>吨粮成本（元/吨）</th>
+                    <td>0.449</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <span><em class="c8">负责人：</em>XXX</span>
+                        <span class="ml30"><em class="c8">操作人：</em>XXX</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+
+</body>
+</html>

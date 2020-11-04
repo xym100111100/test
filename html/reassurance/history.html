@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放心粮油加工企业历史申报查询</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script>
+        $(function(){
+            var $dom = null;
+            //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+
+            $(".table01 a").hover(function(){
+                var html = ['<div class="file-detail-pop abs">',
+                        '        <div class="arrow"></div>',
+                        '        <ul>',
+                        '            <li><a href="">“星级粮库”申请表（表1）.doc</a></li>',
+                        '            <li><a href="">“星级粮库”创建活动情况报告.doc</a></li>',
+                        '            <li><a href="">“星级粮库”创建评价计分表（表2）.doc</a></li>',
+                        '            <li><a href="">粮食库存数量及账实相符情况表（表2）.doc</a></li>',
+                        '            <li><a href="">地方储备粮油质量控制管理情况表（表3）.doc</a></li>',
+                        '            <li><a href="">库存粮食粮温控制情况表（表4）.doc</a></li>',
+                        '        </ul>',
+                        '    </div>'].join("");
+                $dom = $(html);
+                $("body").append($dom);
+                var x = $(this).offset().left;
+                var y = $(this).offset().top;
+                var left = x + $(this).width()/2 - $dom.width()/2;
+                var top = y + $(this).height() + 5;
+                $dom.css({
+                    'left' : left  + "px",
+                    'top' : top + "px" 
+                });
+                $dom.find(".arrow").addClass("up");
+            },function(){
+                $dom.remove();
+            });
+        });
+       
+        /**
+         * 文件上传初始化
+         * @return {[type]} [description]
+         */
+        function file(){
+            $("#file").fileinput({
+                language: 'zh', //设置语言
+                uploadUrl:"http://127.0.0.1/testDemo/fileupload/upload.do", //上传的地址
+                allowedFileExtensions: ['doc','docx','js','css','jpg'],//接收的文件后缀
+                theme: 'explorer-fa',                            //主题 有移除和放大按钮
+                // showUpload: false,             //显示上传按钮 
+                showCaption: false,         //显示上传说明
+                browseClass: "btn btn-browser btn-default",  //预览按钮样式
+                // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                // previewFileIconClass: ['file-other-icon'],   //预览icon
+                allowedPreviewTypes: ['image','other'],            //预览类型 默认image、text
+                initialPreview: [
+                    // "../img/1.jpg", 
+                    // "../img/2.jpg", 
+                    // "../img/3.jpg" 
+                ],
+                initialPreviewConfig: [
+                    // {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1}, 
+                    // {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2}, 
+                    // {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3} 
+                ],
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                //maxFileCount:10, //表示允许同时上传的最大文件个数enctype:'multipart/form-data',
+
+                //validateInitialCount:true,
+                //msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                //dropZoneEnabled: false,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //enctype: 'multipart/form-data',
+                layoutTemplates:{
+                    close:''               //右上角关闭按钮
+                }
+
+            }).on("fileuploaded", function (event, data, previewId, index){
+                //上传完成
+                alert("dddd");
+            }).on("fileerror",function(){
+                //上传失败
+                alert("失败");
+            });
+        }
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">放心粮油加工企业历史申报查询</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">单位名称：</th>
+                <td><input type="text" class="input01"></td>
+				<th width="100">申报年份：</th>
+                <td><input type="text" class="input01"></td>
+				<td colspan="2"><span class="search_btn01">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">企业列表</span>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th>单位名称</th>
+                        <th>企业性质</th>
+                        <th>通讯地址</th>
+                        <th>电子邮箱</th>
+                        <th>注册资金</th>
+                        <th>法定代表人</th>
+                        <th>营业执照企业名称</th>
+                        <th>申报时间</th>
+						<th>到期时间</th>
+                        <th>附件</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>xxxxxxxxxxxxxxx</td>
+                        <td>XXX</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>2018/04/01</td>
+						<td>2021/04/01</td>
+                        <td><a href="">申请材料附件共 5 个</a></td>
+                        <td><span class="btn common">下载</span></td>
+                    </tr>
+                    <tr>
+                        <td>xxxxxxxxxxxxxxx</td>
+                        <td>XXX</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>2018/04/01</td>
+						<td>2021/04/01</td>
+                        <td><a href="">申请材料附件共 5 个</a></td>
+                        <td><span class="btn common">下载</span></td>
+                    </tr>
+                    <tr>
+                        <td>xxxxxxxxxxxxxxx</td>
+                        <td>XXX</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>XXX</td>
+                        <td>2014/04/01</td>
+						<td>2017/04/01</td>
+                        <td><a href="">申请材料附件共 5 个</a></td>
+                        <td><span class="btn common">下载</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

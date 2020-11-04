@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人事管理-民主测评</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            loadTable();
+    	});
+        
+        /**
+         * [loadTable description]
+         */
+        function loadTable(){
+            for(var i = 0; i < 10; i++){
+                var html = ['<tr>',
+'                               <td>XXXXX</td>',
+'                               <td>10</td>',
+'                               <td> </td>',
+'                               <td>3</td>',
+'                               <td>9</td>',
+'                           </tr>'].join("");
+                $("#dataList").append(html);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">人事管理-民主测评</p>
+	<div class="table_outer bgFFF mt15">
+		<div class="table_search tc"><span class="title f18">自治区粮食局机关处级干部2017度考核测评</span></div>
+		<div class="pd20">
+			<table class="table01">
+                <thead>
+                    <tr>
+                        <th rowspan="2">姓名</th>
+                        <th colspan="4" class="bb-dc">总体评价</th>
+                    </tr>
+                    <tr>
+                        <th>优秀</th>
+                        <th>称职</th>
+                        <th>基本称职</th>
+                        <th>不称职</th>
+                    </tr>
+                </thead>
+                <tbody id="dataList">
+                </tbody>
+            </table>
+		</div>
+	</div>
+    <div class="tc pd10 mt20">
+        <span class="btn border-btn w110">导出</span><span class="btn btn-browser w110 ml10">打印</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+        "code": 200,
+        "data": {
+                "dataStyle": "easyui",
+                "field": "",
+                "footer": "",
+                "order": "asc",
+                "page": 0,
+                "results": [
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        },
+                        {
+                                "city": "南宁市",
+                                "qymc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "qydm": "FGSHKDHBSK",
+                                "ywl": "1564"
+                        }
+                ],
+                "rows": 10,
+                "sort": "",
+                "sqlbuilder": "",
+                "total": 351,
+                "treefield": ""
+        },
+        "message": "数据请求成功",
+        "status": 1
+}

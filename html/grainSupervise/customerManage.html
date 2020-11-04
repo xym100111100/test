@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-企业客户管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 图表js -->
+    <script type="text/javascript" src="js/customerManage.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            $(".tab-zdy a").click(function(){
+                var tabId = $(this).data("tab");
+                $(".tab-content").hide();
+                $(tabId).show();
+                $(this).addClass("active").siblings("a").removeClass("active");
+            });
+    	});
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">企业客户管理<a href="customerSupervise.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="table_outer bgFFF mt15" style="padding: 20px 15px;">
+        <div class="company-info-title">
+            XXX公司 <span class="little-info">加工企业 | 国有企业</span> <button type="button" class="btn-detail">查看详细</button>
+        </div>
+        <table class="company-info mt15">
+            <tr>
+                <th width="160">企业代码：</th>
+                <td>XXX</td>
+                <th width="160">营业/住所地址：</th>
+                <td>XXX</td>
+                <th width="160">邮政编码：</th>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <th>法定代表人：</th>
+                <td>XXXX</td>
+                <th>身份证号：</th>
+                <td>XXX</td>
+                <th>法人手机号：</th>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <th>企业联系人：</th>
+                <td>XXX</td>
+                <th>办公电话：</th>
+                <td>XXX</td>
+                <th>企业联系人电话：</th>
+                <td>XXX</td>
+            </tr>
+            <tr>
+                <th>备案编码：</th>
+                <td>XXXX</td>
+                <th>导入时间：</th>
+                <td>2016-05-06</td>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15" style="padding: 20px 15px;">
+        <div class="tab-zdy">
+            <a class="active" data-tab="#tab1">我的客户</a>
+            <a data-tab="#tab2">关联客户</a>
+        </div>
+        <div class="mt10">
+            <div class="tab-content" id="tab1">
+                <table class="table01">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>客户姓名</th>
+                            <th>客户联系地址</th>
+                            <th>邮编</th>
+                            <th>客户联系人</th>
+                            <th>电话</th>
+                            <th>身份证</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>XXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>1862542XXXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td><span class="btn common">详细</span><span class="btn common bgG ml10">合同</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>XXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>1862542XXXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td><span class="btn common">详细</span><span class="btn common bgG ml10">合同</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>XXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td>XXX</td>
+                            <td>XXX</td>
+                            <td>1862542XXXX</td>
+                            <td>XXXXXXXXXXXXXXXXXXXX</td>
+                            <td><span class="btn common">详细</span><span class="btn common bgG ml10">合同</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="page_div clearfix mt10">
+                    <ul class="fr">
+                        <li class="prev"></li>
+                        <li>1</li>
+                        <li class="hover">2</li>
+                        <li>3</li>
+                        <li>...</li>
+                        <li>9</li>
+                        <li class="next"></li>
+                        <li class="to-page">到<input type="text">页</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="tab2" style="display: none;"></div>
+        </div>
+        <div class="dash"></div>
+        <div class="row" style="width: 100%;">
+            <div class="col-xs-6">
+                <div id="chart01" style="height: 280px;"></div>
+            </div>
+            <div class="col-xs-6">
+                <div id="chart02" style="height: 280px;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

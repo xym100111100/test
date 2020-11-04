@@ -1,0 +1,148 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>预算管理-预算调整</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- fileinput上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- easyUI标签页tab插件 -->
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            //年月选择器
+            laydate.render({
+              elem: '#date'
+              ,range: true
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">预算管理-预算调整</p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="150">调整项目：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>XX项目</li>
+                            <li>XXXX项目</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="120">目标项目：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>XX目标</li>
+                            <li>XXXX目标</li>
+                        </ul>
+                    </div>
+                </td>
+                <th width="120">目标处室：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01 w150">
+                        <ul>
+                            <li>XX处室</li>
+                            <li>XXXX处室</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>调整起止时间：</th>
+                <td><input type="text" class="input01 layui-input w240" id="date"></td>
+                <td colspan="2"><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">调整项目列表</span>
+            <a class="border-btn fr mt5" href="budgetaryAdjustApply.html">预算调整申请</a>
+        </div>
+        <div style="padding: 20px;">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>调整项目</th>
+                        <th>调整处室</th>
+                        <th>目标项目</th>
+                        <th>目标处室</th>
+                        <th>调整时间</th>
+                        <th>调整金额</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td><a href="budgetaryAdjustAudit.html" class="btn common">审批</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td><a href="budgetaryAdjustCheck.html" class="btn common bgG">验收</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXX</td>
+                        <td>XXXXX</td>
+                        <td>XXXXX</td>
+                        <td><a href="budgetaryAdjustAudit.html" class="btn common">审批</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

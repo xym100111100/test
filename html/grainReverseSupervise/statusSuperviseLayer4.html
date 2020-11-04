@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管-熏蒸记录表-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <div class="tr">
+        <button type="button" class="layui-btn">打印</button>
+    </div>
+    <table class="info-table mt5">
+        <col width="340"><col><col width="170"><col><col width="160"><col><col width="180"><col>
+        <tr>
+            <td colspan="8">
+                <span><em>仓号（货位）：</em><em class="cBlue">18</em></span>
+                <span class="fr cBlue">2013年11月12日</span>
+            </td>
+        </tr>
+        <tr>
+            <th class="tc">粮种</th>
+            <td>玉米</td>
+            <th class="tc">等级</th>
+            <td>二等</td>
+            <th class="tc">杂质（%）</th>
+            <td>1.0</td>
+            <th class="tc">数量（t）</th>
+            <td>1.1</td>
+        </tr>
+        <tr>
+            <th class="tc">仓型</th>
+            <td>平房仓</td>
+            <th class="tc">直径（跨度）</th>
+            <td>20.0</td>
+            <th class="tc">粮层厚度（m）</th>
+            <td>4.5</td>
+            <th class="tc">粮堆体积（m³）</th>
+            <td>512</td>
+        </tr>
+        <tr>
+            <th class="tc">风网类型</th>
+            <td>地槽</td>
+            <th class="tc">风网总阻力范围（pa）</th>
+            <td>334</td>
+            <th class="tc">总风量范围（m³/h）</th>
+            <td colspan="3">11000</td>
+        </tr>
+        <tr>
+            <th class="tc">谷冷机型号</th>
+            <td>GLA85</td>
+            <th class="tc">台数</th>
+            <td>2</td>
+            <th class="tc">总功率（kw）</th>
+            <td>49</td>
+            <th rowspan="2" class="tc">单位通风量[m³/（h/t）]</th>
+            <td rowspan="2">2.6</td>
+        </tr>
+        <tr>
+            <th class="tc">冷却通风目的</th>
+            <td colspan="5">应急</td>
+        </tr>
+        <tr>
+            <th class="tc">通风时间</th>
+            <td colspan="2">开始：2014.06.23 18:00</td>
+            <td colspan="2">结束：2014.06.23 18:00</td>
+            <th class="tc">累计通风时间（h）</th>
+            <td colspan="2">49.0</td>
+        </tr>
+        <tr>
+            <th class="tc">冷却通风期间参数</th>
+            <th class="tc"></th>
+            <th class="tc">平均值</th>
+            <th colspan="2" class="tc">最高值</th>
+            <th colspan="2" class="tc">最低值</th>
+            <th class="tc">备注</th>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">大气温度/℃</th>
+            <td>29.0</td>
+            <td colspan="2">33.0</td>
+            <td colspan="2">25.0</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">大气相对湿度%</th>
+            <td>80</td>
+            <td colspan="2">92</td>
+            <td colspan="2">68</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">粮食温度（℃）</th>
+            <th class="tc">冷却前</th>
+            <td>24.9</td>
+            <td colspan="2">39.3</td>
+            <td colspan="2">13.6</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">冷却后</th>
+            <td>21.9</td>
+            <td colspan="2">32.3</td>
+            <td colspan="2">10.6</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">粮食水分（%）</th>
+            <th class="tc">冷却前</th>
+            <td>14.9</td>
+            <td colspan="2">14.3</td>
+            <td colspan="2">14.6</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">冷却后</th>
+            <td>14.2</td>
+            <td colspan="2">12.3</td>
+            <td colspan="2">13.6</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">粮层温度梯度/（℃/m粮层厚度）</th>
+            <td>1.2</td>
+            <td colspan="2">4.3</td>
+            <td colspan="2">0.06</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="tc">粮层水分梯度/（%/m粮层厚度）</th>
+            <td></td>
+            <td colspan="2"></td>
+            <td colspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">冷却送风温度</th>
+            <th class="tc">设定值</th>
+            <td colspan="5">13.5, 14.0</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">检测值</th>
+            <td colspan="5">13.5, 14.0</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">冷却送风湿度</th>
+            <th class="tc">设定值</th>
+            <td colspan="5">85, 92</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">检测值</th>
+            <td colspan="5">85, 92</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">实际冷却处理能力（t/24h）</th>
+            <td colspan="4">3582, 9</td>
+            <th class="tc">总电费（元）</th>
+            <td>1582, 9</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="tc">单位能耗（[（kw.h）/℃.t]）[（kw.h）/1%水分.t]</th>
+            <td colspan="2">0.17</td>
+            <th class="tc">总电耗（kw.h）</th>
+            <td>2017</td>
+            <th class="tc">吨粮成本（元/吨）</th>
+            <td>0.449</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="8">
+                <span><em class="c8">负责人：</em>XXX</span>
+                <span class="ml30"><em class="c8">操作人：</em>XXX</span>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

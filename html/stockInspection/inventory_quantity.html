@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>库存数量检查</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        /**
+         * 删除一行
+         * @param  {[type]} obj [description]
+         * @return {[type]}     [description]
+         */
+        function delTr(obj){
+            $(obj).closest("tr").remove();
+        }
+        /**
+         * 添加一行
+         * @param {[type]} obj [description]
+         */
+        function addTr(obj){
+            var html = ['<tr>',
+                '                                <td>',
+                '                                    <div class="inp_down">',
+                '                                        <input type="text" class="input01" value="地方储备粮">',
+                '                                        <ul>',
+                '                                            <li>地方储备粮</li>',
+                '                                            <li>地方政策粮</li>',
+                '                                            <li>商品粮</li>',
+                '                                        </ul>',
+                '                                    </div>',
+                '                                </td>',
+                '                                <td>',
+                '                                    <div class="inp_down">',
+                '                                        <input type="text" class="input01" value="大米">',
+                '                                        <ul>',
+                '                                            <li>小麦</li>',
+                '                                            <li>大豆</li>',
+                '                                            <li>玉米</li>',
+                '                                        </ul>',
+                '                                    </div>',
+                '                                </td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><input type="text" class="input01"></td>',
+                '                                <td><span class="reduce" onclick="delTr(this);"></span><span class="plus ml15" onclick="addTr(this);"></span></td>',
+                '                            </tr>'].join("");
+            $(obj).closest("tr").after(html);
+        }
+
+    </script>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">库存数量检查</p>
+<div class="table_outer bgFFF mt20">
+    <div style="padding: 20px;">
+                <table class="table01 table-vis">
+                    <thead>
+                    <tr>
+                        <th>性质</th>
+                        <th>品种</th>
+                        <th>检查时点统计库存与实际库存差数</th>
+                        <th>粮食出库未减账</th>
+                        <th>粮食入库未入账</th>
+                        <th>检查时点统计库存与实际库存差数</th>
+                        <th>损失</th>
+                        <th>损耗</th>
+                        <th>政策性借粮</th>
+                        <th>其他</th>
+                        <th>检查时点统计库存与实际库存差率(%)</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="地方储备粮">
+                                <ul>
+                                    <li>地方储备粮</li>
+                                    <li>地方政策粮</li>
+                                    <li>商品粮</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="大米">
+                                <ul>
+                                    <li>玉米</li>
+                                    <li>小麦</li>
+                                    <li>大豆</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><span class="reduce" onclick="delTr(this);"></span><span class="plus ml15" onclick="addTr(this);"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="地方储备粮">
+                                <ul>
+                                    <li>地方储备粮</li>
+                                    <li>地方政策粮</li>
+                                    <li>商品粮</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="大米">
+                                <ul>
+                                    <li>玉米</li>
+                                    <li>小麦</li>
+                                    <li>大豆</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><span class="reduce" onclick="delTr(this);"></span><span class="plus ml15" onclick="addTr(this);"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="地方储备粮">
+                                <ul>
+                                    <li>地方储备粮</li>
+                                    <li>地方政策粮</li>
+                                    <li>商品粮</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="inp_down">
+                                <input type="text" class="input01" value="大米">
+                                <ul>
+                                    <li>玉米</li>
+                                    <li>小麦</li>
+                                    <li>大豆</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><input type="text" class="input01"></td>
+                        <td><span class="reduce" onclick="delTr(this);"></span><span class="plus ml15" onclick="addTr(this);"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tc pd10 mt20">
+                    <span class="btn btn-browser w110">保存</span>
+                </div>
+            </div>
+</div>
+
+</body>
+</html>

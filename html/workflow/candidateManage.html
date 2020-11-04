@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作流管理-候选管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug-in/layui/css/layui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .grain-list .table_outer{border-width: 2px;}
+        .grain-list .table_outer:hover,.grain-list .table_outer.active{border-color: #69A5E1;}
+        .layui-table-body{overflow-x: hidden;}
+        .layui-table-cell{height: auto;}
+        .layui-table thead tr{background-color: #f7f7f7;}
+        .layui-table-view .layui-table th{padding: 6px 0;font-weight: bold;color: #333;}
+        .layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table[lay-even] tr:nth-child(even){background-color: #f8f8f8;}
+        .layui-table-view .layui-table th+th{border-left: 1px solid #dcdcdc;}
+        .layui-table-view .layui-table td+td{border-left: 1px solid #f0f1f3;}
+        .layui-table-view .layui-table td,.layui-table-view .layui-table th{text-align: center;}
+        .layui-table-view .layui-table td:first-child,.layui-table-view .layui-table th:first-child{text-align: left;}
+
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">候选管理</p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">XXX流程</span>
+        </div>
+        <div class="pd20 tc">
+            <img src="../../resource/images/flow.jpg" alt="">
+        </div>
+    </div>
+    <div class="mt15 row" style="width: 100%;position: relative;">
+        <div class="col-xs-3" style="position: absolute;height: 100%;">
+            <div class="table_outer bgFFF pd20" style="height: 100%;">
+                <div class="grain-list">
+                    <div class="table_outer active">
+                        <a href="#"><img src="../../resource/images/list14.png" alt="">请假申请</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="outLibManage.html"><img src="../../resource/images/list14.png" alt="">经理审批</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="outLibManage.html"><img src="../../resource/images/list14.png" alt="">董事审批</a>
+                    </div>
+                    <div class="table_outer">
+                        <a href="outLibManage.html"><img src="../../resource/images/list14.png" alt="">人事处</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-xs-offset-3">
+            <div class="table_outer bgFFF" style="min-height: 400px;">
+                <div class="table_search"><span class="title">候选列表</span>
+                    <a class="border-btn fr mt5 ml10 w60">清空</a><a class="border-btn fr mt5 w60" onclick="addCandidate();">新增</a>
+                </div>  
+                <div class="pd20">
+                    <table id="table" lay-filter="demo" class="layui-hide">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        {{#  if(d.name1[0].type === 'other'){ }}
+            <a class="btn common bgG ml10">查看</a>
+        {{#  } }} 
+        {{#  if(d.name1[0].type !== 'other'){ }}
+            <a class="btn common" lay-event="edit">配置</a><a class="btn common bgG ml10">查看</a><a class="btn common bgRed ml10">删除</a>
+        {{#  } }} 
+        
+    </script>
+    <script type="text/html" id="name1Tpl">
+        {{#  if(d.name1.length === 0){ }}
+            ——
+        {{#  } }} 
+        {{#  layui.each(d.name1, function(index, item){ }}
+            {{# if( item.type == 'group'  ){ }}
+                <p><a href="" class="candidate-group cOrange">用户组</a> {{ item.name }}</p>
+            {{# } }}
+            {{# if( item.type == 'user'  ){ }}
+                <p><a href="" class="candidate-group cBlue">用户</a> {{ item.name }}</p>
+            {{# } }}
+            {{# if( item.type == 'other'  ){ }}
+                <p><a href="" class="candidate-group cGreen">其他</a> {{ item.name }}</p>
+            {{# } }}
+        {{#  }); }}
+    </script>
+    <script type="text/html" id="name2Tpl">
+        {{#  if(d.name2.length === 0){ }}
+            ——
+        {{#  } }} 
+        {{#  layui.each(d.name2, function(index, item){ }}
+            <p>{{ item }}</p>
+        {{#  }); }}
+    </script>
+    <script type="text/html" id="name3Tpl">
+        {{#  if(d.name3.length === 0){ }}
+            ——
+        {{#  } }} 
+        {{#  layui.each(d.name3, function(index, item){ }}
+            <p>{{ item }}</p>
+        {{#  }); }}
+    </script>
+    <script type="text/html" id="name4Tpl">
+        {{#  if(d.name4.length === 0){ }}
+            ——
+        {{#  } }} 
+        {{#  layui.each(d.name4, function(index, item){ }}
+            <p>{{ item }}</p>
+        {{#  }); }}
+    </script>
+
+    <script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+    <script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+
+
+    <script>
+        layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+            var form = layui.form
+            ,table = layui.table
+            ,layer = layui.layer
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+
+
+            var data = [{
+                "name1": [
+                    {
+                        type: 'group',
+                        name: '张三小组'
+                    },
+                    {
+                        type: 'user',
+                        name: '李四'
+                    },
+                    {
+                        type: 'user',
+                        name: '张莹莹'
+                    }
+                ]
+                ,"name2": ["XXXX"]
+                ,"name3": []
+                ,"name4": ['XXX','XXXX']
+            },{
+                "name1": [
+                    {
+                        type: 'group',
+                        name: '张三小组'
+                    },
+                    {
+                        type: 'user',
+                        name: '李四'
+                    },
+                    {
+                        type: 'user',
+                        name: '张莹莹'
+                    }
+                ]
+                ,"name2": []
+                ,"name3": ["XXXX","XXXX","XXXX"]
+                ,"name4": ['XXX','XXXX']
+            },{
+                "name1": [
+                    {
+                        type: 'group',
+                        name: '张三小组'
+                    },
+                    {
+                        type: 'user',
+                        name: '李四'
+                    },
+                    {
+                        type: 'user',
+                        name: '张莹莹'
+                    }
+                ]
+                ,"name2": ["XXXX"]
+                ,"name3": ["XXXX","XXXX","XXXX"]
+                ,"name4": ['XXX','XXXX']
+            },{
+                "name1": [
+                    {
+                        type: 'other',
+                        name: ''
+                    }
+                ]
+                ,"name2": []
+                ,"name3": []
+                ,"name4": []
+            }];
+            $.tableRender({
+                elem: '#table'
+                ,data: data
+                // ,height: "full-350"
+                // ,height: "full-350"
+                ,cols: [[ //标题栏
+                    {field: 'name1', title: '操作人',templet: '#name1Tpl'}
+                    ,{field: 'name2', title: '受理人',templet: '#name2Tpl'}
+                    ,{field: 'name3', title: '候选人',templet: '#name3Tpl'}
+                    ,{field: 'name4', title: '候选组',templet: '#name4Tpl'}
+                    ,{field: 'op', title: '操作',width:300, toolbar: '#barDemo',width: '200'}
+                ]],
+                page: false 
+            });
+            //监听工具条
+            table.on('tool(demo)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'edit'){
+                    layer.msg('修改');
+                } else if(obj.event === 'del'){
+                    
+                } else if(obj.event === 'resetPwd'){
+                    
+                }
+            });
+            
+        });
+        function addCandidate(){
+
+            var param = {
+                type: 2,
+                title: '新增',
+                area:["800px","600px"],
+                success: function(){
+                },
+                yes: function(index, layero){
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = 'candidateAdd.html';
+            param.content = content;
+            var areaLayer = $.layerContent(param);
+        }
+    </script>
+</body>
+</html>

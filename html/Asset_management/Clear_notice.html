@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产清理通知</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date',
+                type: 'year'
+            });
+
+        });
+    </script>
+    <style>
+        .stock-chart-info{width: 600px;}
+        .stock-chart-info li{margin-top: 14px;margin-right: 50px;width: 240px;}
+    </style>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title02.png">资产清理通知<a href="Cleaning.html" class="fr border-btn w60">返回</a></p>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">固定周期清理</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <th width="160">通知时间：</th>
+                <td><input type="text" class="input01 w200 layui-input" id="date"></td>
+            </tr>
+            <tr>
+                <th width="160">通知标题：</th>
+                <td><input type="text" class="input01 w200" style="width: 100%;"><span class="btn border-btn w110" style="margin-left: 30px;">保存</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="table_outer bgFFF mt15">
+    <div class="table_search">
+        <span class="title">立即清理</span>
+    </div>
+    <div class="pd20">
+        <table class="company-info">
+            <tr>
+                <th width="160">通知标题：</th>
+                <td><input type="text" class="input01 w200" style="width: 100%;"><span class="btn border-btn w110" style="margin-left: 30px">立即清理</span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<div class="tc pd20" style="margin-top: 50px;">
+    <span class="btn btn-browser w110 ml10">关闭</span>
+</div>
+</body>
+</html>

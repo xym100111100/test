@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-出入库管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+	<!-- 全国344个市、区、州对应的数字编号 -->
+	<script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+    		//全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+            layer.config({
+                extend: 'myskin/style.css', //加载您的扩展样式
+                skin: 'layer-ext-myskin'
+            });
+    	});
+        var choosedObj = '';
+        /**
+         * 选择粮食性质
+         * @return {[type]} [description]
+         */
+        function areaChoose(){
+            var param = {
+                area:["600px","400px"],
+                success: function(){
+                    // 初始化树
+                    initTree();
+                },
+                yes: function(index, layero){
+                    choosedObj = setChoosed();
+                    showChoosed();
+                    layer.close(index);
+                },
+                no: function(){}
+            };
+            var content = '<ul class="ztree" id="areaTree" style="margin-top: 20px;height: 90%;overflow:auto;"></ul>';
+            param.content = content;
+            var areaLayer = $.layerContent(param);
+        }
+        /**初始化树*/
+        function initTree(){
+            // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+            var setting = {
+                data: {            //这里不动
+                    simpleData: {
+                        enable: true,
+                        idKey: "id",
+                        pidKey: "pId",
+                        rootPid: '-1'
+                    }
+                },
+                check: {
+                    enable: true,     //这里设置是否显示复选框
+                    chkStyle: "radio",  //单选框
+                    radioType: "all",   //对所有节点设置单选
+                    chkboxType: { "Y": "ps", "N": "ps" }      //设置复选框是否与 父/子 级相关联
+                },
+                callback: {
+                    // onCheck: zTreeOnCheck         //点击复选框相关回调（回调名称固定）
+                    // beforeCheck : function(treeId, treeNode) {      //选择复选框前相关回调
+                    //     if (treeNode.isParent) {
+                    //         if(treeNode.myAttr !== "1"){ //判断是否是需要显示复选框的节点
+                    //             treeNode.nocheck = true;   //设置复选框不显示
+                    //         }
+                    //         return false;
+                    //     }
+                    //  }
+                }  
+            };
+            // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+            var zNodes = [
+                {name:"储备粮", open:true,children:[
+                    {name:"中央储备粮", open:true}, 
+                    {name:"地方储备粮", open:true, children:[
+                        {name:"自治区级地方储备粮"}, 
+                        {name:"市级地方储备粮"},
+                        {name:"县级地方储备粮"}
+                    ]}
+                ]}
+            ];
+            var $dom = $("#areaTree");
+            var zTreeObj = $.fn.zTree.init($dom, setting, zNodes);
+        }
+        /*
+        *取选中的节点
+        */
+        function setChoosed(){
+            var result = [];
+            var zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+            var selectedNodes = zTreeObj.getCheckedNodes(true);
+
+            return selectedNodes[0];
+        }
+        /*
+        *设置选中回调显示
+        */
+        function showChoosed(){
+            $("#areaName").html(choosedObj.name);
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">出入库管理</p>
+    <div class="mt20 tc bgFFF pd20">
+        <input class="input01" type="text" placeholder="请输入关键字搜索" style="width: 400px;"></input><span class="search_btn01 ml20">查询</span>
+        <div style="width: 520px;margin: 15px auto 0 auto;text-align: left;">
+            粮食性质：<input type="radio" name="radio03" class="radio01" checked="checked"><em id="areaName" class="c8">自治区储备粮</em><button type="button" class="border-btn ml20 w60" onclick="areaChoose();">选择</button>
+        </div>
+    </div>
+    <div class="mt20 row" style="position: relative;width: 100%;">
+    	<div class="col-xs-6" style="height: 100%;position: absolute;">
+    		<div class="table_outer bgFFF" style="height: 100%;">
+    			<div class="table_search"><span class="title">快捷查询入口</span></div>
+        		<div style="padding: 30px 0;">
+        			<div id="main" style="width: 100%;height:600px;"></div>
+        		</div>
+    		</div>
+    	</div>
+        <div class="col-xs-6" style="margin-left: 50%;">
+            <div class="table_outer bgFFF" style="min-height: 600px;">
+                <div class="table_search"><span class="title">承储企业目录</span></div>
+                <div style="padding: 20px;">
+                    <table class="table01">
+                        <thead>
+                            <tr>
+                                <th>单位名称</th>
+                                <th>企业类型</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XXX</td>
+                                <td>XXX</td>
+                                <td><a class="btn common" href="outLibManage.html">查询</a></td>
+                            </tr>
+                            <tr>
+                                <td>XXX</td>
+                                <td>XXX</td>
+                                <td><a class="btn common" href="inLibManage.html">查询</a></td>
+                            </tr>
+                            <tr>
+                                <td>XXX</td>
+                                <td>XXX</td>
+                                <td><a class="btn common" href="outLibManage.html">查询</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="page_div clearfix mt10">
+                        <ul class="fr">
+                            <li class="prev"></li>
+                            <li>1</li>
+                            <li class="hover">2</li>
+                            <li>3</li>
+                            <li>...</li>
+                            <li>9</li>
+                            <li class="next"></li>
+                            <li class="to-page">到<input type="text">页</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/app.js"></script>
+</html>

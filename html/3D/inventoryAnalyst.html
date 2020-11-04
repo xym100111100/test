@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>库存分析</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/citymap.js"></script>
+    <!-- 广西省所有区县对应的数字编号 -->
+    <script type="text/javascript" src="../../plug-in/echarts/map/gxDistrictMap.js"></script>
+
+    <!--swiper-->
+    <!-- <script type="text/javascript" src="../../plug-in/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="../../plug-in/swiper/css/swiper.min.css"> -->
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!--滚动条-->
+    <script src="../../plug-in/jquery.nicescroll.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+
+    <link rel="stylesheet" href="..\..\resource\css\public\public.min.css">
+
+
+    <!-- 大屏样式 -->
+    <link rel="stylesheet" href="..\..\resource\css\visual\style.min.css">
+
+
+    <style>
+        .grvs-top {
+            height: 125px;
+            padding: 0 8px 0;
+            box-sizing: border-box;
+        }
+
+        .grvs-top__item {
+            height: 100%;
+            width: 20%;
+            padding: 0 7px 0;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .grvs-main {
+            position: absolute;
+            top: 125px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 8px 15px;
+            box-sizing: border-box;
+        }
+
+        .grvs-main__top {
+            height: 50%;
+            padding-top: 15px;
+            box-sizing: border-box;
+        }
+
+        .grvs-main__top-l {
+            float: left;
+            width: 33.33%;
+            height: 100%;
+            padding: 0 7px;
+            box-sizing: border-box;
+        }
+
+        .grvs-main__top-m {
+            float: left;
+            width: 33.33%;
+            height: 100%;
+            padding: 0 7px;
+            box-sizing: border-box;
+        }
+
+        .grvs-main__top-r {
+            float: left;
+            width: 33.33%;
+            height: 100%;
+            padding: 0 7px;
+            box-sizing: border-box;
+        }
+
+        .grvs-main__bottom {
+            height: 50%;
+            padding-top: 15px;
+            box-sizing: border-box;
+        }
+
+        .grvs-nav-item1 {
+            height: 38px;
+            line-height: 38px;
+        }
+
+        .grvs-nav-item1 .layui-input {
+            display: inline-block;
+            width: 110px;
+            margin-top: -3px;
+            padding-left: 0;
+        }
+
+        .grvs-nav-item2 {
+            height: 38px;
+            line-height: 38px;
+            width: 140px;
+        }
+
+        .grvs-nav-item2 .layui-input {
+            display: inline-block;
+            width: 100%;
+            margin-top: -3px;
+            padding-left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="lsvs-container">
+        <div class="lsvs-header lsvs-header--theme2">
+            <img class="lsvs-title" src="..\..\resource\css\visual\images\title4.png">
+            <form id="searchForm" class="layui-form">
+                <div class="lsvs-nav2 lsvs-layui-form">
+                    <div class="lsvs-nav2__item grvs-nav-item1">日期：<input type="text"
+                            class="layui-input input-date j-layui-date" name="dateTime" autocomplete="off"
+                            placeholder="">
+                    </div>
+                    <div class="lsvs-nav2__item grvs-nav-item2">
+                        <select class="j-select" name="xzqhdm" lay-filter="xzqhdm">
+                        </select>
+                    </div>
+                    <div class="lsvs-nav2__separate"></div>
+                </div>
+            </form>
+        </div>
+        <div class="lsvs-body">
+            <div class="grvs-top" id="total">
+                <div class="grvs-top__item">
+                    <div class="lsvs-box">
+                        <div class="lsvs-box__arrow is-lt"></div>
+                        <div class="lsvs-box__arrow is-rt"></div>
+                        <div class="lsvs-box__arrow is-lb"></div>
+                        <div class="lsvs-box__arrow is-rb"></div>
+                        <div class="lsvs-panel3">
+                            <div class="lsvs-panel3__title">总库存数</div>
+                            <div class="lsvs-panel3__value"><span class="j-text" name="zkcs"></span><span
+                                    class="lsvs-panel3__unit">吨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-top__item">
+                    <div class="lsvs-box">
+                        <div class="lsvs-box__arrow is-lt"></div>
+                        <div class="lsvs-box__arrow is-rt"></div>
+                        <div class="lsvs-box__arrow is-lb"></div>
+                        <div class="lsvs-box__arrow is-rb"></div>
+                        <div class="lsvs-panel3">
+                            <div class="lsvs-panel3__title">当天入库数</div>
+                            <div class="lsvs-panel3__value"><span class="j-text" name="dtrks"></span><span
+                                    class="lsvs-panel3__unit">吨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-top__item">
+                    <div class="lsvs-box">
+                        <div class="lsvs-box__arrow is-lt"></div>
+                        <div class="lsvs-box__arrow is-rt"></div>
+                        <div class="lsvs-box__arrow is-lb"></div>
+                        <div class="lsvs-box__arrow is-rb"></div>
+                        <div class="lsvs-panel3">
+                            <div class="lsvs-panel3__title">当天出库数</div>
+                            <div class="lsvs-panel3__value"><span class="j-text" name="dtcks"></span><span
+                                    class="lsvs-panel3__unit">吨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-top__item">
+                    <div class="lsvs-box">
+                        <div class="lsvs-box__arrow is-lt"></div>
+                        <div class="lsvs-box__arrow is-rt"></div>
+                        <div class="lsvs-box__arrow is-lb"></div>
+                        <div class="lsvs-box__arrow is-rb"></div>
+                        <div class="lsvs-panel3">
+                            <div class="lsvs-panel3__title">当天损耗数</div>
+                            <div class="lsvs-panel3__value"><span class="j-text" name="dtshs"></span><span
+                                    class="lsvs-panel3__unit">吨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-top__item">
+                    <div class="lsvs-box">
+                        <div class="lsvs-box__arrow is-lt"></div>
+                        <div class="lsvs-box__arrow is-rt"></div>
+                        <div class="lsvs-box__arrow is-lb"></div>
+                        <div class="lsvs-box__arrow is-rb"></div>
+                        <div class="lsvs-panel3">
+                            <div class="lsvs-panel3__title">当天溢余数</div>
+                            <div class="lsvs-panel3__value"><span class="j-text" name="dtyys"></span><span
+                                    class="lsvs-panel3__unit">吨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grvs-main">
+                <div class="grvs-main__top">
+                    <div class="grvs-main__top-l">
+                        <div class="lsvs-box has-title">
+                            <div class="lsvs-box__title">全区出入库趋势图<span class="lsvs-box__title-suffix">单位：吨</span>
+                            </div>
+                            <div id="lineChart" class="lsvs-chart"></div>
+                        </div>
+                    </div>
+                    <div class="grvs-main__top-m">
+                        <div class="lsvs-box has-title">
+                            <div class="lsvs-box__title">全区库存按粮油性质划分<span class="lsvs-box__title-suffix">单位：吨</span>
+                            </div>
+                            <div id="pieChart1" class="lsvs-chart"></div>
+                        </div>
+                    </div>
+                    <div class="grvs-main__top-r">
+                        <div class="lsvs-box has-title">
+                            <div class="lsvs-box__title">全区库存按粮油品种划分<span class="lsvs-box__title-suffix">单位：吨</span>
+                            </div>
+                            <div id="pieChart2" class="lsvs-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grvs-main__bottom">
+                    <div class="lsvs-box has-title">
+                        <div class="lsvs-box__title">全区每日库存及出入库情况（分地市统计）<span class="lsvs-box__title-suffix">单位：吨</span>
+                        </div>
+                        <div id="barChart" class="lsvs-chart"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../../plug-in/layui/layui.all.js"></script>
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="..\..\resource\common_js\ao.utils.js"></script>
+    <script type="text/javascript" src="js/inventoryAnalyst.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,451 @@
+{
+        "code": 200,
+        "data": {
+                "totalData": {
+                        "qqbndljrksl": "3,478,471.04",
+                        "qqbndljcksl": "1,478,471.04"
+                },
+                "lineData1": [
+                        {
+                                "name": "14日",
+                                "value": 2005
+                        },
+                        {
+                                "name": "15日",
+                                "value": 2899
+                        },
+                        {
+                                "name": "16日",
+                                "value": 3100
+                        },
+                        {
+                                "name": "17日",
+                                "value": 2625
+                        },
+                        {
+                                "name": "18日",
+                                "value": 2600
+                        },
+                        {
+                                "name": "19日",
+                                "value": 1560
+                        },
+                        {
+                                "name": "20日",
+                                "value": 1550
+                        }
+                ],
+                "lineData2_1": [
+                        {
+                                "xzqhmc": "广西壮族自治区田东粮食储备库有限公司",
+                                "typeName": "入库数量",
+                                "value": "231"
+                        },
+                        {
+                                "xzqhmc": "港南区粮食中心储备库",
+                                "typeName": "入库数量",
+                                "value": "37"
+                        },
+                        {
+                                "xzqhmc": "上思县储备粮管理中心广元储备库",
+                                "typeName": "入库数量",
+                                "value": "696.09"
+                        },
+                        {
+                                "xzqhmc": "三江侗族自治县粮食购销和储备粮管理中心",
+                                "typeName": "入库数量",
+                                "value": "273.86"
+                        },
+                        {
+                                "xzqhmc": "防城港市储备粮管理中心",
+                                "typeName": "入库数量",
+                                "value": "751.36"
+                        },
+                        {
+                                "xzqhmc": "港口区粮食和物资储备中心",
+                                "typeName": "入库数量",
+                                "value": "374.56"
+                        },
+                        {
+                                "xzqhmc": "钦州市储备粮管理中心",
+                                "typeName": "入库数量",
+                                "value": "698.31"
+                        },
+                        {
+                                "xzqhmc": "容县粮食储备中心库",
+                                "typeName": "入库数量",
+                                "value": "522.24"
+                        },
+                        {
+                                "xzqhmc": "靖西市储备粮管理中心",
+                                "typeName": "入库数量",
+                                "value": "742.78"
+                        },
+                        {
+                                "xzqhmc": "东兰县粮食和物资储备中心",
+                                "typeName": "入库数量",
+                                "value": "146.73"
+                        },
+                        {
+                                "xzqhmc": "广西壮族自治区南宁粮食储备库有限公司",
+                                "typeName": "入库数量",
+                                "value": "597.73"
+                        },
+                        {
+                                "xzqhmc": "广西军粮供应有限公司",
+                                "typeName": "入库数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "南宁市邕宁区粮食储备库",
+                                "typeName": "入库数量",
+                                "value": "538.38"
+                        },
+                        {
+                                "xzqhmc": "隆安县粮食收储有限责任公司",
+                                "typeName": "入库数量",
+                                "value": "983.92"
+                        }
+                ],
+                "lineData2_2": [
+                        {
+                                "xzqhmc": "南宁市",
+                                "typeName": "入库数量",
+                                "value": "21"
+                        },
+                        {
+                                "xzqhmc": "柳州市",
+                                "typeName": "入库数量",
+                                "value": "37"
+                        },
+                        {
+                                "xzqhmc": "桂林市",
+                                "typeName": "入库数量",
+                                "value": "69.09"
+                        },
+                        {
+                                "xzqhmc": "梧州市",
+                                "typeName": "入库数量",
+                                "value": "27.86"
+                        },
+                        {
+                                "xzqhmc": "北海市",
+                                "typeName": "入库数量",
+                                "value": "71.36"
+                        },
+                        {
+                                "xzqhmc": "防城港市",
+                                "typeName": "入库数量",
+                                "value": "74.56"
+                        },
+                        {
+                                "xzqhmc": "钦州市",
+                                "typeName": "入库数量",
+                                "value": "69.31"
+                        },
+                        {
+                                "xzqhmc": "贵港市",
+                                "typeName": "入库数量",
+                                "value": "22.24"
+                        },
+                        {
+                                "xzqhmc": "玉林市",
+                                "typeName": "入库数量",
+                                "value": "72.78"
+                        },
+                        {
+                                "xzqhmc": "百色市",
+                                "typeName": "入库数量",
+                                "value": "16.73"
+                        },
+                        {
+                                "xzqhmc": "贺州市",
+                                "typeName": "入库数量",
+                                "value": "57.73"
+                        },
+                        {
+                                "xzqhmc": "河池市",
+                                "typeName": "入库数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "来宾市",
+                                "typeName": "入库数量",
+                                "value": "58.38"
+                        },
+                        {
+                                "xzqhmc": "崇左市",
+                                "typeName": "入库数量",
+                                "value": "93.92"
+                        }
+                ],
+                "barData1": [
+                        {
+                                "xzqhmc": "南宁市",
+                                "typeName": "入库数量",
+                                "value": "231"
+                        },
+                        {
+                                "xzqhmc": "柳州市",
+                                "typeName": "入库数量",
+                                "value": "37"
+                        },
+                        {
+                                "xzqhmc": "桂林市",
+                                "typeName": "入库数量",
+                                "value": "696.09"
+                        },
+                        {
+                                "xzqhmc": "梧州市",
+                                "typeName": "入库数量",
+                                "value": "273.86"
+                        },
+                        {
+                                "xzqhmc": "北海市",
+                                "typeName": "入库数量",
+                                "value": "751.36"
+                        },
+                        {
+                                "xzqhmc": "防城港市",
+                                "typeName": "入库数量",
+                                "value": "374.56"
+                        },
+                        {
+                                "xzqhmc": "钦州市",
+                                "typeName": "入库数量",
+                                "value": "698.31"
+                        },
+                        {
+                                "xzqhmc": "贵港市",
+                                "typeName": "入库数量",
+                                "value": "522.24"
+                        },
+                        {
+                                "xzqhmc": "玉林市",
+                                "typeName": "入库数量",
+                                "value": "742.78"
+                        },
+                        {
+                                "xzqhmc": "百色市",
+                                "typeName": "入库数量",
+                                "value": "146.73"
+                        },
+                        {
+                                "xzqhmc": "贺州市",
+                                "typeName": "入库数量",
+                                "value": "597.73"
+                        },
+                        {
+                                "xzqhmc": "河池市",
+                                "typeName": "入库数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "来宾市",
+                                "typeName": "入库数量",
+                                "value": "538.38"
+                        },
+                        {
+                                "xzqhmc": "崇左市",
+                                "typeName": "入库数量",
+                                "value": "983.92"
+                        }
+                ],
+                
+                "barData2": [
+                        {
+                                "xzqhmc": "01月",
+                                "typeName": "入库数量",
+                                "value": "231.53"
+                        },
+                        {
+                                "xzqhmc": "01月",
+                                "typeName": "出库数量",
+                                "value": "722.34"
+                        },
+                        {
+                                "xzqhmc": "02月",
+                                "typeName": "入库数量",
+                                "value": "184.37"
+                        },
+                        {
+                                "xzqhmc": "02月",
+                                "typeName": "出库数量",
+                                "value": "117.93"
+                        },
+                        {
+                                "xzqhmc": "03月",
+                                "typeName": "入库数量",
+                                "value": "696.09"
+                        },
+                        {
+                                "xzqhmc": "03月",
+                                "typeName": "出库数量",
+                                "value": "649.86"
+                        },
+                        {
+                                "xzqhmc": "04月",
+                                "typeName": "入库数量",
+                                "value": "273.86"
+                        },
+                        {
+                                "xzqhmc": "04月",
+                                "typeName": "出库数量",
+                                "value": "259.92"
+                        },
+                        {
+                                "xzqhmc": "05月",
+                                "typeName": "入库数量",
+                                "value": "751.36"
+                        },
+                        {
+                                "xzqhmc": "05月",
+                                "typeName": "出库数量",
+                                "value": "641.59"
+                        },
+                        {
+                                "xzqhmc": "06月",
+                                "typeName": "入库数量",
+                                "value": "374.56"
+                        },
+                        {
+                                "xzqhmc": "06月",
+                                "typeName": "出库数量",
+                                "value": "75.89"
+                        },
+                        {
+                                "xzqhmc": "07月",
+                                "typeName": "入库数量",
+                                "value": "698.31"
+                        },
+                        {
+                                "xzqhmc": "07月",
+                                "typeName": "出库数量",
+                                "value": "276.54"
+                        },
+                        {
+                                "xzqhmc": "08月",
+                                "typeName": "入库数量",
+                                "value": "522.24"
+                        },
+                        {
+                                "xzqhmc": "08月",
+                                "typeName": "出库数量",
+                                "value": "923.89"
+                        },
+                        {
+                                "xzqhmc": "09月",
+                                "typeName": "入库数量",
+                                "value": "742.78"
+                        },
+                        {
+                                "xzqhmc": "09月",
+                                "typeName": "出库数量",
+                                "value": "99.27"
+                        },
+                        {
+                                "xzqhmc": "10月",
+                                "typeName": "入库数量",
+                                "value": "146.73"
+                        },
+                        {
+                                "xzqhmc": "10月",
+                                "typeName": "出库数量",
+                                "value": "81.22"
+                        },
+                        {
+                                "xzqhmc": "11月",
+                                "typeName": "入库数量",
+                                "value": "597.73"
+                        },
+                        {
+                                "xzqhmc": "11月",
+                                "typeName": "出库数量",
+                                "value": "744.32"
+                        },
+                        {
+                                "xzqhmc": "12月",
+                                "typeName": "入库数量",
+                                "value": "72.25"
+                        },
+                        {
+                                "xzqhmc": "12月",
+                                "typeName": "出库数量",
+                                "value": "839.72"
+                        }
+                ],
+                "barData3": [
+                        {
+                                "xzqhmc": "14日",
+                                "typeName": "入库数量",
+                                "value": "231.53"
+                        },
+                        {
+                                "xzqhmc": "14日",
+                                "typeName": "出库数量",
+                                "value": "722.34"
+                        },
+                        {
+                                "xzqhmc": "15日",
+                                "typeName": "入库数量",
+                                "value": "184.37"
+                        },
+                        {
+                                "xzqhmc": "15日",
+                                "typeName": "出库数量",
+                                "value": "117.93"
+                        },
+                        {
+                                "xzqhmc": "16日",
+                                "typeName": "入库数量",
+                                "value": "696.09"
+                        },
+                        {
+                                "xzqhmc": "16日",
+                                "typeName": "出库数量",
+                                "value": "649.86"
+                        },
+                        {
+                                "xzqhmc": "17日",
+                                "typeName": "入库数量",
+                                "value": "273.86"
+                        },
+                        {
+                                "xzqhmc": "17日",
+                                "typeName": "出库数量",
+                                "value": "259.92"
+                        },
+                        {
+                                "xzqhmc": "18日",
+                                "typeName": "入库数量",
+                                "value": "751.36"
+                        },
+                        {
+                                "xzqhmc": "18日",
+                                "typeName": "出库数量",
+                                "value": "641.59"
+                        },
+                        {
+                                "xzqhmc": "19日",
+                                "typeName": "入库数量",
+                                "value": "374.56"
+                        },
+                        {
+                                "xzqhmc": "19日",
+                                "typeName": "出库数量",
+                                "value": "75.89"
+                        },
+                        {
+                                "xzqhmc": "20日",
+                                "typeName": "入库数量",
+                                "value": "698.31"
+                        },
+                        {
+                                "xzqhmc": "20日",
+                                "typeName": "出库数量",
+                                "value": "276.54"
+                        } 
+                ]
+        },
+        "message": "success"
+}

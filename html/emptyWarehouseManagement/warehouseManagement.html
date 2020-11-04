@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空仓信息管理</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/dtree.css">
+    <link rel="stylesheet" href="../../plug-in/layui_ext/dtree/font/dtreefont.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgF7">
+<div class="bgFFF">
+    <div class="layui-card ">
+        <div class="layui-card-body">
+            <table id="table" lay-filter="demo" class="layui-hide">
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/html" id="barDemo">
+    <a class="op-word" href="emptyWarehouseCheck.html">查看</a>
+</script>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/layui.all.js"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.extend({
+        dtree: '../../plug-in/layui_ext/dtree/dtree'   // {/}的意思即代表采用自有路径，即不跟随 base 路径
+    }).use(['form', 'layedit', 'laydate','table','element','upload','dtree'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,dtree = layui.dtree
+            ,laydate = layui.laydate;
+
+        var data = [];
+        for(var i = 0; i < 22; i++){
+            var tmp = {
+                "name1": "i+1",
+                "name2": "2020年01月10号全区库点空仓列表",
+                "name3": "2019-10-10"
+            };
+            data.push(tmp);
+        }
+        $.tableRender({
+            elem: '#table'
+            // ,data: data
+            // 静态json不支持表格自带分页
+            ,url:'../../resource/json/warehouse/warehouse.json'
+            ,cols: [[ //标题栏
+                // {type: 'checkbox',width:60}
+                {field: 'name1', title: '', width:70}
+                ,{field: 'name2', title: '同步任务名称'}
+                ,{field: 'name3', title: '同步时间', width:250}
+                ,{field: 'op', title: '操作',width:300, toolbar: '#barDemo'}
+            ]]
+        });
+    });
+
+</script>
+
+</html>

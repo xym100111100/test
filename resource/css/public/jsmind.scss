@@ -1,0 +1,78 @@
+@import './mixin.scss';
+
+// jsmind样式处理
+.#{$prev}-jsmind {
+    overflow: hidden;
+
+    .jsmind-inner {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        overflow: visible;
+    }
+
+    jmnode.root {
+        font-size: 16px;
+    }
+
+    jmnodes.theme-primary jmnode {
+        /* max-width: 100px; */
+        /* white-space: normal; */
+        padding: 5px;
+    }
+
+    .#{$prev}-jsmind__node {
+        display: block;
+        /* white-space: normal; */
+    }
+
+    .#{$prev}-jsmind__root {
+        // font-size: 18px;
+        font-size: 30px;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 15px;
+    }
+
+    .#{$prev}-jsmind__value {
+        display: block;
+        color: #fffc01;
+        font-weight: bold;
+        // font-size: 22px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .#{$prev}-jsmind__des {
+        display: block;
+        // font-size: 14px;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+
+// jsmind主题样式 success theme 
+jmnodes.theme-visualizing jmnode {
+    background-color: rgba(25, 219, 236, 0.5);
+    border-color: rgba(25, 219, 236, 0.5);
+    border-radius: 4px;
+    color: #fff;
+}
+
+jmnodes.theme-visualizing jmnode:hover {
+    background-color: rgba(25, 219, 236, 0.5);
+    border-color: rgba(25, 219, 236, 0.5);
+}
+
+jmnodes.theme-visualizing jmnode.selected {
+    background-color: rgba(25, 219, 236, 0.5);
+    border-color: rgba(25, 219, 236, 0.5);
+    color: #fff;
+}
+
+jmnodes.theme-visualizing jmnode.root {}
+
+jmnodes.theme-visualizing jmexpander {}
+
+jmnodes.theme-visualizing jmexpander:hover {}

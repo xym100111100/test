@@ -1,0 +1,770 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-18 18:03:49
+ * @LastEditTime: 2020-06-05 15:21:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \粮食二期_2020-05-12\html\declare\informationSubmit.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>单位信息</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery.min-3.2.1.js"></script>
+    <script src="../../plug-in/layui/layui.all.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/info_pxy.css">
+    <link rel="stylesheet" href="../../resource/css/why.min.css">
+    <link rel="stylesheet" href="../../resource/css/ccwl.min.css">
+    <style>
+        .ccwls-page {
+            /* width: 1200px; */
+            padding: 20px 20px 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            /* background: #fff; */
+        }
+
+        .ccwls-formbox {
+            margin-top: 20px;
+        }
+
+        .ccwls-btns {
+            margin-top: 20px;
+            text-align: center;
+        }
+         .ccwls-btns-2{
+            margin-bottom: 8px;
+         }
+         .ccwls-form-item-upload{
+             margin-top: 10px;
+         }
+
+      
+    </style>
+</head>
+
+<body>
+    <div class="ccwls-page">
+        <div class="ccwl-steps  j-steps">
+            <div class="ccwl-steps__item  j-steps-item is-first" data-step="1">
+                <div class="clearfix">
+                    <div class="ccwl-steps__text">1</div>
+                </div>
+                <div class="ccwl-steps__title">单位信息</div>
+            </div>
+            <div class="ccwl-steps__item  j-steps-item" data-step="2">
+                <div class="clearfix">
+                    <div class="ccwl-steps__text">2</div>
+                </div>
+                <div class="ccwl-steps__line"></div>
+                <div class="ccwl-steps__title">基本信息</div>
+            </div>
+            <div class="ccwl-steps__item   j-steps-item" data-step="3">
+                <div class="clearfix">
+                    <div class="ccwl-steps__text">3</div>
+                </div>
+                <div class="ccwl-steps__line"></div>
+                <div class="ccwl-steps__title">仓房情况</div>
+            </div>
+            <div class="ccwl-steps__item  j-steps-item" data-step="4">
+                <div class="clearfix">
+                    <div class="ccwl-steps__text">4</div>
+                </div>
+                <div class="ccwl-steps__line"></div>
+                <div class="ccwl-steps__title">油罐情况</div>
+            </div>
+        </div>
+
+        <div class="j-steps-content">
+
+            <!-- 步骤1 单位信息 -->
+            <div class="j-step-content-item  ccwls-formbox" data-step="1" style="display: none;">
+                <div class="clearfix ccwls-btns-2">
+                    <button type="button" class="layui-btn  layui-btn-normal j-btn-getdata1 fr">获取数据</button>
+                </div>
+                <div class="ccwl-form__wrap ">
+                    <form id="form1" class="ccwl-form layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>单位名称：</label>
+                            <div class="layui-input-block  ccwl-form__block">
+                                <input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item clearfix">
+                            <div class="fl ccwl_w50">
+                                <label class="layui-form-label ccwl-form__label"><span
+                                        class="ccwl-form__star">*</span>法定代表人：</label>
+                                <div class="layui-input-block  ccwl-form__block">
+                                    <input type="text" name="title2" lay-verify="required" placeholder=""
+                                        autocomplete="off" class="layui-input j-input">
+                                </div>
+                            </div>
+
+                            <div class="fl ccwl_w50">
+                                <label class="layui-form-label ccwl-form__label2"><span
+                                        class="ccwl-form__star">*</span>企业性质：</label>
+                                <div class="layui-input-block  ccwl-form__block2">
+                                    <input type="text" name="title3" lay-verify="required" placeholder=""
+                                        autocomplete="off" class="layui-input j-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>地址：</label>
+                            <div class="layui-input-block  ccwl-form__block">
+                                <input type="text" name="title4" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item clearfix">
+                            <div class="fl ccwl_w50">
+                                <label class="layui-form-label ccwl-form__label"><span
+                                        class="ccwl-form__star">*</span>联系方式：</label>
+                                <div class="layui-input-block  ccwl-form__block">
+                                    <input type="text" name="title5" lay-verify="required" placeholder=""
+                                        autocomplete="off" class="layui-input j-input">
+                                </div>
+                            </div>
+
+                            <div class="fl ccwl_w50">
+                                <label class="layui-form-label ccwl-form__label2">上级主管部门：</label>
+                                <div class="layui-input-block  ccwl-form__block2">
+                                    <select name="city" lay-verify="required" class=" j-select">
+                                        <option value=""></option>
+                                        <option value="0">部门1</option>
+                                        <option value="1">部门2</option>
+                                        <option value="2">部门3</option>
+                                        <option value="3">部门4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item clearfix">
+                            <div class="fl ccwl_w50">
+                                <label class="layui-form-label ccwl-form__label"><span
+                                        class="ccwl-form__star">*</span>备案有效期：</label>
+                                <div class="layui-input-block  ccwl-form__block">
+                                    <input type="text" name="title7" lay-verify="required" placeholder=""
+                                        autocomplete="off" class="layui-input  j-input">
+                                </div>
+                            </div>
+
+                            <div class="fl ccwl_w50">
+                                <div class="ccwl-form__tip">（填写营业执照有效期）</div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>单位简介：</label>
+                            <div class="layui-input-block  ccwl-form__block">
+                                <textarea name="desc" placeholder="" class="layui-textarea  j-input"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item ccwls-form-item-upload">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>上传营业执照：</label>
+                            <div class="layui-input-block  ccwl-form__block j-files-wrapper1">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item ccwls-form-item-upload">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>粮油仓储物流设施产权证或租赁合同：</label>
+                            <div class="layui-input-block  ccwl-form__block j-files-wrapper2">
+                            </div>
+                          
+                        </div>
+
+                        <div class="layui-form-item ccwls-form-item-upload">
+                            <label class="layui-form-label ccwl-form__label"><span
+                                    class="ccwl-form__star">*</span>粮油仓储物流设施布局图：</label>
+                            <div class="layui-input-block  ccwl-form__block j-files-wrapper3"> </div>
+                        </div>
+                        <button class="layui-btn j-btn-trigger-form1" lay-submit lay-filter="form1" type="button"
+                            style="display: none;">触发按钮</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 步骤2 基本信息 -->
+            <div class="j-step-content-item ccwls-formbox" data-step="2" style="display: none;">
+                <div class="clearfix ccwls-btns-2">
+                    <button type="button" class="layui-btn  layui-btn-normal j-btn-getdata2 fr">获取数据</button>
+                </div>
+                <form id="form2" class="ccwl-form2 layui-form" action="">
+                    <table class="company-info">
+                        <tr>
+                            <td class="td_color" colspan="10">基本信息</td>
+                        </tr>
+                        <tr>
+                            <td class="td_color" rowspan="4" width="140">土地性质</td>
+                            <td class="td_color" width="120">性质</td>
+                            <td class="td_color" width="430" colspan="3">数量（平方米）</td>
+                            <td class="td_color" width="100">实际仓容</td>
+                            <td width="140">吨</td>
+                            <td width="430" colspan="3">
+                                <input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>划拨</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td class="td_color">仓房个数</td>
+                            <td>个</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td>出（转）让</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td class="td_color">实际罐容</td>
+                            <td>吨</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td>其他</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td class="td_color">油罐个数</td>
+                            <td>个</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="2">占地面积</td>
+                            <td rowspan="2">平方米</td>
+                            <td width="400" colspan="3" rowspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td class="td_color">地坪</td>
+                            <td>平方米</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_color" rowspan="2">烘干机</td>
+                            <td>台（套）</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="2">库区数</td>
+                            <td rowspan="2">个</td>
+                            <td width="400" colspan="3" rowspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td>吨 / 日</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_color" rowspan="5">附属设施</td>
+                            <td class="td_color">设备名称</td>
+                            <td class="td_color" width="430" colspan="3">建筑面积（平方米）</td>
+                        </tr>
+                        <tr>
+                            <td class="td_color">铁路专用线</td>
+                            <td>米</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td>检化验室</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_color">其中：有效长度</td>
+                            <td>米</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td>器械库</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_color" rowspan="10">粮食中转设施</td>
+                            <td>接收能力</td>
+                            <td width="400" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                            <td>清理维修车间</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">其中：铁路</td>
+                            <td rowspan="2" width="400" colspan="1">吨 / 小时</td>
+                            <td rowspan="2" width="400" colspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td>其他</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="td_color">汽车街</td>
+                            <td width="400" colspan="1">吨</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">公路</td>
+                            <td width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                            <td width="400" colspan="2" rowspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td>吨</td>
+                            <td width="430" colspan="3"><input type="text" name="title1" lay-verify="required"
+                                    placeholder="" autocomplete="off" class="layui-input j-input"></td>
+                        <tr>
+                            <td class="td_color" rowspan="6">信息化建设</td>
+                            <td width="400" colspan="1">业务管理系统</td>
+                            <td colspan="3" class="td_color">有 / 无</td>
+                        </tr>
+                        <tr>
+                            <td>发放能力</td>
+                            <td colspan="1">吨 / 小时</td>
+                            <td colspan="2"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                            <td>仓储保管系统</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">其中：铁路</td>
+                            <td width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                            <td width="400" colspan="2" rowspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td colspan="1">一卡通系统</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td>远程监管系统</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">公路</td>
+                            <td width="400" colspan="1" rowspan="2">吨 / 小时</td>
+                            <td width="400" colspan="2" rowspan="2"><input type="text" name="title1"
+                                    lay-verify="required" placeholder="" autocomplete="off" class="layui-input j-input">
+                            </td>
+                            <td>视频监控系统</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td width="400" colspan="1">其他管理系统</td>
+                            <td colspan="3"><input type="text" name="title1" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                        </tr>
+                    </table>
+                    <button class="layui-btn j-btn-trigger-form2" lay-submit lay-filter="form2" type="button"
+                        style="display: none;">触发按钮</button>
+
+                </form>
+            </div>
+
+            <!-- 步骤3 仓房情况 -->
+            <div class="j-step-content-item  ccwls-formbox" data-step="3" style="display: none;">
+                <div class="clearfix ccwls-btns-2">
+                    <button type="button" class="layui-btn  layui-btn-normal j-btn-getdata3 fr">获取数据</button>
+                </div>
+                <form id="form3" class="ccwl-form2 layui-form" action="">
+                    
+                    <table class="company-info">
+                        <tr>
+                            <td class="td_color" rowspan="3">仓房类型</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">平房仓</td>
+                            <td class="td_color">浅圆仓</td>
+                            <td class="td_color">立筒仓</td>
+                            <td class="td_color">楼房仓</td>
+                            <td class="td_color">地下仓</td>
+                            <td class="td_color" width="150">保温钢板平房仓</td>
+                            <td class="td_color">简易仓</td>
+                            <td class="td_color">储粮罩棚</td>
+                            <td class="td_color">仓间罩棚</td>
+                            <td class="td_color">铁路罩棚</td>
+                            <td class="td_color">其他</td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓数（个）</td>
+                            <td><input type="text" name="title33" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="3">仓房状态</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">完好无损</td>
+                            <td class="td_color">需大修</td>
+                            <td class="td_color">待报废</td>
+                            <td class="td_color">其他</td>
+                            <td class="td_color"></td>
+                            <td class="td_color" width="150"></td>
+                            <td class="td_color" rowspan="3">储粮方式</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">散装</td>
+                            <td class="td_color">包装</td>
+                            <td class="td_color"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓数（个）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="3">仓房结构</td>
+                            <td class="td_color"></td>
+                            <td class="td_color" colspan="3">地面</td>
+                            <td class="td_color" colspan="4">墙体</td>
+                            <td class="td_color" colspan="4">屋面</td>
+                        </tr>
+                        <tr>
+                            <td class="td_color"></td>
+                            <td class="td_color">钢筋砼</td>
+                            <td class="td_color">砼</td>
+                            <td class="td_color">其它</td>
+                            <td class="td_color">钢筋砼</td>
+                            <td class="td_color">钢板</td>
+                            <td class="td_color">砖混</td>
+                            <td class="td_color">其它</td>
+                            <td class="td_color">钢筋砼</td>
+                            <td class="td_color">钢板</td>
+                            <td class="td_color">砖混</td>
+                            <td class="td_color">其他</td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="2" style="white-space: normal">保粮技术应用情况</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">计算机测温</td>
+                            <td class="td_color">机械通风</td>
+                            <td class="td_color">环流熏蒸</td>
+                            <td class="td_color">低温储粮</td>
+                            <td class="td_color">气调储粮</td>
+                            <td class="td_color">其它</td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+                    </table>
+                    <button class="layui-btn j-btn-trigger-form3" lay-submit lay-filter="form3" type="button"
+                        style="display: none;">触发按钮</button>
+                </form>
+            </div>
+
+            <!-- 步骤4 油罐情况 -->
+            <div class="j-step-content-item  ccwls-formbox" data-step="4" style="display: none;">
+                <div class="clearfix ccwls-btns-2">
+                    <button type="button" class="layui-btn  layui-btn-normal j-btn-getdata4 fr">获取数据</button>
+                </div>
+                <form id="form4" class="ccwl-form2 layui-form" action="">
+                    <table class="company-info">
+                        <tr>
+                            <td class="td_color" rowspan="3">油罐规格</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">小于500吨</td>
+                            <td class="td_color">500-1000吨</td>
+                            <td class="td_color">1000-5000吨</td>
+                            <td class="td_color">5000-10000吨</td>
+                            <td class="td_color">10000吨以上</td>
+                            <td class="td_color" rowspan="2">装备情况</td>
+                            <td class="td_color">加热设备</td>
+                            <td class="td_color">测温设备</td>
+                            <td class="td_color">液位设备</td>
+                            <td class="td_color">其他</td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">罐数（个）</td>
+                            <td><input type="text" name="title1jj" lay-verify="required" placeholder=""
+                                    autocomplete="off" class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">罐容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_color" rowspan="3">油罐状态</td>
+                            <td class="td_color"></td>
+                            <td class="td_color">完好可用户</td>
+                            <td class="td_color">需大修</td>
+                            <td class="td_color">待报废</td>
+                            <td class="td_color">待拆除</td>
+                            <td class="td_color">死角罐</td>
+                            <td class="td_color">其他</td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+                            <td class="td_color"></td>
+
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓数（个）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+
+                        </tr>
+                        <tr>
+                            <td class="td_txtCor">仓容（吨）</td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                            <td><input type="text" name="title1" lay-verify="required" placeholder="" autocomplete="off"
+                                    class="layui-input j-input"></td>
+                        </tr>
+                    </table>
+                    <button class="layui-btn j-btn-trigger-form4" lay-submit lay-filter="form4" type="button"
+                        style="display: none;">触发按钮</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="ccwls-btns layui-btns">
+            <button type="button" class="layui-btn  layui-btn-primary j-btn-prevstep"
+                style="display: none;">上一步</button>
+            <button type="button" class="layui-btn  layui-btn-normal j-btn-nextstep" style="display: none;">下一步</button>
+            <button type="button" class="layui-btn  layui-btn-normal  j-btn-submit" style="display: none;">提交</button>
+        </div>
+
+    </div>
+</body>
+<!-- 自定义工具 -->
+<script src="../../resource/common_js/ao.utils.js"></script>
+<script src="../../resource/common_js/ao.annex.upload.js"></script>
+<script src="./js/informationSubmit.js"></script>
+
+</html>

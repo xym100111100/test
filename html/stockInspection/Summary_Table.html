@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮食库存数量汇总表</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <style>
+        .company-info th {
+            font-weight: normal;
+            background: #f7f7f7;
+            white-space: nowrap;
+            text-align: center !important;
+            padding: 5px 5px;
+        }
+        .company-info td{background: white}
+        .fc{margin-left: 35%}
+        #lineTd{
+            width: 10%;
+        }
+        #lineTd:before{
+            content: "";
+            position: absolute;
+            width: 1px;
+            height:198px;/*这里需要自己调整，根据td的宽度和高度*/
+            background-color: #666666  ;
+            display: block;
+            transform: rotate(-74deg);/*这里需要自己调整，根据线的位置*/
+            transform-origin: top;
+        }
+    </style>
+</head>
+<body>
+<p class="page-title"><img src="../../resource/images/page_title01.png">库存粮食储存(收获)年限情况汇总表</p>
+<div class="table_outer bgFFF mt20">
+    <div class="table_search"><span class="title">库存粮食储存(收获)年限情况汇总表</span></div>
+    <div class="pd20">
+        <div class="tab-content" id="tab1">
+            <p>
+                <span class="fl" style="margin-bottom: 10px"><em class="c8"> 被检查单位单位（盖章）：</em></span>
+                <span class="fc" style="margin-bottom: 10px"><em class="c8"> 自查企业数：</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em class="c8">  抽查企业数：</em></span>
+                <span class="fr" style="margin-bottom: 10px"><em class="c8">检查时点:2018年4月31日</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em class="c8">单位：</em>原粮、吨、元/公斤</span>
+            </p>
+
+            <table class=" table01 company-info">
+                <tr>
+                    <th id="lineTd" rowspan="1" colspan="4"  style="border-right: solid 1px #dcdcdc">
+                        <span style="float:left;margin-top:20px;">分性质</span>
+                        <span style="float:right;margin-top:0;">项目</span>
+                    </th>
+                    <th width="50">行次</th>
+                    <th>检查时点统计库存</th>
+                    <th>检查时点实际库存</th>
+                    <th width="12%">检查时点统计库存与实际库存差数</th>
+                    <th>粮食出库未减账</th>
+                    <th>粮食入库未入账</th>
+                    <th >损失</th>
+                    <th>损耗</th>
+                    <th>政策性借粮</th>
+                    <th>其他</th>
+                    <th width="12%">检查时点统计库存与实际库存差率(%)</th>
+                    <th>备注</th>
+                </tr>
+                <tr>
+                    <th colspan="4">列次</th>
+                    <td></td>
+                    <td>01</td>
+                    <td>02</td>
+                    <td>03</td>
+                    <td>04</td>
+                    <td>05</td>
+                    <td>06</td>
+                    <td>07</td>
+                    <td>08</td>
+                    <td>09</td>
+                    <td>10</td>
+                    <td>甲</td>
+                </tr>
+
+                <!--*****************合计*********************-->
+                <tr>
+                    <th rowspan="10" colspan="2" class="bbdc" style="border-right: solid 1px #dcdcdc">总计</th>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">原粮合计</th>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">小麦</th>
+                    <td>02</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">稻谷</th>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其中：早籼稻</th>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">中晚籼稻</th>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">粳   稻</th>
+                    <td>06</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">玉米</th>
+                    <td>07</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">大豆</th>
+                    <td>08</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其他</th>
+                    <td>09</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <!--*****************地方储备粮*********************-->
+                <tr>
+                    <th rowspan="8" colspan="2" class="bbdc" style="border-right: solid 1px #dcdcdc">地方储备粮</th>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">原粮合计</th>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">小麦</th>
+                    <td>02</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">稻谷</th>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其中：早籼稻</th>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">中晚籼稻</th>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">粳   稻</th>
+                    <td>06</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">玉米</th>
+                    <td>07</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <!--*****************地方政策性粮*********************-->
+                <tr>
+                    <th rowspan="5" colspan="2"  class="bbdc" style="border-right: solid 1px #dcdcdc">地方政策性粮</th>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">原粮合计</th>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">稻谷</th>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其中：早籼稻</th>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">中晚籼稻</th>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!--*****************商品粮*********************-->
+                <tr>
+                    <th rowspan="10" colspan="2" class="bbdc" style="border-right: solid 1px #dcdcdc">商品粮</th>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">原粮合计</th>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">小麦</th>
+                    <td>02</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">稻谷</th>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其中：早籼稻</th>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">中晚籼稻</th>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">粳   稻</th>
+                    <td>06</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">玉米</th>
+                    <td>07</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">大豆</th>
+                    <td>08</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th  colspan="2"  style="border-right: solid 1px #dcdcdc">其他</th>
+                    <td>09</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <ul class="notice-ul">
+                <li>
+                    <span><em class="c8">检查时点统计库存与实际库存差数具体情况说明：</em></span>
+                    <p> 1.检测值栏中应为复核后的成品粮卫生指标的实际检测值</p>
+                    <p> 2.检验试样的加工等级在备注栏中标注。</p>
+                </li>
+            </ul>
+            <ul class="notice-ul">
+                <li>
+                    <span class="fl" style="margin-bottom: 10px"><em class="c8"> 企业 负责人（签字）： </em></span>
+                    <span class="fc" style="margin-bottom: 10px"><em class="c8"> 检查组负责人：</em></span>
+                    <span class="fr" style="margin-bottom: 10px"><em class="c8"> 填报时间:2018年 月 日</em></span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

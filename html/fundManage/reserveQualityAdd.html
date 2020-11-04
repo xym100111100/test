@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代储资格-代储资格管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script>
+        /**
+         * 显示上传文件名
+         * @param  {[type]} obj [description]
+         * @return {[type]}     [description]
+         */
+        function showName(obj){
+            var id = $(obj).data("id");
+            $(id).html($(obj).val());
+        }
+
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">代储资格-代储资格管理<a href="reserveQualityManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="pd20 table_outer bgFFF mt15">
+        <table class="company-info">
+            <tr>
+                <th width="200">企业名称：</th>
+                <td><input type="text" name="" class="input01 w200"></td>
+                <th width="200">企业性质：</th>
+                <td><input type="text" name="" class="input01 w200"></td>
+            </tr>
+            <tr>
+                <th>资格证书编号：</th>
+                <td><input type="text" name="" class="input01 w200"></td>
+                <th>资格仓容：</th>
+                <td><input type="text" name="" class="input01 w200"></td>
+            </tr>
+        </table>
+        <div class="mt15">
+            <input type="file" style="display: none;" class="hide-file" data-id="#fileName1" id="file1" onchange="showName(this);"/>
+            <button type="button" class="btn btn-browser" onclick="$('#file1').click();" ><span class="glyphicon glyphicon-open mr10"></span>新增附件</button><span id="fileName1" class="ml30"></span>
+            <table class="table01 mt15">
+                <thead>
+                    <tr>
+                        <th>附件名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXXXXXX</td>
+                        <td><a class="btn common" href="#">下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXX</td>
+                        <td><a class="btn common" href="#">下载</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd20">
+        <span class="btn btn-browser w110">保存</span>
+    </div>
+</body>
+</html>

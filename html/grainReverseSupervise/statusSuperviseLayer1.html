@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管-粮情检查记录表-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <div class="tr">
+        <button type="button" class="layui-btn">打印</button>
+    </div>
+    <table class="info-table mt5">
+        <col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col>
+        <tr>
+            <th colspan="19">
+                <span>检查日期：<em class="cBlue">2019年1月30日</em></span>
+                <span class="ml30">天气：<em class="cBlue">阴</em></span>
+                <span class="ml30">外温：<em class="cBlue">22.22</em></span>
+                <span class="ml30">仓温：<em class="cBlue">16.5</em></span>
+                <span class="ml30">仓湿：<em class="cBlue">75.6</em></span>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="14" class="tc">粮食温度(℃)</th>
+            <th rowspan="3" class="tc">鼠雀情况</th>
+            <th rowspan="3" class="tc">有无霉变</th>
+            <th rowspan="3" class="tc">卫生情况</th>
+            <th rowspan="3" class="tc">储存状态</th>
+            <th rowspan="3" class="tc">备注</th>
+        </tr>
+        <tr>
+            <th rowspan="2" class="tc">内容</th>
+            <th colspan="4" class="tc">最高粮温</th>
+            <th colspan="4" class="tc">最低粮温</th>
+            <th colspan="4" class="tc">平均粮温</th>
+            <th rowspan="2" class="tc">整仓平均粮温</th>
+        </tr>
+        <tr>
+            <th class="tc">上</th>
+            <th class="tc">中上</th>
+            <th class="tc">中下</th>
+            <th class="tc">下</th>
+            <th class="tc">上</th>
+            <th class="tc">中上</th>
+            <th class="tc">中下</th>
+            <th class="tc">下</th>
+            <th class="tc">上</th>
+            <th class="tc">中上</th>
+            <th class="tc">中下</th>
+            <th class="tc">下</th>
+        </tr>
+        <tr>
+            <th class="tc">温度</th>
+            <td>1.25</td>
+            <td>4.2</td>
+            <td>1.05</td>
+            <td>15.2</td>
+            <td>2.5</td>
+            <td>5.3</td>
+            <td>22.22</td>
+            <td>1.11</td>
+            <td>5.32</td>
+            <td>2.46</td>
+            <td>12.55</td>
+            <td>7.25</td>
+            <td rowspan="2">1.8</td>
+            <td rowspan="2">无</td>
+            <td rowspan="2">无</td>
+            <td rowspan="2">好</td>
+            <td rowspan="2">无</td>
+            <td rowspan="2">无</td>
+        </tr>
+        <tr>
+            <th class="tc">电缆编号</th>
+            <td>4-2</td>
+            <td>9-3</td>
+            <td>无</td>
+            <td>5-4</td>
+            <td>10-2</td>
+            <td>8-1</td>
+            <td>无</td>
+            <td>8-1</td>
+            <td>无</td>
+            <td>无</td>
+            <td>无</td>
+            <td>无</td>
+        </tr>
+        <tr>
+            <th class="tc">分析及处理</th>
+            <td colspan="18">无</td>
+        </tr>
+        <tr>
+            <td colspan="19">
+                <div class="layui-row">
+                    <div class="layui-col-xs4">
+                        <span class="c8">粮库领导：</span><span>XXXXX</span>
+                    </div>
+                    <div class="layui-col-xs4 tc">
+                        <span class="c8">本仓保管员：</span><span>XXXXX</span>
+                    </div>
+                    <div class="layui-col-xs4 tr">
+                        <span class="c8">其他检查人员：</span><span>XXXXX</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table class="info-table mt20">
+        <col><col>
+        <tr>
+            <th class="tc" colspan="2">虫害密度(头/公斤)</th>
+        </tr>
+        <tr>
+            <th class="tc">害虫品种</th>
+            <th class="tc">害虫密度</th>
+        </tr>
+        <tr class="tc">
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr class="tc">
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

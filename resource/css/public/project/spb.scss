@@ -1,0 +1,1066 @@
+@import './spb.layui.scss';
+
+$prev:'spb';
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+        height: 0;
+    }
+
+    &:before {
+        clear: both;
+        content: '\20';
+        display: block;
+        height: 0;
+    }
+
+    zoom: 1;
+}
+
+@mixin ove {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+@mixin boxShadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+@mixin boxShadow2 {
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.08);
+}
+
+@mixin panel1 {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 12px 4px rgba(9, 112, 159, 0.2);
+}
+
+html,
+body {
+    background: #f7fcff !important;
+}
+
+//赛事评比
+.#{$prev}-main {
+    &__wrapper {
+        background: linear-gradient(0deg, #a4defc 0%, #fee8f5 100%) !important;
+
+    }
+
+    &__header {
+        // background-color: #a4defc !important;
+        background: linear-gradient(-90deg, #a4defc 0%, #fee8f5 100%) !important;
+
+        height: 70px;
+    }
+
+    // 左侧菜单
+    &__sidebar {
+        top: 70px;
+        // background-color: #a4defc !important;
+        background: linear-gradient(0deg, #a4defc 0%, #fee8f5 100%) !important;
+
+        .treeview-menu {
+            background-color: transparent !important;
+
+            .menuItem {
+                color: #666 !important;
+                border-bottom: 1px solid #fff;
+                text-align: left;
+                padding-left: 15px;
+
+                &.active {
+                    color: #f99 !important;
+                    background-color: transparent !important;
+                }
+
+                &:hover {
+                    color: #f99 !important;
+                    background-color: transparent !important;
+                }
+
+            }
+
+            // 第二层菜单
+            .menuItem--2 {
+                text-align: left;
+                padding-left: 50px;
+            }
+        }
+
+
+
+        .treeview-menu>li>a {
+            color: #666 !important;
+            text-align: left;
+            padding-left: 15px;
+
+            &.active {
+                color: #f99 !important;
+                background: transparent !important;
+            }
+
+            &:hover {
+                color: #f99 !important;
+                background: transparent !important;
+            }
+        }
+    }
+
+    &__sideimg {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    &__logo {
+        // margin-top: 10px;
+        height: 100% !important;
+        line-height: 70px !important;
+
+        &>img {
+            height: 50px;
+        }
+    }
+
+    &__header_r {
+        line-height: 70px;
+        float: right;
+        // display: inline-block;
+        margin: 0 10px 0 0;
+
+    }
+
+    &__header_m {
+        float: right;
+        // display: inline-block;
+        margin-right: 20px;
+    }
+
+    // 页面选项卡
+    &__tabs {
+        background: #f4f4f4 !important;
+        border-color: #dedede !important;
+
+        .page-tabs a {
+            background-color: #eee !important;
+        }
+
+        .page-tabs a.active {
+            border-color: #f99 !important;
+            background-color: #fff !important;
+        }
+    }
+
+    &__content-wrapper {
+        background: #f7fcff;
+    }
+}
+
+// 覆盖样式
+.skin-blue .treeview-menu>li.active>a,
+.skin-blue .treeview-menu>li>a:hover,
+.skin-blue .treeview-menu>li>a.active {
+    color: #f99 !important;
+    background: transparent !important;
+}
+
+.#{$prev}-main-nav {
+    $base: &;
+    padding: 12px 20px 0;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+
+    &__img {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0 auto 5px;
+    }
+
+    &__label {
+        text-align: center;
+        line-height: 22px;
+        color: #666;
+    }
+
+    &:hover,
+    &.is-active {
+        #{$base}__label {
+
+            color: #f99;
+        }
+    }
+}
+
+.#{$prev}-nav {
+    &__item {
+        line-height: 40px;
+        color: #666;
+        padding: 0 8px;
+        display: inline-block;
+
+        .is-highlight {
+            color: #3bb6f0;
+        }
+    }
+}
+
+.#{$prev}-form-wrapper {
+    .layui-col-space30>* {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+.#{$prev}-btn {
+    &--normal {
+        background-color: #3BB6F0;
+        color: #fff;
+        border-radius: 2px;
+
+        &:hover {
+            background-color: rgb(48, 182, 245);
+            color: #fff;
+        }
+    }
+
+    &--simple {
+        background-color: #E1E1E1;
+        color: #666;
+
+        &:hover {
+            background-color: rgba(225, 225, 225, 0.911);
+            color: #666;
+        }
+    }
+
+    &--small {
+        font-size: 12px;
+        line-height: 28px;
+        height: 28px;
+    }
+
+    &__searchicon {
+        font-size: 18px;
+        margin-right: 5px;
+        position: relative;
+        top: 2px;
+    }
+
+    &__reseticon {
+        font-size: 16px;
+        margin-right: 5px;
+        position: relative;
+        top: 1px;
+    }
+}
+
+.#{$prev}-ztree-dialog-wrapper {
+    .layui-layer-content {
+        padding-top: 5px !important;
+    }
+}
+
+.#{$prev}-dialog-wrapper {
+    .layui-layer-content {
+        padding-top: 5px !important;
+    }
+
+}
+
+// 赛事模板卡片
+.#{$prev}-card1 {
+    background-color: #fff;
+    border: 1px solid #dedede;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+
+    &__main {
+
+        height: 115px;
+        background: linear-gradient(90deg, #f66d82 0%, #f58464 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__describe {
+        color: #fff;
+        font-size: 16px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__name {
+        color: #333;
+        font-size: 16px;
+        line-height: 2;
+        padding: 0 8px;
+        @include ove;
+    }
+
+    &__tag {
+        color: #666;
+        font-size: 14px;
+        line-height: 2;
+        padding: 0 8px;
+
+        @include ove;
+    }
+
+    &__bottom {
+        text-align: center;
+        padding-bottom: 5px;
+
+        .layui-form-radio {
+            margin-right: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.#{$prev}-form-label1 {
+    width: 100px !important;
+    float: left;
+}
+
+.#{$prev}-input-block1 {
+    margin-left: 100px !important;
+    float: none !important;
+}
+
+.#{$prev}-tag1 {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+    font-size: 14px;
+    color: #666;
+    max-width: 100%;
+    @include ove;
+
+
+    &__close {
+        position: absolute;
+        right: 0;
+        text-align: center;
+        display: inline-block;
+        font-size: 18px;
+        color: #f66;
+        cursor: pointer;
+    }
+}
+
+
+//layui loading专用
+.#{$prev}-tag2 {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+    font-size: 14px;
+    color: #666;
+    max-width: 100%;
+    @include ove;
+    top: -22px;
+
+    &__close {
+        position: absolute;
+        right: 0;
+        text-align: center;
+        display: inline-block;
+        font-size: 18px;
+        color: #f66;
+        cursor: pointer;
+    }
+
+}
+
+.#{$prev}-tag3 {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    max-width: 100%;
+    @include ove;
+    background-color: #dcdcdc;
+    padding: 0 8px;
+    padding-right: 25px;
+    border-radius: 2px;
+
+    &:hover {
+        color: rgb(44, 179, 241);
+        background-color: rgb(228, 227, 227);
+
+    }
+
+    &__close {
+        position: absolute;
+        right: 2px;
+        text-align: center;
+        display: inline-block;
+        font-size: 18px;
+        color: #f66;
+        cursor: pointer;
+    }
+}
+
+.#{$prev}-title1 {
+    color: #3BB6F0;
+    font-size: 15px;
+    font-weight: bolder;
+    line-height: 1;
+    padding: 0 8px;
+    display: block;
+    line-height: 36px;
+
+    &--dark {
+        color: #333;
+    }
+
+    &__wrapper {
+        padding: 10px 0 15px;
+    }
+
+    &__suffix {
+        color: #3BB6F0;
+        // font-size: 14px;
+        float: right;
+        // margin-top: 7px;
+        cursor: pointer;
+
+        &-txt {
+            margin-left: 5px;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.#{$prev}-iconbtn {
+    width: 20px;
+    height: 20px;
+    background: #3BB6F0;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+
+    &--danger {
+        background-color: #f66;
+    }
+}
+
+.#{$prev}-list1 {
+    position: relative;
+    border-bottom: 1px solid #efefef;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 8px;
+    color: #333;
+
+    &:last-child {
+        border: none;
+    }
+
+    &:hover {
+        background-color: rgb(241, 241, 241);
+    }
+
+    &.is-active {
+        background-color: rgb(241, 241, 241);
+    }
+
+    &__label {
+        margin-right: 50px;
+        display: block;
+        @include ove;
+    }
+
+    &__suffix {
+        position: absolute;
+        right: 8px;
+        top: 0;
+    }
+
+    &__edit {
+        color: #3BB6F0;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+
+    &__close {
+        color: #f66;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+}
+
+.#{$prev}-word,
+.#{$prev}-word:hover {
+    color: #3BB6F0;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--info,
+.#{$prev}-word--info:hover {
+    color: #333;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.#{$prev}-word--success,
+.#{$prev}-word--success:hover {
+    color: #0EBA93;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--warning,
+.#{$prev}-word--warning:hover {
+    color: #FF5722;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-word--danger,
+.#{$prev}-word--danger:hover {
+    color: #F56868;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+
+.#{$prev}-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &>img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.is-fill img {
+        -o-object-fit: fill;
+        object-fit: fill;
+    }
+
+    &.is-cover img {
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    &.is-contain img {
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+
+    &.is-none img {
+        // 原图尺寸不变，水平垂直居中
+        -o-object-fit: none;
+        object-fit: none;
+    }
+
+    &.is-scaledown img {
+        -o-object-fit: scale-down;
+        object-fit: scale-down;
+    }
+}
+
+//赛事信息
+.#{$prev}-compinfo {
+    @include clearfix();
+    margin-bottom: 10px;
+
+    &__left {
+        width: 15%;
+        float: left;
+    }
+
+    &__main {
+        width: 85%;
+        float: left;
+        padding-top: 5px;
+    }
+
+    &__logo {
+        width: 100%;
+        height: 92px;
+        position: relative;
+        display: table;
+    }
+
+    &__logoinner {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+//赛事信息 - 新增宣传
+.#{$prev}-publicinfo {
+    @include clearfix();
+    margin-bottom: 10px;
+
+
+
+    &__main {
+        width: 80%;
+        float: left;
+        padding-top: 5px;
+    }
+
+    &__right {
+        width: 20%;
+        float: left;
+    }
+
+    &__logo {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        display: table;
+        padding: 10px;
+    }
+
+    &__logoinner {
+        display: table-cell;
+        vertical-align: middle;
+
+        img {
+            min-width: 100%;
+            min-width: 100%;
+        }
+    }
+}
+
+//页面大背景
+.#{$prev}-pagebg {
+    width: 100%;
+    max-width: 1920px;
+    height: 100%;
+    max-height: 970px;
+    // margin: 0 auto;
+    background: url(../images/backstage/login_background.png) no-repeat;
+    background-position: center center;
+    // background-size: auto 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+.#{$prev}-managepanel {
+    @include clearfix();
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 20px;
+
+    margin-top: 50px;
+
+    // @include panel1;
+
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+
+
+    &__main {
+        min-height: 300px;
+        box-sizing: border-box;
+        display: table;
+        width: 80%;
+        float: left;
+    }
+
+    &__maininner {
+
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    &__label {
+        font-size: 20px;
+        color: #333;
+    }
+
+    &__label2 {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #333;
+
+        .is-highlight {
+            color: #f66;
+            font-size: 20px;
+            font-weight: bolder;
+
+        }
+    }
+
+    &__right {
+        width: 20%;
+        float: left;
+        min-height: 300px;
+        height: 100%;
+        display: table;
+    }
+
+    &__img {
+        width: 100%;
+        display: table-cell;
+        vertical-align: middle;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__nav {
+        display: inline-block;
+        margin-right: 15px;
+
+        &box {
+            margin-top: 20px;
+            @include clearfix();
+        }
+
+        &icon {
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+        }
+
+        &label {
+            display: inline-block;
+            margin-left: 8px;
+            line-height: 25px;
+            font-size: 16px;
+            color: #3BB6F0;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+    }
+
+}
+
+// 作品区块
+.#{$prev}-opuspanel {
+    $base: &;
+    @include boxShadow2();
+    padding: 10px 10px 0;
+    margin-bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid #dedede;
+
+    &__header {
+        height: 35px;
+        padding: 0 10px;
+
+        &-btns {
+            float: right;
+            margin-top: 3px;
+        }
+    }
+
+    &__title {
+        font-size: 16px;
+        color: #333;
+        font-weight: bolder;
+        line-height: 35px;
+        display: inline-block;
+    }
+
+    &__body {
+        padding: 10px;
+
+    }
+
+    &__block {
+        padding: 10px;
+        // background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 2px 6px 4px rgba(9, 112, 159, 0.05);
+        background-color: #fff;
+        border: 1px solid #dedede;
+
+        &-title {
+            font-size: 14px;
+            color: #3BB6F0;
+            line-height: 2;
+        }
+    }
+
+    &__row {
+
+        position: relative;
+        line-height: 28px;
+
+        // &-prefix {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 80px;
+        //     text-align: right;
+        // }
+
+        &-main {
+            // margin-left: 80px;
+            margin-right: 70px;
+            display: block;
+            @include ove();
+        }
+
+        &-suffix {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+            text-align: right;
+            color: #3BB6F0;
+            cursor: pointer;
+        }
+    }
+
+    &__footer {
+        line-height: 35px;
+        text-align: right;
+        padding: 0 10px;
+
+        &-item {
+            font-size: 14px;
+            color: #3BB6F0;
+
+            display: inline-block;
+            padding: 0 8px;
+        }
+    }
+
+    &__bottom {
+        line-height: 34px;
+        text-align: center;
+        border-top: 1px solid #e5e5e5;
+
+        &-icon {
+            font-size: 16px;
+            cursor: pointer;
+            color: #3BB6F0;
+            transform: rotate(90deg);
+            display: inline-block;
+
+
+        }
+    }
+
+    // 收起状态
+    &.is-hidden {
+        #{$base}__body {
+            display: none;
+        }
+
+        #{$base}__bottom-icon {
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+// 富文本回显
+.#{$prev}-mce-content-body {
+    line-height: 1.4;
+    padding: 16px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+
+}
+
+// 上传进度
+.#{$prev}-uldprogress {
+    padding: 10px 20px 20px;
+    margin-bottom: 10px;
+    height: 500px;
+    overflow: auto;
+
+    &__title {
+        font-size: 16px;
+        color: #333;
+        line-height: 2;
+        padding: 5px 0;
+        font-weight: bolder;
+    }
+
+    &__item {
+        margin: 5px 0;
+    }
+
+    &__filename {
+        font-size: 14px;
+        color: #3BB6F0;
+        line-height: 1;
+        // padding: 5px 0;
+        @include ove();
+    }
+
+    &__barbox {
+        position: relative;
+        // height: 20px;
+        line-height: 20px;
+        margin: 0 0;
+        @include clearfix();
+
+
+    }
+
+    &__bar {
+        width: 85%;
+        box-sizing: border-box;
+        float: left;
+        padding-right: 5px;
+        // margin-right: 100px;
+        padding-top: 6px;
+        box-sizing: border-box;
+    }
+
+    &__suffix {
+        width: 15%;
+        box-sizing: border-box;
+        float: left;
+        // width: 90px;
+        // position: absolute;
+        // right: 0;
+        // top: 0;
+        color: #1E9FFF;
+        text-align: left;
+
+        &.is-error {
+            color: #FF5722;
+        }
+
+        &.is-success {
+            color: #5FB878;
+        }
+    }
+
+    &__flowbtn {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #3BB6F0;
+        color: #fff;
+        text-align: center;
+        display: block;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        z-index: 1000;
+
+        .layui-icon {
+            font-size: 24px;
+        }
+    }
+}
+
+.#{$prev}-inputreview-text {
+    line-height: 32px;
+}
+
+.#{$prev}-border {
+    border: 1px solid #e5e5e5;
+}
+
+.#{$prev}-bg1 {
+    background: #f2f9ff;
+}
+
+// 专家评审对话框的内容
+.#{$prev}-reviewbox {
+    @include clearfix();
+    height: 100%;
+
+    &__left {
+        float: left;
+        width: 50%;
+        position: relative;
+        box-sizing: border-box;
+        padding-bottom: 35px;
+        height: 100%;
+        // background-color: #9f9;
+
+    }
+
+    &__iframe {
+        height: 100%;
+    }
+
+    &__btns {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 35px;
+        text-align: center;
+        padding-top: 3px;
+    }
+
+    &__right {
+        float: left;
+        width: 50%;
+        height: 100%;
+        // background-color: #f99;
+        overflow: auto;
+    }
+
+    &__formlabel {
+        width: 120px !important;
+        float: left;
+        color: #000;
+    }
+
+    &__inputblock {
+        margin-left: 120px !important;
+        float: none !important;
+        // @include ove();
+
+        word-wrap: break-word;
+    }
+}
+
+.#{$prev}-table--fixed {
+    table-layout: fixed;
+}

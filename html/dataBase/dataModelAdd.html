@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据源管理-数据模型</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/fileinput.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plug-in/bootstrap/themes/explorer-fa/theme.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- layer弹窗 -->
+    <script src="../../plug-in/layer/layer.js" type="text/javascript"></script>
+    <script src="../../plug-in/layer/layerExtend.js" type="text/javascript"></script>
+    <!-- bootstrap-fileupload上传插件 -->
+    <script src="../../plug-in/bootstrap/js/plugins/sortable.js"></script>
+    <script src="../../plug-in/bootstrap/js/fileinput.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/fr.js"></script>
+    <script src="../../plug-in/bootstrap/js/locales/zh.js"></script>
+    <script src="../../plug-in/bootstrap/themes/explorer-fa/theme.js"></script>
+    <script src="../../plug-in/bootstrap/js/bootstrap.min.js"></script>
+    <!-- codemirror编辑器 -->
+    <script src="../../plug-in/codemirror/lib/codemirror.js"></script>
+    <script src="../../plug-in/codemirror/mode/sql/sql.js"></script>
+    <script src="../../plug-in/codemirror/addon/hint/show-hint.js" type="text/javascript"></script>
+    <script src="../../plug-in/codemirror/addon/hint/sql-hint.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../plug-in/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="../../plug-in/codemirror/theme/idea.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <style>
+        .company-info li{margin: 5px 0;}
+        .krajee-default .file-caption-info, .krajee-default .file-size-info{height: auto;}
+        .krajee-default.file-preview-frame .kv-file-content {width: 180px;height: 120px;}
+        .company-info td{overflow: visible;}
+        .CodeMirror{border: 1px solid #dcdcdc;}
+    </style>
+    <script>
+        $(function(){
+            
+            var myTextarea = document.getElementById('code');
+            var CodeMirrorEditor = CodeMirror.fromTextArea(myTextarea, {
+                mode: "text/x-mysql",
+                ndentWithTabs: true,
+                smartIndent: true,
+                lineNumbers: true,
+                matchBrackets : true,
+                autofocus: true,
+                extraKeys: {"Ctrl-/": "autocomplete"},
+                hintOptions: {
+                    tables: {
+                        users: ["name", "score", "birthDate"],
+                        countries: ["name", "population", "size"]
+                    }
+                },
+                theme: "idea"
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">数据源管理-数据模型<a href="dataModel.html" class="fr border-btn w60">返回</a></p>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search"><span class="title">数据模型新增</span></div>
+        <div class="pd20">
+            <table class="company-info">
+                <tr>
+                    <th width="150">数据模型编码：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                    <th width="150">数据模型名称：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                </tr>
+                <tr>
+                    <th>数据源类型：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                    <th>数据源名称：</th>
+                    <td><input type="text" class="input01 w200"></td>
+                </tr>
+                <tr>
+                    <th>脚本编辑器：</th>
+                    <td colspan="3">
+                        <button type="button" class="border-btn" onclick="" style="margin-bottom: 10px;">执行脚本</button>
+                        <textarea class="textarea01" id="code"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>预制参数：</th>
+                    <td colspan="3"><input type="text" class="input01 w-full"></td>
+                </tr>
+                <tr class="custom-hide">
+                    <th>执行结果预览：</th>
+                    <td colspan="3">
+                        <table class="table01">
+                            <thead>
+                                <tr>
+                                    <th>标识</th>
+                                    <th>address</th>
+                                    <th>clazz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>4</td>
+                                    <td>山东</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>山东</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>山东</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>山东</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tc pd10 mt20">
+        <span class="btn btn-browser w110">保存</span>
+    </div>
+</body>
+</html>

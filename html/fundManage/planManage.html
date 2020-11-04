@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计划管理</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+            laydate.render({
+                elem: '#date',
+                type: 'year'
+            });
+                 
+    	});
+    </script>
+    <style>
+        .stock-chart-info{width: 600px;}
+        .stock-chart-info li{margin-top: 14px;margin-right: 50px;width: 240px;}
+    </style>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">计划管理</p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="110">计划名称：</th>
+                <td><input type="text" class="input01"></td>
+                <th>文号：</th>
+                <td><input type="text" class="input01"></td>
+                <th>类型：</th>
+                <td><input type="text" class="input01"></td>
+                <th>年度：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">计划列表</span>
+            <a class="border-btn fr mt5" href="planAdd.html">新增</a>
+        </div>
+        <div class="pd20">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th>计划名称</th>
+                        <th>文号</th>
+                        <th>类型</th>
+                        <th>年度</th>
+                        <th>上传人</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>直补订单使用计划</td>
+                        <td>桂粮发[2017]37号</td>
+                        <td>使用计划</td>
+                        <td>2017</td>
+                        <td>XXX</td>
+                        <td>2017-09-21</td>
+                        <td><a class="btn common" href="planDetail.html">查看</a><a class="btn common bgG ml10" href="#">下载</a><a class="btn common bgLightG ml10" href="planePublish.html">发布</a><a class="btn common bgRed ml10" href="#">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>直补订单使用计划</td>
+                        <td>桂粮发[2017]37号</td>
+                        <td>使用计划</td>
+                        <td>2017</td>
+                        <td>XXX</td>
+                        <td>2017-09-21</td>
+                        <td><a class="btn common" href="planDetail.html">查看</a><a class="btn common bgG ml10" href="#">下载</a><a class="btn common bgLightG ml10" href="planePublish.html">发布</a><a class="btn common bgRed ml10" href="#">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td>直补订单使用计划</td>
+                        <td>桂粮发[2017]37号</td>
+                        <td>使用计划</td>
+                        <td>2017</td>
+                        <td>XXX</td>
+                        <td>2017-09-21</td>
+                        <td><a class="btn common" href="planDetail.html">查看</a><a class="btn common bgG ml10" href="#">下载</a><a class="btn common bgLightG ml10" href="planePublish.html">发布</a><a class="btn common bgRed ml10" href="#">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

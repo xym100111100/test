@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-出入库监管-磅码单-弹出</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+</head>
+<body class="bgFFF">
+<div style="padding: 0 20px;">
+    <table class="info-table">
+        <col><col><col><col><col><col><col><col><col>
+        <tr>
+            <td colspan="9">
+                <div class="layui-row">
+                    <div class="layui-col-xs4"><span>日期：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>时间：<em></em></span></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="layui-row">
+                    <div class="layui-col-xs4"><span>发货单位：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>车(船)号：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>发货地点：<em></em></span></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="layui-row">
+                    <div class="layui-col-xs4"><span>收货单位：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>承运单位：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>收货地点：<em></em></span></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="tc" rowspan="2">承运车号</th>
+            <th class="tc" rowspan="2">货物名称</th>
+            <th class="tc" rowspan="2">毛重(kg)</th>
+            <th class="tc" rowspan="2">皮重(kg)</th>
+            <th class="tc" colspan="2">编织袋</th>
+            <th class="tc" colspan="2"> </th>
+            <th class="tc" rowspan="2">净重(kg)</th>
+        </tr>
+        <tr>
+            <th class="tc">数量(件)</th>
+            <th class="tc">扣袋(kg)</th>
+            <th class="tc"></th>
+            <th class="tc"></th>
+        </tr>
+        <tr class="tc">
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="layui-row">
+                    <div class="layui-col-xs4"><span>司磅员签名：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>保管员签名：<em></em></span></div>
+                    <div class="layui-col-xs4"><span>司机签名：<em></em></span></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+
+    });
+
+</script>
+</body>
+</html>

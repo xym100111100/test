@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>粮油价格上报</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+        $(function(){
+            laydate.render({
+                elem: '#date'
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">粮油价格管理<a href="priceManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">品种：</th>
+                <td><input type="text" class="input01"></td>
+                <th>价格类型：</th>
+                <td><input type="text" class="input01"></td>
+                <th>填报时间：</th>
+                <td><input type="text" class="input01 layui-input" id="date"></td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search">
+            <span class="title">粮油仓储单位及仓储物流设施保护备案</span>
+            <div class="fr">
+                <span class="border-btn">批量上报</span><span class="border-btn ml10">全量上报</span>
+            </div>
+        </div>
+        <div class="pd20">
+            <table class="table01">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" class="checkbox01"></th>
+                        <th>监测点名称</th>
+                        <th>品种</th>
+                        <th>价格类型</th>
+                        <th>价格</th>
+                        <th>备注</th>
+                        <th>填报时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox01"></td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>玉米</td>
+                        <td>出厂价格</td>
+                        <td>2.1</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox01"></td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>稻谷</td>
+                        <td>销售价格</td>
+                        <td>2.2</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox01"></td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>小麦</td>
+                        <td>入库价格</td>
+                        <td>3.4</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox01"></td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>大米</td>
+                        <td>销售价格</td>
+                        <td>6.3</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox01"></td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>食用油</td>
+                        <td>入库价格</td>
+                        <td>4.2</td>
+                        <td>XXXXXXXXXXXXXXXXXXXX</td>
+                        <td>2016-09-05</td>
+                        <td><span class="btn common">编辑</span><span class="btn common bgRed ml10">删除</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮情监管</title>
+    <!--<link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">-->
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 树插件 -->
+    <link rel="stylesheet" href="../../plug-in/ztree/css/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/jquery.ztree.exhide.min.js"></script>
+    <script type="text/javascript" src="../../plug-in/ztree/js/ztreeCreator.js"></script>
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+
+    <!--layui样式-->
+    <link rel="stylesheet" href="../../plug-in/layui/css/layui.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <!--以layui为基础改的样式-->
+    <link rel="stylesheet" href="../../resource/css/style-layui.css">
+    <style>
+        .hide-content{display: none;}
+    </style>
+</head>
+<body>
+<div class="top-box">
+    <div class="top-box-title">
+        <div class="top-box-line1"></div>
+        <div class="top-box-line2"></div>
+        <div class="top-box-line3"></div>
+        <div class="top-box-line4"></div>
+        <div class="top-title-inner">
+            <div class="top-box-title-center">
+                <a onclick="selectLink();">粮情监管 <i class="layui-edge"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="top-box-content">
+        <div class="clearfix top-box-inner">
+            <form class="layui-form label-auto-width" action="" lay-filter="example" style="margin: 0 10px;">
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">库区名称：</label>
+                    <div class="layui-input-block">
+                        <span class="c8">南宁储备仓储库</span>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline ml5">
+                    <label class="layui-form-label">廒间号：</label>
+                    <div class="layui-input-block w140 special-select">
+                        <select name="type">
+                            <option value="">全部</option>
+                            <option value="1号厫间">1号厫间</option>
+                            <option value="2号厫间">2号厫间</option>
+                            <option value="3号厫间">3号厫间</option>
+                            <option value="4号厫间">4号厫间</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline last-item">
+                    <button class="layui-btn search-btn ml10" type="button">查询</button>
+                </div>
+            </form>
+            <a href="visualSupervise2.html" class="back-icon"></a>
+        </div>
+    </div>
+</div>
+<div class="layui-card mt15 clearfix">
+    <div class="fl layui-card" style="width: 200px;box-shadow:0px 0px 6px 0px rgba(135,147,193,0.29);padding-top: 10px;">
+        <div class="each-status-box">
+            <a href="" data-id="tab1">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    熏蒸记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box active">
+            <a href="" data-id="tab2">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    储粮三温图
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab3">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    磷化氢气体溶度<br>检测记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab4">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    仓房充氢降氧<br>作业记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab5">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    氧气气体溶度<br>检测记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab6">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    储粮机械通风<br>作业记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab7">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    谷物冷却机低温储粮作业记录表
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab8">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    粮情检查记录
+                </div>
+            </a>
+        </div>
+        <div class="each-status-box">
+            <a href="" data-id="tab9">
+                <div class="left-td">
+                    <div class="status-icon-bg"><i class="status-icon"></i></div>
+                </div>
+                <div class="right-td">
+                    摄像信息管理
+                </div>
+            </a>
+        </div>
+    </div>
+    <div style="margin-left: 200px;min-height: 700px;">
+        <div class="layui-card-body">
+            <div class="toolbar">
+                <span class="card-title02" id="title">储粮三温图</span>
+            </div>
+            <div class="hide-content" id="tab1">
+                <form class="layui-form label-auto-width" action="" lay-filter="example">
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">药剂名称：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">熏蒸负责人：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline last-item">
+                        <button class="layui-btn search-btn ml10" type="button">查询</button>
+                    </div>
+                </form>
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise2.json', id:'test2',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'numbers', width:60}">序号</th>
+                        <th lay-data="{field:'name1'}">药剂名称</th>
+                        <th lay-data="{field:'name2'}">单位用药量</th>
+                        <th lay-data="{field:'name3'}">施药人数</th>
+                        <th lay-data="{field:'name4'}">品种</th>
+                        <th lay-data="{field:'name5'}">总用药量</th>
+                        <th lay-data="{field:'name6'}">主要虫种</th>
+                        <th lay-data="{field:'name7'}">熏蒸负责人</th>
+                        <th lay-data="{field: 'op', toolbar: '#barDemo1'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab2" style="display: block;">
+                <div id="chart" style="height: 620px;"></div>
+            </div>
+            <div class="hide-content" id="tab3">
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise3.json', id:'test3',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'name1',rowspan: '2'}">检测时间</th>
+                        <th lay-data="{field:'', colspan: '10'}">各测气点溶度</th>
+                        <th lay-data="{field:'name2', rowspan: '2'}">空间浓度</th>
+                        <th lay-data="{field:'name3', rowspan: '2'}">最高浓度</th>
+                        <th lay-data="{field:'name4', rowspan: '2'}">平均浓度</th>
+                        <th lay-data="{field:'name5', rowspan: '2'}">检测人</th>
+                        <th lay-data="{field:'name6', rowspan: '2'}">备注</th>
+                    </tr>
+                    <tr>
+                        <th lay-data="{field:'name7'}">一号</th>
+                        <th lay-data="{field:'name8'}">二号</th>
+                        <th lay-data="{field:'name9'}">三号</th>
+                        <th lay-data="{field:'name10'}">四号</th>
+                        <th lay-data="{field:'name11'}">五号</th>
+                        <th lay-data="{field:'name12'}">六号</th>
+                        <th lay-data="{field:'name13'}">七号</th>
+                        <th lay-data="{field:'name14'}">八号</th>
+                        <th lay-data="{field:'name15'}">九号</th>
+                        <th lay-data="{field:'name16'}">十号</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab4">
+                <form class="layui-form label-auto-width" action="" lay-filter="example">
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">开机日期：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input input-date">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">关机日期：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" placeholder="" class="layui-input input-date">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline last-item">
+                        <button class="layui-btn search-btn ml10" type="button">查询</button>
+                    </div>
+                </form>
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise4.json', id:'test4',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'name1',rowspan: '2'}">充氢降氧方式</th>
+                        <th lay-data="{field:'', colspan: '7'}">充氢记录</th>
+                        <th lay-data="{field:'', colspan: '4'}">用电记录</th>
+                        <th lay-data="{field:'name2', rowspan: '2'}">记录人</th>
+                        <th lay-data="{field:'name3', rowspan: '2'}">仓房气密性</th>
+                        <th lay-data="{field:'name4', rowspan: '2'}">负责人</th>
+                        <th lay-data="{field:'name5', rowspan: '2'}">操作人</th>
+                    </tr>
+                    <tr>
+                        <th lay-data="{field:'name6'}">开机日期</th>
+                        <th lay-data="{field:'name7'}">开机前读数</th>
+                        <th lay-data="{field:'name8'}">关机日期</th>
+                        <th lay-data="{field:'name9'}">关机后读数</th>
+                        <th lay-data="{field:'name10'}">充氢时间（h）</th>
+                        <th lay-data="{field:'name11'}">充氢量（m3）</th>
+                        <th lay-data="{field:'name12'}">粮堆平均氧气浓度（%）</th>
+                        <th lay-data="{field:'name13'}">开机前读数</th>
+                        <th lay-data="{field:'name14'}">关机后读数</th>
+                        <th lay-data="{field:'name15'}">累计电耗(kw.h)</th>
+                        <th lay-data="{field:'name16'}">单位能耗(kw.h/t)</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab5">
+                <form class="layui-form label-auto-width" action="" lay-filter="example">
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">检测时间：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input input-date">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">检测人：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline last-item">
+                        <button class="layui-btn search-btn ml10" type="button">查询</button>
+                    </div>
+                </form>
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise3.json', id:'test5',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'numbers',rowspan: '2',width: 60}">序号</th>
+                        <th lay-data="{field:'name1',rowspan: '2'}">检测时间</th>
+                        <th lay-data="{field:'', colspan: '10'}">各测气点溶度</th>
+                        <th lay-data="{field:'name2', rowspan: '2'}">空间浓度</th>
+                        <th lay-data="{field:'name3', rowspan: '2'}">最低浓度</th>
+                        <th lay-data="{field:'name4', rowspan: '2'}">平均浓度</th>
+                        <th lay-data="{field:'name5', rowspan: '2'}">检测人</th>
+                        <th lay-data="{field:'name6', rowspan: '2'}">备注</th>
+                    </tr>
+                    <tr>
+                        <th lay-data="{field:'name7'}">一号</th>
+                        <th lay-data="{field:'name8'}">二号</th>
+                        <th lay-data="{field:'name9'}">三号</th>
+                        <th lay-data="{field:'name10'}">四号</th>
+                        <th lay-data="{field:'name11'}">五号</th>
+                        <th lay-data="{field:'name12'}">六号</th>
+                        <th lay-data="{field:'name13'}">七号</th>
+                        <th lay-data="{field:'name14'}">八号</th>
+                        <th lay-data="{field:'name15'}">九号</th>
+                        <th lay-data="{field:'name16'}">十号</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab6">
+                <form class="layui-form label-auto-width" action="" lay-filter="example">
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">仓号：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">粮食品种名称：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">日期：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input input-date">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline last-item">
+                        <button class="layui-btn search-btn ml10" type="button">查询</button>
+                    </div>
+                </form>
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise6.json', id:'test6',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'numbers',width: 60}">序号</th>
+                        <th lay-data="{field:'name1'}">仓号</th>
+                        <th lay-data="{field:'name2'}">粮食品种名称</th>
+                        <th lay-data="{field:'name3'}">日期</th>
+                        <th lay-data="{field:'name4'}">仓房规格</th>
+                        <th lay-data="{field: 'op', toolbar: '#barDemo2'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab7">
+                <form class="layui-form label-auto-width" action="" lay-filter="example">
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">日期：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input input-date">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">谷冷机型号：</label>
+                        <div class="layui-input-block w140">
+                            <input type="text" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline">
+                        <label class="layui-form-label">等级：</label>
+                        <div class="layui-input-block w140">
+                            <select name="type">
+                                <option value="">全部</option>
+                                <option value="一等">一等</option>
+                                <option value="二等">二等</option>
+                                <option value="三等">三等</option>
+                                <option value="四等">四等</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-inline last-item">
+                        <button class="layui-btn search-btn ml10" type="button">查询</button>
+                    </div>
+                </form>
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise7.json', id:'test7',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'numbers',width: 60}">序号</th>
+                        <th lay-data="{field:'name1'}">仓号</th>
+                        <th lay-data="{field:'name2'}">粮种</th>
+                        <th lay-data="{field:'name3'}">日期</th>
+                        <th lay-data="{field:'name4'}">等级</th>
+                        <th lay-data="{field:'name5'}">数量</th>
+                        <th lay-data="{field:'name6'}">谷冷机型号</th>
+                        <th lay-data="{field:'name7'}">台数</th>
+                        <th lay-data="{field:'name8'}">总功率</th>
+                        <th lay-data="{field: 'op', toolbar: '#barDemo3'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="hide-content" id="tab8">
+                <table class="layui-table" lay-data="{url:'../../resource/json/grainReverseSupervise/statusSupervise1.json', id:'test',skin: 'nob' ,even: true ,page: { layout: ['limit','count', 'prev', 'page', 'next','skip']}}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'numbers', width:60}">序号</th>
+                        <th lay-data="{field:'name1'}">外温</th>
+                        <th lay-data="{field:'name2'}">仓温</th>
+                        <th lay-data="{field:'name3'}">卫生情况</th>
+                        <th lay-data="{field:'name4'}">整仓平均粮温</th>
+                        <th lay-data="{field:'name5'}">备注</th>
+                        <th lay-data="{field:'name6'}">检查日期</th>
+                        <th lay-data="{field: 'op', toolbar: '#barDemo'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <a class="op-word" lay-event="detail">粮情检查记录表</a>
+</script>
+<script type="text/html" id="barDemo1">
+    <a class="op-word" lay-event="detail1">熏蒸作业表</a>
+</script>
+<script type="text/html" id="barDemo2">
+    <a class="op-word" lay-event="detail2">通风作业表</a>
+</script>
+<script type="text/html" id="barDemo3">
+    <a class="op-word" lay-event="detail3">冷却作业表</a>
+</script>
+
+<script src="../../plug-in/layui/layui.js" charset="utf-8"></script>
+<script src="../../plug-in/layui/lay/modules/layerExtend.js" type="text/javascript"></script>
+<script src="../../plug-in/layui/lay/modules/tableExtend.js" type="text/javascript"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','table','element','upload'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,table = layui.table
+            ,element = layui.element
+            ,$ = layui.jquery
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+        lay('.input-date').each(function(){
+            laydate.render({
+                elem: this
+                ,trigger: 'click'
+            });
+        });
+        renderLine();
+        $(".each-status-box>a").click(function (e) {
+            e.preventDefault();
+            $(this).parent().addClass("active").siblings().removeClass("active");
+            $("#title").text($(this).text());
+            var id = $(this).data("id");
+            $(".hide-content").hide();
+            $("#"+id).show();
+        });
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var param = {
+                title: '',
+                area:["80%","90%"],
+                btn: ['关闭'],
+                yes: function(index, layero){
+                    // TODO render表格
+                    layer.close(index);
+                },
+                end: function(){
+
+                }
+            };
+            var upgradeLayer = null;
+            if(obj.event === 'detail'){
+                param.title = '粮情检查记录表';
+                param.content = 'statusSuperviseLayer1.html';
+                upgradeLayer = $.layerFrame02(param);
+            }
+            if(obj.event === 'detail1'){
+                param.title = '熏蒸作业表';
+                param.content = 'statusSuperviseLayer2.html';
+                upgradeLayer = $.layerFrame02(param);
+            }
+            if(obj.event === 'detail2'){
+                param.title = '通风作业表';
+                param.content = 'statusSuperviseLayer3.html';
+                upgradeLayer = $.layerFrame02(param);
+            }
+            if(obj.event === 'detail3'){
+                param.title = '冷却作业表';
+                param.content = 'statusSuperviseLayer4.html';
+                upgradeLayer = $.layerFrame02(param);
+            }
+        });
+    });
+    function renderLine() {
+        var lineContainer = echarts.init(document.getElementById('chart'));
+        var lineLegend = ['最高粮温','最低粮温','平均粮温'],
+            lineXdata = ['01-25','02-25','03-25','04-25','05-25','06-25','07-25','08-25','09-25','10-25','11-25','12-25'],
+            lineColor = ['#907AFF','#FFBB61','#F25085'];
+        var series = [];
+        lineLegend.forEach(function (item,index) {
+            var tmp = [];
+            lineXdata.forEach(function (item) {
+                tmp.push((30 * Math.random()).toFixed(1));
+            });
+            series.push({
+                name: item,
+                type:'line',
+                symbolSize:8,
+                hoverAnimation:false,
+                // showSymbol:false,
+                smooth: true,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'top',
+                        backgroundColor: lineColor[index],
+                        color:'#fff',
+                        padding:[6,15],
+                        borderRadius:2,
+                        formatter: '{a}：{c}℃'
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                lineStyle:{
+                    normal:{
+                        color: lineColor[index]
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: lineColor[index]
+                    }
+                },
+                data: tmp
+            });
+        });
+        var option = {
+            backgroundColor: '#fff',
+            legend: {
+                data: lineLegend,
+                textStyle: {
+                    color: '#262B2E'
+                },
+                right: '20px',
+                top: '0'
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer:{
+                    lineStyle:{
+                        width:0
+                    }
+                },
+                // showContent:false
+            },
+            grid: {
+                top: '30px',
+                left: '15px',
+                right: '20px',
+                bottom: '0',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : true,
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color:'#B7C2D4'
+                        }
+
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#838383',//坐标值得具体的颜色
+                        },
+                        // rotate: -45,
+                    },
+                    data : lineXdata
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    // splitNumber: 4,
+                    axisLine: {
+                        lineStyle: {
+                            color:'#B7C2D4'
+                        }
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#838383',//坐标值得具体的颜色
+                        },
+                        formatter: '{value}℃'
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine:{
+                        show: true,
+                        lineStyle:{
+                            color:'#E3EAEC'         //网格分割线
+                        }
+                    },
+                    splitArea:{
+                        show: true,
+                        areaStyle:{
+                            color:'rgba(197,220,255,.3)'         //网格分割线
+                        }
+                    }
+                }
+            ],
+            series : series
+        };
+        lineContainer.setOption(option);
+    }
+    function selectLink() {
+        var param = {
+            area:["700px","350px"],
+            // shade: 0.1,
+            shadeClose: true
+        };
+        param.content = '<div style="margin-left: 20px;margin-top: 15px;">\n' +
+            '    <a class="supervise-link" href="storageSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon1"></i>\n' +
+            '        <p>库存监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="qualitySSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon2"></i>\n' +
+            '        <p>质量监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="inAndOutSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon3"></i>\n' +
+            '        <p>移库监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="changeSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon4"></i>\n' +
+            '        <p>粮油性质变更监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="statusSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon5"></i>\n' +
+            '        <p>粮情监管</p>\n' +
+            '    </a>\n' +
+            '    <a class="supervise-link" href="iOSupervise.html">\n' +
+            '        <i class="supervise-link-icon icon6"></i>\n' +
+            '        <p>出入库监管</p>\n' +
+            '    </a>\n' +
+            '</div>';
+        $.layerContent02(param);
+    }
+
+</script>
+</body>
+</html>

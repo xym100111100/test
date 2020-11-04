@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>储备粮监管-粮油保管总账</title>
+    <link rel="stylesheet" href="../../plug-in/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plug-in/easyui/themes/skin1/easyui.css">
+    <script src="../../plug-in/jquery-1.10.2.min.js"></script>
+    <script src="../../resource/common_js/common.js"></script>
+    <!-- 日历插件 -->
+    <script src="../../plug-in/laydate/laydate.js"></script>
+	<!-- Echarts3 -->
+	<script type="text/javascript" src="../../plug-in/echarts/echarts.min.js"></script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../../resource/css/style.css">
+    <script type="text/javascript">
+    	$(function(){
+    	});
+        
+    </script>
+</head>
+<body>
+    <p class="page-title"><img src="../../resource/images/page_title02.png">库存监管<a href="stockManage.html" class="fr border-btn w60">返回</a></p>
+    <div class="location-info part mt20" id="locationInfo">
+        <span>定位信息：</span><em>南宁市</em><em>青秀区</em><em>XX企业</em>
+        <div class="toggle-arrow" onclick="toggle('#locationInfo');"></div>
+    </div>
+
+    <div class="search-table clearfix mt15">
+        <table>
+            <tr>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th width="100">XXXXXX：</th>
+                <td><input type="text" class="input01"></td>
+                <th>型号规格：</th>
+                <td><div class="inp_down">
+                        <input type="text" class="input01">
+                        <ul>
+                            <li>规格1</li>
+                            <li>规格2</li>
+                        </ul>
+                    </div>
+                </td>
+                <td><span class="search_btn01 ml30">查询</span><span class="border-btn ml10">重置</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table_outer bgFFF mt15">
+        <div class="table_search tc"><span class="f18">粮油保管总账</span></div>
+        <div class="pd20">
+            <table style="width: 100%;table-layout: fixed;">
+                <td><span class="c8">粮油性质：</span>代储</td>
+                <td align="right"><span class="c8">单位：</span>公斤</td>
+            </table>
+            <table class="table01 mt15">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="bbdc">2014</th>
+                        <th rowspan="2">摘要</th>
+                        <th rowspan="2">储存仓(罐)号</th>
+                        <th rowspan="2">粮油品种</th>
+                        <th rowspan="2">入库数量</th>
+                        <th rowspan="2">出库数量</th>
+                        <th rowspan="2">库存数量</th>
+                        <th rowspan="2">损失／损耗</th>
+                        <th rowspan="2">溢余</th>
+                        <th rowspan="2">备注(入库除杂)</th>
+                    </tr>
+                    <tr>
+                        <th>月</th>
+                        <th>日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7</td>
+                        <td>30</td>
+                        <td></td>
+                        <td>合计</td>
+                        <td>稻谷</td>
+                        <td></td>
+                        <td>272480.00</td>
+                        <td>2341980.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="c8">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>21#仓</td>
+                        <td>稻谷</td>
+                        <td></td>
+                        <td>272480.00</td>
+                        <td>2341980.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>30</td>
+                        <td></td>
+                        <td>合计</td>
+                        <td>稻谷</td>
+                        <td></td>
+                        <td>272480.00</td>
+                        <td>2341980.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="c8">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>21#仓</td>
+                        <td>稻谷</td>
+                        <td></td>
+                        <td>272480.00</td>
+                        <td>2341980.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="page_div clearfix mt10">
+                <ul class="fr">
+                    <li class="prev"></li>
+                    <li>1</li>
+                    <li class="hover">2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>9</li>
+                    <li class="next"></li>
+                    <li class="to-page">到<input type="text">页</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
